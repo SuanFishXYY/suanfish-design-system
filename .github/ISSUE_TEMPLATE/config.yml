@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Read the docs first
+    url: https://github.com/SuanFishXYY/suanfish-design-system#readme
+    about: 检查 README · SKILL.md · references 是否已经覆盖
+  - name: 💬 GitHub Discussions
+    url: https://github.com/SuanFishXYY/suanfish-design-system/discussions
+    about: 想讨论想法 / 求助 / 分享用法

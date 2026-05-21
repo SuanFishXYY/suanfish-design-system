@@ -29,44 +29,69 @@
 ## 🏗️ 架构总览
 
 ```mermaid
-graph TB
-    subgraph "Tier 1 · 战略层"
+flowchart TB
+    User([👤 用户需求])
+
+    subgraph T0 ["🚦 Tier 0 · 入口调度"]
+        MS["moment-strategist<br/>REJECT R1–R6"]
+    end
+
+    subgraph T1 ["🎯 Tier 1 · 战略层"]
         OD[onboarding-director]
         WD[wizard-designer]
     end
-    subgraph "Tier 2 · 架构层"
+
+    subgraph T2 ["🏗️ Tier 2 · 架构层"]
         UA[ui-architect]
         MC[modal-craftsman]
     end
-    subgraph "Tier 3 · 内容层"
+
+    subgraph T3 ["✍️ Tier 3 · 内容层"]
         CW[copy-writer]
         IC[icon-curator]
         ES[empty-state-storyteller]
     end
-    subgraph "Tier 4 · 视觉层"
+
+    subgraph T4 ["🎨 Tier 4 · 视觉层"]
         DV[data-viz-engineer]
         AC[animation-choreographer]
     end
-    subgraph "Tier 5 · 横切咨询"
+
+    subgraph T5 ["🧩 Tier 5 · 横切咨询"]
         TK[token-keeper]
         AG[a11y-guardian]
         RS[responsive-strategist]
     end
-    subgraph "Tier 6 · 审计层"
-        UAU[ui-auditor 🛡]
+
+    subgraph T6 ["🛡️ Tier 6 · 审计层"]
+        UAU[ui-auditor]
     end
-    MS{moment-strategist<br/>🚦 调度 + REJECT}
-    MS --> OD & WD
+
+    Output([✅ 最终方案])
+
+    User --> MS
+    MS -->|派单| OD
+    MS -->|派单| WD
     OD --> UA
-    WD --> UA & MC
-    UA --> CW & IC & ES
-    UA --> DV & AC
-    CW & IC & ES & DV & AC -.consult.-> TK & AG & RS
+    WD --> UA
+    WD --> MC
+    UA --> CW
+    UA --> IC
+    UA --> ES
+    UA --> DV
+    UA --> AC
     UA --> UAU
-    UAU --> |✅ PASS| Output[最终方案]
-    UAU --> |🛑 REJECT| MS
-    style MS fill:#ff6b6b,stroke:#333,color:#fff
-    style UAU fill:#4ecdc4,stroke:#333,color:#fff
+    MC --> UAU
+    T2 -.consult.-> T5
+    T3 -.consult.-> T5
+    T4 -.consult.-> T5
+    UAU -->|✅ PASS| Output
+    UAU -->|🛑 REJECT 回炉| MS
+
+    style MS fill:#ff6b6b,stroke:#c92a2a,color:#fff,stroke-width:3px
+    style UAU fill:#4ecdc4,stroke:#0a8d83,color:#fff,stroke-width:2px
+    style User fill:#ffd43b,stroke:#fab005,color:#000
+    style Output fill:#69db7c,stroke:#37b24d,color:#000
 ```
 
 > **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。

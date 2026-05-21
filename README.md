@@ -96,6 +96,159 @@ flowchart TB
 
 > **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。
 
+<details>
+<summary>📐 <b>架构图变体 · 点开看更多视角</b>（数据流 / 决策树 / 用户旅程）</summary>
+
+### 🔄 变体 1 · 数据流时序图（BRIEF → SPEC → REPORT）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 👤 用户
+    participant MS as 🚦 moment-strategist
+    participant T1 as 🎯 Tier 1<br/>战略层
+    participant T2 as 🏗️ Tier 2<br/>架构层
+    participant T34 as ✍️🎨 Tier 3-4<br/>内容/视觉
+    participant T5 as 🧩 Tier 5<br/>横切咨询
+    participant UAU as 🛡 ui-auditor
+
+    User->>MS: BRIEF（业务需求 + 上下文）
+    MS->>MS: 跑 R1-R6 预检
+    alt 命中 REJECT
+        MS-->>User: 🛑 拒单 + 理由 + 替代方案
+    else 通过预检
+        MS->>T1: 派单（onboarding / wizard）
+        T1->>T2: 战略 → 信息架构
+        T2->>T34: 模块拆解
+        T34->>T5: consult（token / a11y / responsive）
+        T5-->>T34: 约束清单
+        T34->>UAU: SPEC 提审
+        UAU->>UAU: 全量 checklist
+        alt PASS
+            UAU-->>User: ✅ REPORT + 实施清单
+        else 不合格
+            UAU->>MS: 🛑 REJECT 回炉
+            MS->>T2: 带修改建议重做
+        end
+    end
+```
+
+### 🛑 变体 2 · REJECT R1-R6 决策树
+
+```mermaid
+flowchart TD
+    Start([📥 收到 BRIEF]) --> R1{R1<br/>有明确<br/>用户痛点?}
+    R1 -->|否| Rej1[🛑 REJECT R1<br/>'连问题都没说清，做啥?']
+    R1 -->|是| R2{R2<br/>符合产品<br/>定位?}
+    R2 -->|否| Rej2[🛑 REJECT R2<br/>'稳态高频别玩仪式感']
+    R2 -->|是| R3{R3<br/>有数据/<br/>调研支撑?}
+    R3 -->|否| Rej3[🛑 REJECT R3<br/>'凭感觉的决策不接']
+    R3 -->|是| R4{R4<br/>风险/成本<br/>可控?}
+    R4 -->|否| Rej4[🛑 REJECT R4<br/>'ROI 不正不做']
+    R4 -->|是| R5{R5<br/>a11y/合规<br/>过关?}
+    R5 -->|否| Rej5[🛑 REJECT R5<br/>'歧视任何用户都是红线']
+    R5 -->|是| R6{R6<br/>有验证/<br/>退出方案?}
+    R6 -->|否| Rej6[🛑 REJECT R6<br/>'没法验证就是赌博']
+    R6 -->|是| Pass([✅ 进入 Tier 1 派单])
+
+    Rej1 -.提供替代.-> Alt([💡 替代方案])
+    Rej2 -.-> Alt
+    Rej3 -.-> Alt
+    Rej4 -.-> Alt
+    Rej5 -.-> Alt
+    Rej6 -.-> Alt
+
+    style Pass fill:#69db7c,stroke:#37b24d,color:#000
+    style Alt fill:#ffd43b,stroke:#fab005,color:#000
+    style Rej1 fill:#ff6b6b,color:#fff
+    style Rej2 fill:#ff6b6b,color:#fff
+    style Rej3 fill:#ff6b6b,color:#fff
+    style Rej4 fill:#ff6b6b,color:#fff
+    style Rej5 fill:#ff6b6b,color:#fff
+    style Rej6 fill:#ff6b6b,color:#fff
+```
+
+### 🗺️ 变体 3 · 用户旅程图（从需求到交付）
+
+```mermaid
+journey
+    title 算鱼设计系统 · 用户旅程
+    section 🔥 提需求
+      写 BRIEF: 3: 用户
+      MS 跑预检: 4: MS
+      被 REJECT(可能): 2: MS
+      重写 BRIEF: 3: 用户
+    section 🏗️ 设计中
+      Tier 1 派单: 5: MS, T1
+      架构拆解: 5: T2
+      内容/视觉并行: 5: T3, T4
+      Tier 5 consult: 4: T5
+    section 🛡️ 审计
+      UAU 全量检查: 4: UAU
+      回炉重做(可能): 2: UAU, MS
+      PASS 输出: 5: UAU
+    section ✅ 交付
+      拿到 REPORT: 5: 用户
+      实施清单: 5: 用户
+      上线验证: 5: 用户
+```
+
+### 📦 变体 4 · 6 Tier 类图（看清职责边界）
+
+```mermaid
+classDiagram
+    class MomentStrategist {
+        +tier: 0
+        +role: 调度+审单
+        +rules: R1-R6
+        +reject(brief)
+        +dispatch(spec)
+    }
+    class OnboardingDirector {
+        +tier: 1
+        +role: 新手引导战略
+    }
+    class WizardDesigner {
+        +tier: 1
+        +role: 向导流程设计
+    }
+    class UIArchitect {
+        +tier: 2
+        +role: 信息架构
+    }
+    class ModalCraftsman {
+        +tier: 2
+        +role: 弹窗/抽屉
+    }
+    class TokenKeeper {
+        +tier: 5
+        +role: 设计 token 守门
+        +consult()
+    }
+    class A11yGuardian {
+        +tier: 5
+        +role: 可访问性
+        +consult()
+    }
+    class UIAuditor {
+        +tier: 6
+        +role: 终审
+        +pass()
+        +reject_back()
+    }
+    MomentStrategist --> OnboardingDirector
+    MomentStrategist --> WizardDesigner
+    OnboardingDirector --> UIArchitect
+    WizardDesigner --> UIArchitect
+    WizardDesigner --> ModalCraftsman
+    UIArchitect ..> TokenKeeper : consult
+    UIArchitect ..> A11yGuardian : consult
+    UIArchitect --> UIAuditor
+    UIAuditor --> MomentStrategist : REJECT
+```
+
+</details>
+
 ---
 
 ## 😩 你是不是有这些痛

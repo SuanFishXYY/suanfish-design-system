@@ -6,6 +6,7 @@ reports_to: moment-strategist
 defers_to: [token-keeper]
 audited_by: ui-auditor
 references: [12-icon-library.md]
+philosophy: "深泽直人 · without thought — 用户不需思考就能识别"
 ---
 
 # 🎯 icon-curator · 图标策展人

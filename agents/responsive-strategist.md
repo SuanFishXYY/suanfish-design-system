@@ -6,6 +6,7 @@ reports_to: moment-strategist
 consults: [token-keeper, ui-architect]
 audited_by: ui-auditor
 references: [04-three-pane-layout.md, 07-modal-system.md]
+philosophy: "赫拉克利特 — 人不能两次踏入同一屏幕"
 ---
 
 # 📱 responsive-strategist · 响应式策略师

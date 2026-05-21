@@ -1,5 +1,49 @@
 # 变更日志（Changelog）
 
+## [2.2.0] —— 哲学根基注入 · 14 锚点 · 20 法典 · 案例库
+
+> *规则会过时，案例会重复，但哲学命题穿越时间。*
+
+### 改动 · 6 项哲学化升级
+
+1. **14 agent 哲学锚点**：每位 agent 在 frontmatter 新增 `philosophy:` 字段，绑定一条不可让步的哲学命题（如 modal-craftsman ↔ 奥卡姆剃刀，animation-choreographer ↔ 老子大象无形）。
+2. **REJECT R1-R6 配哲学命题**：`moment-strategist.md` 的 R1-R6 表新增"哲学命题"列。规则不再是 KPI，而是哲学约束。
+3. **设计经典法典**：新增 `references/18-design-canon.md`，收录 Dieter Rams 十诫 / 包豪斯三原则 / Tufte 信息可视化 / 东方美学等 20 条经典原则，编号 D1-D10 / B1-B3 / V1-V3 / A1-A2 / E1-E2，可被 agent 引用。
+4. **案例库**：新增 `references/cases/` 目录，5 个核心 agent 各配 3 正例 + 3 反例（共 30 条），每条标注 `[Canon-XX]` 编号 + 哲学依据。
+5. **东方/西方双轨分流**：SKILL.md frontmatter 新增 `flavor: hybrid` 字段（可选 eastern / western / hybrid），不同 flavor 下 agent 推理路径自动切换。
+6. **思维链可视化**：所有 agent 输出 SPEC 时建议显式标注哲学推理路径，如 `[Dasein → 识别用户处境]` `[Canon-D5 → 隐而不见]` `[结论]`。
+
+### 新增
+
+- `references/17-philosophy.md` — 14 agent 哲学锚点 + R1-R6 命题映射 + 东西方分流（核心文档）
+- `references/18-design-canon.md` — 20 条经典设计法典
+- `references/cases/README.md` — 案例库索引
+- `references/cases/modal-craftsman.md` — 弹窗决策案例（3 正 3 反）
+- `references/cases/animation-choreographer.md` — 动画克制案例（3 正 3 反）
+- `references/cases/empty-state.md` — 空状态文学案例（3 正 3 反）
+- `references/cases/copy-writer.md` — 文案对比案例（3 正 3 反）
+- `references/cases/data-viz.md` — 图表减法案例（3 正 3 反）
+
+### 哲学注脚（v2.2 引入的命题清单）
+
+**东方哲学**：孙子 · 上兵伐谋 / 庄子 · 庖丁解牛 / 老子 · 大象无形 / 禅宗 · 一期一会 / 物哀 · 余韵 / 间 (Ma) / 孔子 · 名不正则言不顺
+
+**西方哲学**：苏格拉底 · 产婆术 / 亚里士多德 · 矛盾律 / 康德 · 绝对命令 + 人是目的 / 维特根斯坦 · 语言边界 / 海德格尔 · Dasein / 罗尔斯 · 无知之幕 / 爱比克泰德 · 控制二分法 / 波普尔 · 可证伪性 / 赫拉克利特 / 奥卡姆剃刀
+
+**现代设计**：Dieter Rams 十诫 / Sullivan · Form follows function / Adolf Loos · Ornament is crime / Mies · Less is more / Tufte · Data-Ink Ratio / 深泽直人 · without thought / 原研哉 · 白
+
+### 文件
+
+- 14 个 agent · 23 个 reference · 5 个 case · 总文件数约 50
+
+### 淘汰的旧观念
+
+- ❌ "REJECT 是冷冰冰的拒绝" → ✅ REJECT 是哲学命题的捍卫
+- ❌ "agent 是工具" → ✅ agent 是有信念的匠人
+- ❌ "一套规则吃天下" → ✅ 东方/西方双轨分流
+
+---
+
 ## [2.1.0] —— 架构修缮：边界厘清 + 独立规则集 + REJECT 机制 + 速查表
 
 ### 改动 · 修复 7 项架构问题

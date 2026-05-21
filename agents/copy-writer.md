@@ -6,6 +6,7 @@ reports_to: moment-strategist
 consults: [token-keeper]
 audited_by: ui-auditor
 references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, 14-anti-patterns.md]
+philosophy: "维特根斯坦 — 语言的边界即世界的边界"
 ---
 
 # 📝 copy-writer · 文案匠人

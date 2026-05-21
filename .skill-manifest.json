@@ -1,6 +1,6 @@
 {
   "name": "suanfish-design-system",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "算鱼工作室统一多智能体设计语言体系。14 位 agent 在 6 个 tier 中协同工作，治理仪式感与稳态两套界面语言。v2.1 引入 REJECT 机制、独立规则集与边界厘清。",
   "author": "算鱼工作室",
   "license": "MIT",

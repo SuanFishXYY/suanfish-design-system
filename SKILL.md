@@ -1,11 +1,13 @@
 ---
 name: suanfish-design-system
 description: Suanfish Design System — A unified multi-agent design language system with 14 specialized agents across 6 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs both first-impression onboarding moments (welcome, version updates) and steady-state interfaces (three-pane layouts, modals, wizards, data viz). Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，14 位专精 agent 协同工作，分布在 6 个 tier，搭载 6 条 REJECT 硬规则。
-version: 2.1.0
+version: 2.2.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
-tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, animation, tokens, react, tailwind, accessibility, responsive, copywriting, icon, empty-state, chinese]
+flavor: hybrid
+philosophy: enabled
+tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, animation, tokens, react, tailwind, accessibility, responsive, copywriting, icon, empty-state, chinese, philosophy]
 ---
 
 # 算鱼设计系统 · The Studio · v2.1
@@ -174,6 +176,68 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 
 ---
 
+## 📜 哲学根基（v2.2 新增）
+
+> *"规则会过时，案例会重复，但哲学命题穿越时间。"*
+
+每位 agent 在职能之上还配一个**哲学锚点**——当业务方拍脑袋、当流行风潮涌来、当甲方意志压顶时，agent 拒绝服从的最后一道防线。
+
+### 📌 哲学根基三件套
+
+| 文件 | 作用 |
+| --- | --- |
+| [`references/17-philosophy.md`](references/17-philosophy.md) | 14 agent 哲学锚点 + REJECT R1-R6 哲学命题映射 + 东西方分流 |
+| [`references/18-design-canon.md`](references/18-design-canon.md) | 20 条经典设计法典（Dieter Rams 十诫 / Tufte / 包豪斯 / 东方美学） |
+| [`references/cases/`](references/cases/) | 案例库（5 个 agent 各 3 正 3 反） |
+
+### 🎯 14 agent 哲学锚点（速查表）
+
+| Agent | 哲学锚点 | 核心命题 |
+| --- | --- | --- |
+| moment-strategist | 孙子 · 上兵伐谋 | 最好的设计是不需要做的设计 |
+| onboarding-director | 庄子 · 庖丁解牛 | 顺应用户认知的肌理 |
+| wizard-designer | 禅宗 · 一期一会 | 每步引导都不可复制 |
+| ui-architect | Sullivan · Form follows function | 形式追随功能 |
+| modal-craftsman | 奥卡姆剃刀 | 如无必要，勿增弹窗 |
+| copy-writer | 维特根斯坦 | 语言的边界即世界的边界 |
+| icon-curator | 深泽直人 · without thought | 用户不需思考就能识别 |
+| empty-state-storyteller | 海德格尔 · Dasein | 空状态是存在的提示 |
+| data-viz-engineer | Tufte · Data-Ink Ratio | 删除每一滴非数据墨水 |
+| animation-choreographer | 老子 · 大象无形 | 最好的动画用户感觉不到 |
+| token-keeper | 康德 · 绝对命令 | 设计 token 即立法 |
+| a11y-guardian | 罗尔斯 · 无知之幕 | 替最弱势用户设计 |
+| responsive-strategist | 赫拉克利特 | 人不能两次踏入同一屏幕 |
+| ui-auditor | 苏格拉底 · 产婆术 | 不评判，助产 |
+
+### 🛑 REJECT R1-R6 哲学命题映射
+
+| 规则 | 条件 | 哲学命题 | 出处 |
+| --- | --- | --- | --- |
+| R1 | 时长 > 5s 非主动触发 | 人是目的，不是手段 | 康德 |
+| R2 | 仪式装饰在 100+ 次高频界面 | 控制二分法 | 爱比克泰德 |
+| R3 | 需求自相矛盾 | 矛盾律 | 亚里士多德 |
+| R4 | 违反三条铁律 | 绝对命令 | 康德 |
+| R5 | 路径 B 硬条件未满足 | 可证伪性 | 波普尔 |
+| R6 | 双主导冲突 | 名不正则言不顺 | 孔子 |
+
+### 🌸 / 🏛️ 东方 / 西方双轨
+
+`flavor: eastern` / `western` / `hybrid`（默认）—— 详见 [`references/17-philosophy.md`](references/17-philosophy.md) §四。
+
+### 🧠 思维链可视化（所有 agent 通用）
+
+agent 输出 SPEC 时建议显式标注哲学推理路径：
+
+```
+[Dasein 此在 → 识别用户处境]
+[现象学还原 → 提取本质需求]
+[奥卡姆剃刀 → 删除冗余方案]
+[Canon-D5 → Dieter Rams: 好设计是隐而不见的]
+[结论 → 不做弹窗，改 inline 提示]
+```
+
+---
+
 ## 🤝 协作协议 · BRIEF → PLAN → SPEC → REPORT（+ REJECT）
 
 | 阶段 | 产出 | 作者 | 目的 |
@@ -187,7 +251,7 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 
 ---
 
-## 📚 参考资料库（共 21 份）
+## 📚 参考资料库（共 23 份 + 案例库）
 
 | # | 文件 | 主要使用者 |
 | --- | --- | --- |
@@ -208,6 +272,9 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 | 14 | [anti-patterns.md](references/14-anti-patterns.md) | 🔍 |
 | **15** | **[audit-ruleset-steady.md](references/15-audit-ruleset-steady.md)** | 🔍 **稳态规则集（v2.1 独立）** |
 | **16** | **[audit-ruleset-onboarding.md](references/16-audit-ruleset-onboarding.md)** | 🔍 **仪式规则集（v2.1 独立）** |
+| **17** | **[philosophy.md](references/17-philosophy.md)** | 全员（**v2.2 哲学根基**） |
+| **18** | **[design-canon.md](references/18-design-canon.md)** | 全员（**v2.2 经典法典**） |
+| **case/** | **[cases/](references/cases/)** | 全员（**v2.2 案例库**） |
 
 附录资产 4 份：`animation-keyframes.css`、`component-patterns.md`、`interaction-patterns.md`、`steps-schema.md`
 

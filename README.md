@@ -4,7 +4,7 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-2.1.0-blue)
+![version](https://img.shields.io/badge/version-2.2.0-blue)
 ![agents](https://img.shields.io/badge/agents-14-purple)
 ![tiers](https://img.shields.io/badge/tiers-6-orange)
 ![language](https://img.shields.io/badge/lang-中文-red)
@@ -95,7 +95,7 @@ flowchart LR
     class Output exit
 ```
 
-> **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。
+> **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。每条 REJECT 都绑定一条不可让步的哲学命题（详见 [📜 哲学根基](references/17-philosophy.md)）。
 
 <details>
 <summary>📐 <b>架构图变体 · 点开看更多视角</b>（数据流 / 决策树 / 用户旅程）</summary>
@@ -326,6 +326,9 @@ classDiagram
 
 ### 3. **规则与执行解耦** —— 工程化的版本同步契约
 审计规则不藏在 `ui-auditor` 里，而是独立到 `references/15-audit-ruleset-steady.md` 与 `16-audit-ruleset-onboarding.md`。每份规则集都有 `bound_to_token_version` 字段，token 改动必须同步规则集 PR，否则审计员**直接报错拒绝执行**。
+
+### 4. **哲学根基（v2.2）** —— 每位 agent 都有不可让步的命题
+14 位 agent 各配一条哲学锚点（孙子 · 上兵伐谋 / 老子 · 大象无形 / 康德 · 绝对命令 ……），REJECT R1-R6 配哲学命题，外加 20 条经典法典（Dieter Rams / Tufte / 包豪斯）和 30 条案例。当业务方拍脑袋时，agent 不是机械引用规则——而是引用**信念**。详见 [📜 references/17-philosophy.md](references/17-philosophy.md)。
 
 ---
 

@@ -6,6 +6,7 @@ reports_to: moment-strategist
 consults: [token-keeper, copy-writer]
 audited_by: ui-auditor
 references: [09-form-controls.md, 14-anti-patterns.md]
+philosophy: "罗尔斯 · 无知之幕 — 替最弱势用户设计"
 ---
 
 # ♿ a11y-guardian · 可访问性守护

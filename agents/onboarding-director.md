@@ -6,6 +6,7 @@ reports_to: moment-strategist
 consults: [animation-choreographer, token-keeper]
 audited_by: ui-auditor
 references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, component-patterns.md, interaction-patterns.md, steps-schema.md, animation-keyframes.css]
+philosophy: "庄子 · 庖丁解牛 — 顺应用户认知的肌理"
 ---
 
 # 🎬 onboarding-director · 仪式感导演

@@ -6,6 +6,7 @@ reports_to: moment-strategist
 defers_to: [copy-writer, icon-curator, token-keeper]
 audited_by: ui-auditor
 references: [09-form-controls.md]
+philosophy: "海德格尔 · Dasein — 空状态是存在的提示"
 ---
 
 # 🪟 empty-state-storyteller · 空状态机设计师

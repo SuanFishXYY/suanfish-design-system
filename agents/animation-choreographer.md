@@ -6,6 +6,7 @@ reports_to: moment-strategist
 consults: [token-keeper]
 audited_by: ui-auditor
 references: [11-animation-library.md, animation-keyframes.css]
+philosophy: "老子 · 大象无形 — 最好的动画用户感觉不到"
 ---
 
 # 💫 animation-choreographer · 动画编舞家

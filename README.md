@@ -29,30 +29,27 @@
 ## 🏗️ 架构总览
 
 ```mermaid
-flowchart TB
-    User([👤 用户需求])
+flowchart LR
+    User([👤 用户<br/>BRIEF])
 
     subgraph T0 ["🚦 Tier 0 · 入口调度"]
-        MS["moment-strategist<br/>REJECT R1–R6"]
+        MS["moment-strategist<br/><i>REJECT R1–R6</i>"]
     end
 
-    subgraph T1 ["🎯 Tier 1 · 战略层"]
+    subgraph T1 ["🎯 Tier 1 · 战略"]
         OD[onboarding-director]
         WD[wizard-designer]
     end
 
-    subgraph T2 ["🏗️ Tier 2 · 架构层"]
+    subgraph T2 ["🏗️ Tier 2 · 架构"]
         UA[ui-architect]
         MC[modal-craftsman]
     end
 
-    subgraph T3 ["✍️ Tier 3 · 内容层"]
+    subgraph T34 ["✍️🎨 Tier 3-4 · 内容 + 视觉"]
         CW[copy-writer]
         IC[icon-curator]
         ES[empty-state-storyteller]
-    end
-
-    subgraph T4 ["🎨 Tier 4 · 视觉层"]
         DV[data-viz-engineer]
         AC[animation-choreographer]
     end
@@ -63,35 +60,39 @@ flowchart TB
         RS[responsive-strategist]
     end
 
-    subgraph T6 ["🛡️ Tier 6 · 审计层"]
+    subgraph T6 ["🛡️ Tier 6 · 审计"]
         UAU[ui-auditor]
     end
 
-    Output([✅ 最终方案])
+    Output([✅ REPORT<br/>实施清单])
 
-    User --> MS
-    MS -->|派单| OD
-    MS -->|派单| WD
-    OD --> UA
-    WD --> UA
-    WD --> MC
-    UA --> CW
-    UA --> IC
-    UA --> ES
-    UA --> DV
-    UA --> AC
-    UA --> UAU
-    MC --> UAU
+    User ==> MS
+    MS ==>|派单| T1
+    T1 ==> T2
+    T2 ==> T34
+    T34 ==> UAU
     T2 -.consult.-> T5
-    T3 -.consult.-> T5
-    T4 -.consult.-> T5
-    UAU -->|✅ PASS| Output
-    UAU -->|🛑 REJECT 回炉| MS
+    T34 -.consult.-> T5
+    UAU ==>|✅ PASS| Output
+    UAU -.->|🛑 REJECT 回炉| MS
 
-    style MS fill:#ff6b6b,stroke:#c92a2a,color:#fff,stroke-width:3px
-    style UAU fill:#4ecdc4,stroke:#0a8d83,color:#fff,stroke-width:2px
-    style User fill:#ffd43b,stroke:#fab005,color:#000
-    style Output fill:#69db7c,stroke:#37b24d,color:#000
+    classDef tier0 fill:#FCA5A5,stroke:#DC2626,color:#7F1D1D,stroke-width:2px
+    classDef tier1 fill:#DDD6FE,stroke:#7C3AED,color:#4C1D95,stroke-width:1.5px
+    classDef tier2 fill:#BFDBFE,stroke:#2563EB,color:#1E3A8A,stroke-width:1.5px
+    classDef tier34 fill:#A7F3D0,stroke:#059669,color:#064E3B,stroke-width:1.5px
+    classDef tier5 fill:#FEF08A,stroke:#CA8A04,color:#713F12,stroke-width:1.5px
+    classDef tier6 fill:#FDBA74,stroke:#EA580C,color:#7C2D12,stroke-width:1.5px
+    classDef entry fill:#F3F4F6,stroke:#6B7280,color:#111827,stroke-width:2px
+    classDef exit fill:#6EE7B7,stroke:#047857,color:#064E3B,stroke-width:2px
+
+    class MS tier0
+    class OD,WD tier1
+    class UA,MC tier2
+    class CW,IC,ES,DV,AC tier34
+    class TK,AG,RS tier5
+    class UAU tier6
+    class User entry
+    class Output exit
 ```
 
 > **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。

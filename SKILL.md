@@ -1,6 +1,6 @@
 ---
 name: suanfish-design-system
-description: 算鱼工作室的统一多智能体设计语言体系。同时治理「初见的仪式感瞬间」（欢迎、版本更新介绍）与「日常的稳态界面」（三栏布局、模态、向导、数据可视化）。十四位专精 agent 在一位调度经理之下协同工作，分布在 6 个 tier。当用户请求设计、生成、审计、重构、扩展算鱼工作台任意可见界面时启用本 skill。
+description: Suanfish Design System — A unified multi-agent design language system with 14 specialized agents across 6 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs both first-impression onboarding moments (welcome, version updates) and steady-state interfaces (three-pane layouts, modals, wizards, data viz). Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，14 位专精 agent 协同工作，分布在 6 个 tier，搭载 6 条 REJECT 硬规则。
 version: 2.1.0
 author: 算鱼工作室
 license: MIT

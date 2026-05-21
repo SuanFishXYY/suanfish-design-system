@@ -1,0 +1,119 @@
+﻿# <Product> Onboarding Design 完整 onb-* 动画 keyframes 集合
+
+把这一整段粘到全局 CSS（如 `index.css`）即可获得 SuanFish 设计系统的全部动画能力。
+
+```css
+/* ============================================================
+ * 拍立得双层动画架构
+ * ============================================================ */
+@keyframes onbPolaroidEnter {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.85) rotate(var(--rot, 0deg)); }
+  60%  { opacity: 1; transform: translateY(-4px) scale(1.04) rotate(var(--rot, 0deg)); }
+  100% { opacity: 1; transform: translateY(0)    scale(1)    rotate(var(--rot, 0deg)); }
+}
+.onb-polaroid-enter { animation: onbPolaroidEnter 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes onbPolaroidFloatA {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-6px) rotate(1deg); }
+}
+@keyframes onbPolaroidFloatB {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(-1.2deg); }
+}
+@keyframes onbPolaroidFloatC {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-5px) rotate(0.8deg); }
+}
+.onb-polaroid-a { animation: onbPolaroidFloatA 3.2s ease-in-out infinite; }
+.onb-polaroid-b { animation: onbPolaroidFloatB 3.6s ease-in-out infinite; }
+.onb-polaroid-c { animation: onbPolaroidFloatC 4.0s ease-in-out infinite; }
+
+/* ============================================================
+ * 通用 pop-in / pulse / shine
+ * ============================================================ */
+@keyframes onbPopIn {
+  0%   { opacity: 0; transform: scale(0.5); }
+  60%  { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.onb-pop-in { animation: onbPopIn 0.5s cubic-bezier(0.16,1,0.3,1); }
+
+@keyframes onbPulseRing {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2); }
+}
+.onb-pulse-ring { animation: onbPulseRing 1.6s ease-out infinite; }
+
+@keyframes onbShineSweep {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(300%)  skewX(-20deg); }
+}
+.onb-shine-sweep { animation: onbShineSweep 2.4s ease-in-out infinite; }
+
+@keyframes onbGradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.onb-gradient-shift { background-size: 200% 200%; animation: onbGradientShift 4s ease infinite; }
+
+@keyframes onbFloatXY {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(2px, -3px); }
+}
+.onb-float-xy { animation: onbFloatXY 3s ease-in-out infinite; }
+
+@keyframes onbDashFlow {
+  to { stroke-dashoffset: -28; }
+}
+.onb-dash-flow { animation: onbDashFlow 1.5s linear infinite; }
+
+@keyframes onbDot {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.4); }
+}
+.onb-dot { animation: onbDot 1.2s ease-in-out infinite; }
+
+/* ============================================================
+ * Engine A ⇄ Engine B 引擎切换
+ * ============================================================ */
+@keyframes onboardingEngineSwap {
+  0%, 14%  { left: 1%; }
+  42%, 64% { left: 51%; }
+  92%, 100%{ left: 1%; }
+}
+.onb-engine-swap { animation: onboardingEngineSwap 3.6s cubic-bezier(0.4,0,0.2,1) infinite; }
+
+@keyframes onboardingEngineWhiteLeft {
+  0%, 14%  { opacity: 1; }
+  28%, 78% { opacity: 0; }
+  92%, 100%{ opacity: 1; }
+}
+@keyframes onboardingEngineWhiteRight {
+  0%, 28%  { opacity: 0; }
+  42%, 64% { opacity: 1; }
+  78%, 100%{ opacity: 0; }
+}
+.onb-engine-white-l { animation: onboardingEngineWhiteLeft  3.6s cubic-bezier(0.4,0,0.2,1) infinite; }
+.onb-engine-white-r { animation: onboardingEngineWhiteRight 3.6s cubic-bezier(0.4,0,0.2,1) infinite; }
+
+/* ============================================================
+ * 礼花
+ * ============================================================ */
+@keyframes onboardingFloatSlow {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(720px) rotate(540deg); opacity: 0; }
+}
+
+/* ============================================================
+ * Eureka Welcome（详见 eureka-welcome.md）
+ * ============================================================ */
+/* 见 references/eureka-welcome.md */
+```
+
+## 使用规则
+
+- **永远使用 `cubic-bezier(0.16, 1, 0.3, 1)`** 作为入场缓动
+- **infinite 动画**可用 `ease-in-out` 或 `linear`
+- **fillMode**：一次性动画必须 `both` 或 `forwards`，否则元素回弹
+- **CSS 变量**（`--dx`, `--dy`, `--rot`）由 inline style 注入，让一个 keyframe 服务多个元素

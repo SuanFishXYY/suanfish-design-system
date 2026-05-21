@@ -1,0 +1,77 @@
+{
+  "name": "suanfish-design-system",
+  "version": "2.1.0",
+  "description": "算鱼工作室统一多智能体设计语言体系。14 位 agent 在 6 个 tier 中协同工作，治理仪式感与稳态两套界面语言。v2.1 引入 REJECT 机制、独立规则集与边界厘清。",
+  "author": "算鱼工作室",
+  "license": "MIT",
+  "language": "zh-CN",
+  "type": "design-system",
+  "tags": [
+    "design-system",
+    "multi-agent",
+    "onboarding",
+    "ui",
+    "modal",
+    "wizard",
+    "data-viz",
+    "animation",
+    "tokens",
+    "react",
+    "tailwind",
+    "accessibility",
+    "responsive",
+    "copywriting",
+    "icon",
+    "empty-state",
+    "chinese"
+  ],
+  "entrypoint": "SKILL.md",
+  "agent_count": 14,
+  "tiers": {
+    "tier_1_dispatch": ["moment-strategist"],
+    "tier_2_lead": ["onboarding-director", "ui-architect"],
+    "tier_3_container_specialist": ["modal-craftsman", "wizard-designer", "data-viz-engineer"],
+    "tier_4_content_specialist_active": [
+      "copy-writer",
+      "icon-curator",
+      "empty-state-storyteller",
+      "responsive-strategist"
+    ],
+    "tier_5_crosscutting_consulted_passive": [
+      "token-keeper",
+      "animation-choreographer",
+      "a11y-guardian"
+    ],
+    "tier_6_quality_gate": ["ui-auditor"]
+  },
+  "agents": [
+    "agents/moment-strategist.md",
+    "agents/onboarding-director.md",
+    "agents/ui-architect.md",
+    "agents/modal-craftsman.md",
+    "agents/wizard-designer.md",
+    "agents/data-viz-engineer.md",
+    "agents/copy-writer.md",
+    "agents/icon-curator.md",
+    "agents/empty-state-storyteller.md",
+    "agents/responsive-strategist.md",
+    "agents/token-keeper.md",
+    "agents/animation-choreographer.md",
+    "agents/a11y-guardian.md",
+    "agents/ui-auditor.md"
+  ],
+  "references_dir": "references",
+  "reference_count": 17,
+  "appendix_count": 4,
+  "v2_1_changes": {
+    "tier_reorganization": "4 tier → 6 tier · 内容专科与横切咨询拆分",
+    "boundary_clarifications": [
+      "icon-curator 只管语义映射 · 颜色尺寸归 token-keeper",
+      "empty-state-storyteller 只管状态机 / 布局 · 文案归 copy-writer"
+    ],
+    "path_b_hardened": "路径 B 4 项硬条件 · 不满足直接 REJECT",
+    "ruleset_extracted": "审计规则集独立到 ref 15 / ref 16 · 与 ui-auditor 解耦 · 版本同步契约",
+    "reject_mechanism": "moment-strategist 新增 REJECT 输出类型 · 6 项硬触发条件",
+    "quick_path": "SKILL.md 顶部新增 5 套高频搭配速查表"
+  }
+}

@@ -1,0 +1,55 @@
+name: Validate SKILL.md
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SKILL.md'
+      - '.skill-manifest.json'
+      - 'agents/**'
+      - 'references/**'
+  pull_request:
+    paths:
+      - 'SKILL.md'
+      - '.skill-manifest.json'
+      - 'agents/**'
+      - 'references/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Lint SKILL.md structure
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check SKILL.md exists
+        run: test -f SKILL.md
+
+      - name: Check required frontmatter fields
+        run: |
+          for field in name description version author license; do
+            if ! grep -E "^${field}:" SKILL.md > /dev/null; then
+              echo "❌ Missing frontmatter field: ${field}"
+              exit 1
+            fi
+            echo "✅ ${field}"
+          done
+
+      - name: Check agents directory has 14 agents
+        run: |
+          count=$(ls agents/*.md 2>/dev/null | wc -l)
+          if [ "$count" -ne 14 ]; then
+            echo "❌ Expected 14 agents, found $count"
+            exit 1
+          fi
+          echo "✅ 14 agents present"
+
+      - name: Check references count
+        run: |
+          count=$(ls references/*.md 2>/dev/null | wc -l)
+          echo "📚 references: $count files"
+
+      - name: Validate manifest JSON
+        run: |
+          python3 -c "import json; json.load(open('.skill-manifest.json'))"
+          echo "✅ manifest valid JSON"

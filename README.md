@@ -9,6 +9,8 @@
 ![tiers](https://img.shields.io/badge/tiers-6-orange)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
+![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
+![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
 
 **99% 的 AI 永远回答 Yes。这个 AI 有 6 条硬规则可以拒单。**
 
@@ -18,11 +20,56 @@
    预计 30 天后 DAU 跌 4%。退回业务方。
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 14 位 agent ](agents/)
-
-<!-- TODO: 插入一段 BRIEF → SPEC → REPORT 的 GIF -->
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 14 位 agent ](agents/) · [ 🌐 English ](README.en.md)
 
 </div>
+
+---
+
+## 🏗️ 架构总览
+
+```mermaid
+graph TB
+    subgraph "Tier 1 · 战略层"
+        OD[onboarding-director]
+        WD[wizard-designer]
+    end
+    subgraph "Tier 2 · 架构层"
+        UA[ui-architect]
+        MC[modal-craftsman]
+    end
+    subgraph "Tier 3 · 内容层"
+        CW[copy-writer]
+        IC[icon-curator]
+        ES[empty-state-storyteller]
+    end
+    subgraph "Tier 4 · 视觉层"
+        DV[data-viz-engineer]
+        AC[animation-choreographer]
+    end
+    subgraph "Tier 5 · 横切咨询"
+        TK[token-keeper]
+        AG[a11y-guardian]
+        RS[responsive-strategist]
+    end
+    subgraph "Tier 6 · 审计层"
+        UAU[ui-auditor 🛡]
+    end
+    MS{moment-strategist<br/>🚦 调度 + REJECT}
+    MS --> OD & WD
+    OD --> UA
+    WD --> UA & MC
+    UA --> CW & IC & ES
+    UA --> DV & AC
+    CW & IC & ES & DV & AC -.consult.-> TK & AG & RS
+    UA --> UAU
+    UAU --> |✅ PASS| Output[最终方案]
+    UAU --> |🛑 REJECT| MS
+    style MS fill:#ff6b6b,stroke:#333,color:#fff
+    style UAU fill:#4ecdc4,stroke:#333,color:#fff
+```
+
+> **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。
 
 ---
 

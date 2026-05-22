@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
-description: Suanfish Design System — A unified multi-agent design language system with 24 specialized agents across 7 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), and embedded surfaces (F) — 6 design paths in total. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，24 位专精 agent 协同工作，分布在 7 个 tier（含 Tier 1.5 协调层），覆盖 6 条设计路径，搭载 6 条 REJECT 硬规则。
-version: 2.4.1
+description: Suanfish Design System — A unified multi-agent design language system with 33 specialized agents across 7 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G — streaming, tool-calls, agent threads, reasoning, citations, artifacts, prompt input, rate-limits, model switching) — 7 design paths in total. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，33 位专精 agent 协同工作，分布在 7 个 tier（含 Tier 1.5 协调层），覆盖 7 条设计路径（含 v2.5 新增 AI-native 路径），搭载 6 条 REJECT 硬规则。
+version: 2.5.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -41,7 +41,7 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 
 ---
 
-## 🎭 工作室组织架构 · 24 位 Agent · 7 个 Tier · 6 条路径
+## 🎭 工作室组织架构 · 33 位 Agent · 7 个 Tier · 7 条路径（v2.5 · 新增 AI-native 路径 G）
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -51,32 +51,36 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 │  Tier 1.5 · 协调层（v2.4 新增 · 跨路径调度）                            │
 │  🚦 flow-coordinator   ── 多路径混合时的裁判（A+C 复合等）               │
 ├────────────────────────────────────────────────────────────────────────┤
-│  Tier 2 · 主导层（4 路径主理）                                          │
+│  Tier 2 · 主导层（4 路径主理 · 路径 G 由 conversation-director 兼任）   │
 │  🎬 onboarding-director    🏛 ui-architect                             │
 │  Path A · 仪式             Path B · 稳态 (+E 移动 / +F 嵌入)            │
-│  💬 conversation-director  🔔 notification-director  (v2.4 新增)        │
-│  Path C · 聊天对话         Path D · 通知流                              │
+│  💬 conversation-director  🔔 notification-director                    │
+│  Path C · 聊天对话 / Path G · AI-native   Path D · 通知流               │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 3 · 容器专科层                                                    │
 │  🪟 modal-craftsman   🧙 wizard-designer   📊 data-viz-engineer         │
-│  📋 table-craftsman   🗨️ chat-ui-craftsman  (v2.4 新增)                 │
+│  📋 table-craftsman   🗨️ chat-ui-craftsman                              │
+│  🌊 stream-craftsman  🛠️ tool-call-presenter  🌳 agent-thread-architect │
+│  🎨 artifact-architect  ⌨️ prompt-input-craftsman   (v2.5 新增 ×5)       │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 4 · 内容专科层（主动产出 · 进入 SPEC）                            │
 │  📝 copy-writer       🎯 icon-curator                                  │
 │  🪟 empty-state-storyteller   📱 responsive-strategist                 │
 │  👥 persona-architect  🗺️ information-architect  🩹 error-recovery     │
-│                                                       (v2.4 新增 ×3)    │
+│  🧠 reasoning-visualizer  📑 citation-keeper  ⏳ rate-limit-communicator │
+│                                                       (v2.5 新增 ×3)    │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 5 · 横切被咨询层（被动咨询 · 守门 · 不主导）                       │
 │  🎨 token-keeper          💫 animation-choreographer    ♿ a11y-guardian│
-│  🛡️ brand-keeper          🌍 i18n-strategist           (v2.4 新增 ×2)   │
+│  🛡️ brand-keeper          🌍 i18n-strategist                            │
+│  🔀 model-switcher-stylist                              (v2.5 新增 ×1)  │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 6 · 质量门                                                        │
 │  🔍 ui-auditor  ── 加载 ref 15 + 16 + 19 三层规则集 · 分级 REPORT        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 🛣 6 条设计路径（v2.4 拓展）
+### 🛣 7 条设计路径（v2.5 拓展 · 新增 Path G · AI-native）
 
 | Path | 路径 | 主理 | 典型场景 |
 | --- | --- | --- | --- |
@@ -86,7 +90,9 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 | **D** | 通知 | notification-director | toast / banner / push / badge |
 | **E** | 移动 | ui-architect + responsive-strategist | 移动端原生 |
 | **F** | 嵌入 | ui-architect（变体） | 卡片 / widget / iframe |
+| **G** ✨ | AI-native | conversation-director（兼） | 流式 / 工具调用 / 思维链 / 引用 / 画布 / 提示输入 / 配额 / 模型切换 |
 
+Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之上，提供 AI 产品的原生原语。
 多路径混合时 → flow-coordinator（Tier 1.5）协调。
 
 ### 关键边界（v2.1 厘清，必须遵守）
@@ -102,7 +108,7 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 | 「整体能不能上线」 | 🔍 ui-auditor |
 | 「这单要不要做 / 是不是该回退」 | 🧭 moment-strategist（可 REJECT） |
 
-### 二十四位 agent 一览
+### 三十三位 agent 一览
 
 | Tier | # | Agent | 主动 / 被动 | 职责 |
 | --- | --- | --- | --- | --- |
@@ -129,7 +135,16 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 | 5 | 21 | ♿ [`a11y-guardian`](agents/a11y-guardian.md) | 被动 | ARIA · 键盘 · 对比度 |
 | 5 | 22 | 🛡️ [`brand-keeper`](agents/brand-keeper.md) | 被动 | **品牌守护（v2.4 新）** |
 | 5 | 23 | 🌍 [`i18n-strategist`](agents/i18n-strategist.md) | 被动 | **国际化策略（v2.4 新）** |
-| 6 | 24 | 🔍 [`ui-auditor`](agents/ui-auditor.md) | 主动 | 加载 ref 15+16+19 · 分级 REPORT |
+| 3 | 24 | 🌊 [`stream-craftsman`](agents/stream-craftsman.md) | 主动 | **token 流式工匠（v2.5 新 · Path G）** |
+| 3 | 25 | 🛠️ [`tool-call-presenter`](agents/tool-call-presenter.md) | 主动 | **工具调用展示（v2.5 新 · Path G）** |
+| 3 | 26 | 🌳 [`agent-thread-architect`](agents/agent-thread-architect.md) | 主动 | **对话线程架构（v2.5 新 · Path G）** |
+| 3 | 27 | 🎨 [`artifact-architect`](agents/artifact-architect.md) | 主动 | **产物画布（v2.5 新 · Path G）** |
+| 3 | 28 | ⌨️ [`prompt-input-craftsman`](agents/prompt-input-craftsman.md) | 主动 | **提示输入框（v2.5 新 · Path G）** |
+| 4 | 29 | 🧠 [`reasoning-visualizer`](agents/reasoning-visualizer.md) | 主动 | **思维链可视化（v2.5 新 · Path G）** |
+| 4 | 30 | 📑 [`citation-keeper`](agents/citation-keeper.md) | 主动 | **引用守护（v2.5 新 · Path G）** |
+| 4 | 31 | ⏳ [`rate-limit-communicator`](agents/rate-limit-communicator.md) | 主动 | **配额沟通（v2.5 新 · Path G）** |
+| 5 | 32 | 🔀 [`model-switcher-stylist`](agents/model-switcher-stylist.md) | 被动 | **模型切换造型（v2.5 新 · Path G）** |
+| 6 | 33 | 🔍 [`ui-auditor`](agents/ui-auditor.md) | 主动 | 加载 ref 15+16+19 · 分级 REPORT |
 
 ---
 

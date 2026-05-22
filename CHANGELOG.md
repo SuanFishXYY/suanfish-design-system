@@ -1,5 +1,60 @@
 # 变更日志（Changelog）
 
+## [2.5.0] —— AI-native 大版本：33 agent · 7 path · 新增路径 G
+
+> *"v2.4 把工作室扩到全场景；v2.5 让工作室原生说 AI 的语言。"*
+>
+> 多模态、流式、工具调用、思维链、引用、画布、提示输入、配额、模型切换——9 个 AI 产品的原生原语，9 位新 agent，9 个哲学锚点，27 条 P-XX lint 规则。
+
+### Added
+
+**① 9 位 AI-native agent**（5 个 Tier 3 容器专科 + 3 个 Tier 4 内容专科 + 1 个 Tier 5 横切）
+
+| Agent | Tier | 路径 | 哲学锚点 | 主理领域 |
+| --- | --- | --- | --- | --- |
+| 🌊 `stream-craftsman` | 3 | G | 赫拉克利特 · 万物流变 | token 流式 / cursor / 增量 markdown |
+| 🛠️ `tool-call-presenter` | 3 | G | 奥斯汀 · 言语行为 | function call 卡片 / 四态 / 二阶段 |
+| 🌳 `agent-thread-architect` | 3 | G | 博尔赫斯 · 小径分岔 | 多轮线程 / regenerate / fork |
+| 🎨 `artifact-architect` | 3 | G | 海德格尔 · 作品的世界性 | 画布 / canvas / 版本 diff |
+| ⌨️ `prompt-input-craftsman` | 3 | G | 奥斯汀 · 施为言语 | 输入框 / @mention / 命令 |
+| 🧠 `reasoning-visualizer` | 4 | G | 笛卡尔 · cogito | 思维链折叠 / 步进显示 |
+| 📑 `citation-keeper` | 4 | G | 福柯 · 作者功能 | inline 引用 / 源卡 / 断链处理 |
+| ⏳ `rate-limit-communicator` | 4 | G | 罗尔斯 · 正义论 | 配额沟通 / 降级告知 / 付费墙 |
+| 🔀 `model-switcher-stylist` | 5 | G | 列维-斯特劳斯 · 修补匠 | 模型切换器 UX / 跨模型一致 |
+
+**② 新增 Path G · AI-native**（增强层）
+- 不独立存在，永远叠加在 C / B / F 之上
+- 由 `conversation-director` 兼任主理
+- 7 路径全表更新，新关键词扩展
+
+**③ 哲学锚点扩到 33 位** (`references/17-philosophy.md`)
+- 新增 §三·补 章节：9 位新 agent 哲学锚点
+- 提炼 Path G 总命题：**认知可视化 + 输出归因化 + 限制透明化 + 操作可撤回**
+
+**④ Philosophy-as-lint 扩到 33 位** (`references/19-audit-ruleset-philosophy.md`)
+- 新增 §三·补 章节：**27 条新 P-XX 规则**
+- `P-SC1/2/3` (stream) · `P-TCP1/2/3` (tool-call) · `P-ATA1/2/3` (thread) · `P-RV1/2/3` (reasoning) · `P-CK1/2/3` (citation) · `P-AA1/2/3` (artifact) · `P-PI1/2/3` (prompt-input) · `P-RLC1/2/3/4` (rate-limit) · `P-MS1/2/3` (model-switch) · `P-G-OVERALL` (横切总规)
+
+**⑤ Dispatcher 升级 7 路径路由** (`agents/moment-strategist.md`)
+- 路径 G 完整加入决策树
+- 派单速查表新增 10 行（9 个 G 路径触发词 + 1 个 C+G 复合）
+- 复合 C+G 通过 flow-coordinator 协调
+
+### Changed
+
+- 版本三连同步到 2.5.0（SKILL / manifest / README / CHANGELOG）
+- README 徽章 agents 24→33 · paths 6→7 · 新增 `AI-native: Path G`
+
+### Philosophical Footnote
+
+> *庄子：『此亦一是非，彼亦一是非。』*
+>
+> v2.4 解决了"场景齐不齐"，v2.5 回答"AI 产品到底长什么样"。
+> 我们的答案：把不可见的变可见，把不可信的归因，把不可控的透明，把不可逆的可撤回——
+> 这四件事做得到，AI 产品才配叫 "native"。
+
+---
+
 ## [2.4.1] —— v2.4 闭环补丁：哲学 + lint + dispatcher 三件套
 
 > *"扩到 24 agent 不算完成；扩到 24 agent 都进了哲学/lint/路由 才算完成。"*

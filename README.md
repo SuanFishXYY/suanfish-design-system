@@ -4,10 +4,11 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-2.4.1-blue)
-![agents](https://img.shields.io/badge/agents-24-purple)
+![version](https://img.shields.io/badge/version-2.5.0-blue)
+![agents](https://img.shields.io/badge/agents-33-purple)
 ![tiers](https://img.shields.io/badge/tiers-7-orange)
-![paths](https://img.shields.io/badge/paths-6-teal)
+![paths](https://img.shields.io/badge/paths-7-teal)
+![AI-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
@@ -21,13 +22,13 @@
    预计 30 天后 DAU 跌 4%。退回业务方。
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 24 位 agent ](agents/) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 33 位 agent ](agents/) · [ 🌐 English ](README.en.md)
 
 </div>
 
 ---
 
-## 🏗️ 架构总览 · v2.4 (24 agent · 7 tier · 6 path)
+## 🏗️ 架构总览 · v2.5 (33 agent · 7 tier · 7 path · 含 AI-native 路径 G)
 
 ```mermaid
 flowchart LR

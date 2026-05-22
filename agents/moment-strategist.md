@@ -123,6 +123,12 @@ philosophy: "孙子 · 上兵伐谋 — 最好的设计是不需要做的设计"
 - 形态 = 卡片 / widget / iframe / 第三方嵌入
 - 关键词：「卡片」「widget」「embed」「嵌入」「iframe」
 
+### 路径 G · AI-native 模式 → `conversation-director`（兼）  ✨ v2.5
+- **增强层**：叠加在 C / B / F 之上，提供 AI 产品的原生原语
+- 子能力：流式（stream-craftsman）· 工具调用（tool-call-presenter）· 对话线程（agent-thread-architect）· 思维链（reasoning-visualizer）· 引用（citation-keeper）· 画布（artifact-architect）· 提示输入（prompt-input-craftsman）· 配额（rate-limit-communicator）· 模型切换（model-switcher-stylist）
+- 关键词：「流式」「streaming」「token」「tool call」「function call」「思维链」「reasoning」「thinking」「CoT」「引用」「citation」「RAG」「artifact」「canvas」「画布」「prompt 输入」「@ 提及」「斜杠命令」「配额」「rate limit」「模型切换」
+- 哲学：`[赫拉克利特 · 万物流变 · 流式]` · `[奥斯汀 · 言语行为 · 工具调用]` · `[博尔赫斯 · 小径分岔 · 线程]`
+
 ### 复合路径 → `flow-coordinator`（Tier 1.5）✨ v2.4
 - 当一个 BRIEF 命中 **≥ 2 条路径** 时（如：版本升级 = A + D 通知 banner），
   必须先交给 `flow-coordinator` 出 `COORDINATION-PLAN`，再分派到各路径主理。
@@ -160,6 +166,16 @@ philosophy: "孙子 · 上兵伐谋 — 最好的设计是不需要做的设计"
 | 「帮我审一下」 | — | ui-auditor | —— |
 | 「改一下品牌色」 | — | token-keeper + **brand-keeper** ✨ | ui-auditor |
 | 「上线多语言 / i18n」 | — | **i18n-strategist** ✨（被咨询） | copy / responsive |
+| 「token 流式 / 打字机效果」 | **G** ✨ | **stream-craftsman** | anim / a11y |
+| 「function call 卡片 / 工具调用展示」 | **G** ✨ | **tool-call-presenter** | copy / icon / token |
+| 「多轮对话 / regenerate / 编辑重提 / fork」 | **G** ✨ | **agent-thread-architect** | chat-ui / copy |
+| 「思维链 / CoT / thinking 折叠」 | **G** ✨ | **reasoning-visualizer** | token / a11y |
+| 「RAG 引用 / 来源卡片 / inline 角标」 | **G** ✨ | **citation-keeper** | copy / icon / token |
+| 「画布 / canvas / artifact / 代码侧栏」 | **G** ✨ | **artifact-architect** | data-viz / token / resp |
+| 「prompt 输入框 / @ 提及 / / 命令」 | **G** ✨ | **prompt-input-craftsman** | copy / icon / a11y |
+| 「配额提示 / rate limit / 升级套餐」 | **G** ✨ | **rate-limit-communicator** | copy / notification |
+| 「模型切换器 / 多模型选择」 | **G** ✨ | **model-switcher-stylist**（被咨询） | brand / copy / icon |
+| 「AI 聊天 + 流式 + 工具调用」 | **C+G** ✨ | **flow-coordinator → conversation-director + stream + tool-call** | 联合派单 |
 
 ## 你绝对不能做的事
 

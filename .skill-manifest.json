@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "2.4.1",
-  "description": "算鱼工作室统一多智能体设计语言体系。24 位 agent 在 7 个 tier 中协同工作（含 Tier 1.5 协调层），覆盖 6 条设计路径（仪式/稳态/聊天/通知/移动/嵌入）。v2.1 引入 REJECT 机制 · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编。",
+  "version": "2.5.0",
+  "description": "算鱼工作室统一多智能体设计语言体系。33 位 agent 在 7 个 tier 中协同工作（含 Tier 1.5 协调层），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语（stream/tool-call/thread/reasoning/citation/artifact/prompt/rate-limit/model-switch）。",
   "author": "算鱼工作室",
   "license": "MIT",
   "language": "zh-CN",
@@ -26,12 +26,23 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 24,
+  "agent_count": 33,
   "tiers": {
     "tier_1_dispatch": ["moment-strategist"],
     "tier_1_5_coordination": ["flow-coordinator"],
     "tier_2_lead": ["onboarding-director", "ui-architect", "conversation-director", "notification-director"],
-    "tier_3_container_specialist": ["modal-craftsman", "wizard-designer", "data-viz-engineer", "table-craftsman", "chat-ui-craftsman"],
+    "tier_3_container_specialist": [
+      "modal-craftsman",
+      "wizard-designer",
+      "data-viz-engineer",
+      "table-craftsman",
+      "chat-ui-craftsman",
+      "stream-craftsman",
+      "tool-call-presenter",
+      "agent-thread-architect",
+      "artifact-architect",
+      "prompt-input-craftsman"
+    ],
     "tier_4_content_specialist_active": [
       "copy-writer",
       "icon-curator",
@@ -39,14 +50,18 @@
       "responsive-strategist",
       "persona-architect",
       "information-architect",
-      "error-recovery-designer"
+      "error-recovery-designer",
+      "reasoning-visualizer",
+      "citation-keeper",
+      "rate-limit-communicator"
     ],
     "tier_5_crosscutting_consulted_passive": [
       "token-keeper",
       "animation-choreographer",
       "a11y-guardian",
       "brand-keeper",
-      "i18n-strategist"
+      "i18n-strategist",
+      "model-switcher-stylist"
     ],
     "tier_6_quality_gate": ["ui-auditor"]
   },
@@ -56,7 +71,8 @@
     "C_conversational": "conversation-director",
     "D_notification": "notification-director",
     "E_mobile": "ui-architect + responsive-strategist",
-    "F_embedded": "ui-architect (variant)"
+    "F_embedded": "ui-architect (variant)",
+    "G_ai_native": "conversation-director (overlay on C/B/F)"
   },
   "agents": [
     "agents/moment-strategist.md",
@@ -70,6 +86,11 @@
     "agents/data-viz-engineer.md",
     "agents/table-craftsman.md",
     "agents/chat-ui-craftsman.md",
+    "agents/stream-craftsman.md",
+    "agents/tool-call-presenter.md",
+    "agents/agent-thread-architect.md",
+    "agents/artifact-architect.md",
+    "agents/prompt-input-craftsman.md",
     "agents/copy-writer.md",
     "agents/icon-curator.md",
     "agents/empty-state-storyteller.md",
@@ -77,11 +98,15 @@
     "agents/persona-architect.md",
     "agents/information-architect.md",
     "agents/error-recovery-designer.md",
+    "agents/reasoning-visualizer.md",
+    "agents/citation-keeper.md",
+    "agents/rate-limit-communicator.md",
     "agents/token-keeper.md",
     "agents/animation-choreographer.md",
     "agents/a11y-guardian.md",
     "agents/brand-keeper.md",
     "agents/i18n-strategist.md",
+    "agents/model-switcher-stylist.md",
     "agents/ui-auditor.md"
   ],
   "references_dir": "references",

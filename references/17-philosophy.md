@@ -401,3 +401,66 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 ---
 
 > *"哲学不是用来背的，是用来在你想放弃判断的那一刻，把你拉回来的。"*
+
+
+---
+
+## 三·补 · v2.5 新增 9 位 AI-native agent 哲学锚点
+
+> *v2.5 把"AI 产品的原生原语"装进系统：流式 / 工具调用 / 对话线程 / 思维链 / 引用 / 画布 / 输入 / 配额 / 模型切换。每一个原语都对应一个哲学命题。*
+
+### 🌊 `stream-craftsman`（Tier 3 · Path G）
+- **锚点**：**赫拉克利特 ·「万物流变」（Πάντα ῥεῖ）**
+- **原文**：人不能两次踏入同一条河流
+- **命题**：token 流式不是"先有后显示"，是**正在成为**。每一个 token 到达，界面都是新的，但用户的视觉锚点必须稳定
+- **判罚位置**：当 per-token 渲染导致页面抖动、首 token > 400ms 无占位、Stop 不响应——视为对"流"的本质不尊重
+
+### 🛠️ `tool-call-presenter`（Tier 3 · Path G）
+- **锚点**：**J.L. 奥斯汀 ·「言语行为理论」（How to do things with words）**
+- **核心命题**：To say something is to do something. 工具调用是 agent 的"施为言语"——不是描述世界，是改变世界
+- **三铁律**：可见 + 可信 + 可撤回
+- **判罚位置**：隐藏调用 / 黑盒输入 / 无二次确认的副作用工具
+
+### 🌳 `agent-thread-architect`（Tier 3 · Path G）
+- **锚点**：**博尔赫斯 ·「小径分岔的花园」（El jardín de senderos que se bifurcan）**
+- **核心命题**：多轮对话不是直线，是花园。每次 regenerate 都是分岔；线性 UI 丢失 60% 信息
+- **判罚位置**：regenerate 后旧版本消失 / 编辑后覆盖原分支 / 长线程无 checkpoint
+
+### 🧠 `reasoning-visualizer`（Tier 4 · Path G）
+- **锚点**：**笛卡尔 ·「我思故我在」（Cogito, ergo sum）**
+- **核心命题**：思维必须**显形**才能被信任。reasoning 不是调试日志，是用户判断"AI 在认真想"的核心证据
+- **平衡**：让思考可见，但不让思考压倒答案
+- **判罚位置**：reasoning 全隐藏假装秒回 / reasoning 不可折叠占 50% 视觉 / 与答案视觉重量相同
+
+### 📑 `citation-keeper`（Tier 4 · Path G）
+- **锚点**：**福柯 ·「作者功能」（Author Function）**
+- **核心命题**：知识的合法性来自"可被归属"。无引用的 AI 答案 = 谣言
+- **三形态**：角标 / 段落级 / 嵌入式 —— 永远不要裸 URL 平铺
+- **判罚位置**：默认隐藏引用 / 断链直接删除（隐藏失效证据 = 篡改历史）
+
+### 🎨 `artifact-architect`（Tier 3 · Path G）
+- **锚点**：**海德格尔 ·「作品的世界性」（艺术作品的本源）**
+- **核心命题**：The work of art opens up a world. 长产物（≥30 行代码 / ≥1500 字文档 / SVG / 组件）应脱出对话流，进入独立画布
+- **判罚位置**：长代码挤在气泡 / 画布不可编辑 / 关闭时丢失用户改动
+
+### ⌨️ `prompt-input-craftsman`（Tier 3 · Path G）
+- **锚点**：**奥斯汀 ·「言语的施为性」**（与 tool-call-presenter 共源但侧重输入端）
+- **核心命题**：输入不是"打字"，是召唤行为。每一个多余按键都是对意图的稀释
+- **中国特殊性**：IME 选词时 Enter 必须不发送——这是中国用户主权红线
+- **判罚位置**：IME 不安全 / 草稿不持久化 / 附件无进度
+
+### ⏳ `rate-limit-communicator`（Tier 4 · Path G）
+- **锚点**：**罗尔斯 ·「正义论」（A Theory of Justice）**
+- **核心命题**：配额不是技术问题，是分配正义问题。透明 + 一致 + 给出路 = 公正感
+- **判罚位置**：技术腔（"rate limit exceeded"）/ 模型降级不告知 / 付费墙暗黑模式 / 历史静默删除
+
+### 🔀 `model-switcher-stylist`（Tier 5 · Path G · 被动）
+- **锚点**：**列维-斯特劳斯 ·「修补匠」（Bricolage）**
+- **核心命题**：多模型不是"选最好的"，是"选最合手的"。设计上承认没有银弹
+- **判罚位置**：神不知鬼不觉切模型 / 不同模型用不同色气泡污染对话流 / 30 个模型不分类
+
+### Path G 总命题
+
+> *AI 产品的设计哲学：**把不可见的认知过程视觉化**（reasoning / streaming）+ **把不可信的输出归因化**（citation / tool-call）+ **把不可控的限制透明化**（rate-limit / model-switch）+ **把不可逆的操作可撤回化**（thread / artifact / prompt-input）*
+
+四件事做不到，再炫的 UI 也是空壳。

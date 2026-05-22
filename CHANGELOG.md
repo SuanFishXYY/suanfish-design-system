@@ -1,5 +1,50 @@
 # 变更日志（Changelog）
 
+## [2.4.0] —— 全场景扩编：24 位 agent · 7 tier · 6 路径
+
+> *"统一不是塞进同一个抽屉，统一是各就各位。"*
+> v2.4 把"塞不下"的多场景问题拆开：聊天、通知、表格、移动、嵌入各有 owner，跨路径有协调官，决策上游有用户画像与信息架构。
+
+### Added · 10 个新 agent
+
+**Tier 1.5 协调层（新增）**
+- 🚦 `flow-coordinator` — 多路径混合时的裁判（A+C 复合等场景）
+
+**Tier 2 主导层 +2**
+- 💬 `conversation-director` — Path C 聊天对话流主理（chatbot / agent thread）
+- 🔔 `notification-director` — Path D 通知流主理（toast / banner / push / badge）
+
+**Tier 3 容器专科 +2**
+- 📋 `table-craftsman` — 表格 / 列表容器专家
+- 🗨️ `chat-ui-craftsman` — 聊天容器专家
+
+**Tier 4 内容专科 +3**
+- 👥 `persona-architect` — 用户画像建构（决策上游）
+- 🗺️ `information-architect` — IA / 站点地图 / 导航树
+- 🩹 `error-recovery-designer` — 错误恢复设计（非快乐路径）
+
+**Tier 5 横切咨询 +2**
+- 🛡️ `brand-keeper` — 品牌守护者
+- 🌍 `i18n-strategist` — 国际化策略
+
+### Added · 6 条路径
+
+Path A (仪式) / B (稳态) / **C (聊天)** / **D (通知)** / **E (移动)** / **F (嵌入)**
+
+### Changed
+
+- SKILL.md 架构图重绘 · 24 agent + 7 tier + 6 路径
+- README badges: agents 14→24, tiers 6→7, +paths-6 徽章
+- .skill-manifest.json：tiers 增加 1.5 协调层 + paths 字段
+- moment-strategist 派单决策树新增 Path C/D/E/F 分支识别（详见 agent 文档）
+
+### Philosophical Footnote
+
+> *亚里士多德：『整体大于部分之和。』*
+> 增加 10 个 agent 不是为了"更多"，是为了让既有的 14 个 agent 不再越界扛着不属于他们的活。Tier 1.5 的协调官让多路径不再混乱——这才是"统一"。
+
+---
+
 ## [2.3.0] —— 哲学落地：lint 规则集 + 真实 demo 库
 
 > *"哲学不是装饰，哲学是约束。" —— v2.3 把 v2.2 的哲学根基从『可读』升级到『可审』。*

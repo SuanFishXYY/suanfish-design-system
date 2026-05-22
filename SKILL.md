@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
-description: Suanfish Design System — A unified multi-agent design language system with 14 specialized agents across 6 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs both first-impression onboarding moments (welcome, version updates) and steady-state interfaces (three-pane layouts, modals, wizards, data viz). Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，14 位专精 agent 协同工作，分布在 6 个 tier，搭载 6 条 REJECT 硬规则。
-version: 2.3.0
+description: Suanfish Design System — A unified multi-agent design language system with 24 specialized agents across 7 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), and embedded surfaces (F) — 6 design paths in total. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，24 位专精 agent 协同工作，分布在 7 个 tier（含 Tier 1.5 协调层），覆盖 6 条设计路径，搭载 6 条 REJECT 硬规则。
+version: 2.4.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -41,35 +41,53 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 
 ---
 
-## 🎭 工作室组织架构 · 14 位 Agent · 6 个 Tier
+## 🎭 工作室组织架构 · 24 位 Agent · 7 个 Tier · 6 条路径
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  Tier 1 · 调度层                                                        │
 │  🧭 moment-strategist  ── 每单请求的总台 · 派单 · 可 REJECT              │
 ├────────────────────────────────────────────────────────────────────────┤
-│  Tier 2 · 主导层                                                        │
-│  🎬 onboarding-director       🏛 ui-architect                          │
-│  仪式感界面主导                稳态界面主导                              │
+│  Tier 1.5 · 协调层（v2.4 新增 · 跨路径调度）                            │
+│  🚦 flow-coordinator   ── 多路径混合时的裁判（A+C 复合等）               │
+├────────────────────────────────────────────────────────────────────────┤
+│  Tier 2 · 主导层（4 路径主理）                                          │
+│  🎬 onboarding-director    🏛 ui-architect                             │
+│  Path A · 仪式             Path B · 稳态 (+E 移动 / +F 嵌入)            │
+│  💬 conversation-director  🔔 notification-director  (v2.4 新增)        │
+│  Path C · 聊天对话         Path D · 通知流                              │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 3 · 容器专科层                                                    │
 │  🪟 modal-craftsman   🧙 wizard-designer   📊 data-viz-engineer         │
-│  14+ 模态变体          多步流程             图 / 表 / Tooltip            │
+│  📋 table-craftsman   🗨️ chat-ui-craftsman  (v2.4 新增)                 │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 4 · 内容专科层（主动产出 · 进入 SPEC）                            │
 │  📝 copy-writer       🎯 icon-curator                                  │
-│  每一个字              语义 → 图标映射                                   │
 │  🪟 empty-state-storyteller   📱 responsive-strategist                 │
-│  空 / 错 / 加载 状态机          桌面 / 平板 / 移动                       │
+│  👥 persona-architect  🗺️ information-architect  🩹 error-recovery     │
+│                                                       (v2.4 新增 ×3)    │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 5 · 横切被咨询层（被动咨询 · 守门 · 不主导）                       │
 │  🎨 token-keeper          💫 animation-choreographer    ♿ a11y-guardian│
-│  设计令牌唯一真相          动画词汇仲裁                  ARIA · 对比度    │
+│  🛡️ brand-keeper          🌍 i18n-strategist           (v2.4 新增 ×2)   │
 ├────────────────────────────────────────────────────────────────────────┤
 │  Tier 6 · 质量门                                                        │
-│  🔍 ui-auditor  ── 加载外部规则集 · 分级 REPORT                          │
+│  🔍 ui-auditor  ── 加载 ref 15 + 16 + 19 三层规则集 · 分级 REPORT        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
+
+### 🛣 6 条设计路径（v2.4 拓展）
+
+| Path | 路径 | 主理 | 典型场景 |
+| --- | --- | --- | --- |
+| **A** | 仪式 | onboarding-director | 欢迎/版本升级/里程碑 |
+| **B** | 稳态 | ui-architect | 日常工作界面 |
+| **C** | 聊天 | conversation-director | AI 助手 / chatbot / agent thread |
+| **D** | 通知 | notification-director | toast / banner / push / badge |
+| **E** | 移动 | ui-architect + responsive-strategist | 移动端原生 |
+| **F** | 嵌入 | ui-architect（变体） | 卡片 / widget / iframe |
+
+多路径混合时 → flow-coordinator（Tier 1.5）协调。
 
 ### 关键边界（v2.1 厘清，必须遵守）
 
@@ -84,24 +102,34 @@ tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, anim
 | 「整体能不能上线」 | 🔍 ui-auditor |
 | 「这单要不要做 / 是不是该回退」 | 🧭 moment-strategist（可 REJECT） |
 
-### 十四位 agent 一览
+### 二十四位 agent 一览
 
 | Tier | # | Agent | 主动 / 被动 | 职责 |
 | --- | --- | --- | --- | --- |
 | 1 | 1 | 🧭 [`moment-strategist`](agents/moment-strategist.md) | 主动 | 派单 · 框定 · 可 REJECT |
-| 2 | 2 | 🎬 [`onboarding-director`](agents/onboarding-director.md) | 主动 | 仪式感界面主导 |
-| 2 | 3 | 🏛 [`ui-architect`](agents/ui-architect.md) | 主动 | 稳态界面主导 |
-| 3 | 4 | 🪟 [`modal-craftsman`](agents/modal-craftsman.md) | 主动 | 14+ 模态变体 |
-| 3 | 5 | 🧙 [`wizard-designer`](agents/wizard-designer.md) | 主动 | 多步流程 |
-| 3 | 6 | 📊 [`data-viz-engineer`](agents/data-viz-engineer.md) | 主动 | 图谱 · 表 · Tooltip |
-| 4 | 7 | 📝 [`copy-writer`](agents/copy-writer.md) | 主动 | 每一个字 |
-| 4 | 8 | 🎯 [`icon-curator`](agents/icon-curator.md) | 主动 | **仅** 语义 → 图标映射 |
-| 4 | 9 | 🪟 [`empty-state-storyteller`](agents/empty-state-storyteller.md) | 主动 | **仅** 状态机 / 布局（文案让给 copy-writer） |
-| 4 | 10 | 📱 [`responsive-strategist`](agents/responsive-strategist.md) | 主动 | 桌面 / 平板 / 移动 |
-| 5 | 11 | 🎨 [`token-keeper`](agents/token-keeper.md) | 被动 | 颜色 / 圆角 / 阴影 / 间距 / z-index / **icon 颜色尺寸** |
-| 5 | 12 | 💫 [`animation-choreographer`](agents/animation-choreographer.md) | 被动 | 动画词汇仲裁（仪式 vs 功能） |
-| 5 | 13 | ♿ [`a11y-guardian`](agents/a11y-guardian.md) | 被动 | ARIA · 键盘 · 对比度 · reduced-motion |
-| 6 | 14 | 🔍 [`ui-auditor`](agents/ui-auditor.md) | 主动 | 加载外部规则集 · 分级 REPORT |
+| 1.5 | 2 | 🚦 [`flow-coordinator`](agents/flow-coordinator.md) | 主动 | **跨路径调度（v2.4 新）** |
+| 2 | 3 | 🎬 [`onboarding-director`](agents/onboarding-director.md) | 主动 | Path A 仪式主理 |
+| 2 | 4 | 🏛 [`ui-architect`](agents/ui-architect.md) | 主动 | Path B/E/F 稳态/移动/嵌入主理 |
+| 2 | 5 | 💬 [`conversation-director`](agents/conversation-director.md) | 主动 | **Path C 聊天对话主理（v2.4 新）** |
+| 2 | 6 | 🔔 [`notification-director`](agents/notification-director.md) | 主动 | **Path D 通知流主理（v2.4 新）** |
+| 3 | 7 | 🪟 [`modal-craftsman`](agents/modal-craftsman.md) | 主动 | 14+ 模态变体 |
+| 3 | 8 | 🧙 [`wizard-designer`](agents/wizard-designer.md) | 主动 | 多步流程 |
+| 3 | 9 | 📊 [`data-viz-engineer`](agents/data-viz-engineer.md) | 主动 | 图 · 数字 · Tooltip |
+| 3 | 10 | 📋 [`table-craftsman`](agents/table-craftsman.md) | 主动 | **表格/列表容器（v2.4 新）** |
+| 3 | 11 | 🗨️ [`chat-ui-craftsman`](agents/chat-ui-craftsman.md) | 主动 | **聊天容器（v2.4 新）** |
+| 4 | 12 | 📝 [`copy-writer`](agents/copy-writer.md) | 主动 | 每一个字 |
+| 4 | 13 | 🎯 [`icon-curator`](agents/icon-curator.md) | 主动 | 语义 → 图标映射 |
+| 4 | 14 | 🪟 [`empty-state-storyteller`](agents/empty-state-storyteller.md) | 主动 | 状态机 / 布局 |
+| 4 | 15 | 📱 [`responsive-strategist`](agents/responsive-strategist.md) | 主动 | 桌面 / 平板 / 移动 |
+| 4 | 16 | 👥 [`persona-architect`](agents/persona-architect.md) | 主动 | **用户画像建构（v2.4 新）** |
+| 4 | 17 | 🗺️ [`information-architect`](agents/information-architect.md) | 主动 | **信息架构 / IA（v2.4 新）** |
+| 4 | 18 | 🩹 [`error-recovery-designer`](agents/error-recovery-designer.md) | 主动 | **错误恢复设计（v2.4 新）** |
+| 5 | 19 | 🎨 [`token-keeper`](agents/token-keeper.md) | 被动 | 颜色/圆角/阴影/间距/z-index |
+| 5 | 20 | 💫 [`animation-choreographer`](agents/animation-choreographer.md) | 被动 | 动画词汇仲裁 |
+| 5 | 21 | ♿ [`a11y-guardian`](agents/a11y-guardian.md) | 被动 | ARIA · 键盘 · 对比度 |
+| 5 | 22 | 🛡️ [`brand-keeper`](agents/brand-keeper.md) | 被动 | **品牌守护（v2.4 新）** |
+| 5 | 23 | 🌍 [`i18n-strategist`](agents/i18n-strategist.md) | 被动 | **国际化策略（v2.4 新）** |
+| 6 | 24 | 🔍 [`ui-auditor`](agents/ui-auditor.md) | 主动 | 加载 ref 15+16+19 · 分级 REPORT |
 
 ---
 

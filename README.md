@@ -4,9 +4,10 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-2.3.0-blue)
-![agents](https://img.shields.io/badge/agents-14-purple)
-![tiers](https://img.shields.io/badge/tiers-6-orange)
+![version](https://img.shields.io/badge/version-2.4.0-blue)
+![agents](https://img.shields.io/badge/agents-24-purple)
+![tiers](https://img.shields.io/badge/tiers-7-orange)
+![paths](https://img.shields.io/badge/paths-6-teal)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
@@ -20,80 +21,99 @@
    预计 30 天后 DAU 跌 4%。退回业务方。
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 14 位 agent ](agents/) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 24 位 agent ](agents/) · [ 🌐 English ](README.en.md)
 
 </div>
 
 ---
 
-## 🏗️ 架构总览
+## 🏗️ 架构总览 · v2.4 (24 agent · 7 tier · 6 path)
 
 ```mermaid
 flowchart LR
     User([👤 用户<br/>BRIEF])
 
-    subgraph T0 ["🚦 Tier 0 · 入口调度"]
+    subgraph T0 ["🚦 Tier 1 · 入口调度"]
         MS["moment-strategist<br/><i>REJECT R1–R6</i>"]
     end
 
-    subgraph T1 ["🎯 Tier 1 · 战略"]
-        OD[onboarding-director]
-        WD[wizard-designer]
+    subgraph T05 ["🚦 Tier 1.5 · 协调 (v2.4)"]
+        FC[flow-coordinator]
     end
 
-    subgraph T2 ["🏗️ Tier 2 · 架构"]
-        UA[ui-architect]
+    subgraph T2 ["🎯 Tier 2 · 4 路径主理"]
+        OD["onboarding-director<br/>Path A 仪式"]
+        UA["ui-architect<br/>Path B/E/F 稳态"]
+        CD["conversation-director<br/>Path C 聊天 ✨"]
+        ND["notification-director<br/>Path D 通知 ✨"]
+    end
+
+    subgraph T3 ["🏗️ Tier 3 · 5 容器专科"]
         MC[modal-craftsman]
+        WD[wizard-designer]
+        DV[data-viz-engineer]
+        TC["table-craftsman ✨"]
+        CC["chat-ui-craftsman ✨"]
     end
 
-    subgraph T34 ["✍️🎨 Tier 3-4 · 内容 + 视觉"]
+    subgraph T4 ["✍️🎨 Tier 4 · 7 内容专科"]
         CW[copy-writer]
         IC[icon-curator]
         ES[empty-state-storyteller]
-        DV[data-viz-engineer]
-        AC[animation-choreographer]
+        RS[responsive-strategist]
+        PA["persona-architect ✨"]
+        IA["information-architect ✨"]
+        ER["error-recovery-designer ✨"]
     end
 
-    subgraph T5 ["🧩 Tier 5 · 横切咨询"]
+    subgraph T5 ["🧩 Tier 5 · 5 横切咨询"]
         TK[token-keeper]
+        AC[animation-choreographer]
         AG[a11y-guardian]
-        RS[responsive-strategist]
+        BK["brand-keeper ✨"]
+        I18["i18n-strategist ✨"]
     end
 
     subgraph T6 ["🛡️ Tier 6 · 审计"]
-        UAU[ui-auditor]
+        UAU["ui-auditor<br/>ref 15+16+19"]
     end
 
     Output([✅ REPORT<br/>实施清单])
 
     User ==> MS
-    MS ==>|派单| T1
-    T1 ==> T2
-    T2 ==> T34
-    T34 ==> UAU
-    T2 -.consult.-> T5
-    T34 -.consult.-> T5
+    MS ==>|单路径| T2
+    MS ==>|多路径| FC
+    FC ==> T2
+    T2 ==> T3
+    T3 ==> T4
+    T4 ==> UAU
+    T3 -.consult.-> T5
+    T4 -.consult.-> T5
     UAU ==>|✅ PASS| Output
     UAU -.->|🛑 REJECT 回炉| MS
 
     classDef tier0 fill:#FCA5A5,stroke:#DC2626,color:#7F1D1D,stroke-width:2px
-    classDef tier1 fill:#DDD6FE,stroke:#7C3AED,color:#4C1D95,stroke-width:1.5px
-    classDef tier2 fill:#BFDBFE,stroke:#2563EB,color:#1E3A8A,stroke-width:1.5px
-    classDef tier34 fill:#A7F3D0,stroke:#059669,color:#064E3B,stroke-width:1.5px
+    classDef tier05 fill:#FECACA,stroke:#B91C1C,color:#7F1D1D,stroke-width:1.5px
+    classDef tier2 fill:#DDD6FE,stroke:#7C3AED,color:#4C1D95,stroke-width:1.5px
+    classDef tier3 fill:#BFDBFE,stroke:#2563EB,color:#1E3A8A,stroke-width:1.5px
+    classDef tier4 fill:#A7F3D0,stroke:#059669,color:#064E3B,stroke-width:1.5px
     classDef tier5 fill:#FEF08A,stroke:#CA8A04,color:#713F12,stroke-width:1.5px
     classDef tier6 fill:#FDBA74,stroke:#EA580C,color:#7C2D12,stroke-width:1.5px
     classDef entry fill:#F3F4F6,stroke:#6B7280,color:#111827,stroke-width:2px
     classDef exit fill:#6EE7B7,stroke:#047857,color:#064E3B,stroke-width:2px
 
     class MS tier0
-    class OD,WD tier1
-    class UA,MC tier2
-    class CW,IC,ES,DV,AC tier34
-    class TK,AG,RS tier5
+    class FC tier05
+    class OD,UA,CD,ND tier2
+    class MC,WD,DV,TC,CC tier3
+    class CW,IC,ES,RS,PA,IA,ER tier4
+    class TK,AC,AG,BK,I18 tier5
     class UAU tier6
     class User entry
     class Output exit
 ```
+
+> **✨ = v2.4 新增 agent**（10 个）。多路径混合时由 `flow-coordinator` (Tier 1.5) 协调。
 
 > **REJECT 机制独家**：moment-strategist 内置 R1-R6 6 条硬规则，命中任一即拒，不做就是不做。每条 REJECT 都绑定一条不可让步的哲学命题（详见 [📜 哲学根基](references/17-philosophy.md)）。
 

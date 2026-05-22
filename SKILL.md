@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
 description: Suanfish Design System — A unified multi-agent design language system with 14 specialized agents across 6 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs both first-impression onboarding moments (welcome, version updates) and steady-state interfaces (three-pane layouts, modals, wizards, data viz). Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，14 位专精 agent 协同工作，分布在 6 个 tier，搭载 6 条 REJECT 硬规则。
-version: 2.2.0
+version: 2.3.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -275,6 +275,8 @@ agent 输出 SPEC 时建议显式标注哲学推理路径：
 | **17** | **[philosophy.md](references/17-philosophy.md)** | 全员（**v2.2 哲学根基**） |
 | **18** | **[design-canon.md](references/18-design-canon.md)** | 全员（**v2.2 经典法典**） |
 | **case/** | **[cases/](references/cases/)** | 全员（**v2.2 案例库**） |
+| **19** | **[audit-ruleset-philosophy.md](references/19-audit-ruleset-philosophy.md)** | 🔍 **哲学规则集 P-G1~P-G4 + per-agent P-XX + Flavor P-F1/F2（v2.3）** |
+| **examples/** | **[examples/](examples/)** | 全员（**v2.3 真实 demo 库**） |
 
 附录资产 4 份：`animation-keyframes.css`、`component-patterns.md`、`interaction-patterns.md`、`steps-schema.md`
 

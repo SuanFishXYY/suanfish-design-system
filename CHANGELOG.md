@@ -1,5 +1,35 @@
 # 变更日志（Changelog）
 
+## [2.3.0] —— 哲学落地：lint 规则集 + 真实 demo 库
+
+> *"哲学不是装饰，哲学是约束。" —— v2.3 把 v2.2 的哲学根基从『可读』升级到『可审』。*
+
+### Added
+
+- **references/19-audit-ruleset-philosophy.md**：哲学规则集（独立 lint 层）
+  - 通用规则：`P-G1` 哲学锚点引用 / `P-G2` 引用合理性 / `P-G3` 思维链完整性 / `P-G4` REJECT 哲学命题化
+  - 单 agent 规则：`P-MS1` / `P-CW1-2` / `P-IC1-2` / `P-AC1-2` / `P-TK1-2` / `P-OD1-2` / `P-AG1-2`
+  - Flavor 一致性：`P-F1` flavor 字段与输出一致 / `P-F2` 混合 flavor 时分层规则
+  - 与 ref 15/16 共构，版本号契约：`bound_to_skill_version: 2.3.0`
+- **examples/** 真实 demo 库（v2.3 三件套之二）
+  - `examples/01-onboarding-eureka/`：完整 6 文件示范（README + BRIEF + PLAN + 4 SPEC + REPORT）
+  - 每一份 SPEC 都嵌入哲学锚点 + 思维链 5 步 + Canon 引用，作为 lint 规则集的活案例
+- **agents 加载链路**：ui-auditor 现在同时加载 ref 15 + 16 + 19，哲学审查从『隐性建议』升级为『显性 PASS/FAIL』
+
+### Changed
+
+- SKILL.md 引用文档表新增 ref 19 + examples/
+- audit 规则集合从 2 套（15+16）扩到 3 套（15+16+19）
+- 仪式 / 稳态规则集 + 哲学规则集 = 三层独立可审
+
+### Philosophical Footnote
+
+> *维特根斯坦：『凡是能被说清的，都能被说清；凡是不能说清的，必须保持沉默。』*
+>
+> v2.2 我们把哲学说清了（17 + 18），v2.3 我们把"说清"本身变成可强制执行的规则。哲学只有变成 lint，才不会被遗忘。
+
+---
+
 ## [2.2.0] —— 哲学根基注入 · 14 锚点 · 20 法典 · 案例库
 
 > *规则会过时，案例会重复，但哲学命题穿越时间。*

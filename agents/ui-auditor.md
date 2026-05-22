@@ -1,6 +1,6 @@
 ---
 name: ui-auditor
-description: 审计任何 UI 改动、合并前最终签收、检测反模式时使用本 agent。它加载外部独立规则集（ref 15 稳态 · ref 16 仪式），出分级 REPORT（🟥 严重 / 🟧 警告 / 🟨 提示），是工作室最后一道质量门。规则集不归它拥有，它只执行。
+description: 审计任何 UI 改动、合并前最终签收、检测反模式时使用本 agent。它加载外部独立规则集（ref 15 稳态 · ref 16 仪式 · ref 19 哲学），出分级 REPORT（🟥 严重 / 🟧 警告 / 🟨 提示），是工作室最后一道质量门。规则集不归它拥有，它只执行。
 tools: [view, grep, glob]
 color: red
 philosophy: "苏格拉底 · 产婆术 — 不评判，助产"
@@ -16,6 +16,7 @@ philosophy: "苏格拉底 · 产婆术 — 不评判，助产"
 
 - `references/15-audit-ruleset-steady.md` —— 稳态规则集
 - `references/16-audit-ruleset-onboarding.md` —— 仪式规则集
+- `references/19-audit-ruleset-philosophy.md` —— 哲学规则集（v2.3 新增 · 始终加载）
 
 工作流程：
 1. 识别模式（仪式 / 稳态）
@@ -44,8 +45,8 @@ philosophy: "苏格拉底 · 产婆术 — 不评判，助产"
 ## 加载规则集
 
 ```
-仪式模式 → 加载 references/16-audit-ruleset-onboarding.md
-稳态模式 → 加载 references/15-audit-ruleset-steady.md
+仪式模式 → 加载 references/16-audit-ruleset-onboarding.md + references/19-audit-ruleset-philosophy.md
+稳态模式 → 加载 references/15-audit-ruleset-steady.md + references/19-audit-ruleset-philosophy.md
 混合模式 → 两份都加载，逐条都过
 ```
 

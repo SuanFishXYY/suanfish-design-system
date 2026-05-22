@@ -7,12 +7,15 @@ on:
       - '.skill-manifest.json'
       - 'agents/**'
       - 'references/**'
+      - '.github/workflows/**'
   pull_request:
     paths:
       - 'SKILL.md'
       - '.skill-manifest.json'
       - 'agents/**'
       - 'references/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
 jobs:
   validate:
     runs-on: ubuntu-latest

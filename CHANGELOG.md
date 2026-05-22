@@ -1,5 +1,38 @@
 # 变更日志（Changelog）
 
+## [2.4.1] —— v2.4 闭环补丁：哲学 + lint + dispatcher 三件套
+
+> *"扩到 24 agent 不算完成；扩到 24 agent 都进了哲学/lint/路由 才算完成。"*
+
+### Added
+
+**① 哲学锚点扩到 24 位** (`references/17-philosophy.md`)
+- 新增 §二·补 章节：10 位新 agent 的哲学锚点
+- flow-coordinator 亚里士多德 · conversation-director 巴赫金 · notification-director 海德格尔(烦) · table-craftsman Tufte · chat-ui-craftsman 麦克卢汉 · persona-architect 梅洛-庞蒂 · information-architect 康德 · error-recovery-designer 海德格尔(工具坏掉) · brand-keeper 海德格尔(命名) · i18n-strategist 维特根斯坦
+
+**② Philosophy-as-lint 扩到 24 位** (`references/19-audit-ruleset-philosophy.md`)
+- 新增 §二·补 章节：26 条新 P-XX 规则
+- `P-FC1/2` (flow) · `P-CD1/2` (conv) · `P-ND1/2/3` (notify) · `P-TC1/2/3` (table) · `P-CC1/2` (chat) · `P-PA1/2/3` (persona) · `P-IA1/2/3` (IA) · `P-ER1/2/3/4` (error) · `P-BK1/2/3` (brand) · `P-I18-1/2/3` (i18n)
+
+**③ Dispatcher 升级 6 路径路由** (`agents/moment-strategist.md`)
+- 六维体检表新增"形态"维度
+- 路径 A/B/C/D/E/F 全部列出，每条带主理 agent + 关键词 + 哲学锚
+- 派单速查表从 9 行扩到 22 行（覆盖 v2.4 全部新 agent）
+- 复合路径必须走 flow-coordinator（新增禁令）
+
+### Changed
+
+- 版本三连同步到 2.4.1
+- ui-auditor REPORT 模板里 agent 专项表覆盖 24 位（隐式扩展）
+
+### Philosophical Footnote
+
+> *孔子：『名不正则言不顺。』*
+>
+> v2.4.0 给 10 个新 agent 起了名，v2.4.1 让他们的名"正"了——有哲学锚点 / 有 lint 规则 / 有派单路由。从此他们才真正存在于这个系统里。
+
+---
+
 ## [2.4.0] —— 全场景扩编：24 位 agent · 7 tier · 6 路径
 
 > *"统一不是塞进同一个抽屉，统一是各就各位。"*

@@ -4,7 +4,7 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-2.4.0-blue)
+![version](https://img.shields.io/badge/version-2.4.1-blue)
 ![agents](https://img.shields.io/badge/agents-24-purple)
 ![tiers](https://img.shields.io/badge/tiers-7-orange)
 ![paths](https://img.shields.io/badge/paths-6-teal)

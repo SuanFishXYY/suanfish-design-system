@@ -4,13 +4,15 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-2.1.0-blue)
-![agents](https://img.shields.io/badge/agents-14-purple)
-![tiers](https://img.shields.io/badge/tiers-6-orange)
+![version](https://img.shields.io/badge/version-2.5.1-blue)
+![agents](https://img.shields.io/badge/agents-33-purple)
+![tiers](https://img.shields.io/badge/tiers-7-orange)
+![paths](https://img.shields.io/badge/paths-7-teal)
+![ai-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
-**99% of AI assistants always say Yes. This one has 6 hard rules to REJECT.**
+**99% of AI assistants always say Yes. This one has 6 hard rules to REJECT — and 9 fresh AI-native specialists in v2.5.**
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."
@@ -18,7 +20,7 @@ Stakeholder: "Add a 10s brand animation on the login page, play every visit."
    Predicted DAU drop ≈ 4% in 30 days. Returning to PM for re-scoping.
 ```
 
-[中文 README](./README.md) · [Install](#install) · [Why](#why) · [Architecture](#architecture) · [REJECT Rules](#reject-rules)
+[中文 README](./README.md) · [Install](#install) · [Why](#why) · [Architecture](#architecture) · [REJECT Rules](#reject-rules) · [What's New in v2.5](#whats-new-in-v25)
 
 </div>
 
@@ -35,22 +37,37 @@ If you've built products with AI assistants, you know the real problem isn't tha
 
 Result? Shipping garbage UX.
 
-**Suanfish Design System** is an opinionated, multi-agent design SKILL that ships with a **REJECT mechanism** — 6 hard rules that any agent will refuse on sight, and propose an alternative instead.
+**Suanfish Design System** is an opinionated, multi-agent design SKILL that ships with a **REJECT mechanism** — 6 hard rules that any agent will refuse on sight, then propose an alternative.
+
+As of **v2.5**, Suanfish also covers the entire **AI-native UI surface** — streaming, tool calls, reasoning panels, citations, artifacts, prompt input, rate-limit communication, model switchers, and multi-turn thread architecture — through a new **Path G overlay** layered on top of conversational / steady / embedded paths.
 
 ## Architecture
 
-14 specialized agents organized across **6 tiers**:
+**33 specialized agents** organized across **7 tiers** and **7 design paths**:
 
-| Tier | Role | Agents |
-|------|------|--------|
-| **1 · Strategy** | Decide what to make | `onboarding-director`, `wizard-designer` |
-| **2 · Architecture** | Shape the structure | `ui-architect`, `modal-craftsman` |
-| **3 · Content** | Words, icons, empty states | `copy-writer`, `icon-curator`, `empty-state-storyteller` |
-| **4 · Visual** | Pixels and motion | `data-viz-engineer`, `animation-choreographer` |
-| **5 · Horizontal Consult** | Tokens, a11y, responsive | `token-keeper`, `a11y-guardian`, `responsive-strategist` |
-| **6 · Audit** | Quality gate with independent rulesets | `ui-auditor` (19 + 13 rules) |
+| Tier | Role | Sample Agents |
+|------|------|---------------|
+| **1 · Dispatch** | Decide what to do · can REJECT | `moment-strategist` |
+| **1.5 · Coordination** | Cross-path orchestration | `flow-coordinator` |
+| **2 · Lead (×4)** | One per major path | `onboarding-director`, `ui-architect`, `conversation-director`, `notification-director` |
+| **3 · Container Specialist (×10)** | Build the surface | `modal`, `wizard`, `data-viz`, `table`, `chat-ui`, `stream`, `tool-call-presenter`, `agent-thread-architect`, `artifact-architect`, `prompt-input-craftsman` |
+| **4 · Content Specialist (×10)** | Words, icons, states, reasoning | `copy-writer`, `icon-curator`, `empty-state`, `responsive`, `persona`, `info-architect`, `error-recovery`, `reasoning-visualizer`, `citation-keeper`, `rate-limit-communicator` |
+| **5 · Crosscutting Consult (×6)** | Tokens, motion, a11y, brand, i18n, model | `token-keeper`, `animation`, `a11y-guardian`, `brand-keeper`, `i18n-strategist`, `model-switcher-stylist` |
+| **6 · Quality Gate** | Independent audit with 33-agent coverage | `ui-auditor` |
 
-All coordinated by a single **moment-strategist** that decides which agents to activate and **whether to REJECT**.
+**7 design paths**:
+
+| Code | Path | Lead |
+|------|------|------|
+| A | Ceremonial (first-impression rituals) | `onboarding-director` |
+| B | Steady (daily ops / dashboards) | `ui-architect` |
+| C | Conversational (chat / agent UI) | `conversation-director` |
+| D | Notification (alerts / toasts) | `notification-director` |
+| E | Mobile (touch-first) | `ui-architect` + `responsive-strategist` |
+| F | Embedded (widget / iframe variant) | `ui-architect` (variant) |
+| **G** | **AI-native overlay** *(v2.5 new)* | `conversation-director` overlays C / B / F |
+
+Everything is coordinated by a single **`moment-strategist`** that decides which agents to activate, which path to take, and **whether to REJECT**.
 
 ## REJECT Rules
 
@@ -59,11 +76,16 @@ The `moment-strategist` enforces 6 hard rules. If any are triggered, the system 
 - **R1** — Forced animations / blocking animations
 - **R2** — High-frequency interruption (e.g., popup every visit)
 - **R3** — ≥3 CTAs in a single viewport
-- **R4** — First-time user is interrupted by a popup
-- **R5** — Critical action without a confirm/undo state
+- **R4** — First-time user interrupted by a popup
+- **R5** — Critical action without confirm/undo state
 - **R6** — Onboarding > 3 steps without skip
 
-Full rule definitions: [`references/15-audit-ruleset-steady.md`](./references/15-audit-ruleset-steady.md) · [`references/16-audit-ruleset-onboarding.md`](./references/16-audit-ruleset-onboarding.md)
+Plus, as of v2.5, **27 new philosophy rules (P-XX family)** governing Path G — covering visibility, attribution, transparency, and reversibility of AI-native surfaces.
+
+Full rule definitions:
+- [`references/15-audit-ruleset-steady.md`](./references/15-audit-ruleset-steady.md)
+- [`references/16-audit-ruleset-onboarding.md`](./references/16-audit-ruleset-onboarding.md)
+- [`references/19-audit-ruleset-philosophy.md`](./references/19-audit-ruleset-philosophy.md) *(v2.2 + v2.5 補丁)*
 
 ## Install
 
@@ -77,17 +99,37 @@ git clone https://github.com/SuanFishXYY/suanfish-design-system.git \
 # OpenAI Codex CLI
 git clone https://github.com/SuanFishXYY/suanfish-design-system.git \
   ~/.codex/skills/suanfish-design-system
+
+# GitHub Copilot CLI
+git clone https://github.com/SuanFishXYY/suanfish-design-system.git \
+  ~/.copilot/skills/suanfish-design-system
 ```
 
 The AI will auto-discover and load it. No manual invocation needed.
 
-## What's New in v2.1.0
+## What's New in v2.5
 
-- **6-tier reorganization** — splits the previous Tier 4 into Content / Horizontal Consult / Audit for cleaner ownership
-- **REJECT mechanism** — `moment-strategist` now ships 6 hard refusal rules
-- **Independent audit rulesets** — extracted from `ui-auditor` into versioned files with `bound_to_token_version` sync
-- **5-rule fast lane** — top of SKILL.md handles 80% of requests without full 6-agent orchestration
-- **Promotional README + dev README split** — separating marketing from contributor docs
+v2.5 ships an entire **AI-native overlay layer (Path G)** — 9 new agents that make Suanfish the first multi-agent design system with first-class support for streaming AI UIs, tool calls, reasoning panels, and citations.
+
+| New Agent | Tier | Philosophy Anchor | Owns |
+|-----------|------|-------------------|------|
+| `stream-craftsman` | 3 | Heraclitus · *everything flows* | SSE token streaming, fade-in, cursor blink |
+| `tool-call-presenter` | 3 | Austin · *speech-act* | Tool invocation cards, args/result reveal |
+| `agent-thread-architect` | 3 | Borges · *forking paths* | Multi-turn thread, branch, fork UI |
+| `artifact-architect` | 3 | Heidegger · *zuhanden* | Code/canvas/document side-panels |
+| `prompt-input-craftsman` | 3 | Austin · *performative* | Input box: drag, paste, slash, abort |
+| `reasoning-visualizer` | 4 | Descartes · *cogito* | Chain-of-thought panel, collapse, summary |
+| `citation-keeper` | 4 | Foucault · *power-knowledge* | Source attribution, hover preview, link-out |
+| `rate-limit-communicator` | 4 | Rawls · *fairness* | Quota indicator, soft/hard limits, recovery |
+| `model-switcher-stylist` | 5 | Lévi-Strauss · *bricolage* | Model toggle, capability badge, cost hint |
+
+**Path G total proposition**: every AI-native surface must be **visualizable** (reasoning/streaming), **attributable** (citations/tool-calls), **transparent** (rate-limit/model-switch), and **reversible** (thread/artifact/prompt-input).
+
+Plus:
+- **`ui-auditor` upgraded to 33-agent coverage** with a new 4-principle Path G self-audit block
+- **`flow-coordinator` (Tier 1.5)** added in v2.4 for cross-path orchestration
+- **27 new philosophy rules** (P-XX) covering Path G
+- **`moment-strategist` dispatcher** extended to route C + G composite scenarios
 
 Full changelog: [CHANGELOG.md](./CHANGELOG.md)
 
@@ -95,11 +137,13 @@ Full changelog: [CHANGELOG.md](./CHANGELOG.md)
 
 | | Generic Design Assistants | **Suanfish** |
 |---|:---:|:---:|
-| Multi-agent orchestration | ❌ | ✅ 14 agents / 6 tiers |
+| Multi-agent orchestration | ❌ | ✅ 33 agents / 7 tiers / 7 paths |
 | Can refuse a request | ❌ "Sure" | ✅ REJECT + alternative |
-| Independent audit rulesets | ❌ | ✅ steady + onboarding |
+| Independent audit rulesets | ❌ | ✅ steady + onboarding + philosophy |
 | Token version sync | ❌ | ✅ `bound_to_token_version` |
 | Onboarding-aware | ❌ generic | ✅ first-impression specialized |
+| **AI-native surfaces** *(v2.5)* | ❌ | ✅ stream / tool-call / reasoning / citation / artifact |
+| Philosophy anchors per agent | ❌ | ✅ 33 anchors + 27 P-XX rules |
 
 ## Contributing
 
@@ -115,6 +159,6 @@ MIT — see [LICENSE](./LICENSE)
 
 **Built by Suanfish Studio · 算鱼工作室**
 
-[⭐ Star on GitHub](https://github.com/SuanFishXYY/suanfish-design-system) · [Report Issue](https://github.com/SuanFishXYY/suanfish-design-system/issues)
+[⭐ Star on GitHub](https://github.com/SuanFishXYY/suanfish-design-system) · [Report Issue](https://github.com/SuanFishXYY/suanfish-design-system/issues) · [Discuss REJECT rules](https://github.com/SuanFishXYY/suanfish-design-system/issues/1)
 
 </div>

@@ -30,7 +30,6 @@
 - [`specs/animation.md`](specs/animation.md) — animation-choreographer 动效节奏
 - [`specs/token.md`](specs/token.md) — token-keeper 颜色/尺寸约束
 - [`report.md`](report.md) — ui-auditor 终审 REPORT
-- [`code/WelcomeModal.tsx`](code/WelcomeModal.tsx) — reference 实现
 
 ---
 

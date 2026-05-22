@@ -286,7 +286,7 @@ classDiagram
 
 绝大多数「AI 设计助手」是一个**单 prompt 包打天下**，遇到不合理需求只会硬做。
 
-算鱼设计系统是一家**14 位 agent 的虚拟工作室**，有 6 个 tier，最顶层的 `moment-strategist` 持有 **6 条硬触发的拒单规则**：
+算鱼设计系统是一家**33 位 agent 的虚拟工作室**，分布在 7 个 tier、7 条设计路径上（含 v2.5 新增 AI-native 路径 G），最顶层的 `moment-strategist` 持有 **6 条硬触发的拒单规则**：
 
 | 编号 | 触发条件 |
 | --- | --- |
@@ -349,7 +349,7 @@ classDiagram
 审计规则不藏在 `ui-auditor` 里，而是独立到 `references/15-audit-ruleset-steady.md` 与 `16-audit-ruleset-onboarding.md`。每份规则集都有 `bound_to_token_version` 字段，token 改动必须同步规则集 PR，否则审计员**直接报错拒绝执行**。
 
 ### 4. **哲学根基（v2.2）** —— 每位 agent 都有不可让步的命题
-14 位 agent 各配一条哲学锚点（孙子 · 上兵伐谋 / 老子 · 大象无形 / 康德 · 绝对命令 ……），REJECT R1-R6 配哲学命题，外加 20 条经典法典（Dieter Rams / Tufte / 包豪斯）和 30 条案例。当业务方拍脑袋时，agent 不是机械引用规则——而是引用**信念**。详见 [📜 references/17-philosophy.md](references/17-philosophy.md)。
+33 位 agent 各配一条哲学锚点（孙子 · 上兵伐谋 / 老子 · 大象无形 / 康德 · 绝对命令 / 赫拉克利特 · 万物皆流 / 福柯 · 知识即权力 ……），REJECT R1-R6 配哲学命题，外加 20 条经典法典（Dieter Rams / Tufte / 包豪斯）和 30+ 条案例。v2.5 AI-native 路径 G 又叠加了 27 条 P-XX 哲学规则（可视化 / 归因化 / 透明化 / 可撤回）。当业务方拍脑袋时，agent 不是机械引用规则——而是引用**信念**。详见 [📜 references/17-philosophy.md](references/17-philosophy.md)。
 
 ---
 
@@ -363,7 +363,7 @@ classDiagram
 | **仪式 / 稳态隔离** | ✅ 三条铁律 | ❌ 无概念 | ❌ 无概念 | ❌ 无概念 |
 | **审计与规则解耦** | ✅ 版本同步契约 | ❌ N/A | ❌ N/A | ❌ 规则即 prompt |
 | **可追溯性** | ✅ 规则编号 + owner | N/A | N/A | ❌ 黑盒 |
-| **职责边界** | ✅ 14 agent / 6 tier | N/A | N/A | ❌ 大锅炖 |
+| **职责边界** | ✅ 33 agent / 7 tier / 7 path | N/A | N/A | ❌ 大锅炖 |
 | **适合谁** | 内部产品 / 需要 design ops 的团队 | 独立开发者 | 商业 SaaS | 个人项目 |
 | **学习成本** | 中等（有快速通道兜底） | 低 | 低 | 极低 |
 | **代表理念** | "Say NO when you should" | "Build your own" | "Pay for done" | "Just ship" |
@@ -385,23 +385,33 @@ ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.copilot/skills/suanfish
 
 ---
 
-## 🏛 14 位 agent · 6 个 tier
+## 🏛 33 位 agent · 7 个 tier · 7 条路径
 
 ```
-┌────────────────────────────────────────────────────────┐
-│ Tier 1 · 调度       🧭 moment-strategist (可 REJECT)    │
-├────────────────────────────────────────────────────────┤
-│ Tier 2 · 主导       🎬 onboarding · 🏛 ui-architect     │
-├────────────────────────────────────────────────────────┤
-│ Tier 3 · 容器专科   🪟 modal · 🧙 wizard · 📊 viz        │
-├────────────────────────────────────────────────────────┤
-│ Tier 4 · 内容专科   📝 copy · 🎯 icon                   │
-│                    🪟 empty-state · 📱 responsive       │
-├────────────────────────────────────────────────────────┤
-│ Tier 5 · 横切咨询   🎨 token · 💫 anim · ♿ a11y        │
-├────────────────────────────────────────────────────────┤
-│ Tier 6 · 质量门     🔍 ui-auditor (加载 ref 15 / 16)    │
-└────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│ Tier 1   · 调度          🧭 moment-strategist (可 REJECT)        │
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 1.5 · 协调          🔀 flow-coordinator (跨路径桥)          │
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 2   · 主导 ×4       🎬 onboarding · 🏛 ui-architect          │
+│                          💬 conversation · 🔔 notification        │
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 3   · 容器专科 ×10  🪟 modal · 🧙 wizard · 📊 viz · 📋 table │
+│                          💬 chat-ui · 🌊 stream · 🛠️ tool-call    │
+│                          🧵 thread · 🎨 artifact · ✍️ prompt-input│
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 4   · 内容专科 ×10  📝 copy · 🎯 icon · 🪟 empty-state       │
+│                          📱 responsive · 👤 persona · 🗂 info-arch│
+│                          🔧 error-recovery · 🧠 reasoning-viz     │
+│                          📑 citation · ⏱️ rate-limit              │
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 5   · 横切咨询 ×6   🎨 token · 💫 anim · ♿ a11y · 🏷 brand  │
+│                          🌐 i18n · 🔀 model-switcher              │
+├─────────────────────────────────────────────────────────────────┤
+│ Tier 6   · 质量门        🔍 ui-auditor (加载 ref 15/16, 33 行覆盖)│
+└─────────────────────────────────────────────────────────────────┘
+
+7 条路径：A 仪式 · B 稳态 · C 聊天 · D 通知 · E 移动 · F 嵌入 · G AI-native（叠加层）
 ```
 
 每位 agent 都是一个独立的 `.md` 文件，有 frontmatter 声明 `reports_to` / `consults` / `audited_by` / `references`，可以独立审阅、独立修改。
@@ -420,12 +430,13 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 14 位匠人
+├── agents/                  # 33 位匠人（v2.5 新增 9 位 AI-native 锚点）
 │   ├── moment-strategist.md
 │   ├── onboarding-director.md
 │   ├── ui-architect.md
-│   └── ... (11 more)
-└── references/              # 21 份规范
+│   ├── conversation-director.md
+│   └── ... (29 more · 含 stream/tool-call/thread/reasoning/citation/artifact/...)
+└── references/              # 23 份规范（v2.5 哲学补丁覆盖路径 G）
     ├── 00-collaboration-protocol.md
     ├── 01-design-tokens.md
     ├── 02-onboarding-eureka.md

@@ -1,4 +1,4 @@
----
+﻿---
 agent: flow-coordinator
 role: 流程协调官 · 跨路径调度
 icon: 🚦
@@ -8,6 +8,10 @@ coordinates: [onboarding-director, ui-architect, conversation-director, notifica
 audited_by: ui-auditor
 references: [00-collaboration-protocol.md, 17-philosophy.md]
 philosophy: "亚里士多德 — 整体大于部分之和"
+historical_era: "LLM Pre-Native → AI-native (E6→E7)"
+emerged_to_solve: "单一路径调度无法处理跨路径复合需求，多主理冲突无仲裁"
+core_contradiction: "D4 引导⟷自由（引导）"
+next_evolution: "多路径自动并联，AI 驱动路径权重动态分配"
 ---
 
 # 🚦 flow-coordinator · 流程协调官

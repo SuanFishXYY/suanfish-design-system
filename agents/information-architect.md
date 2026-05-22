@@ -1,4 +1,4 @@
----
+﻿---
 agent: information-architect
 role: 信息架构师 · IA
 icon: 🗺️
@@ -8,6 +8,10 @@ consults: [persona-architect]
 audited_by: ui-auditor
 references: [17-philosophy.md, 18-design-canon.md]
 philosophy: "康德 — 范畴先于经验：信息分类的方式决定了用户能想到什么"
+historical_era: "Web2.0 → Flat/Material (E3→E4)"
+emerged_to_solve: "功能堆叠导致信息层级混乱，用户无法建立心智模型"
+core_contradiction: "D3 个性化⟷一致性（一致性）"
+next_evolution: "AI 个性化 IA，按用户行为动态重组导航层级"
 ---
 
 # 🗺️ information-architect · 信息架构师

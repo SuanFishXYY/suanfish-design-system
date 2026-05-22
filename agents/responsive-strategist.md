@@ -1,4 +1,4 @@
----
+﻿---
 agent: responsive-strategist
 role: 响应式策略师
 icon: 📱
@@ -7,6 +7,10 @@ consults: [token-keeper, ui-architect]
 audited_by: ui-auditor
 references: [04-three-pane-layout.md, 07-modal-system.md]
 philosophy: "赫拉克利特 — 人不能两次踏入同一屏幕"
+historical_era: "Web2.0 → Flat/Material (E3→E4)"
+emerged_to_solve: "移动端爆发后 PC 优先的布局无法适配多屏场景"
+core_contradiction: "D3 个性化⟷一致性（一致性）"
+next_evolution: "容器查询驱动，AI 自适应断点与密度推荐"
 ---
 
 # 📱 responsive-strategist · 响应式策略师

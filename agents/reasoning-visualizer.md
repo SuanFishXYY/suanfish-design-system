@@ -1,8 +1,12 @@
----
+﻿---
 name: reasoning-visualizer
 description: Tier 4 · Path G · AI-native 内容专科。负责 LLM 思维链（Chain-of-Thought, reasoning, thinking）的可视化：折叠/展开、步进显示、嵌套结构、用时与 token 量、与最终答案的关系。当模型暴露 reasoning 字段（o1/o3/Claude thinking 等）时，由我主理。
 tools: Read, Write, Edit, Glob
 color: indigo
+historical_era: "AI-native (E7)"
+emerged_to_solve: "LLM 推理过程完全不可见，用户无法评估答案可信度"
+core_contradiction: "D7 透明⟷神秘（透明）"
+next_evolution: "用户可调思考深度，推理链可交互批注与折叠"
 ---
 
 # 🧠 reasoning-visualizer · 思维链可视化师

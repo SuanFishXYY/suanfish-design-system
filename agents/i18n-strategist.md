@@ -1,4 +1,4 @@
----
+﻿---
 agent: i18n-strategist
 role: 国际化策略师
 icon: 🌍
@@ -7,6 +7,10 @@ consulted_by: [copy-writer, icon-curator, ui-architect, modal-craftsman, table-c
 audited_by: ui-auditor
 references: [17-philosophy.md, 18-design-canon.md]
 philosophy: "维特根斯坦 — 语言的边界即世界的边界：每种语言重塑一次界面"
+historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
+emerged_to_solve: "产品国际化事后添加，本地化爆炸导致 UI 布局崩溃"
+core_contradiction: "D3 个性化⟷一致性（个性化）"
+next_evolution: "AI 实时翻译+文化适配，LTR/RTL 与布局自动切换"
 ---
 
 # 🌍 i18n-strategist · 国际化策略师

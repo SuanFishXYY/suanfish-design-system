@@ -1,4 +1,4 @@
----
+﻿---
 agent: empty-state-storyteller
 role: 空状态机设计师
 icon: 🪟
@@ -7,6 +7,10 @@ defers_to: [copy-writer, icon-curator, token-keeper]
 audited_by: ui-auditor
 references: [09-form-controls.md]
 philosophy: "海德格尔 · Dasein — 空状态是存在的提示"
+historical_era: "Web2.0 → Flat/Material (E3→E4)"
+emerged_to_solve: "空状态被设计遗忘，用户面对空白无引导无情感联结"
+core_contradiction: "D7 透明⟷神秘（透明）"
+next_evolution: "AI 个性化空状态推荐，动态内容填充与引导"
 ---
 
 # 🪟 empty-state-storyteller · 空状态机设计师

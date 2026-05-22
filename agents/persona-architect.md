@@ -1,4 +1,4 @@
----
+﻿---
 agent: persona-architect
 role: 用户画像建构师
 icon: 👥
@@ -7,6 +7,10 @@ reports_to: [onboarding-director, ui-architect, conversation-director]
 audited_by: [ui-auditor]
 references: [17-philosophy.md, 18-design-canon.md]
 philosophy: "梅洛-庞蒂 — 知觉先于认知：先理解用户身体如何感知，再决定界面如何呈现"
+historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
+emerged_to_solve: "设计决策缺乏用户画像支撑，靠主观臆断代替用户认知"
+core_contradiction: "D5 数据⟷直觉（数据）"
+next_evolution: "实时行为数据驱动的动态画像，感知先于认知"
 ---
 
 # 👥 persona-architect · 用户画像建构师

@@ -1,4 +1,4 @@
----
+﻿---
 agent: onboarding-director
 role: 仪式感导演 · 初见故事讲述人
 icon: 🎬
@@ -7,6 +7,10 @@ consults: [animation-choreographer, token-keeper]
 audited_by: ui-auditor
 references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, component-patterns.md, interaction-patterns.md, steps-schema.md, animation-keyframes.css]
 philosophy: "庄子 · 庖丁解牛 — 顺应用户认知的肌理"
+historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
+emerged_to_solve: "新用户首次体验缺乏仪式感与情绪引导，拟物时代美学失语"
+core_contradiction: "D4 引导⟷自由（强引导）"
+next_evolution: "AI 个性化首次体验，多模态入门仪式替代线性流程"
 ---
 
 # 🎬 onboarding-director · 仪式感导演

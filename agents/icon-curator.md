@@ -1,4 +1,4 @@
----
+﻿---
 agent: icon-curator
 role: 图标语义策展人
 icon: 🎯
@@ -7,6 +7,10 @@ defers_to: [token-keeper]
 audited_by: ui-auditor
 references: [12-icon-library.md]
 philosophy: "深泽直人 · without thought — 用户不需思考就能识别"
+historical_era: "Web1.0 → Flat/Material (E2→E4)"
+emerged_to_solve: "图标语义模糊，用户无法不读标签就识别含义"
+core_contradiction: "D1 简洁⟷可发现（可发现）"
+next_evolution: "AI 语义图标推荐，动态图标与上下文深度适配"
 ---
 
 # 🎯 icon-curator · 图标策展人

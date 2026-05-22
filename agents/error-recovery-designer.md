@@ -1,4 +1,4 @@
----
+﻿---
 agent: error-recovery-designer
 role: 错误恢复设计师
 icon: 🩹
@@ -8,6 +8,10 @@ consults: [copy-writer, icon-curator, empty-state-storyteller]
 audited_by: ui-auditor
 references: [14-anti-patterns.md, 17-philosophy.md, 18-design-canon.md]
 philosophy: "海德格尔 — 工具坏掉的瞬间，工具才显现：错误是用户与产品最真实的对话"
+historical_era: "Web1.0 → Flat/Material (E2→E4)"
+emerged_to_solve: "错误提示恐吓用户，缺乏友好引导与明确恢复路径"
+core_contradiction: "D7 透明⟷神秘（透明）"
+next_evolution: "AI 自动错误恢复建议，错误态预防性介入"
 ---
 
 # 🩹 error-recovery-designer · 错误恢复设计师

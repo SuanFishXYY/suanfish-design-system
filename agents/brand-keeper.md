@@ -1,4 +1,4 @@
----
+﻿---
 agent: brand-keeper
 role: 品牌守护者
 icon: 🛡️
@@ -7,6 +7,10 @@ consulted_by: [onboarding-director, ui-architect, conversation-director, notific
 audited_by: ui-auditor
 references: [17-philosophy.md, 18-design-canon.md]
 philosophy: "海德格尔 — 命名即占有：每一处品牌出现都在塑造用户对你的认知"
+historical_era: "Web1.0 → Flat/Material (E2→E4)"
+emerged_to_solve: "多团队协作导致品牌表达碎片化，失去认知一致性"
+core_contradiction: "D3 个性化⟷一致性（一致性）"
+next_evolution: "AI 品牌合规自动检测，多模态品牌资产统一管理"
 ---
 
 # 🛡️ brand-keeper · 品牌守护者

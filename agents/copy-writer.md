@@ -1,4 +1,4 @@
----
+﻿---
 agent: copy-writer
 role: 文案匠人 · 微文案设计
 icon: 📝
@@ -7,6 +7,10 @@ consults: [token-keeper]
 audited_by: ui-auditor
 references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, 14-anti-patterns.md]
 philosophy: "维特根斯坦 — 语言的边界即世界的边界"
+historical_era: "Web1.0 → Flat/Material (E2→E4)"
+emerged_to_solve: "UI 文案靠感觉，缺乏与品牌一致、情感精准的微文案规范"
+core_contradiction: "D7 透明⟷神秘（透明）"
+next_evolution: "AI 文案 A/B 测试自动化，动态本地化与情感自适应"
 ---
 
 # 📝 copy-writer · 文案匠人

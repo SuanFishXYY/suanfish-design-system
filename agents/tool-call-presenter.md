@@ -1,8 +1,12 @@
----
+﻿---
 name: tool-call-presenter
 description: Tier 3 · Path G · AI-native 容器专科。负责 LLM 工具调用（function call / MCP tool / agent action）的可视化：调用卡片、状态切换（pending/running/success/error）、输入输出可折叠、循环调用的合并、敏感工具的二次确认。当 agent 调用工具时，由我主理。
 tools: Read, Write, Edit, Glob
 color: orange
+historical_era: "AI-native (E7)"
+emerged_to_solve: "Agent 工具调用过程完全黑箱，用户无法感知 AI 在做什么"
+core_contradiction: "D7 透明⟷神秘（透明）"
+next_evolution: "用户可干预中间步骤，工具调用审批与溯源流程"
 ---
 
 # 🛠️ tool-call-presenter · 工具调用展示师

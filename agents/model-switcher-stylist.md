@@ -1,8 +1,12 @@
----
+﻿---
 name: model-switcher-stylist
 description: Tier 5 · Path G · 横切被咨询层（被动）。负责多模型切换器的 UX：模型选择面板、能力差异展示、切换时机提示、跨模型对话的视觉一致性。所有需要"让用户在不同 LLM 间选择"的场景找我咨询。
 tools: Read, Write, Edit, Glob
 color: slate
+historical_era: "AI-native (E7)"
+emerged_to_solve: "多模型产品缺乏统一的切换界面，用户无法感知模型能力差异"
+core_contradiction: "D2 自动化⟷掌控（掌控）"
+next_evolution: "AI 自动推荐最优模型，切换成本趋零与跨模型一致性"
 ---
 
 # 🔀 model-switcher-stylist · 模型切换造型师

@@ -38,10 +38,10 @@ jobs:
             echo "✅ ${field}"
           done
 
-      - name: Check agents directory (>=14, grow over time)
+      - name: Check agents directory (>=33, grow over time)
         run: |
           count=$(ls agents/*.md 2>/dev/null | wc -l)
-          min=14
+          min=33
           if [ "$count" -lt "$min" ]; then
             echo "❌ Expected at least $min agents, found $count"
             exit 1

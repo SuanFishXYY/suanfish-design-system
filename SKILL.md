@@ -1,18 +1,35 @@
 ---
 name: suanfish-design-system
-description: Suanfish Design System — A unified multi-agent design language system with 33 specialized agents across 7 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G — streaming, tool-calls, agent threads, reasoning, citations, artifacts, prompt input, rate-limits, model switching) — 7 design paths in total. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，33 位专精 agent 协同工作，分布在 7 个 tier（含 Tier 1.5 协调层），覆盖 7 条设计路径（含 v2.5 新增 AI-native 路径），搭载 6 条 REJECT 硬规则。
-version: 2.5.1
+description: Suanfish Design System v3.0 — A philosophy-driven multi-agent design language with 36 specialized agents across 8 tiers (including v3.0 Tier 0 dialectical philosophy layer) and an 18-rule REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G — streaming, tool-calls, agent threads, reasoning, citations, artifacts, prompt input, rate-limits, model switching). v3.0 adds three-layer philosophy (Values + Dialectics + Development Laws), 8-era historical positioning, and R13-R18 philosophical reject rules. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系 v3.0，36 位专精 agent 协同工作，分布在 8 个 tier（v3.0 新增 Tier 0 辩证哲学层），覆盖 7 条设计路径，搭载 18 条 REJECT 硬规则。
+version: 3.0.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
 flavor: hybrid
 philosophy: enabled
-tags: [design-system, multi-agent, onboarding, ui, modal, wizard, data-viz, animation, tokens, react, tailwind, accessibility, responsive, copywriting, icon, empty-state, chinese, philosophy]
+philosophy_layers: [values, dialectics, laws, historical_positioning]
+tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal, wizard, data-viz, animation, tokens, react, tailwind, accessibility, responsive, copywriting, icon, empty-state, ai-native, chinese]
 ---
 
-# 算鱼设计系统 · The Studio · v2.1
+# 算鱼设计系统 · The Studio · v3.0
 
-> *一家工作室，十四位匠人。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。*
+> *一家工作室，三十六位匠人。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。*
+>
+> **v3.0 哲学升维**：在 33 agent 之上新增 Tier 0 辩证哲学层（🪙 dialectician / 📜 historian / 🔭 futurist），让每一个 BRIEF 入场前必须命名矛盾、定位时代、预测演进。
+
+## 🌗 v3.0 三层哲学体系（必读）
+
+| Layer | 文件 | 回答的问题 |
+| --- | --- | --- |
+| **Layer 1 · 价值** | [references/17-philosophy.md](references/17-philosophy.md) | 该选哪边？ |
+| **Layer 2 · 辩证** | [references/24-philosophy-dialectics.md](references/24-philosophy-dialectics.md) | 为什么有两边？ |
+| **Layer 3 · 发展规律** | [references/25-philosophy-laws.md](references/25-philosophy-laws.md) | 矛盾如何随时间漂移？ |
+| **Layer 0.5 · 历史定位** | [references/26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
+
+**任何 BRIEF 入场顺序**：
+```
+BRIEF → 🪙 dialectician (D1-D7 矛盾 / R18) → 📜 historian (E1-E8 时代 / R14) → 🔭 futurist (L1-L5 规律 / R13/15/16/17) → 🧭 moment-strategist (A-G 路径分流 / R1-R6)
+```
 
 这是一个 **伞状 skill（umbrella skill）**，按一家小型设计工作室的组织结构来运转。它同时治理 **两种声音**：
 

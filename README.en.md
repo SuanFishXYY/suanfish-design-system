@@ -4,23 +4,46 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-2.5.1-blue)
-![agents](https://img.shields.io/badge/agents-33-purple)
-![tiers](https://img.shields.io/badge/tiers-7-orange)
+![version](https://img.shields.io/badge/version-3.0.0-blueviolet)
+![agents](https://img.shields.io/badge/agents-36-purple)
+![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
+![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![ai-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
+![rules](https://img.shields.io/badge/REJECT-R1--R18-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
-**99% of AI assistants always say Yes. This one has 6 hard rules to REJECT — and 9 fresh AI-native specialists in v2.5.**
+**99% of AI assistants always say Yes. This one has 18 hard rules to REJECT — v3.0 adds R13-R18 philosophical rejects (5 development laws + 1 dialectical-incoherence rule).**
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."
 🛡 REJECT — R1 + R2 triggered: forced animation + high frequency interruption.
    Predicted DAU drop ≈ 4% in 30 days. Returning to PM for re-scoping.
+
+Stakeholder: "We need 100% AI automation AND user-controlled every step."
+🛡 REJECT — R18 triggered: contradiction-without-lean (D2 has no chosen side).
+   Pick a lean and define escape hatches.  ← v3.0 new rule
 ```
 
-[中文 README](./README.md) · [Install](#install) · [Why](#why) · [Architecture](#architecture) · [REJECT Rules](#reject-rules) · [What's New in v2.5](#whats-new-in-v25)
+[中文 README](./README.md) · [Install](#install) · [Why](#why) · [Architecture](#architecture) · [REJECT Rules](#reject-rules) · [What's New in v3.0](#whats-new-in-v30)
+
+</div>
+
+---
+
+## 🌗 v3.0 · Three-Layer Philosophy (What's New)
+
+| Layer | File | Question | Triggers |
+| --- | --- | --- | :---: |
+| **Layer 1 · Values** | [17-philosophy.md](references/17-philosophy.md) | Which side should we pick? | R1-R12 |
+| **Layer 2 · Dialectics** ✨ | [24-philosophy-dialectics.md](references/24-philosophy-dialectics.md) | Why are there two sides? | R18 |
+| **Layer 3 · Development Laws** ✨ | [25-philosophy-laws.md](references/25-philosophy-laws.md) | How do contradictions drift over time? | R13-R17 |
+| **Layer 0.5 · Historical Positioning** ✨ | [26-historical-positioning.md](references/26-historical-positioning.md) | What era did we come from, what era are we heading to? | — |
+
+**v3.0 Tier 0 trio**: 🪙 `dialectician` (Hegel · names contradictions, picks leans) → 📜 `historian` (Foucault · finds era coordinates) → 🔭 `futurist` (Whitehead · predicts evolution & emits future hooks) → 🧭 `moment-strategist` (routes to Path A-G).
+
+Every BRIEF — no exception — passes through Tier 0 first.
 
 </div>
 

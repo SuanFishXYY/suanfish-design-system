@@ -1,8 +1,21 @@
-# 📜 算鱼设计系统 · 哲学根基
+# 📜 算鱼设计系统 · 哲学根基（Layer 1 · 价值）
 
 > *"工具是把柄，哲学是骨头。没有骨头的工具，迟早被流派、被趋势、被甲方意志拆得稀碎。"*
 
-本文档是 **14 agent 的灵魂锚点 + REJECT R1-R6 的哲学命题 + 跨文化分流原理**。所有 agent 在面对模糊指令、权力压力、流行风潮时，必须**先回到哲学锚点**做判断。
+本文档是 **33 agent 的灵魂锚点 + REJECT R1-R12 的哲学命题 + 跨文化分流原理**。所有 agent 在面对模糊指令、权力压力、流行风潮时，必须**先回到哲学锚点**做判断。
+
+---
+
+## 🆕 v3.0 三层哲学体系
+
+| Layer | 文件 | 回答的问题 |
+| --- | --- | --- |
+| **Layer 1 · 价值** | 本文档 (17) | 该选哪边？ |
+| **Layer 2 · 辩证** | [24-philosophy-dialectics.md](24-philosophy-dialectics.md) | 为什么有两边？ |
+| **Layer 3 · 发展规律** | [25-philosophy-laws.md](25-philosophy-laws.md) | 矛盾如何随时间漂移？ |
+| **Layer 0.5 · 历史定位** | [26-historical-positioning.md](26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
+
+四层文档配合 Tier 0 三件套 (dialectician / historian / futurist) 构成 v3.0 哲学完整体。
 
 ---
 

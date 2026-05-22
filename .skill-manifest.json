@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "2.5.1",
-  "description": "算鱼工作室统一多智能体设计语言体系。33 位 agent 在 7 个 tier 中协同工作（含 Tier 1.5 协调层），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语（stream/tool-call/thread/reasoning/citation/artifact/prompt/rate-limit/model-switch）。",
+  "version": "3.0.0",
+  "description": "算鱼工作室统一多智能体设计语言体系。36 位 agent 在 8 个 tier 中协同工作（v3.0 新增 Tier 0 辩证哲学层），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18。",
   "author": "算鱼工作室",
   "license": "MIT",
   "language": "zh-CN",
@@ -9,6 +9,8 @@
   "tags": [
     "design-system",
     "multi-agent",
+    "philosophy",
+    "dialectics",
     "onboarding",
     "ui",
     "modal",
@@ -23,11 +25,13 @@
     "copywriting",
     "icon",
     "empty-state",
+    "ai-native",
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 33,
+  "agent_count": 36,
   "tiers": {
+    "tier_0_dialectical_philosophy": ["dialectician", "historian", "futurist"],
     "tier_1_dispatch": ["moment-strategist"],
     "tier_1_5_coordination": ["flow-coordinator"],
     "tier_2_lead": ["onboarding-director", "ui-architect", "conversation-director", "notification-director"],
@@ -75,6 +79,9 @@
     "G_ai_native": "conversation-director (overlay on C/B/F)"
   },
   "agents": [
+    "agents/dialectician.md",
+    "agents/historian.md",
+    "agents/futurist.md",
     "agents/moment-strategist.md",
     "agents/flow-coordinator.md",
     "agents/onboarding-director.md",
@@ -110,17 +117,17 @@
     "agents/ui-auditor.md"
   ],
   "references_dir": "references",
-  "reference_count": 17,
+  "reference_count": 20,
   "appendix_count": 4,
-  "v2_1_changes": {
-    "tier_reorganization": "4 tier → 6 tier · 内容专科与横切咨询拆分",
-    "boundary_clarifications": [
-      "icon-curator 只管语义映射 · 颜色尺寸归 token-keeper",
-      "empty-state-storyteller 只管状态机 / 布局 · 文案归 copy-writer"
-    ],
-    "path_b_hardened": "路径 B 4 项硬条件 · 不满足直接 REJECT",
-    "ruleset_extracted": "审计规则集独立到 ref 15 / ref 16 · 与 ui-auditor 解耦 · 版本同步契约",
-    "reject_mechanism": "moment-strategist 新增 REJECT 输出类型 · 6 项硬触发条件",
-    "quick_path": "SKILL.md 顶部新增 5 套高频搭配速查表"
+  "v3_0_changes": {
+    "philosophy_three_layer": "Layer 1 价值 (17) + Layer 2 辩证 (24) + Layer 3 发展规律 (25) + Layer 0.5 历史定位 (26)",
+    "tier_0_added": "新增 3 个 Tier 0 agent：dialectician (黑格尔·辩证) / historian (福柯·历史) / futurist (怀特海·过程)",
+    "all_briefs_via_tier_0": "任何 BRIEF 入场顺序：dialectician → historian → futurist → moment-strategist",
+    "seven_contradictions": "D1 简洁⟷可发现 / D2 自动化⟷掌控 / D3 个性化⟷一致性 / D4 引导⟷自由 / D5 数据⟷直觉 / D6 即时⟷深思 / D7 透明⟷神秘",
+    "five_laws": "L1 复杂度螺旋 / L2 抽象交替 / L3 控制权下移 / L4 反馈循环缩短 / L5 模态融合",
+    "eight_eras": "E1 Pre-Web / E2 Web1.0+Skeuomorphic / E3 Web2.0+Mobile First / E4 Flat+Material / E5 Glass+Neumorphic / E6 LLM Pre-Native / E7 AI-native / E8 Spatial-Multimodal (未来)",
+    "new_reject_rules": "R13-R18 (6 条哲学触发的 REJECT) · R13/L1 R14/L2 R15/L3 R16/L4 R17/L5 R18/矛盾两端都站",
+    "ui_auditor_mode_4": "dialectical_consistency · 始终叠加 · REPORT 新增辩证体检段落",
+    "agent_frontmatter_4_fields": "33 agent 全部新增 historical_era / emerged_to_solve / core_contradiction / next_evolution"
   }
 }

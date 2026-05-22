@@ -1,5 +1,61 @@
 # 变更日志（Changelog）
 
+## [3.0.0] —— 哲学升维 · 三层哲学体系 + 8 时代 + Tier 0 + R13-R18
+
+> *"哲学理念上升到一个新的高度，只有理解了事物发展的规律，才能做好系统。"* — v3.0 立项语
+
+### ⚠️ Breaking Changes
+
+- **任何 BRIEF 必须先过 Tier 0 三件套**（dialectician → historian → futurist），不可绕过
+- **6 tier → 8 tier**（v2.x 调用方式仍兼容，但 BRIEF 入口已加宽）
+- **33 → 36 agent**（新增 Tier 0 trio）
+- **R1-R6 → R1-R18**（新增 6 条哲学触发的 REJECT）
+- `ui-auditor` REPORT 模板新增「辩证体检」段落 — 旧 REPORT 解析器需升级
+
+### Added · 三层哲学体系
+
+- 🆕 **references/24-philosophy-dialectics.md** — Layer 2 辩证 · 7 大基本矛盾（D1-D7）+ 矛盾倾向矩阵 + R18
+- 🆕 **references/25-philosophy-laws.md** — Layer 3 发展规律 · 5 大律（L1 复杂度螺旋 / L2 抽象交替 / L3 控制权下移 / L4 反馈缩短 / L5 模态融合）+ R13-R17 映射
+- 🆕 **references/26-historical-positioning.md** — Layer 0.5 历史定位 · 8 时代分类（E1 Pre-Web → E8 Spatial-Multimodal）+ 33 agent 时代身份证
+- 🔄 **references/17-philosophy.md** — 标注为 Layer 1 价值层 · 加上三层哲学跳转表
+
+### Added · Tier 0 辩证哲学层（3 新 agent）
+
+- 🪙 **agents/dialectician.md** — 黑格尔 · 正反合 · 任何 BRIEF 入场识别主矛盾、选倾向、给对方留位 · 触发 R18
+- 📜 **agents/historian.md** — 福柯 · 知识考古学 · 给 BRIEF 找时代坐标、识别 time-lag / overshoot · 触发 R14
+- 🔭 **agents/futurist.md** — 怀特海 · 过程哲学 · 预测 now/mid/future 演进路径 + future hook 清单 · 触发 R13/R15/R16/R17
+
+### Added · 6 条新 REJECT 规则
+
+| 规则 | 哲学根因 | 触发 agent |
+| --- | --- | --- |
+| **R13** | 违反 L1 复杂度螺旋律 · Complex 阶段拒不收口 | futurist |
+| **R14** | 违反 L2 抽象交替律 · 停留在过时组织形态 | historian |
+| **R15** | 违反 L3 控制权下移律 · 不让 AI 该接管 / AI 越权 | futurist |
+| **R16** | 违反 L4 反馈循环缩短律 · 该实时不实时 | futurist |
+| **R17** | 违反 L5 模态融合律 · 该多模态强单模态 | futurist |
+| **R18** | 矛盾两端都站 · 没选倾向 | dialectician |
+
+### Changed
+
+- `agents/moment-strategist.md` — frontmatter 加 `upstream: [dialectician, historian, futurist]`，新增「v3.0 Tier 0 上游协议」段落、REJECT 表扩展 R13-R18
+- `agents/ui-auditor.md` — 模式识别新增 **mode_4 dialectical_consistency**（始终叠加）· REPORT 模板新增 🌗 辩证体检段落
+- `.skill-manifest.json` — version 3.0.0 / agent_count 36 / 新 tier_0_dialectical_philosophy 字段 / v3_0_changes 全量记录
+- `SKILL.md` — 三层哲学体系总览 + BRIEF 入场顺序图 · v3.0 标题
+- `README.md` / `README.en.md` — badges (version/agents/tiers/rules) 全量升级 v3.0 / 36 / 8 / R1-R18 · 新增 v3.0 三层哲学体系表
+
+### Philosophical Footnote
+
+> *黑格尔：『真理是全体。』*
+>
+> 价值是真理的一极，辩证是真理的另一极，发展规律是把这对极放进时间里看。只讲价值是片面，加上辩证才完整，加上规律才动态。
+>
+> *毛泽东：『矛盾是事物发展的根本动力。』*
+>
+> 33 agent 不命名矛盾，矛盾就来命名 33 agent。
+
+---
+
 ## [2.5.1] —— v2.5 闭环补丁：ui-auditor REPORT 模板升级到 33 agent
 
 > *"lint 规则有了，REPORT 模板还卡在 24 行——不补就是 lint 失效。"*

@@ -4,31 +4,50 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-2.5.1-blue)
-![agents](https://img.shields.io/badge/agents-33-purple)
-![tiers](https://img.shields.io/badge/tiers-7-orange)
+![version](https://img.shields.io/badge/version-3.0.0-blueviolet)
+![agents](https://img.shields.io/badge/agents-36-purple)
+![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
+![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![AI-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
+![rules](https://img.shields.io/badge/REJECT-R1--R18-red)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 ![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
 
-**99% 的 AI 永远回答 Yes。这个 AI 有 6 条硬规则可以拒单。**
+**99% 的 AI 永远回答 Yes。这个 AI 有 18 条硬规则可以拒单 — v3.0 新增 R13-R18 哲学触发的 REJECT。**
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」
 🛑 REJECT —— R1 + R2 双重命中：强加体验 + 高频骚扰
    预计 30 天后 DAU 跌 4%。退回业务方。
+
+业务方: 「既要 100% AI 自动，又要用户随时介入每个细节。」
+🛑 REJECT —— R18 命中：矛盾两端都站（D2 没选倾向）
+   请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 33 位 agent ](agents/) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 36 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
 
 ---
 
-## 🏗️ 架构总览 · v2.5 (33 agent · 7 tier · 7 path · 含 AI-native 路径 G)
+## 🌗 v3.0 三层哲学体系（What's New）
+
+| Layer | 文件 | 回答的问题 | 触发 R 规则 |
+| --- | --- | --- | :---: |
+| **Layer 1 · 价值** | [17-philosophy.md](references/17-philosophy.md) | 该选哪边？ | R1-R12 |
+| **Layer 2 · 辩证** ✨ | [24-philosophy-dialectics.md](references/24-philosophy-dialectics.md) | 为什么有两边？ | R18 |
+| **Layer 3 · 发展规律** ✨ | [25-philosophy-laws.md](references/25-philosophy-laws.md) | 矛盾如何随时间漂移？ | R13-R17 |
+| **Layer 0.5 · 历史定位** ✨ | [26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ | — |
+
+任何 BRIEF 入场顺序：**🪙 dialectician → 📜 historian → 🔭 futurist → 🧭 moment-strategist → A-G 路径**
+
+---
+
+## 🏗️ 架构总览 · v3.0 (36 agent · 8 tier · 7 path · Tier 0 辩证哲学层 + Path G AI-native)
 
 ```mermaid
 flowchart LR

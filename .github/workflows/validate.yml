@@ -8,12 +8,15 @@ on:
       - '.skill-manifest.json'
       - 'agents/**'
       - 'references/**'
+      - '.github/workflows/validate.yml'
   pull_request:
     paths:
       - 'SKILL.md'
       - '.skill-manifest.json'
       - 'agents/**'
       - 'references/**'
+      - '.github/workflows/validate.yml'
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -35,14 +38,15 @@ jobs:
             echo "✅ ${field}"
           done
 
-      - name: Check agents directory has 14 agents
+      - name: Check agents directory (>=14, grow over time)
         run: |
           count=$(ls agents/*.md 2>/dev/null | wc -l)
-          if [ "$count" -ne 14 ]; then
-            echo "❌ Expected 14 agents, found $count"
+          min=14
+          if [ "$count" -lt "$min" ]; then
+            echo "❌ Expected at least $min agents, found $count"
             exit 1
           fi
-          echo "✅ 14 agents present"
+          echo "✅ $count agents present (min $min)"
 
       - name: Check references count
         run: |

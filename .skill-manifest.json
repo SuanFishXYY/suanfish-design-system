@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "3.0.0",
-  "description": "算鱼工作室统一多智能体设计语言体系。36 位 agent 在 8 个 tier 中协同工作（v3.0 新增 Tier 0 辩证哲学层），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18。",
+  "version": "3.0.1",
+  "description": "算鱼工作室统一多智能体设计语言体系。36 位 agent 在 8 个 tier 中协同工作（v3.0 新增 Tier 0 辩证哲学层），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18 · v3.0.1 加入 301 人哲学家板凳 references/27。",
   "author": "算鱼工作室",
   "license": "MIT",
   "language": "zh-CN",

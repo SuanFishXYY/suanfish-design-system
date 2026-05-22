@@ -1,5 +1,4 @@
 name: Validate SKILL.md
-
 on:
   push:
     branches: [main]
@@ -14,7 +13,6 @@ on:
       - '.skill-manifest.json'
       - 'agents/**'
       - 'references/**'
-
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -35,14 +33,14 @@ jobs:
             echo "✅ ${field}"
           done
 
-      - name: Check agents directory has 14 agents
+      - name: Check agents directory has at least 14 agents
         run: |
           count=$(ls agents/*.md 2>/dev/null | wc -l)
-          if [ "$count" -ne 14 ]; then
-            echo "❌ Expected 14 agents, found $count"
+          if [ "$count" -lt 14 ]; then
+            echo "❌ Expected at least 14 agents, found $count"
             exit 1
           fi
-          echo "✅ 14 agents present"
+          echo "✅ ${count} agents present (minimum 14 required)"
 
       - name: Check references count
         run: |

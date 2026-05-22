@@ -1,56 +1,56 @@
 name: Validate SKILL.md
+
 on:
   push:
-    branches: [main]
+    bran ches: [main]
     paths:
       - 'SKILL.md'
-      - '.skill-manifest.json'
-      - 'agents/**'
+       - '.skill-manifest.json'
+      - 'agents/ **'
       - 'references/**'
-      - '.github/workflows/**'
   pull_request:
-    paths:
+     paths:
       - 'SKILL.md'
-      - '.skill-manifest.json'
+      - '.skill- manifest.json'
       - 'agents/**'
-      - 'references/**'
-      - '.github/workflows/**'
-  workflow_dispatch:
+      - 'r eferences/**'
+
 jobs:
   validate:
-    runs-on: ubuntu-latest
-    name: Lint SKILL.md structure
+    runs-on:  ubuntu-latest
+    name: Lint SKILL.md struct ure
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout @v4
 
       - name: Check SKILL.md exists
-        run: test -f SKILL.md
+         run: test -f SKILL.md
 
-      - name: Check required frontmatter fields
+      - name: Chec k required frontmatter fields
         run: |
-          for field in name description version author license; do
-            if ! grep -E "^${field}:" SKILL.md > /dev/null; then
-              echo "❌ Missing frontmatter field: ${field}"
+           for field in name description versi on author license; do
+            if ! grep - E "^${field}:" SKILL.md > /dev/null; then
+               echo "❌ Missing frontmatter fiel d: ${field}"
               exit 1
-            fi
+             fi
             echo "✅ ${field}"
-          done
+           done
 
-      - name: Check agents directory has at least 14 agents
+      - name: Check agents directory h as 14 agents
         run: |
-          count=$(ls agents/*.md 2>/dev/null | wc -l)
-          if [ "$count" -lt 14 ]; then
-            echo "❌ Expected at least 14 agents, found $count"
-            exit 1
+          count=$ (ls agents/*.md 2>/dev/null | wc -l)
+           if [ "$count" -ne 14 ]; then
+            ec ho "❌ Expected 14 agents, found $count"
+             exit 1
           fi
-          echo "✅ ${count} agents present (minimum 14 required)"
+          echo " ✅ 14 agents present"
 
-      - name: Check references count
+      - name: Check r eferences count
         run: |
-          count=$(ls references/*.md 2>/dev/null | wc -l)
-          echo "📚 references: $count files"
+          coun t=$(ls references/*.md 2>/dev/null | wc -l)
+           echo "📚 references: $count files" 
 
       - name: Validate manifest JSON
-        run: |
-          python3 -c "import json; json.load(open('.skill-manifest.json'))"
-          echo "✅ manifest valid JSON"
+         run: |
+          python3 -c "import json; j son.load(open('.skill-manifest.json'))"
+           echo "✅ manifest valid JSON"
+ 

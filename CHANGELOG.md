@@ -1,5 +1,33 @@
 # 变更日志（Changelog）
 
+## [2.5.1] —— v2.5 闭环补丁：ui-auditor REPORT 模板升级到 33 agent
+
+> *"lint 规则有了，REPORT 模板还卡在 24 行——不补就是 lint 失效。"*
+
+### Fixed
+
+- ❗ `agents/ui-auditor.md` REPORT 模板不再"知道"24 agent 之外的 9 个新 agent · 修复后 33 agent 全部进入覆盖率清单
+
+### Added
+
+- **三模式识别**：仪式 / 稳态 / **AI-native 叠加** —— 通过文件路径 + SSE / tool_calls / reasoning_content 等信号判别
+- **33 Agent 覆盖率清单**：REPORT 必输出每个相关 agent 的检查状态（含 v2.4 / v2.5 新增 ✨ 标记）
+- **Path G 四原则自检块**：ai-native 模式必填 · 可视化 / 归因化 / 透明化 / 可撤回 四项 ✅/❌
+- **规则编号双引用**：每条发现同时引用 `[ruleset:R-XX]`（ref 15/16）+ `[P-XX]`（ref 19）
+
+### Changed
+
+- ui-auditor frontmatter description 提及 v2.5 三模式与 Path G 强制自检
+- 「完整参考」段标注 ref 19 §三·补 · 33 agent · 53+ P-XX 规则
+
+### Philosophical Footnote
+
+> *韩非：『法不阿贵。』*
+>
+> 规则不能因为是 v2.5 新加就免审。给 24 agent 守门的审计，必须也给 33 agent 守门——否则 9 个新 agent 都在玩"3.25 边缘"。
+
+---
+
 ## [2.5.0] —— AI-native 大版本：33 agent · 7 path · 新增路径 G
 
 > *"v2.4 把工作室扩到全场景；v2.5 让工作室原生说 AI 的语言。"*

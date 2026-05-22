@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
 description: Suanfish Design System — A unified multi-agent design language system with 33 specialized agents across 7 tiers and a REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G — streaming, tool-calls, agent threads, reasoning, citations, artifacts, prompt input, rate-limits, model switching) — 7 design paths in total. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系，33 位专精 agent 协同工作，分布在 7 个 tier（含 Tier 1.5 协调层），覆盖 7 条设计路径（含 v2.5 新增 AI-native 路径），搭载 6 条 REJECT 硬规则。
-version: 2.5.0
+version: 2.5.1
 author: 算鱼工作室
 license: MIT
 language: zh-CN

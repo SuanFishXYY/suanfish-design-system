@@ -34,7 +34,8 @@ $CLIs = @(
   @{ Dir = '.claude';  Label = 'Claude Code' },
   @{ Dir = '.agents';  Label = '通用 agents 目录' },
   @{ Dir = '.codex';   Label = 'Codex CLI' },
-  @{ Dir = '.gemini';  Label = 'Gemini CLI' }
+  @{ Dir = '.gemini';      Label = 'Gemini CLI' },
+  @{ Dir = '.antigravity'; Label = 'Antigravity (Google)' }
 )
 $Linked = 0
 foreach ($cli in $CLIs) {

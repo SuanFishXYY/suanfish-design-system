@@ -29,7 +29,7 @@ fi
 
 cyan "🔌 检测 CLI"
 LINKED=0
-for pair in ".copilot:GitHub Copilot CLI" ".claude:Claude Code" ".agents:通用 agents 目录" ".codex:Codex CLI" ".gemini:Gemini CLI"; do
+for pair in ".copilot:GitHub Copilot CLI" ".claude:Claude Code" ".agents:通用 agents 目录" ".codex:Codex CLI" ".gemini:Gemini CLI" ".antigravity:Antigravity (Google)"; do
   DIR="${pair%%:*}"; LABEL="${pair##*:}"
   [ -d "$HOME/$DIR" ] || continue
   mkdir -p "$HOME/$DIR/skills"

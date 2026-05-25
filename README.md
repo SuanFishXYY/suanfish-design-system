@@ -42,7 +42,7 @@
 
 ## ⚡ 一键安装 · One-line Install
 
-> 自动检测你装了 `.copilot` / `.claude` / `.agents` / `.codex` / `.gemini` 哪些 CLI, 自动 symlink, 自动支持后续 `update` / `uninstall`。
+> 自动检测你装了 `.copilot` / `.claude` / `.agents` / `.codex` / `.gemini` / `.antigravity` 哪些 CLI/IDE, 自动 symlink, 自动支持后续 `update` / `uninstall`。
 
 ### 🚀 方式 0 · 一行命令 (推荐 · 跨平台)
 
@@ -83,10 +83,11 @@ npx -y github:SuanFishXYY/suanfish-design-system uninstall   # 移除所有 syml
 
 ```bash
 git clone https://github.com/SuanFishXYY/suanfish-design-system.git ~/.suanfish-design-system
-ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
-ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
-ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # 通用
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 44
+ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system     # GitHub Copilot CLI
+ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system      # Claude Code
+ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system      # 通用
+ln -sf ~/.suanfish-design-system ~/.antigravity/skills/suanfish-design-system # Antigravity (Google)
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 52
 ```
 
 Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。

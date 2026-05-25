@@ -15,11 +15,12 @@ const HOME = homedir();
 const TARGET = process.env.SUANFISH_HOME || join(HOME, '.' + NAME);
 const IS_WIN = platform() === 'win32';
 const CLIS = [
-  { name: 'GitHub Copilot CLI', dir: '.copilot' },
-  { name: 'Claude Code',        dir: '.claude'  },
-  { name: '通用 agents 目录',    dir: '.agents'  },
-  { name: 'Codex CLI',           dir: '.codex'   },
-  { name: 'Gemini CLI',          dir: '.gemini'  },
+  { name: 'GitHub Copilot CLI', dir: '.copilot'      },
+  { name: 'Claude Code',        dir: '.claude'       },
+  { name: '通用 agents 目录',    dir: '.agents'       },
+  { name: 'Codex CLI',           dir: '.codex'        },
+  { name: 'Gemini CLI',          dir: '.gemini'       },
+  { name: 'Antigravity (Google)', dir: '.antigravity' },
 ];
 
 const c = (s, code) => `\x1b[${code}m${s}\x1b[0m`;
@@ -96,7 +97,7 @@ function cmdInstall() {
   head('🔌 检测已安装的 CLI');
   const found = detect();
   if (found.length === 0) {
-    warn('未检测到 .copilot / .claude / .agents / .codex / .gemini');
+    warn('未检测到 .copilot / .claude / .agents / .codex / .gemini / .antigravity');
     info('如已安装某 CLI 但目录名不同, 手动 symlink:');
     info(IS_WIN
       ? `  cmd /c mklink /J "<你的目录>\\skills\\${NAME}" "${TARGET}"`
@@ -113,6 +114,7 @@ function cmdInstall() {
   info('试一下:');
   info('  Claude Code   →  /plugin (查看)  或  直接说 "我要做一个 dashboard"');
   info('  Copilot CLI   →  /skills');
+  info('  Antigravity   →  侧边栏 skills · 或在 prompt 中 @ 调用 agent');
   info('  更新          →  npx -y github:SuanFishXYY/suanfish-design-system update');
   info('  卸载          →  npx -y github:SuanFishXYY/suanfish-design-system uninstall');
   console.log();

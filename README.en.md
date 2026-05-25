@@ -16,7 +16,11 @@
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
-**99% of AI assistants always say Yes. This one has 25 hard rules + a sage congress — v4.0 dismantles the v3.x "8-sage-mandatory" pipeline and replaces it with democracy: summon k Tier 0 sages per BRIEF, recursively invite disciples (cap 15), jury-vote with 2/3 weighted majority.**
+**99% of AI assistants always say "Sure!" — this one asks "Should we even do this?" first.**
+
+25 hard rules built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
+
+**New in v4.0**: No more summoning a fixed army of 8 AI debaters per task. Now we smartly pick 1-15 "sage experts" who actually understand your specific brief, hold a mini-congress, and need 2/3 majority vote to ship. Simple task = 1 sage (saves ~80% tokens). Complex task = full debate.
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."

@@ -18,7 +18,11 @@
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 ![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
 
-**99% 的 AI 永远回答 Yes。这个 AI 现在有 25 条硬规则 + 一个圣人议会 — v4.0 砸了"八圣人固定每次全上"的地基, 改为议会民主: 因事召唤 k 位 Tier 0, 自由邀请师弟师妹 (cap 15), 陪审团 2/3 加权表决。R24 议会僵局律 + R25 引用真实律兜底。**
+**99% 的 AI 永远说"好的"。这个 AI 会先反问你: 这事真该做吗?**
+
+它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
+
+**v4.0 升级**: 不再每次召唤一堆 AI 群辩。现在按你这个具体需求, 智能挑 1-15 位最懂的"圣人专家"开个小议会, 投票 2/3 通过才出方案——简单事 1 个圣人就够 (省 80% token), 复杂事多人辩论。
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」

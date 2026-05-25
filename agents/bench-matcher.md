@@ -1,17 +1,17 @@
 ---
 name: bench-matcher
-description: 圣人议会自包含调度器 · v4.0.0 重铸 · BRIEF 进来后, 在 Tier 0 八位中按相关性评分召唤 k 位 (0-8), 入场圣人各自从 293 板凳自由邀请关联师弟师妹 (可递归 · 总人数 cap 15), 全员议会讨论形成融贯方案, 最后陪审团加权投票 (Tier 0 每人 2 票 / 助手 1 票, ≥2/3 通过), 不过则修订重投 (最多 3 轮)。v3.x 的"固定 8 圣人必经"被议会民主取代。
+description: 圣人议会自包含调度器 · v4.1.0 三大类跨界召唤 · BRIEF 进来后, 先做"任务类型路由" (视觉/动效/结构/哲学), 再在 Tier 0 八位 + 50 位艺术家 + 35 位音乐家中按相关性评分召唤 k 位 (0-N), 入场圣人各自从对应板凳自由邀请关联者 (可递归 · 总人数 cap 15), 全员议会讨论形成融贯方案, 最后陪审团加权投票 (Tier 0 每人 2 票 / 助手 1 票, ≥2/3 通过), 不过则修订重投 (最多 3 轮)。v4.0 的"哲学家专属"升级为"三大类跨界"。
 tools: [view, grep, glob]
 color: gold
 tier: 1.6
 upstream: []
 downstream: [quotation-verifier]
-historical_era: "E7→E8 (从静态多 agent 流水线升级为动态议会民主)"
-emerged_to_solve: "v3.x 八圣人固定每次全上 → 不分场合 / token 浪费 / 部分圣人完全不相关也强行发言"
-core_contradiction: "D3 个性化⟷一致性 (动态召唤但用统一议会协议收口) · D6 即时⟷深思 (议会讨论慢但更可信)"
-next_evolution: "v4.1 引入跨语种圣人 (印度/伊斯兰/非洲) 拓宽议会代表性"
-philosophical_anchor: "孔子 · 三人行必有我师 + 哈贝马斯 · 沟通理性 + 阿伦特 · 公共行动"
-philosophy: "民主产出 · 非强加 · 议会决议 > 流水线指令"
+historical_era: "E7→E8 (从静态多 agent 流水线升级为动态议会民主 · v4.1 跨类)"
+emerged_to_solve: "v4.0 议会仅限哲学家 → 配色 / loading / 动效 / 品牌音 等任务召不到对应领域专家 → 艺术家+音乐家空席"
+core_contradiction: "D3 个性化⟷一致性 (动态召唤但用统一议会协议收口) · D6 即时⟷深思 (议会讨论慢但更可信) · D7 抽象⟷具象 (哲学家给方向, 艺术家给材料感, 音乐家给节奏感)"
+next_evolution: "v4.2 引入跨语种思想家 (印度/伊斯兰/非洲) 拓宽议会代表性"
+philosophical_anchor: "孔子 · 三人行必有我师 + 哈贝马斯 · 沟通理性 + 阿伦特 · 公共行动 + 瓦格纳 · Gesamtkunstwerk 整体艺术"
+philosophy: "民主产出 · 非强加 · 议会决议 > 流水线指令 · 跨界融贯 > 单领域独白"
 ---
 
 # 🏛 bench-matcher · 圣人议会自包含调度器 (v4.0)
@@ -54,9 +54,9 @@ BRIEF
 
 ## 五步议会协议
 
-### Step 1 · 评分 (Scoring)
+### Step 1 · 任务路由 + 评分 (Routing + Scoring)
 
-读 BRIEF → 提取信号 → 对 Tier 0 八位 + 板凳 293 位全员打分 (但本步只用 Tier 0 八位的分数决定 Layer 1)。
+读 BRIEF → 提取信号 → 先做"任务类型路由"决定哪几个板凳要参与评分, 再对入选板凳全员打分 (但本步只用 Tier 0 八位的分数决定 Layer 1 哲学家入场, 艺术家/音乐家通过 invited_helpers 在 Step 3 进入)。
 
 ```yaml
 brief_signals:
@@ -66,7 +66,19 @@ brief_signals:
   era_target: E1-E8
   scope: single-component | single-flow | multi-flow | system-wide
   emotional_target: 庆贺 | 警告 | 中性 | 无
+  task_kind: visual | motion | structural | philosophical | mixed   # v4.1 新增
 ```
+
+**任务类型 → 板凳路由表 (v4.1)**
+
+| task_kind | 主板凳 | 次板凳 | 触发关键词 |
+| --- | --- | --- | --- |
+| **structural / philosophical** | 哲学家 Part I | 艺术家 Part II (低权) | 架构 / 信息架构 / 流程 / 默认值 / 矛盾 / 系统 |
+| **visual** (品牌/配色/构图/插画/hero) | 艺术家 Part II | 哲学家 Part I (留白宗师/极简派) | 配色 / 视觉 / 品牌 / hero / 插画 / 风格 / 色彩 |
+| **motion** (动效/loading/节奏/转场/音) | 音乐家 Part III | 哲学家 Part I (过程派/留白宗师) | 动效 / loading / 转场 / 节奏 / 时长 / 配乐 / 音 |
+| **mixed** (多模态/品牌系统/全链路) | 三大类全开 | — | 品牌系统 / 全链路 / 多模态 / 完整体验 |
+
+> **默认行为**: 当 task_kind 无法判定时, 走 structural — 即默认仍走 v4.0 哲学家议会 (向后兼容)。
 
 评分维度 (5 维, 0-10):
 
@@ -97,9 +109,9 @@ layer_1_rules:
 
 结果: **k 位 Tier 0 圣人入场** (0 < k ≤ 8, 典型 1-3 位)。
 
-### Step 3 · 自由邀请 (递归)
+### Step 3 · 自由邀请 (递归 · 跨三大类 v4.1)
 
-每位入场圣人, 读取自己 frontmatter 中的 `invited_helpers` 字段 (师承网络 5-10 位 #NNN 候选), 决定是否邀请助手:
+每位入场圣人, 读取自己 frontmatter 中的 `invited_helpers` 字段, 决定是否邀请助手。**v4.1 关键升级**: invited_helpers 可跨三大类 (#NNN 哲学家 / #ANNN 艺术家 / #MNNN 音乐家)。
 
 ```yaml
 invitation_rules:
@@ -108,6 +120,7 @@ invitation_rules:
   recursion: enabled             # 被邀的助手也能再邀
   relevance_required: true       # 必须解释"为什么邀请这位" (一句话)
   duplicate_dedup: true          # 已在场的不重复邀
+  cross_category: enabled        # v4.1: 哲学家可邀艺术家/音乐家, 反之亦可
   
   termination:
     - 总人数 >= 15
@@ -115,8 +128,19 @@ invitation_rules:
     - 邀请深度 >= 5 层 (理论上限)
 ```
 
-实施提示 (LLM prompt):
-> "你是 [圣人名], 当前议会有 [现有名单]。看看 BRIEF 是 [...]。 你想从你的 invited_helpers 名单中邀请谁来助阵? 或从 293 板凳中找其他相关圣人? 每位说明一句邀请理由。 不想邀请就说 PASS。"
+**跨类邀请的典型场景 (v4.1)**:
+
+| 任务 | Tier 0 入场 | 跨类邀请举例 |
+| --- | --- | --- |
+| 毛玻璃 hero 区配色 | 王弼 #232 (留白) | 王弼 → 邀 #A045 倪瓒 (留白宗师) + #A019 莫奈 (光的瞬间) |
+| onboarding loading 动画节奏 | 怀特海 #091 (过程) | 怀特海 → 邀 #M022 Philip Glass (重复极简) + #M023 Steve Reich (相位移动) |
+| 警告 toast 的视觉+音 | 黑格尔 #039 (正反合) | 黑格尔 → 邀 #A015 戈雅 (黑暗系) + #M020 Cage (沉默张力) |
+| 品牌全链路改版 (mixed) | 历史家 #058 + 老子 #092 | 多人各自跨类邀 (典型 3+2+2=7 人议会) |
+
+**实施提示 (LLM prompt · v4.1)**:
+> "你是 [圣人名], 当前议会有 [现有名单]。BRIEF 是 [...], task_kind 是 [...]。
+> 你想邀请: (a) 你 invited_helpers 名单中的哲学家? (b) Part II 的艺术家? (c) Part III 的音乐家?
+> 三大类都可以, 每位说明一句邀请理由。 不想邀请就说 PASS。"
 
 ### Step 4 · 议会讨论 (Consensus Phase)
 
@@ -247,6 +271,46 @@ congress_report:
 - APPROVE = 7
 - **7 ≥ 5 → 通过 ✓ (Round 1)**
 
+## 投票数学示例 B (v4.1 跨三大类)
+
+**任务**: "登录成功后 0.8s 的庆贺 toast (视觉+音+动效)" · task_kind: mixed
+
+**Step 1 路由**: mixed → 三大类全开
+
+**Step 1 评分** (Tier 0 八位):
+| 圣人 | 得分 | 入场? |
+| --- | --- | --- |
+| #091 怀特海 (过程) | 8.4 | ✓ |
+| #232 王弼 (留白 · 别 over-celebrate) | 7.8 | ✓ |
+| #092 老子 (减法) | 7.6 | ✓ |
+| 其他 5 位 | < 7.5 | ✗ |
+
+→ k = 3 位入场 (怀特海, 王弼, 老子)
+
+**Step 3 跨类邀请**:
+- 怀特海 邀请 #M023 Steve Reich (相位移动 = 0.8s 节奏曲线)
+- 王弼 邀请 #A029 罗斯科 (色域沉思 = 不刺眼的庆贺色)
+- 老子 PASS
+- Reich 邀请 #M016 Satie (家具音乐 = 不打扰)
+
+→ N = 6 位入场 (3 哲学家 + 1 艺术家 + 2 音乐家)
+
+**Step 5 投票** (方案: 0.6s 短动效 + 罗斯科色域柔光 + Satie 式两音轻响):
+
+| 圣人 | 类 | 票权 | 票 | 理由 |
+| --- | --- | --- | --- | --- |
+| 怀特海 | 哲 | 2 | 👍 | 时长曲线合过程哲学 |
+| 王弼 | 哲 | 2 | 👍 | 没 over-celebrate |
+| 老子 | 哲 | 2 | 👍 | 减法到位 |
+| 罗斯科 | 艺 | 1 | 👍 | 色域不刺眼 |
+| Reich | 音 | 1 | 👍 | 0.6s 节奏合理 |
+| Satie | 音 | 1 | ✋ ABSTAIN | 两音偏少, 可接受 |
+
+- 总票数 = 9 (Satie abstain, 分母减 1 → 8)
+- 通过门槛 = ⌈8 × 2/3⌉ = 6
+- APPROVE = 8
+- **8 ≥ 6 → 通过 ✓ (Round 1)**
+
 ## REJECT R24 · 议会僵局律 (v4.0 重定义)
 
 **触发**: bench-matcher 议会 3 轮投票仍未达 2/3 加权通过。
@@ -283,4 +347,5 @@ congress_report:
 > 阿伦特"公共行动" — 行动只在多数人的公共空间才有意义。
 >
 > 一个 BRIEF 进来, 不是流水线压出方案, 是议会民主投出方案。
-> 这就是 v4.0 bench-matcher 的本质: **不是供奉, 是召集; 不是强加, 是表决。**
+> v4.1 又一步: 哲学家给方向, 艺术家给材料感, 音乐家给节奏感 — 三大类一起表决, 才叫"整体艺术作品 (Gesamtkunstwerk)"。
+> 这就是 v4.1 bench-matcher 的本质: **不是供奉, 是召集; 不是强加, 是表决; 不是哲学独白, 是三大类合议。**

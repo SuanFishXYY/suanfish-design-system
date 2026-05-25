@@ -1,5 +1,33 @@
 # 变更日志（Changelog）
 
+## [3.1.1] —— sage-council 圣人议会审稿模式
+
+> "ui-auditor 审 BRIEF 出口, sage-council 审已有文件 —— 8 圣人各持一面镜子, 拼起来照出设计的全貌。"
+
+### Added
+
+- 🏛️ **agents/sage-council.md** — Tier 6 质量门新增议会审稿编排器, 与 ui-auditor 并列
+  - 入口: 用户直接扔文件 / 组件 / 截图描述
+  - 调度: 并行调度全部 8 位 Tier 0 圣人 (黑格尔 / 福柯 / 怀特海 / 老子 / 庄子 / 王弼 / 法藏 / 王充)
+  - 输出: 每圣人 1 条设计观点 → 共识问题 → 立场冲突 → 优先级改进清单
+  - 哲学锚: 孔子"三人行必有我师" + 法藏"一即一切"
+- `agent_count`: 41 → **42**
+- `tier_6_quality_gate`: ["ui-auditor"] → ["ui-auditor", "sage-council"]
+
+### Changed
+
+- SKILL.md / README.md / README.en.md / manifest 全量同步到 3.1.1
+
+### Highlights
+
+- 三种入口形成完整闭环:
+  - **需求线**: BRIEF → moment-strategist → 9 站 Tier 0 → 路径 A-G → ui-auditor → 上线
+  - **审稿线**: 已有文件 → sage-council → 8 圣人议会 → 改进清单 (可回流到需求线)
+- 让 117 位中国哲学家 + 西方 trio 真正落到"对现有设计点评"的实战场景
+- 不求合一, 但求穷尽 —— 8 立场并陈,用户自己决断
+
+---
+
 ## [3.1.0] —— 中国 Tier 0 五位上桌 · 全球首个中国哲学驱动 design system
 
 > "把老子 / 庄子 / 王弼 / 法藏 / 王充五位中国哲学家请入 Tier 0 实战 agent —— 不再只是references/27 板凳上的候选, 而是每一个 BRIEF 必经的关卡。"

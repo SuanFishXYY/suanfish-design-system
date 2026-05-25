@@ -1,6 +1,6 @@
 {
   "name": "suanfish-design-system",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "算鱼工作室统一多智能体设计语言体系。41 位 agent 在 8 个 tier 中协同工作（Tier 0 含 v3.0 西方 trio + v3.1 中国五位），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18 · v3.0.1 加入 301 人哲学家板凳 references/27 · v3.1 中国 Tier 0 五位（老子/庄子/王弼/法藏/王充）+ R19-R23（减法/多视角/留白/一即一切/疾虚妄）。",
   "author": "算鱼工作室",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 41,
+  "agent_count": 42,
   "tiers": {
     "tier_0_dialectical_philosophy": ["dialectician", "historian", "futurist", "wuwei-master", "perspectivist", "silence-architect", "holism-strategist", "debunk-auditor"],
     "tier_1_dispatch": ["moment-strategist"],
@@ -67,7 +67,7 @@
       "i18n-strategist",
       "model-switcher-stylist"
     ],
-    "tier_6_quality_gate": ["ui-auditor"]
+    "tier_6_quality_gate": ["ui-auditor", "sage-council"]
   },
   "paths": {
     "A_ceremonial": "onboarding-director",
@@ -119,7 +119,8 @@
     "agents/brand-keeper.md",
     "agents/i18n-strategist.md",
     "agents/model-switcher-stylist.md",
-    "agents/ui-auditor.md"
+    "agents/ui-auditor.md",
+    "agents/sage-council.md"
   ],
   "references_dir": "references",
   "reference_count": 24,
@@ -147,5 +148,11 @@
     "brief_pipeline_extended": "BRIEF 入场链从 4 站延长到 9 站：dialectician → historian → futurist → wuwei-master → perspectivist → silence-architect → holism-strategist → debunk-auditor → moment-strategist",
     "agent_count_jump": "36 → 41 (Tier 0 从 3 扩到 8)",
     "first_chinese_philosophy_design_system": "全球首个 Chinese-philosophy-driven design system · 117 位中国思想家进入实战 agent (从 references/27 板凳升入 Tier 0)"
+  },
+  "v3_1_1_additions": {
+    "sage_council_agent": "新增 sage-council (tier_6 质量门) · 文件驱动的圣人议会审稿入口 · 与 ui-auditor 并列",
+    "entry_mode_for_audit": "新入口模式: 用户扔文件/截图 → sage-council 并行调度 8 Tier 0 圣人 → 每位输出 1 条设计观点 → 整合议会报告",
+    "agent_count_42": "agent_count 41 → 42 · tier_6 从 1 扩到 2",
+    "complementary_to_ui_auditor": "ui-auditor 接 BRIEF 出口 (4 mode 串行体检) · sage-council 接已有文件 (8 圣人并行点评)"
   }
 }

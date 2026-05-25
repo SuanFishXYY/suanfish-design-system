@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
 description: Suanfish Design System v3.1 — A philosophy-driven multi-agent design language with 41 specialized agents across 8 tiers (Tier 0 now includes 3 Western dialecticians + 5 Chinese philosophers — Laozi/Zhuangzi/Wang Bi/Fazang/Wang Chong) and a 23-rule REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G). v3.0 added three-layer philosophy + 8-era historical positioning + R13-R18; v3.1 added Chinese Tier 0 quintet + R19-R23 (subtraction / multi-perspective / silence / holism / debunk). Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系 v3.1，41 位专精 agent（Tier 0 含西方 3 位 + 中国 5 位），覆盖 7 条设计路径，搭载 23 条 REJECT 硬规则。
-version: 3.1.0
+version: 3.1.1
 author: 算鱼工作室
 license: MIT
 language: zh-CN

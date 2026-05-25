@@ -40,9 +40,35 @@
 
 ---
 
-## ⚡ 30 秒上手 · Quick Install & Use
+## ⚡ 一键安装 · One-line Install
 
-### 方式 A · Claude Code 插件市场 (推荐)
+> 自动检测你装了 `.copilot` / `.claude` / `.agents` / `.codex` / `.gemini` 哪些 CLI, 自动 symlink, 自动支持后续 `update` / `uninstall`。
+
+### 🚀 方式 0 · 一行命令 (推荐 · 跨平台)
+
+```bash
+# 任何装了 Node 的平台 (Mac / Linux / Windows / WSL)
+npx -y github:SuanFishXYY/suanfish-design-system
+```
+
+```bash
+# Mac / Linux (不装 Node 也行)
+curl -sSL https://raw.githubusercontent.com/SuanFishXYY/suanfish-design-system/main/installer/install.sh | bash
+```
+
+```powershell
+# Windows PowerShell (不装 Node 也行)
+iwr -useb https://raw.githubusercontent.com/SuanFishXYY/suanfish-design-system/main/installer/install.ps1 | iex
+```
+
+后续运维:
+
+```bash
+npx -y github:SuanFishXYY/suanfish-design-system update      # 拉最新版
+npx -y github:SuanFishXYY/suanfish-design-system uninstall   # 移除所有 symlink
+```
+
+### 方式 A · Claude Code 插件市场
 
 ```bash
 # 在 Claude Code 里执行
@@ -50,22 +76,22 @@
 /plugin install suanfish-design-system
 ```
 
-装好后会自动加载 44 位 agent + 议会协议 + 25 条 REJECT 规则。无需任何配置。
+### 方式 B · 手动 git clone + symlink (掌控派)
 
-### 方式 B · 直接克隆 (Copilot CLI / Codex / 其他)
+<details>
+<summary>展开看手动步骤</summary>
 
 ```bash
-# 1. 克隆到项目
-git clone https://github.com/SuanFishXYY/suanfish-design-system.git .github/skills/suanfish-design-system
-
-# 2. 全局链接 (按你用的 CLI 选一行)
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.claude/skills/suanfish-design-system    # Claude Code 手动模式
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.agents/skills/suanfish-design-system    # 通用 agents 目录
-
-# 3. 验证安装
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该输出 44
+git clone https://github.com/SuanFishXYY/suanfish-design-system.git ~/.suanfish-design-system
+ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
+ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
+ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # 通用
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 44
 ```
+
+Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
+
+</details>
 
 ### 怎么用 · How to trigger
 

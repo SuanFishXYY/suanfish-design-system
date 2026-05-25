@@ -1,0 +1,25 @@
+{
+  "name": "suanfish-design-system",
+  "version": "4.0.0",
+  "description": "算鱼设计系统 · 44 agent · 8 tier · v4.0 圣人议会民主 (npx github:SuanFishXYY/suanfish-design-system 一键安装)",
+  "bin": {
+    "suanfish-install": "installer/install.mjs"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuanFishXYY/suanfish-design-system.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "claude-code-skill",
+    "design-system",
+    "ai-agents",
+    "philosophy",
+    "ux-design"
+  ]
+}

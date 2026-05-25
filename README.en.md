@@ -32,15 +32,41 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
    Pick a lean and define escape hatches.
 ```
 
-[中文 README](./README.md) · [Quick Install](#-30-seconds-quick-install) · [Why v4.0](#why-v40) · [Congress Protocol](#five-step-congress-protocol) · [5 TC Demo](docs/v4-congress-simulation.md)
+[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.0](#why-v40) · [Congress Protocol](#five-step-congress-protocol) · [5 TC Demo](docs/v4-congress-simulation.md)
 
 </div>
 
 ---
 
-## ⚡ 30 Seconds Quick Install
+## ⚡ One-line Install
 
-### Method A · Claude Code Plugin Marketplace (recommended)
+> Auto-detects which CLIs you have (`.copilot` / `.claude` / `.agents` / `.codex` / `.gemini`), auto-symlinks, supports `update` / `uninstall`.
+
+### 🚀 Method 0 · One liner (recommended · cross-platform)
+
+```bash
+# Anywhere with Node 18+ (Mac / Linux / Windows / WSL)
+npx -y github:SuanFishXYY/suanfish-design-system
+```
+
+```bash
+# Mac / Linux (no Node required)
+curl -sSL https://raw.githubusercontent.com/SuanFishXYY/suanfish-design-system/main/installer/install.sh | bash
+```
+
+```powershell
+# Windows PowerShell (no Node required)
+iwr -useb https://raw.githubusercontent.com/SuanFishXYY/suanfish-design-system/main/installer/install.ps1 | iex
+```
+
+Lifecycle:
+
+```bash
+npx -y github:SuanFishXYY/suanfish-design-system update      # pull latest
+npx -y github:SuanFishXYY/suanfish-design-system uninstall   # remove all symlinks
+```
+
+### Method A · Claude Code Plugin Marketplace
 
 ```bash
 # Inside Claude Code
@@ -48,23 +74,23 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
 /plugin install suanfish-design-system
 ```
 
-Auto-loads 44 agents + congress protocol + 25 REJECT rules. Zero config.
+### Method B · Manual git clone + symlink
 
-### Method B · Direct Clone (Copilot CLI / Codex / other)
+<details>
+<summary>Expand for manual steps</summary>
 
 ```bash
-# 1. Clone into project (or any path)
-git clone https://github.com/SuanFishXYY/suanfish-design-system.git .github/skills/suanfish-design-system
-
-# 2. Global symlink — pick ONE for your CLI
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.claude/skills/suanfish-design-system    # Claude Code (manual)
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.codex/skills/suanfish-design-system     # OpenAI Codex CLI
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.agents/skills/suanfish-design-system    # Generic agents dir
-
-# 3. Verify
+git clone https://github.com/SuanFishXYY/suanfish-design-system.git ~/.suanfish-design-system
+ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
+ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
+ln -sf ~/.suanfish-design-system ~/.codex/skills/suanfish-design-system     # Codex CLI
+ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # Generic
 ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 44
 ```
+
+On Windows PowerShell use `New-Item -ItemType Junction` instead of `ln -sf`.
+
+</details>
 
 ### How to trigger
 

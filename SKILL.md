@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
-description: Suanfish Design System v4.0 — A philosophy-driven multi-agent design language with 44 specialized agents organized around a sage congress + jury voting mechanism. v4.0 dismantles the v3.x "fixed 8-sage pipeline" — now the bench-matcher itself runs as a self-contained congress: scoring → Layer 1 summoning (k of 8 Tier 0 sages by relevance) → recursive free invitation (sages invite their disciples from the 293-philosopher bench, total cap 15) → congressional discussion (consensus + mediation) → weighted jury vote (Tier 0 = 2 votes / helpers = 1 vote, ≥2/3 majority to pass, revise & re-vote max 3 rounds, R24 deadlock rule on failure). quotation-verifier (R25) audits all citations before downstream. 7 design paths (A-G), 25-rule REJECT mechanism. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室统一多智能体设计语言体系 v4.0 — 44 位 agent · 圣人议会民主自包含 · 二级动态召唤 · 陪审团 2/3 加权表决 · 撤掉 v3.x 固定 8 圣人必经 · 议会僵局律 R24 兜底。
-version: 4.0.0
+description: "Suanfish Design System v4.2 — Philosophy-driven multi-agent design language with 52 specialized agents and a 4:4:4 (philosophers/artists/musicians) Tier 0 sage congress + weighted jury voting. Activate on slash commands '/suanfish', '/算鱼', '/suanfish-design', '/算鱼设计系统', or trigger phrases: '算鱼', 'suanfish', '召集议会', 'sage congress', '议会民主', 'bench-matcher', '4:4:4'. Also auto-loads when user mentions: designing/generating/auditing/refactoring any UI surface, hero section, landing page, dashboard, modal, design system, design tokens, animation system, copywriting voice, philosophical design, dialectical UI review. Bench-matcher runs 5-step congress: scoring → Layer 1 summoning (k of 12 Tier 0 sages by relevance, 4 philosophers + 4 artists + 4 musicians) → recursive free invitation (sages invite disciples from 301-sage bench, total cap 15) → congressional discussion (consensus + mediation) → weighted jury vote (Tier 0 = 2 votes / Tier 1.5 = 1.5 / helpers = 1, ≥2/3 majority to pass, max 3 revise rounds, R24 deadlock rule, P1-6 fix: no single-veto). quotation-verifier (R25) audits citations. 7 design paths (A-G), 25-rule + R-Cross1-4 cross-discipline REJECT mechanism. 算鱼工作室哲学驱动的多智能体设计语言体系 v4.2 — 52 agent · 4:4:4 圣人议会 · 跨学科联结/感官完整性/情感张力/环境陪伴四律 · 陪审团 2/3 加权表决 · P1-6 禁单 agent 否决权 · 议会僵局 R24 兜底."
+version: 4.2.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -11,7 +11,9 @@ philosophy_layers: [values, dialectics, laws, historical_positioning]
 tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal, wizard, data-viz, animation, tokens, react, tailwind, accessibility, responsive, copywriting, icon, empty-state, ai-native, chinese]
 ---
 
-# 算鱼设计系统 · The Studio · v3.0
+# 算鱼设计系统 · The Studio · v4.2
+
+> 🎯 **快速召唤**: 在 Copilot / Claude / Codex / Gemini / Antigravity 任一 CLI 输入 `/suanfish` 或 `/算鱼` 即可强制激活本 skill 进入议会模式。也可直接说 "用算鱼设计 XXX" / "召集议会" 等自然语言。
 
 > *一家工作室，三十六位匠人。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。*
 >

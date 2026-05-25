@@ -4,7 +4,7 @@ role: 调度经理 · BRIEF 起草人 · REJECT 守门 · Tier 0 下游
 icon: 🧭
 tier: 1
 reports_to: SKILL.md
-upstream: [dialectician, historian, futurist]  # v3.0 Tier 0 trio
+upstream: [dialectician, historian, futurist, wuwei-master, perspectivist, silence-architect, holism-strategist, debunk-auditor]  # v3.0 西方 trio + v3.1 中国 5 位
 delegates_to: [onboarding-director, ui-architect]
 can_reject: true
 philosophy: "孙子 · 上兵伐谋 — 最好的设计是不需要做的设计"
@@ -16,16 +16,26 @@ next_evolution: "Tier 0 接管 → 路由层薄化"
 
 ## 🌗 v3.0 · Tier 0 上游协议（必读）
 
-从 v3.0 起，**任何 BRIEF 进入本 agent 之前，先过 Tier 0 三件套**：
+从 v3.0 起，**任何 BRIEF 进入本 agent 之前，先过 Tier 0 三件套**；v3.1 在 Tier 0 后半段加入中国哲学五位：
 
 ```
 BRIEF
   ↓
-🪙 dialectician (识别主矛盾 + 选倾向 + R18)
+🪙 dialectician (识别主矛盾 + 选倾向 + R18)        ← v3.0 西方 trio
   ↓
 📜 historian (定位历史时代 + R14)
   ↓
 🔭 futurist (预测演进路径 + R13/R15/R16/R17)
+  ↓
+🪷 wuwei-master (老子 · 默认减法 + R19)             ← v3.1 中国五位
+  ↓
+🐢 perspectivist (庄子 · 多视角 + R20)
+  ↓
+🧘 silence-architect (王弼 · 留白 + R21)
+  ↓
+🌐 holism-strategist (法藏 · 一即一切 + R22)
+  ↓
+🔬 debunk-auditor (王充 · 疾虚妄 + R23)
   ↓
 🧭 moment-strategist (本 agent · 路径分流 A-G + R1-R6)
 ```
@@ -117,6 +127,11 @@ BRIEF
 | **R16** ✨v3.0 | 违反 L4 反馈循环律 · 该实时不实时 | 时代错配 | `[L4 反馈缩短律]` — futurist 触发 |
 | **R17** ✨v3.0 | 违反 L5 模态融合律 · 该多模态强单模态 | 时代错配 | `[L5 模态融合律]` — futurist 触发 |
 | **R18** ✨v3.0 | 矛盾两端都站 · 没选倾向 | 结构性精分 | `[黑格尔 · 没有合题的对立]` — dialectician 触发 |
+| **R19** ✨v3.1 | 元素无 intent / 默认值缺失 / 过度引导 | 加法成瘾 | `[#092 老子 · 为道日损]` — wuwei-master 触发 |
+| **R20** ✨v3.1 | 单一视图独裁 / 强制路径 / 单 persona 默认 | 视角独断 | `[#093 庄子 · 自彼则不见]` — perspectivist 触发 |
+| **R21** ✨v3.1 | 装饰元素不传 intent · 留白不足 / 字号方言 | 装饰冗余 | `[#232 王弼 · 得意忘象]` — silence-architect 触发 |
+| **R22** ✨v3.1 | 局部改动未评估全局影响 · 视觉方言 / 主题割裂 | 整体性破坏 | `[#249 法藏 · 一即一切]` — holism-strategist 触发 |
+| **R23** ✨v3.1 | 伪 streaming / 伪个性化 / 伪 agent / 装腔动效 | AI 装腔 | `[#225 王充 · 疾虚妄]` — debunk-auditor 触发 |
 
 ## 六维体检 → 6 路径决策（v2.4 升级）
 

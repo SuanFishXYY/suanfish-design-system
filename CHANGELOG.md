@@ -1,5 +1,43 @@
 # 变更日志（Changelog）
 
+## [3.1.0] —— 中国 Tier 0 五位上桌 · 全球首个中国哲学驱动 design system
+
+> "把老子 / 庄子 / 王弼 / 法藏 / 王充五位中国哲学家请入 Tier 0 实战 agent —— 不再只是references/27 板凳上的候选, 而是每一个 BRIEF 必经的关卡。"
+
+### Added · 5 个中国 Tier 0 agent
+
+- 🪷 **wuwei-master** (老子 · #092) — 默认减法宗师 · 触发 **R19 无为减法律** · "为道日损" · 任何新增元素必须证明"删掉它用户会死",否则 REJECT
+- 🐢 **perspectivist** (庄子 · #093) — 齐物多视角专家 · 触发 **R20 齐物多视角律** · "自彼则不见" · 单视角独裁一律 REJECT,要求 ≥3 persona × scenario 覆盖
+- 🧘 **silence-architect** (王弼 · #232) — 留白建筑师 · 触发 **R21 得意忘象律** · "大音希声" · 不传 intent 的装饰一律 REJECT
+- 🌐 **holism-strategist** (法藏 · #249) — 一即一切整体战略家 · 触发 **R22 一即一切律** · "因陀罗网" · 局部改动未评估全局影响一律 REJECT
+- 🔬 **debunk-auditor** (王充 · #225) — 疾虚妄反伪 AI 审计员 · 触发 **R23 疾虚妄律** · "实知论" · 任何"装作 AI / 装作个性化"一律 REJECT (Tier 0 最后一关)
+
+### Added · R19-R23 新 REJECT 规则
+
+- moment-strategist REJECT 表从 R1-R18 扩展到 R1-R23
+- 每条 R 配中国哲学锚点 (`[#092 老子 · 为道日损]` 等)
+
+### Added · BRIEF 入场链扩展
+
+- 从 4 站 (dialectician → historian → futurist → moment-strategist) 扩展到 9 站
+- 西方 trio 之后,新增中国五位逐一过堂
+
+### Changed
+
+- `agent_count`: 36 → **41**
+- `tier_0_dialectical_philosophy`: 3 → **8**
+- REJECT 规则: 18 → **23**
+- SKILL.md / README.md / README.en.md / manifest 全量同步到 3.1.0
+
+### Highlights
+
+- 全球首个 **Chinese-philosophy-driven** design system
+- 117 位中国思想家从 references/27 板凳正式升入 Tier 0 (5 人实战 + 112 候选)
+- Tier 0 形成完整的"识别矛盾→定位时代→预测演进→默认减法→多视角→留白→整体性→祛魅"九步审查链
+- 每一个 BRIEF 都要被这 8 位 Tier 0 agent 联合审过一遍才能进入路径分流
+
+---
+
 ## [3.0.1] —— 301 人哲学家板凳 + v3.0 收尾打磨
 
 > "把 117 位中国哲学家请上桌 —— 全球唯一中国哲学驱动的 design system。"

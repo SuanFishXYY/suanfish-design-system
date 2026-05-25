@@ -30,9 +30,67 @@
    请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🤖 看 36 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4-congress-simulation.md) · [ 🤖 看 44 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
+
+---
+
+## ⚡ 30 秒上手 · Quick Install & Use
+
+### 方式 A · Claude Code 插件市场 (推荐)
+
+```bash
+# 在 Claude Code 里执行
+/plugin marketplace add SuanFishXYY/suanfish-marketplace
+/plugin install suanfish-design-system
+```
+
+装好后会自动加载 44 位 agent + 议会协议 + 25 条 REJECT 规则。无需任何配置。
+
+### 方式 B · 直接克隆 (Copilot CLI / Codex / 其他)
+
+```bash
+# 1. 克隆到项目
+git clone https://github.com/SuanFishXYY/suanfish-design-system.git .github/skills/suanfish-design-system
+
+# 2. 全局链接 (按你用的 CLI 选一行)
+ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.copilot/skills/suanfish-design-system   # GitHub Copilot CLI
+ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.claude/skills/suanfish-design-system    # Claude Code 手动模式
+ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.agents/skills/suanfish-design-system    # 通用 agents 目录
+
+# 3. 验证安装
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该输出 44
+```
+
+### 怎么用 · How to trigger
+
+**直接对你的 AI 说话, 涉及以下关键词时自动启用**:
+
+> UI / 设计 / 组件 / 动画 / 文案 / a11y / 弹窗 / 引导 / 图表 / 对话 / 通知 / 移动端 / AI 助手界面
+
+**示例 BRIEF**:
+
+```
+你: "帮我设计一个企业 dashboard 的毛玻璃数据卡片"
+
+算鱼: 🏛 议会召唤中...
+      ① 评分: silence-architect (8.5) / holism-strategist (7.85) / wuwei-master (7.65) 入场
+      ② 邀请: 西田 / 海德格尔 / 怀特海 / 维纳 / 庄子 (5 助手)
+      ③ 讨论: blur 半径三态辩证 + 200ms 反馈环 + 暗黑模式自动反转
+      ④ 投票: 7/10 = 70% ≥ 67% ✓ 第 1 轮通过
+      → 5 条具体设计决策 + 引用核验 + 路径推荐 Path B
+```
+
+完整 5 TC 演示见 → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
+
+### REJECT 示例 · 你会看到的样子
+
+```
+你: "登录页加个 10 秒品牌动画, 每天都播"
+算鱼: 🛑 REJECT —— R1 + R2 双重命中: 强加体验 + 高频骚扰
+      预计 30 天后 DAU 跌 4%。退回业务方。
+```
 
 ---
 
@@ -407,18 +465,9 @@ classDiagram
 
 ---
 
-## 🚀 快速安装
+## 🚀 完整安装文档
 
-```bash
-# 1. 克隆到项目
-git clone https://github.com/<owner>/suanfish-design-system .github/skills/suanfish-design-system
-
-# 2. （可选）全局链接给 GitHub Copilot CLI / Claude Code / Codex 使用
-ln -sf "$(pwd)/.github/skills/suanfish-design-system" ~/.copilot/skills/suanfish-design-system
-
-# 3. 在 CLI 里触发
-# 任意涉及 UI / 设计 / 动画 / 文案 / a11y / 模态 / 向导 / 图表的请求都会自动启用
-```
+详见顶部 [⚡ 30 秒上手](#-30-秒上手--quick-install--use) 章节, 含 Claude Code 插件市场 + 直接克隆两种方式 + trigger 示例。
 
 ---
 

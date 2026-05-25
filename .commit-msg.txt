@@ -1,0 +1,50 @@
+﻿feat(v4.1.0): Tier 0 三大类圣人议会 · 12 位跨类圣人 + README 全量重写
+
+🌟 v4.1 核心: Tier 0 从 8 哲学家 → 12 位三大类圣人
+
+新晋 Tier 0 (4 位)
+  🎨 form-liberator     #A002 米开朗基罗 · 减法雕塑 (与 wuwei-master 互证)
+  🎨 void-painter       #A045 倪瓒 · 中国留白宗师 (与 silence-architect 互证)
+  🎵 counterpoint-architect #M001 巴赫 · 对位结构祖 (与 futurist 互证)
+  🎵 silence-composer   #M020 凯奇 · 4'33" 沉默 (与 silence-architect 互证)
+
+设计原则
+  留白宗师三角: 王弼 #232 · 倪瓒 #A045 · 凯奇 #M020 三大类各一位"反过度"代表
+
+bench-matcher.md Step 2 升级
+  candidates: 8 → 12 (philosophers/artists/musicians 三组)
+  task_kind_priors: visual→artists +0.5 · motion→musicians +0.5 · structural→philosophers +0.5
+
+references/27-philosopher-bench.md "已开采"表
+  v4.0 八位 → v4.1 十二位三大类拆分
+
+README.md 重写
+  - badge: 4.0→4.1 · philosophers 301→thinkers 420 · agents 44→48
+  - 议会五步协议升级为六步(加入 Step 1 路由)
+  - 新增"v4.1 Tier 0 三大类·12 位圣人"表
+  - 议会调用成本表加入 visual/motion/mixed 三种 task_kind
+  - 知识库说明从"301 板凳"升级到"420 思想家·三大类"
+  - 文件树补 4 个新 agent + 修缮 references 段
+  - 删除遗留旧 file tree 重复段落
+
+README.en.md 重写
+  - badge 同步
+  - "Why v4.1" 新章 · 12 sages cross 3 categories 表
+  - Five-Step → 6-Step Cross-Category Protocol
+  - 新增 Voting math example B (login toast mixed)
+  - 420-Thinker Bench (Part I+II+III) 说明
+  - void-master triangle 跨类共振说明
+
+package.json
+  version: 4.0.0 → 4.1.0
+
+新增 agent 文件 (4)
+  agents/form-liberator.md
+  agents/void-painter.md
+  agents/counterpoint-architect.md
+  agents/silence-composer.md
+
+向后兼容
+  task_kind 无法判定时默认 structural = v4.0 路径不变 · 老调用零迁移
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>

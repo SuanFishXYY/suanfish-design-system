@@ -12,8 +12,9 @@
 
 ---
 
-## 1. 已开采 · v4.0 八位 Tier 0 圣人 (Sage Congress 核心)
+## 1. 已开采 · v4.1 十二位 Tier 0 圣人 (三大类 Sage Congress 核心)
 
+### 🏛 Part I 哲学家 8 位
 | # | 人物 | 用途 | 已映射到 |
 |---|---|---|---|
 | #039 | 黑格尔 | 正反合辩证 | `dialectician` agent · R18 矛盾两端都站 |
@@ -25,7 +26,20 @@
 | #056 | 梅洛庞蒂 | 身体现象学 | `perspectivist` agent · 多视角具身 |
 | #225 | 王充 | 论衡 / 疾虚妄 | `debunk-auditor` agent · R25 引用真实律 |
 
+### 🎨 Part II 艺术家 2 位 (v4.1 新晋 Tier 0)
+| # | 人物 | 用途 | 映射到 |
+|---|---|---|---|
+| #A002 | 米开朗基罗 | 形从石中显现 / 减法雕塑 | `form-liberator` (新 agent · 与 wuwei-master 互证) |
+| #A045 | 倪瓒 | 中国文人极简 / 留白宗师 | `void-painter` (新 agent · 与 silence-architect 互证) |
+
+### 🎵 Part III 音乐家 2 位 (v4.1 新晋 Tier 0)
+| # | 人物 | 用途 | 映射到 |
+|---|---|---|---|
+| #M001 | 巴赫 | 对位法 / 平均律 / 算法美学祖 | `counterpoint-architect` (新 agent · 结构层) |
+| #M020 | 凯奇 (Cage) | 4'33" / 偶然 / 沉默即作品 | `silence-composer` (新 agent · 与 silence-architect 互证) |
+
 > 另: #086 维纳 (控制论) 锚定 R16 反馈循环律但未独立成 agent
+> v4.1 设计原则: 留白宗师三角 (王弼 #232 · 倪瓒 #A045 · 凯奇 #M020) — 三大类各出一位"反过度"代表, 形成跨类共振。
 
 ---
 

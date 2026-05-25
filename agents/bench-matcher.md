@@ -90,24 +90,44 @@ brief_signals:
 | 反盲点 (与已入场者互补) | 15% |
 | 中西分布 (软约束) | 10% |
 
-### Step 2 · Layer 1 召唤 (Tier 0 八位中选 k)
+### Step 2 · Layer 1 召唤 (Tier 0 十二位中选 k · v4.1)
 
 ```yaml
 layer_1_rules:
   threshold: 7.5
-  candidates: [dialectician #039, historian #058, futurist #091,
-               wuwei-master #092, perspectivist #093,
-               silence-architect #232, holism-strategist #249, debunk-auditor #225]
+  candidates:
+    philosophers:                # 哲学家 8 位 (v4.0 原班)
+      - dialectician #039
+      - historian #058
+      - futurist #091
+      - wuwei-master #092
+      - perspectivist #093
+      - silence-architect #232
+      - holism-strategist #249
+      - debunk-auditor #225
+    artists:                     # 艺术家 2 位 (v4.1 新晋)
+      - form-liberator #A002         # 米开朗基罗 · 减法雕塑
+      - void-painter #A045           # 倪瓒 · 中国留白
+    musicians:                   # 音乐家 2 位 (v4.1 新晋)
+      - counterpoint-architect #M001 # 巴赫 · 结构祖
+      - silence-composer #M020       # 凯奇 · 4'33" 沉默
   
-  if 所有八位得分 >= 7.5:
-    召唤所有得分 >= 7.5 的, cap 8
+  task_kind_priors:              # task_kind 给对应类别 +0.5 软加分
+    visual:        +0.5 给 artists
+    motion:        +0.5 给 musicians
+    structural:    +0.5 给 philosophers
+    philosophical: +0.5 给 philosophers
+    mixed:         无加分 (公平竞争)
+  
+  if 所有十二位得分 >= 7.5:
+    召唤所有得分 >= 7.5 的, cap 12
   elif 至少一位 >= 7.5:
     召唤所有 >= 7.5 的
   else:
     fallback: 召唤 top-1 by score (保证议会不空场)
 ```
 
-结果: **k 位 Tier 0 圣人入场** (0 < k ≤ 8, 典型 1-3 位)。
+结果: **k 位 Tier 0 圣人入场** (0 < k ≤ 12, 典型 1-4 位)。
 
 ### Step 3 · 自由邀请 (递归 · 跨三大类 v4.1)
 

@@ -4,9 +4,9 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-4.0.0-blueviolet)
-![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
-![agents](https://img.shields.io/badge/agents-44-purple)
+![version](https://img.shields.io/badge/version-4.1.0-blueviolet)
+![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
+![agents](https://img.shields.io/badge/agents-48-purple)
 ![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
@@ -22,7 +22,7 @@
 
 它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
 
-**v4.0 升级**: 不再每次召唤一堆 AI 群辩。现在按你这个具体需求, 智能挑 1-15 位最懂的"圣人专家"开个小议会, 投票 2/3 通过才出方案——简单事 1 个圣人就够 (省 80% token), 复杂事多人辩论。
+**v4.1 升级**: 圣人议会从"8 位哲学家"扩展到"**12 位三大类 Tier 0**" (8 哲学家 + 2 艺术家 + 2 音乐家)。任务类型路由智能匹配——配色/品牌任务召艺术家, loading/动效任务召音乐家, 哲学/系统任务召哲学家, 复杂任务三大类合议。简单事 1 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」
@@ -34,7 +34,7 @@
    请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4-congress-simulation.md) · [ 🤖 看 44 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4-congress-simulation.md) · [ 🤖 看 48 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
 
@@ -124,9 +124,19 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 
 ---
 
-## 🏛 核心机制 · v4.0 圣人议会民主
+## 🏛 核心机制 · v4.1 三大类圣人议会民主
 
-**这是算鱼和其他设计 AI 最根本的区别**——不是"AI 给你答案", 而是"AI 帮你召开一场专家会议给你答案"。
+**这是算鱼和其他设计 AI 最根本的区别**——不是"AI 给你答案", 而是"AI 帮你召开一场跨三大类专家会议给你答案"。
+
+### 🌟 v4.1 Tier 0 三大类 · 12 位圣人
+
+| 类 | 数 | 圣人 (锚 #ID) |
+| --- | --- | --- |
+| 🏛 **哲学家** | 8 | 黑格尔#039 · 福柯#058 · 怀特海#091 · 庄子#093 · 王弼#232 · 法藏#249 · 梅洛庞蒂#056 · 王充#225 |
+| 🎨 **艺术家** | 2 | 米开朗基罗#A002 (`form-liberator` 减法雕塑) · 倪瓒#A045 (`void-painter` 中国留白) |
+| 🎵 **音乐家** | 2 | 巴赫#M001 (`counterpoint-architect` 对位结构) · 凯奇#M020 (`silence-composer` 4'33"沉默) |
+
+> **设计原则**: 留白宗师三角 (王弼/倪瓒/凯奇) — 三大类各出一位"反过度"代表, 形成跨类共振。
 
 ```
                           你的 BRIEF
@@ -134,13 +144,14 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
         ┌─────────────────────────────────────────┐
         │   🏛 议会五步协议 (bench-matcher 全包)     │
         ├─────────────────────────────────────────┤
-        │  ① 评分   8 位 Tier 0 圣人按需求 5 维打分  │
-        │  ② 召唤   ≥7.5 分的入场 (通常 1-3 位)      │
-        │  ③ 邀请   入场圣人从 293 板凳叫师弟师妹    │
-        │           (单人配额 3 · 总数封顶 15)       │
-        │  ④ 讨论   全员陈述 → 合并共识 → 调解冲突   │
-        │  ⑤ 投票   Tier 0 = 2 票 / 助手 = 1 票      │
-        │           ≥ 2/3 通过 · 不过重投 (max 3 轮) │
+        │  ① 路由   task_kind: visual/motion/...   │
+        │           visual→艺术家 · motion→音乐家   │
+        │  ② 评分   12 位 Tier 0 按需求 5 维打分   │
+        │  ③ 召唤   ≥7.5 分入场 (典型 1-4 位)      │
+        │  ④ 邀请   跨三大类师承网络 (cap 15)       │
+        │  ⑤ 讨论   全员陈述 → 共识 → 调解冲突      │
+        │  ⑥ 投票   Tier 0 = 2 票 / 助手 = 1 票    │
+        │           ≥ 2/3 通过 · 不过重投 (max 3)  │
         └─────────────────────────────────────────┘
                               ↓
                   🔍 引用核验 (R25 兜底)
@@ -148,30 +159,39 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
                  🧭 派单 → Path A-G → 🛡 体检
 ```
 
-### 议会的三个关键设计
+### 议会的四个关键设计 (v4.1)
 
-| 设计 | 解决什么问题 | v3 时代的做法 |
+| 设计 | 解决什么问题 | v4.0 时代的做法 |
 | --- | --- | --- |
-| **动态召唤** | 简单需求不需要 8 个 AI 群辩, 一个就够 | v3.x 八圣人每次固定全上 (token 浪费) |
-| **加权投票** | Tier 0 (核心圣人) 权重 2×, 助手 1× | v3.x 没有投票, 谁声音大听谁的 |
-| **议会僵局律 (R24)** | 3 轮投不过 → 不假装通过, 直接升级用户 | v3.x 强行 "和稀泥" 出方案 |
+| **三大类 Tier 0** | 配色用艺术家 / 动效用音乐家, 不再哲学家硬抗 | v4.0 八圣人皆哲学家, 视觉/动效靠抽象 |
+| **任务类型路由** | task_kind 路由到对应板凳, 不空转 | v4.0 无路由, 哲学家硬评所有任务 |
+| **动态召唤** | 简单需求 1 个圣人就够 | v3.x 八圣人每次固定全上 (token 浪费) |
+| **加权投票 + R24** | Tier 0 = 2 票 / 助手 = 1 票 · 3 轮投不过升级用户 | v3.x 没投票, 谁声音大听谁的 |
 
 ### 议会调用成本
 
-| BRIEF 类型 | 入场人数 | LLM 调用 | 对比 v3.x |
-| --- | --- | --- | --- |
-| 简单调整 (圆角/颜色) | 1 圣人 | ~5 calls | **省 80%** |
-| 中等组件 (毛玻璃卡片) | 8 人 | ~18 calls | 省 30% |
-| 复杂系统 (企业级 DS) | 15 人 (封顶) | ~50 calls | 持平 |
-| 哲学冲突 (要 2 轮投票) | 9 人 | ~25 calls | 持平 |
+| BRIEF 类型 | task_kind | 入场人数 | LLM 调用 | 对比 v3.x |
+| --- | --- | --- | --- | --- |
+| 简单调整 (圆角/颜色) | structural | 1 圣人 | ~5 calls | **省 80%** |
+| 品牌 hero 配色 | visual | 3-5 人 (艺为主) | ~12 calls | 省 50% |
+| loading 动效节奏 | motion | 3-5 人 (音为主) | ~12 calls | 省 50% |
+| 中等组件 (毛玻璃卡片) | structural | 6-8 人 | ~18 calls | 省 30% |
+| 全链路改版 (品牌系统) | mixed | 10-15 人 (三大类合议) | ~40 calls | 持平 |
+| 哲学冲突 (要 2 轮投票) | philosophical | 9 人 | ~25 calls | 持平 |
 
 📖 完整 5 TC 演示 → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
 
 ---
 
-## 🌗 三层哲学 + 301 板凳 (议会的"知识库")
+## 🌗 三层哲学 + 420 思想家 (议会的"知识库")
 
-**议会能开起来, 是因为底下有 301 位真实哲学家做后盾** —— 不是 LLM 瞎编圣人, 每条引用都能在板凳里查到。
+**议会能开起来, 是因为底下有 420 位真实思想家做后盾** —— 不是 LLM 瞎编圣人, 每条引用都能在板凳里查到。
+
+| Part | 数 | 内容 | 用途 |
+| --- | --- | --- | --- |
+| **Part I 哲学家** | 335 | 古希腊 → 当代设计/媒介/中文 (含 Don Norman / Christopher Alexander / Byung-Chul Han / 蒋勋 / 王澍 / 陈嘉映) | 价值取向 · 矛盾辩证 · 系统结构 |
+| **Part II 艺术家** | 50 | 文艺复兴 → 当代 + 中国书画 (含 达芬奇 / 米开朗基罗 / 倪瓒 / 陈丹青 / 木心) | 配色 / 构图 / 视觉文化锚点 |
+| **Part III 音乐家** | 35 | 巴洛克 → ambient + 中国民乐 (含 巴赫 / 海顿 / 贝多芬 / 凯奇 / Brian Eno / 坂本龙一) | 节奏 / 结构 / 配乐 / 氛围 |
 
 | Layer | 回答什么 | R 规则 |
 | --- | --- | --- |
@@ -180,7 +200,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 | **发展规律** [📖](references/25-philosophy-laws.md) | 矛盾如何随时间漂移? | R13-R17 |
 | **历史定位** [📖](references/26-historical-positioning.md) | 这个时代该怎么做? | — |
 
-📚 **[301 位哲学家板凳 →](references/27-philosopher-bench.md)**（117 位中国 + 184 位西方/全球, 每位带"一句话核心 + 设计钩子"）
+📚 **[420 位思想家板凳 →](references/27-philosopher-bench.md)** (335 哲学家 + 50 艺术家 + 35 音乐家 · 每位带"一句话核心 + 设计钩子")
 
 ---
 
@@ -455,7 +475,7 @@ classDiagram
 
 ### 3. 引用真实律 (R25 兜底)
 
-凡是议会引用的圣人观点 (如"老子说...""维特根斯坦认为...") 都要在 301 板凳里查到原文。LLM 编一句话装作圣人说的? `quotation-verifier` 直接打回重审。
+凡是议会引用的圣人观点 (如"老子说..."/"米开朗基罗说..."/"凯奇说...") 都要在 420 思想家板凳里查到原文。LLM 编一句话装作圣人说的? `quotation-verifier` 直接打回重审。
 
 ### 与其他工具一句话对比
 
@@ -463,7 +483,7 @@ classDiagram
 | --- | --- | --- | --- | --- |
 | 本质 | 44 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
 | 会说 NO | ✅ R1-R25 | ❌ | ❌ | ❌ 永远 yes |
-| 引用可追溯 | ✅ 301 板凳兜底 | N/A | N/A | ❌ 黑盒 |
+| 引用可追溯 | ✅ 420 思想家板凳兜底 | N/A | N/A | ❌ 黑盒 |
 | 适合谁 | 内部产品 / design ops 团队 | 独立开发者 | 商业 SaaS | 个人项目 |
 
 ---
@@ -517,20 +537,23 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 44 位匠人 (v4.0: Tier 0 议会 8 位 + bench-matcher + quotation-verifier + ...)
-│   ├── bench-matcher.md          # ⭐ v4.0 议会核心
+├── agents/                  # 48 位匠人 (v4.1: Tier 0 议会 12 位 = 8哲+2艺+2音 + bench-matcher + quotation-verifier + ...)
+│   ├── bench-matcher.md          # ⭐ v4.1 三大类议会核心
 │   ├── quotation-verifier.md     # ⭐ R25 引用核验
-│   ├── dialectician.md           # ⭐ Tier 0 ×8
+│   ├── dialectician.md           # ⭐ Tier 0 哲学家 ×8
+│   ├── form-liberator.md         # ⭐ v4.1 Tier 0 艺术家 · 米开朗基罗
+│   ├── void-painter.md           # ⭐ v4.1 Tier 0 艺术家 · 倪瓒
+│   ├── counterpoint-architect.md # ⭐ v4.1 Tier 0 音乐家 · 巴赫
+│   ├── silence-composer.md       # ⭐ v4.1 Tier 0 音乐家 · 凯奇
 │   ├── moment-strategist.md
-│   └── ... (40 more)
-├── docs/
+│   ├── ... (44+ agents)
 │   └── v4-congress-simulation.md # ⭐ 5 TC 议会演示
-└── references/              # 27 份规范 + 301 哲学家板凳
+└── references/              # 27 份规范 + 420 思想家板凳
     ├── 17-philosophy.md
     ├── 24-philosophy-dialectics.md
     ├── 25-philosophy-laws.md
     ├── 26-historical-positioning.md
-    └── 27-philosopher-bench.md   # ⭐ 301 圣人板凳
+    └── 27-philosopher-bench.md   # ⭐ 420 思想家板凳 (335 哲 + 50 艺 + 35 音)
 ```
 
 ---

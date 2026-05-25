@@ -4,21 +4,21 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-3.2.0-blueviolet)
+![version](https://img.shields.io/badge/version-3.3.0-blueviolet)
 ![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
-![agents](https://img.shields.io/badge/agents-43-purple)
+![agents](https://img.shields.io/badge/agents-45-purple)
 ![tier-0](https://img.shields.io/badge/Tier_0-3西方+5中国-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![AI-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
-![rules](https://img.shields.io/badge/REJECT-R1--R23-red)
+![rules](https://img.shields.io/badge/REJECT-R1--R25-red)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 ![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
 
-**99% 的 AI 永远回答 Yes。这个 AI 有 23 条硬规则可以拒单 — v3.0 R13-R18 西方哲学 + v3.1 R19-R23 中国哲学触发的 REJECT。**
+**99% 的 AI 永远回答 Yes。这个 AI 有 25 条硬规则可以拒单 — v3.0 R13-R18 西方哲学 + v3.1 R19-R23 中国哲学 + v3.3 R24-R25 复杂度匹配律 / 引用真实律。**
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」

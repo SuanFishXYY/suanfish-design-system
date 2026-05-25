@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "3.2.0",
-  "description": "算鱼工作室统一多智能体设计语言体系。41 位 agent 在 8 个 tier 中协同工作（Tier 0 含 v3.0 西方 trio + v3.1 中国五位），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18 · v3.0.1 加入 301 人哲学家板凳 references/27 · v3.1 中国 Tier 0 五位（老子/庄子/王弼/法藏/王充）+ R19-R23（减法/多视角/留白/一即一切/疾虚妄）。",
+  "version": "3.3.0",
+  "description": "算鱼工作室统一多智能体设计语言体系。45 位 agent 在 11 个 tier 中协同工作（Tier 0 含 v3.0 西方 trio + v3.1 中国五位 · Tier 0.5 complexity-triager 三档通道 · Tier 1.7 quotation-verifier 引用核验），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18 · v3.0.1 加入 301 人哲学家板凳 · v3.1 中国 Tier 0 五位 + R19-R23 · v3.2 bench-matcher 动态召唤 · v3.3 complexity-triager + quotation-verifier + R24-R25（复杂度匹配律 / 引用真实律）。",
   "author": "算鱼工作室",
   "license": "MIT",
   "language": "zh-CN",
@@ -29,12 +29,14 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 43,
+  "agent_count": 45,
   "tiers": {
+    "tier_0_5_complexity_triage": ["complexity-triager"],
     "tier_0_dialectical_philosophy": ["dialectician", "historian", "futurist", "wuwei-master", "perspectivist", "silence-architect", "holism-strategist", "debunk-auditor"],
     "tier_1_dispatch": ["moment-strategist"],
     "tier_1_5_coordination": ["flow-coordinator"],
     "tier_1_6_bench_matching": ["bench-matcher"],
+    "tier_1_7_citation_verification": ["quotation-verifier"],
     "tier_2_lead": ["onboarding-director", "ui-architect", "conversation-director", "notification-director"],
     "tier_3_container_specialist": [
       "modal-craftsman",
@@ -80,6 +82,7 @@
     "G_ai_native": "conversation-director (overlay on C/B/F)"
   },
   "agents": [
+    "agents/complexity-triager.md",
     "agents/dialectician.md",
     "agents/historian.md",
     "agents/futurist.md",
@@ -91,6 +94,7 @@
     "agents/moment-strategist.md",
     "agents/flow-coordinator.md",
     "agents/bench-matcher.md",
+    "agents/quotation-verifier.md",
     "agents/onboarding-director.md",
     "agents/ui-architect.md",
     "agents/conversation-director.md",
@@ -164,5 +168,15 @@
     "agent_count_jump": "42 → 43",
     "first_dynamic_philosopher_summoning": "首个'按任务动态召唤哲学家'的设计系统 · 不再供奉固定圣人 · 召唤当下最契合的师傅",
     "scoring_dimensions": "5 维评分: 设计钩子命中 40% / 矛盾倾向 20% / 时代契合 15% / 反盲点 15% / 中西分布 10%"
+  },
+  "v3_3_0_additions": {
+    "complexity_triager_agent": "新增 complexity-triager (tier_0_5) · BRIEF 复杂度分诊员 · 在所有 Tier 0 之前决定 fast/standard/full 三档通道 · 解决'做个登录按钮也要走 10 stage'的过度工程问题",
+    "quotation_verifier_agent": "新增 quotation-verifier (tier_1_7) · bench-matcher 输出的圣人引用真实性核验 · 检出 LLM 虚构引用 / 张冠李戴 / 钩子漂移 · 出现虚构 → REJECT R25",
+    "three_mode_pipeline": "fast (≤5 LLM call · 跳过 Tier 0 + bench-matcher) / standard (≤12 · 跳过 bench-matcher) / full (15-25 · 全套)",
+    "new_reject_rules": "R24 复杂度匹配律 (反 over-engineering) · R25 引用真实律 (反 LLM 引用幻觉)",
+    "agent_count_jump": "43 → 45",
+    "tier_count_jump": "9 → 11 (加 tier_0_5 + tier_1_7)",
+    "self_critique_response": "v3.3 是对 v3.2 蓝军自审的直接回应 · 解决'复杂度内卷'和'引用造假风险'两个真痛点 · 不加 feature 而是补地基",
+    "honest_positioning": "v3.3 不再宣称'更哲学', 而是'更可信 + 更轻量可用'"
   }
 }

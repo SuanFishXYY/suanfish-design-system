@@ -1,5 +1,49 @@
 # 变更日志（Changelog）
 
+## [3.3.0] —— 蓝军自审 · fast-mode + 引用真实律 · 补地基不加 feature
+
+> "v3.2 之后用户做了一次客观蓝军评估 · 戳出两个真痛点: ① 复杂度内卷 (做个按钮也要走 10 stage) ② 引用造假风险 (LLM 编圣人语录)。v3.3 不加新哲学层 · 直接补这两个洞。"
+
+### Added
+
+- 🚦 **agents/complexity-triager.md** — 新 Tier 0.5 agent · BRIEF 复杂度分诊员
+  - 位置: 在所有 Tier 0 之前 (流程最前端)
+  - 职能: 给 BRIEF 打 fast / standard / full 三档标签
+  - fast (≤30 字 + 5 套高频搭配) → 跳过 Tier 0 + bench-matcher · ≤5 LLM call
+  - standard (默认) → 走 Tier 0 八圣人 · 跳过 bench-matcher · ≤12 LLM call
+  - full (复杂跨路径) → 全套 · 15-25 LLM call
+  - 支持用户 override ("升级到 full" / "降级到 fast")
+
+- 🔍 **agents/quotation-verifier.md** — 新 Tier 1.7 agent · 引用真实性核验员
+  - 位置: bench-matcher 下游 · moment-strategist 上游
+  - 职能: 核验 bench-matcher 输出的"#NNN 圣人 / 理论依据 / 设计钩子"是否真实存在于 references/27
+  - 三重检查: 编号存在 / 人名匹配 / 钩子语义一致
+  - 失败 → REJECT R25 + retry (max 2)
+
+- **R24 复杂度匹配律**: 简单任务套用 full 通道 → REJECT (由 complexity-triager 判)
+- **R25 引用真实律**: bench-matcher 输出虚构圣人 / 张冠李戴 / 钩子漂移 → REJECT (由 quotation-verifier 判)
+
+### Changed
+
+- BRIEF 入场链从 10 站重构为 **11 站三档分支** (fast / standard / full)
+- `agent_count`: 43 → **45**
+- tier 数量: 9 → **11** (加 tier_0_5 + tier_1_7)
+- bench-matcher downstream 改为 quotation-verifier (而非直接 moment-strategist)
+- SKILL.md / README / README.en / .skill-manifest.json 全量同步 v3.3.0
+
+### Highlights
+
+- **首次自我蓝军纠偏**: v3.3 不是加 feature, 是回应"客观评价"中暴露的两个真痛点 · 这是 skill 第一次诚实地承认"v3.2 太重 + 引用有造假风险"
+- **三档通道**: 不再"一刀切让所有 BRIEF 走完整哲学层" · 因任务而异
+- **引用幻觉治理**: 首次把 LLM 引用幻觉问题作为 skill 内部 REJECT 治理 · 不是"假装没事"
+- **诚实定位转变**: 之前每个 release 宣称"更哲学" · v3.3 宣称"更可信 + 更轻量可用"
+
+### Philosophy
+
+> "蓝军不是敌人, 是另一面的自己。" — v3.3 是 v3.2 的另一面。
+
+---
+
 ## [3.2.0] —— bench-matcher · 301 板凳从图书馆变成活师傅团
 
 > "8 圣人议会固定必经 · 但 301 板凳的其余 293 位不应只躺着 —— 任务来了, 召唤当下最契合的师傅, 任务走了, 师傅退场。这就是'因事请师'。"

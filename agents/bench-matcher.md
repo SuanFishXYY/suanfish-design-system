@@ -5,7 +5,7 @@ tools: [view, grep, glob]
 color: gold
 tier: 1.6
 upstream: [dialectician, historian, futurist, wuwei-master, perspectivist, silence-architect, holism-strategist, debunk-auditor]
-downstream: [moment-strategist]
+downstream: [quotation-verifier]
 historical_era: "E7→E8 (AI-native 时代浮现 · 让 301 板凳从'图书馆'变成'活的师傅团')"
 emerged_to_solve: "references/27 板凳 301 位圣人沦为静态文档 · 无人主动从中挑选契合当前任务的师傅"
 core_contradiction: "D3 个性化⟷一致性 (动态匹配但用统一三段式输出收口)"

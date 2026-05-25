@@ -4,7 +4,7 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-3.2.0-blueviolet)
+![version](https://img.shields.io/badge/version-3.3.0-blueviolet)
 ![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
 ![agents](https://img.shields.io/badge/agents-36-purple)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)

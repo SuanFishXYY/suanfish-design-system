@@ -1,6 +1,6 @@
 {
   "name": "suanfish-design-system",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "description": "算鱼工作室统一多智能体设计语言体系。41 位 agent 在 8 个 tier 中协同工作（Tier 0 含 v3.0 西方 trio + v3.1 中国五位），覆盖 7 条设计路径（仪式/稳态/聊天/通知/移动/嵌入/AI-native）。v2.1 引入 REJECT · v2.2 哲学根基 · v2.3 philosophy-as-lint · v2.4 全场景扩编 · v2.5 AI-native 原语 · v3.0 三层哲学（价值 + 辩证 + 发展规律）+ 8 时代历史定位 + R13-R18 · v3.0.1 加入 301 人哲学家板凳 references/27 · v3.1 中国 Tier 0 五位（老子/庄子/王弼/法藏/王充）+ R19-R23（减法/多视角/留白/一即一切/疾虚妄）。",
   "author": "算鱼工作室",
   "license": "MIT",
@@ -29,11 +29,12 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 42,
+  "agent_count": 43,
   "tiers": {
     "tier_0_dialectical_philosophy": ["dialectician", "historian", "futurist", "wuwei-master", "perspectivist", "silence-architect", "holism-strategist", "debunk-auditor"],
     "tier_1_dispatch": ["moment-strategist"],
     "tier_1_5_coordination": ["flow-coordinator"],
+    "tier_1_6_bench_matching": ["bench-matcher"],
     "tier_2_lead": ["onboarding-director", "ui-architect", "conversation-director", "notification-director"],
     "tier_3_container_specialist": [
       "modal-craftsman",
@@ -89,6 +90,7 @@
     "agents/debunk-auditor.md",
     "agents/moment-strategist.md",
     "agents/flow-coordinator.md",
+    "agents/bench-matcher.md",
     "agents/onboarding-director.md",
     "agents/ui-architect.md",
     "agents/conversation-director.md",
@@ -154,5 +156,13 @@
     "entry_mode_for_audit": "新入口模式: 用户扔文件/截图 → sage-council 并行调度 8 Tier 0 圣人 → 每位输出 1 条设计观点 → 整合议会报告",
     "agent_count_42": "agent_count 41 → 42 · tier_6 从 1 扩到 2",
     "complementary_to_ui_auditor": "ui-auditor 接 BRIEF 出口 (4 mode 串行体检) · sage-council 接已有文件 (8 圣人并行点评)"
+  },
+  "v3_2_0_additions": {
+    "bench_matcher_agent": "新增 bench-matcher (tier_1_6) · 301 板凳动态匹配器 · 让 references/27 板凳从'图书馆'变成'活师傅团'",
+    "dynamic_n_sage_summon": "动态从 301 圣人中按相关性评分召唤 N 位 (通常 3-9, 不强求固定数量) · 每位输出三段式 (理论依据 / 设计方向 / 改造动作)",
+    "flow_extended_to_10_stages": "BRIEF 入场链从 9 站延长到 10 站: Tier 0 八圣人议会 → bench-matcher 动态召唤 N 位 → moment-strategist 路径分流",
+    "agent_count_jump": "42 → 43",
+    "first_dynamic_philosopher_summoning": "首个'按任务动态召唤哲学家'的设计系统 · 不再供奉固定圣人 · 召唤当下最契合的师傅",
+    "scoring_dimensions": "5 维评分: 设计钩子命中 40% / 矛盾倾向 20% / 时代契合 15% / 反盲点 15% / 中西分布 10%"
   }
 }

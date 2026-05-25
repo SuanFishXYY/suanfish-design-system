@@ -4,9 +4,9 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-3.1.1-blueviolet)
+![version](https://img.shields.io/badge/version-3.2.0-blueviolet)
 ![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
-![agents](https://img.shields.io/badge/agents-42-purple)
+![agents](https://img.shields.io/badge/agents-43-purple)
 ![tier-0](https://img.shields.io/badge/Tier_0-3西方+5中国-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)

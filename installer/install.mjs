@@ -5,7 +5,7 @@
 //        npx -y github:SuanFishXYY/suanfish-design-system uninstall
 
 import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, symlinkSync, lstatSync, unlinkSync } from 'node:fs';
+import { existsSync, mkdirSync, symlinkSync, lstatSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
 import { homedir, platform } from 'node:os';
 import { join } from 'node:path';
 
@@ -63,8 +63,21 @@ function linkInto(cliDir) {
     if (isSymlink(link)) {
       try { unlinkSync(link); } catch {}
     } else {
-      warn(`${link} 已存在且不是 symlink, 跳过 (手动删除后重试)`);
-      return false;
+      // v4.2.1 修: 真实目录如果为空 (空文件夹), 直接删除并 symlink
+      // (常见于旧版 marketplace 安装但内容缺失的情况)
+      try {
+        const items = readdirSync(link);
+        if (items.length === 0) {
+          rmdirSync(link);
+          info(`${link} 是空目录, 已清理并将建立 symlink`);
+        } else {
+          warn(`${link} 已存在且不是 symlink (${items.length} 个文件), 跳过 (手动删除后重试)`);
+          return false;
+        }
+      } catch {
+        warn(`${link} 已存在且不是 symlink, 跳过 (手动删除后重试)`);
+        return false;
+      }
     }
   }
 

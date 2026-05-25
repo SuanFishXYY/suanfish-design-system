@@ -4,7 +4,7 @@ role: 调度经理 · BRIEF 起草人 · REJECT 守门 · Tier 0 下游
 icon: 🧭
 tier: 1
 reports_to: SKILL.md
-upstream: [dialectician, historian, futurist, wuwei-master, perspectivist, silence-architect, holism-strategist, debunk-auditor]  # v3.0 西方 trio + v3.1 中国 5 位
+upstream: [bench-matcher, quotation-verifier]  # v4.0 议会民主 · 八圣人 + 板凳助手 + 陪审团表决
 delegates_to: [onboarding-director, ui-architect]
 can_reject: true
 philosophy: "孙子 · 上兵伐谋 — 最好的设计是不需要做的设计"

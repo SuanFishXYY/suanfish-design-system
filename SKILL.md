@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
-description: Suanfish Design System v3.3 — A philosophy-driven multi-agent design language with 45 specialized agents across 9 tiers (Tier 0 includes 3 Western dialecticians + 5 Chinese philosophers — Laozi/Zhuangzi/Wang Bi/Fazang/Wang Chong; Tier 0.5 complexity-triager gates fast/standard/full mode; Tier 1.7 quotation-verifier audits citations) and a 25-rule REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G). v3.0 added three-layer philosophy + 8-era historical positioning + R13-R18; v3.1 added Chinese Tier 0 quintet + R19-R23; v3.2 added bench-matcher dynamic philosopher summoning; v3.3 added complexity-triager (fast/standard/full mode classifier) + quotation-verifier (anti-hallucination citation audit) + R24-R25. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系 v3.3，45 位专精 agent，覆盖 7 条设计路径，搭载 25 条 REJECT 硬规则 · v3.3 引入 fast/standard/full 三档通道 + 引用真实律。
-version: 3.3.0
+description: Suanfish Design System v4.0 — A philosophy-driven multi-agent design language with 44 specialized agents organized around a sage congress + jury voting mechanism. v4.0 dismantles the v3.x "fixed 8-sage pipeline" — now the bench-matcher itself runs as a self-contained congress: scoring → Layer 1 summoning (k of 8 Tier 0 sages by relevance) → recursive free invitation (sages invite their disciples from the 293-philosopher bench, total cap 15) → congressional discussion (consensus + mediation) → weighted jury vote (Tier 0 = 2 votes / helpers = 1 vote, ≥2/3 majority to pass, revise & re-vote max 3 rounds, R24 deadlock rule on failure). quotation-verifier (R25) audits all citations before downstream. 7 design paths (A-G), 25-rule REJECT mechanism. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室统一多智能体设计语言体系 v4.0 — 44 位 agent · 圣人议会民主自包含 · 二级动态召唤 · 陪审团 2/3 加权表决 · 撤掉 v3.x 固定 8 圣人必经 · 议会僵局律 R24 兜底。
+version: 4.0.0
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -27,23 +27,26 @@ tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal
 | **Layer 0.5 · 历史定位** | [references/26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
 | **附录 · 哲学家板凳** ✨v3.0.1 | [references/27-philosopher-bench.md](references/27-philosopher-bench.md) | 301 位中外思想家候选池（117 中国 + 184 西方），供 v3.x agent 援引升级 |
 
-**任何 BRIEF 入场顺序（v3.3 升级 · 11 站 · 三档通道）**：
+**任何 BRIEF 入场顺序（v4.0 议会民主 · 5 站）**：
 ```
 BRIEF
-  → 🚦 complexity-triager (Tier 0.5 · 判定 fast/standard/full)        ← v3.3 新增
-       ├─ fast  ───────────────────────────────────────────────────┐
-       │                                                            ↓
-       ├─ standard ──→ 🪙 dialectician → 📜 historian → 🔭 futurist
-       │              → 🪷 wuwei-master → 🐢 perspectivist → 🧘 silence-architect
-       │              → 🌐 holism-strategist → 🔬 debunk-auditor   ← Tier 0 八圣人议会
-       │                                                            ↓
-       └─ full ─────→ 同上 → 🎯 bench-matcher → 🔍 quotation-verifier ← v3.3 新增
-                                                                    ↓
-                              → 🧭 moment-strategist (A-G 路径分流 / R1-R6)
+  ↓
+🏛 bench-matcher · 圣人议会自包含 (5 步骤)
+  ├─ ① 评分: 301 池中给 Tier 0 八位优先打分
+  ├─ ② Layer 1 召唤: 选 k 位 Tier 0 (相关性 ≥ 7.5, k 通常 1-3)
+  ├─ ③ 自由邀请 (递归): 入场者从板凳邀师弟师妹, 总人数 cap 15
+  ├─ ④ 议会讨论: 全员陈述 → 合并共识 → 调解冲突 → 形成方案草案
+  └─ ⑤ 陪审团投票: Tier 0 = 2 票 / 助手 = 1 票 · ≥ 2/3 通过
+       不过则修订重投 (max 3 轮) · 仍不过 → R24 议会僵局律 → 用户决断
+  ↓
+🔍 quotation-verifier (核验所有圣人引用真实性 · R25)
+  ↓
+🧭 moment-strategist (A-G 路径分流 / R1-R6)
+  ↓
+... Path agent · ui-auditor
 ```
-- **fast** = 简单任务直通 moment-strategist (≤5 LLM call · 解决 over-engineering)
-- **standard** = Tier 0 议会 (≤12 LLM call · 默认通道)
-- **full** = Tier 0 议会 + 动态召唤 + 引用核验 (15-25 LLM call · 复杂任务)
+- **v4.0 砸了 v3.x "八圣人固定全上"的地基** — 议会民主 · 因事召唤 · 投票决议
+- v3.3 三档通道 (fast/standard/full) 已撤回 — 改为议会自适应 (k 可以是 1, 即等价快通)
 
 这是一个 **伞状 skill（umbrella skill）**，按一家小型设计工作室的组织结构来运转。它同时治理 **两种声音**：
 

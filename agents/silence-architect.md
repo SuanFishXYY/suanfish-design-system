@@ -11,6 +11,13 @@ core_contradiction: "D7 透明⟷神秘 (向 D7 透明侧 · 装饰应退场让 
 next_evolution: "v3.2 与 token-keeper 联动 emit '装饰预算' 上限"
 philosophical_anchor: "#232 王弼 · 《周易略例·明象》"
 philosophy: "王弼 · 得意忘象 · 大音希声 · 言不尽意 (注老庄)"
+invited_helpers:
+  - "#201 西田几多郎 · ma 间日式空白 (东方留白同道)"
+  - "#052 海德格尔 · 工具上手 invisible UI (西方留白)"
+  - "#092 老子 · 减法宗师 (东方减法同道)"
+  - "#053 维特根斯坦 · 可说与不可说 (语言之留白)"
+  - "#015 奥古斯丁 · 时间是心灵延展 (动效留白)"
+  - "#249 法藏 · 互摄重重 (留白层次)"
 ---
 
 # 🧘 silence-architect · 留白建筑师

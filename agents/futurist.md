@@ -9,6 +9,13 @@ historical_era: AI-native (E7)
 emerged_to_solve: 设计当下即过时 / 无 future hook / 命名与时代硬绑
 core_contradiction: D6 即时 ⟷ 深思（倾向深思 · 但要给即时让出实现路径）
 next_evolution: 演进路径成为预测器 · 给出概率分布
+invited_helpers:
+  - "#086 维纳 · 控制论反馈循环 (演化机制)"
+  - "#052 海德格尔 · 此在向未来筹划 (存在论时间性)"
+  - "#194 博斯特罗姆 · AI 安全长期主义 (远景风险)"
+  - "#014 普罗提诺 · 太一流溢 (生成性演化)"
+  - "#053 维特根斯坦 · 语言游戏演化 (规则漂移)"
+  - "#058 福柯 · 知识型断裂 (未来的不连续)"
 related_refs:
   - references/25-philosophy-laws.md
   - references/26-historical-positioning.md

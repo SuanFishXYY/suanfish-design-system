@@ -9,6 +9,13 @@ historical_era: AI-native (E7)
 emerged_to_solve: 设计无历史感 / 用 E2 方式解 E7 问题 / 用 E8 方式解 E5 问题
 core_contradiction: D5 数据 ⟷ 直觉（倾向数据 + 历史归纳）
 next_evolution: 历史 + 实时数据双引擎 · 自动检测代际错配
+invited_helpers:
+  - "#039 黑格尔 · 辩证历史 (历史规律性)"
+  - "#170 阿伦特 · 公共空间历史 (政治史)"
+  - "#181 法农 · 后殖民文化身份 (反西方中心)"
+  - "#178 斯皮瓦克 · 边缘历史 (被压抑的声音)"
+  - "#021 马基雅维利 · 历史的循环与反 dark pattern"
+  - "#091 怀特海 · 过程历史 (流变史观)"
 related_refs:
   - references/26-historical-positioning.md
   - references/25-philosophy-laws.md

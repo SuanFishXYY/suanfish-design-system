@@ -4,10 +4,10 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-3.3.0-blueviolet)
+![version](https://img.shields.io/badge/version-4.0.0-blueviolet)
 ![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
-![agents](https://img.shields.io/badge/agents-45-purple)
-![tier-0](https://img.shields.io/badge/Tier_0-3西方+5中国-yellow)
+![agents](https://img.shields.io/badge/agents-44-purple)
+![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
@@ -18,7 +18,7 @@
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 ![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
 
-**99% 的 AI 永远回答 Yes。这个 AI 有 25 条硬规则可以拒单 — v3.0 R13-R18 西方哲学 + v3.1 R19-R23 中国哲学 + v3.3 R24-R25 复杂度匹配律 / 引用真实律。**
+**99% 的 AI 永远回答 Yes。这个 AI 现在有 25 条硬规则 + 一个圣人议会 — v4.0 砸了"八圣人固定每次全上"的地基, 改为议会民主: 因事召唤 k 位 Tier 0, 自由邀请师弟师妹 (cap 15), 陪审团 2/3 加权表决。R24 议会僵局律 + R25 引用真实律兜底。**
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」

@@ -9,6 +9,13 @@ historical_era: AI-native (E7)
 emerged_to_solve: BRIEF 模糊不选边 / 既要又要 / 矛盾自由发挥导致设计精分
 core_contradiction: D18 · 选倾向 ⟷ 留余地（倾向"显式选边并留窗"）
 next_evolution: E8 时矛盾自我命名 → dialectician 退化为审计员
+invited_helpers:
+  - "#029 休谟 · 因果只是习惯 (质疑辩证因果)"
+  - "#161 波普尔 · 可证伪 (辩证主张需可被反驳)"
+  - "#058 福柯 · 历史断裂 (辩证历史化)"
+  - "#170 阿伦特 · 公共行动 (辩证落地)"
+  - "#019 阿威罗伊 · 双重真理论 (设计/工程辩证)"
+  - "#038 谢林 · 同一哲学 (正反合的整体相)"
 related_refs:
   - references/24-philosophy-dialectics.md
   - references/25-philosophy-laws.md

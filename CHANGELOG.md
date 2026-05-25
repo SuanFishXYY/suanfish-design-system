@@ -1,6 +1,67 @@
 # 变更日志（Changelog）
 
-## [3.3.0] —— 蓝军自审 · fast-mode + 引用真实律 · 补地基不加 feature
+## [4.0.0] —— 圣人议会民主 · 砸地基重铺 · 撤回 v3.3 三档制
+
+> **BREAKING CHANGE**: v3.x "Tier 0 八圣人每次固定全上" 的流水线被撤掉。 改为议会自包含: bench-matcher 评分 + Layer 1 召唤 k 位 + 自由递归邀请 (cap 15) + 议会讨论 + 陪审团 2/3 加权投票。
+
+> "v3.3 上了'三档通道'让用户选 fast/standard/full · 用户说: 不应该有档, 应该让 301 圣人自己说话, 谁该上谁上 · 这次的改动是回应'用户不应该被迫做决策'。"
+
+### Added
+
+- 🏛 **agents/bench-matcher.md** (重铸) — Tier 1.6 圣人议会自包含调度器
+  - Step 1 评分: Tier 0 八位优先打分 (5 维 0-10)
+  - Step 2 Layer 1 召唤: 选 ≥ 7.5 分的入场, fallback top-1 保不空场
+  - Step 3 自由邀请 (递归): 入场圣人从 293 板凳邀请师弟师妹 · 单人配额 3 · 总数 cap 15
+  - Step 4 议会讨论: 全员三段式陈述 → 合并共识 / 调解冲突 / 主动指盲点
+  - Step 5 陪审团投票: Tier 0 = 2 票 / 助手 = 1 票 / ABSTAIN 减分母 · ≥ 2/3 通过 · 修订重投 max 3 轮
+- **invited_helpers** frontmatter 字段 — 8 位 Tier 0 各列 6 位关联师弟师妹 (师承网络)
+  - dialectician #039 / historian #058 / futurist #091
+  - wuwei-master #092 / perspectivist #093 / silence-architect #232 / holism-strategist #249 / debunk-auditor #225
+- **R24 议会僵局律 (重定义)**: 3 轮投票仍 < 2/3 通过 → 输出"未达成共识"报告 + 多方案对照 → 升级用户决断
+
+### Changed
+
+- BRIEF 入场链从 v3.3 的 11 站三档制 → **5 站议会民主**
+- `agent_count`: 45 → **44** (删除 complexity-triager · 保留 quotation-verifier)
+- tier_1_6_bench_matching → **tier_1_6_sage_congress** (语义升级)
+- moment-strategist upstream → `[bench-matcher, quotation-verifier]` (彻底脱离 Tier 0 八圣人直连)
+- SKILL.md / README / README.en / .skill-manifest.json 全量同步 v4.0.0
+
+### Removed (BREAKING)
+
+- 🚫 **agents/complexity-triager.md** — v3.3 实验, v4.0 撤回 (用户拒绝档位制)
+- 🚫 **Tier 0.5 layer** — 撤掉 (无档位)
+- 🚫 **R24 复杂度匹配律** — 重定义为 R24 议会僵局律
+- 🚫 **v3.x 固定 8 圣人必经流水线** — 改为按需召唤 k 位
+
+### Preserved
+
+- ✅ **agents/quotation-verifier.md** (Tier 1.7) · R25 引用真实律 — v3.3 唯一保留下来的实验产物
+- ✅ R1-R23 哲学规则全保留 (触发条件为"对应圣人被议会召唤时启用")
+- ✅ Tier 0 八位仍是"优先候选池", 只是不再每次全上
+
+### Highlights
+
+- **首个圣人议会民主设计系统** — 哲学 multi-agent 第一次真正落到"投票决议"机制
+- **诚实承认 v3.3 失败** — 三档通道走错路, 不藏着掩着, 直接 BREAKING 撤回
+- **递归邀请 + 加权投票** — multi-agent 系统设计中罕见的"民主"机制
+- **R24 重定义为僵局律** — 把"AI 总能给答案"打破, 议会确实可以"达不成共识"并交还用户
+
+### Philosophy
+
+> "v3.0 想给每个 BRIEF 配 8 个老师 — 但课程不该一刀切。"
+> "v4.0 改为请教学经验丰富的几位, 让他们决定要不要叫师弟师妹助阵, 大家议一议, 然后投票。"
+> "这就是 v4.0 的本质: 不再供奉, 而是召集; 不再强加, 而是表决。"
+
+### Migration Notes
+
+- 用 v3.x 的项目: 升级即用, 无需改 BRIEF 措辞
+- 用 v3.3 的项目: 不会再看到 "fast/standard/full" 提示 · 全部由议会自适应
+- token 成本: 简单 BRIEF (k=1 + 无邀请) 约 ≤ 5 call · 复杂 BRIEF (cap 15 + 3 轮投票) 可达 50+ call
+
+---
+
+## [3.3.0] —— (已撤回 · 三档通道实验 · 仅保留 quotation-verifier)
 
 > "v3.2 之后用户做了一次客观蓝军评估 · 戳出两个真痛点: ① 复杂度内卷 (做个按钮也要走 10 stage) ② 引用造假风险 (LLM 编圣人语录)。v3.3 不加新哲学层 · 直接补这两个洞。"
 

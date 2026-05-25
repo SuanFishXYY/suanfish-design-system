@@ -1,5 +1,30 @@
 # 变更日志（Changelog）
 
+## [3.0.1] —— 301 人哲学家板凳 + v3.0 收尾打磨
+
+> "把 117 位中国哲学家请上桌 —— 全球唯一中国哲学驱动的 design system。"
+
+### Added
+
+- 🆕 **references/27-philosopher-bench.md** — 301 位中外思想家板凳（117 中国 + 184 西方/全球）· 每位带"一句话核心 + design hook" · 配套援引协议
+- README.md / README.en.md · 新增"301 人板凳"专门段落 + philosophers-301 徽章
+- SKILL.md 三层哲学表追加"附录 · 哲学家板凳"行
+
+### Fixed
+
+- 🐛 `agents/ui-auditor.md` 补齐 v3.0 frontmatter 四字段（historical_era / emerged_to_solve / core_contradiction / next_evolution）—— 此前 sub-agent 批跑时被错误地排除在"已更新"清单
+- 🐛 `SKILL.md` 版本号从 3.0.0 同步到 3.0.1
+- 🐛 README.md / README.en.md 版本徽章 3.0.0 → 3.0.1
+- 🐛 `.skill-manifest.json` reference_count 20 → 24 · 加入 v3_0_1_additions 块
+
+### Highlights
+
+- 36/36 agent 现在 100% 含 v3.0 四字段（之前是 35/36）
+- 301 人板凳为 v3.1 中国味 Tier 0 扩展（5 个新 agent 候选）铺路
+- 强推 Top 15 候选清单（5 西 + 5 中 + 5 全球）已在 27 板凳中标注 ★
+
+---
+
 ## [3.0.0] —— 哲学升维 · 三层哲学体系 + 8 时代 + Tier 0 + R13-R18
 
 > *"哲学理念上升到一个新的高度，只有理解了事物发展的规律，才能做好系统。"* — v3.0 立项语

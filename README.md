@@ -4,7 +4,8 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-3.0.0-blueviolet)
+![version](https://img.shields.io/badge/version-3.0.1-blueviolet)
+![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
 ![agents](https://img.shields.io/badge/agents-36-purple)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
@@ -44,6 +45,22 @@
 | **Layer 0.5 · 历史定位** ✨ | [26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ | — |
 
 任何 BRIEF 入场顺序：**🪙 dialectician → 📜 historian → 🔭 futurist → 🧭 moment-strategist → A-G 路径**
+
+---
+
+## 📚 v3.0.1 新增 · 301 位哲学家板凳（全球唯一中国哲学驱动）
+
+> 我们把 301 位中外思想家系统归档到 `references/27-philosopher-bench.md` —— **117 位中国 + 184 位西方 / 全球**。
+> 每位都带"一句话核心 + 装进设计系统的钩子"。
+> v3.x 任何新 agent / 新 R 规则,必须援引板凳里至少 1 位作为哲学锚点。
+
+```
+✅ 已开采 4 位:  #039 黑格尔 / #058 福柯 / #091 怀特海 / #086 维纳
+🔥 v3.1 强推:   #092 老子 / #093 庄子 / #232 王弼 / #249 法藏 / #225 王充
+🌐 学派覆盖:    古希腊→分析→后结构→中国先秦→宋明心学→当代新儒家
+```
+
+📖 **[查看 301 人完整板凳 →](references/27-philosopher-bench.md)**
 
 ---
 

@@ -117,8 +117,8 @@
     "agents/ui-auditor.md"
   ],
   "references_dir": "references",
-  "reference_count": 20,
-  "appendix_count": 4,
+  "reference_count": 24,
+  "appendix_count": 3,
   "v3_0_changes": {
     "philosophy_three_layer": "Layer 1 价值 (17) + Layer 2 辩证 (24) + Layer 3 发展规律 (25) + Layer 0.5 历史定位 (26)",
     "tier_0_added": "新增 3 个 Tier 0 agent：dialectician (黑格尔·辩证) / historian (福柯·历史) / futurist (怀特海·过程)",
@@ -129,5 +129,11 @@
     "new_reject_rules": "R13-R18 (6 条哲学触发的 REJECT) · R13/L1 R14/L2 R15/L3 R16/L4 R17/L5 R18/矛盾两端都站",
     "ui_auditor_mode_4": "dialectical_consistency · 始终叠加 · REPORT 新增辩证体检段落",
     "agent_frontmatter_4_fields": "33 agent 全部新增 historical_era / emerged_to_solve / core_contradiction / next_evolution"
+  },
+  "v3_0_1_additions": {
+    "philosopher_bench": "references/27-philosopher-bench.md · 301 位中外思想家 (117 中国 + 184 西方/全球) · 配套援引协议",
+    "ui_auditor_frontmatter_completed": "ui-auditor 补齐 v3.0 四字段 · 36/36 agent 全合规",
+    "version_sync": "SKILL.md / README.md / README.en.md / CHANGELOG.md 全量对齐 3.0.1",
+    "v3_1_candidates_top_15": "5 西方 (海德格尔/拉图尔/波普尔/阿伦特/博斯特罗姆) + 5 中国 (老子/庄子/王弼/法藏/王充) + 5 全球 (梅洛庞蒂/斯皮瓦克/西田/法农) - 见 references/27"
   }
 }

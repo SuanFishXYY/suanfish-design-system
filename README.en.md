@@ -4,7 +4,8 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-3.0.0-blueviolet)
+![version](https://img.shields.io/badge/version-3.0.1-blueviolet)
+![philosophers](https://img.shields.io/badge/philosophers-301-9cf)
 ![agents](https://img.shields.io/badge/agents-36-purple)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
@@ -46,6 +47,22 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
 Every BRIEF — no exception — passes through Tier 0 first.
 
 </div>
+
+---
+
+## 📚 v3.0.1 · 301 Philosopher Bench (The Only Chinese-Philosophy-Driven DS)
+
+> 301 thinkers cataloged in `references/27-philosopher-bench.md` — **117 Chinese + 184 Western/global**.
+> Each entry: one-line core idea + design-system hook.
+> Any new v3.x agent / R rule **MUST anchor to at least one philosopher from the bench**.
+
+```
+✅ Already used (4):   #039 Hegel / #058 Foucault / #091 Whitehead / #086 Wiener
+🔥 v3.1 candidates:   #092 Laozi / #093 Zhuangzi / #232 Wang Bi / #249 Fazang / #225 Wang Chong
+🌐 Schools covered:   Pre-Socratic → Analytic → Post-structural → Pre-Qin → Neo-Confucian → Modern
+```
+
+📖 **[Browse all 301 philosophers →](references/27-philosopher-bench.md)**
 
 ---
 

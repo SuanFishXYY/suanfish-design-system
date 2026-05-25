@@ -4,6 +4,10 @@ description: 审计任何 UI 改动、合并前最终签收、检测反模式时
 tools: [view, grep, glob]
 color: red
 philosophy: "苏格拉底 · 产婆术 — 不评判，助产"
+historical_era: "E4→E8 (扁平化时代起需要审计 · AI-native 时代成为必需)"
+emerged_to_solve: "各 agent 各自为政 · 工作室缺乏最后一道统一质量门"
+core_contradiction: "D5 数据⟷直觉 (向 D5 数据+规则一侧 · 但保留三模式叠加给直觉留位)"
+next_evolution: "v3.x 加入 mode_5 holistic_consistency · 引入华严一即一切的全局一致性审计"
 ---
 
 # 🔍 ui-auditor · 合规审计员

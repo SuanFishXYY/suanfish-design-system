@@ -1,7 +1,7 @@
 ---
 name: suanfish-design-system
 description: Suanfish Design System v3.0 — A philosophy-driven multi-agent design language with 36 specialized agents across 8 tiers (including v3.0 Tier 0 dialectical philosophy layer) and an 18-rule REJECT mechanism for opinionated AI-driven UI generation. Governs first-impression onboarding (A), steady-state interfaces (B), conversational chat UI (C), notification streams (D), mobile native (E), embedded surfaces (F), and AI-native primitives (G — streaming, tool-calls, agent threads, reasoning, citations, artifacts, prompt input, rate-limits, model switching). v3.0 adds three-layer philosophy (Values + Dialectics + Development Laws), 8-era historical positioning, and R13-R18 philosophical reject rules. Activate when designing, generating, auditing, or refactoring any UI surface. 算鱼工作室的统一多智能体设计语言体系 v3.0，36 位专精 agent 协同工作，分布在 8 个 tier（v3.0 新增 Tier 0 辩证哲学层），覆盖 7 条设计路径，搭载 18 条 REJECT 硬规则。
-version: 3.0.0
+version: 3.0.1
 author: 算鱼工作室
 license: MIT
 language: zh-CN
@@ -25,6 +25,7 @@ tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal
 | **Layer 2 · 辩证** | [references/24-philosophy-dialectics.md](references/24-philosophy-dialectics.md) | 为什么有两边？ |
 | **Layer 3 · 发展规律** | [references/25-philosophy-laws.md](references/25-philosophy-laws.md) | 矛盾如何随时间漂移？ |
 | **Layer 0.5 · 历史定位** | [references/26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
+| **附录 · 哲学家板凳** ✨v3.0.1 | [references/27-philosopher-bench.md](references/27-philosopher-bench.md) | 301 位中外思想家候选池（117 中国 + 184 西方），供 v3.x agent 援引升级 |
 
 **任何 BRIEF 入场顺序**：
 ```

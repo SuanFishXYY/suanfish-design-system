@@ -1,6 +1,6 @@
 ---
 name: bench-matcher
-description: 圣人议会自包含调度器 · v4.1.0 三大类跨界召唤 · BRIEF 进来后, 先做"任务类型路由" (视觉/动效/结构/哲学), 再在 Tier 0 八位 + 50 位艺术家 + 35 位音乐家中按相关性评分召唤 k 位 (0-N), 入场圣人各自从对应板凳自由邀请关联者 (可递归 · 总人数 cap 15), 全员议会讨论形成融贯方案, 最后陪审团加权投票 (Tier 0 每人 2 票 / 助手 1 票, ≥2/3 通过), 不过则修订重投 (最多 3 轮)。v4.0 的"哲学家专属"升级为"三大类跨界"。
+description: 圣人议会自包含调度器 · v4.2.0 三大类 4:4:4 均权议会 · BRIEF 进来后, 先做"任务类型路由" (视觉/动效/结构/哲学/mixed · v4.2 改为 user-declared 优先 / LLM 推断 fallback), 再在 Tier 0 12 位 (4 哲+4 艺+4 音) 中按相关性评分召唤 k 位 (0-12), 入场圣人各自从对应板凳自由邀请关联者 (可递归 · 总人数 cap 15), 全员议会讨论形成融贯方案, 最后陪审团加权投票 (Tier 0 每人 2 票 + task_kind 匹配类别 +0.5 动态加权 / 助手 1 票, ≥2/3 通过), 不过则修订重投 (最多 3 轮)。v4.1 的 8:2:2 升级为 4:4:4 + 单一圣人禁一票否决 (P0/P1/P2 修订)。
 tools: [view, grep, glob]
 color: gold
 tier: 1.6
@@ -66,8 +66,11 @@ brief_signals:
   era_target: E1-E8
   scope: single-component | single-flow | multi-flow | system-wide
   emotional_target: 庆贺 | 警告 | 中性 | 无
-  task_kind: visual | motion | structural | philosophical | mixed   # v4.1 新增
+  task_kind: visual | motion | structural | philosophical | mixed   # v4.2 user-declared 优先, LLM 推断 fallback
+  task_kind_source: user_declared | llm_inferred                      # v4.2 新增 · 显式标注来源
 ```
+
+> **v4.2 重要变更 (P1-5 修)**: task_kind 由用户在 BRIEF 中显式声明优先 (e.g. "task_kind: visual")。仅当用户未声明时 LLM 才推断, 此时议会必须在结论中标注 `[task_kind 由 LLM 推断 · 仅供参考]`, 不作为定权依据。 这避免了 LLM 自利地选择对自己最有利的 task_kind。
 
 **任务类型 → 板凳路由表 (v4.1)**
 
@@ -90,44 +93,71 @@ brief_signals:
 | 反盲点 (与已入场者互补) | 15% |
 | 中西分布 (软约束) | 10% |
 
-### Step 2 · Layer 1 召唤 (Tier 0 十二位中选 k · v4.1)
+### Step 2 · Layer 1 召唤 (Tier 0 十二位 4:4:4 均权 · v4.2)
 
 ```yaml
 layer_1_rules:
   threshold: 7.5
   candidates:
-    philosophers:                # 哲学家 8 位 (v4.0 原班)
-      - dialectician #039
-      - historian #058
-      - futurist #091
-      - wuwei-master #092
-      - perspectivist #093
-      - silence-architect #232
-      - holism-strategist #249
-      - debunk-auditor #225
-    artists:                     # 艺术家 2 位 (v4.1 新晋)
-      - form-liberator #A002         # 米开朗基罗 · 减法雕塑
-      - void-painter #A045           # 倪瓒 · 中国留白
-    musicians:                   # 音乐家 2 位 (v4.1 新晋)
-      - counterpoint-architect #M001 # 巴赫 · 结构祖
-      - silence-composer #M020       # 凯奇 · 4'33" 沉默
+    philosophers:                # 哲学家 4 位 (v4.2 精简 · 保留四基石)
+      - dialectician #039             # 黑格尔 · 辩证 (R18 锚)
+      - silence-architect #232        # 王弼 · 留白
+      - holism-strategist #249        # 法藏 · 整体
+      - debunk-auditor #225           # 王充 · 引用核验 (R25 锚)
+    artists:                     # 艺术家 4 位 (v4.2 扩充 · 减加平衡)
+      - polymath-bridger #A001        # 达芬奇 · 跨学科 (用户点名) [+]
+      - form-liberator #A002          # 米开朗基罗 · 减法雕塑 [-]
+      - light-impressionist #A019     # 莫奈 · 光色革命 (反盲点) [+]
+      - void-painter #A045            # 倪瓒 · 中国留白 [-]
+    musicians:                   # 音乐家 4 位 (v4.2 扩充 · 沉默-陪伴-高潮三档位)
+      - counterpoint-architect #M001  # 巴赫 · 对位结构 [~]
+      - tension-composer #M005        # 贝多芬 · 情感张力 (用户点名) [+]
+      - silence-composer #M020        # 凯奇 · 4'33" 沉默 [-]
+      - ambient-architect #M025       # Brian Eno · 环境陪伴 [~]
   
-  task_kind_priors:              # task_kind 给对应类别 +0.5 软加分
-    visual:        +0.5 给 artists
-    motion:        +0.5 给 musicians
+  # 旁注: [+] 加法派 / [-] 减法派 / [~] 中间态。v4.2 严格做到 4+4+4 内部平衡
+  # 议会内置辩证: 减法派(米开/倪瓒/凯奇/王弼) ⟷ 加法派(达芬奇/莫奈/贝多芬) · 议会民主表决
+  
+  # 降级到 Tier 1.5 (仍可被邀请 · 不再自动入场):
+  #   - historian #058 (福柯) / futurist #091 (怀特海)
+  #   - wuwei-master #093 (庄子) / perspectivist #056 (梅洛庞蒂)
+  
+  task_kind_priors:              # task_kind 给对应类别 +0.5 (P0-1 平衡机制)
+    visual:        +0.5 给 artists      # 视觉任务艺术家话语权略涨
+    motion:        +0.5 给 musicians    # 动效任务音乐家话语权略涨
     structural:    +0.5 给 philosophers
     philosophical: +0.5 给 philosophers
-    mixed:         无加分 (公平竞争)
+    mixed:         无加分 (4:4:4 公平竞争)
   
   if 所有十二位得分 >= 7.5:
     召唤所有得分 >= 7.5 的, cap 12
   elif 至少一位 >= 7.5:
     召唤所有 >= 7.5 的
   else:
-    fallback: 召唤 top-1 by score (保证议会不空场)
+    fallback: 召唤 top-3 by score, 强制三大类各至少 1 位 (保证议会均衡)
 ```
 
-结果: **k 位 Tier 0 圣人入场** (0 < k ≤ 12, 典型 1-4 位)。
+**v4.2 投票权重 (P0-1 + P0-2 + P1-6 修)**:
+
+```yaml
+voting_weight:
+  base:
+    tier_0: 2 票
+    tier_1.5 (被邀): 1.5 票
+    helper (其他被邀): 1 票
+  
+  dynamic_bonus:                 # task_kind 匹配类别 +0.5 (cap 2.5)
+    visual: +0.5 to artists
+    motion: +0.5 to musicians
+    structural/philosophical: +0.5 to philosophers
+    mixed: no bonus
+  
+  veto_rule: 禁用                # P1-6 修 · 任何单一圣人不得一票否决
+                                  # silence-composer / debunk-auditor 等"反对派"的"倾向 reject"
+                                  # 必须提交议会民主表决 (≥2/3 多数通过)
+```
+
+结果: **k 位 Tier 0 圣人入场** (0 < k ≤ 12, 典型 2-5 位)。
 
 ### Step 3 · 自由邀请 (递归 · 跨三大类 v4.1)
 

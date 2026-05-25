@@ -4,9 +4,9 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-4.1.0-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.0-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-48-purple)
+![agents](https://img.shields.io/badge/agents-52-purple)
 ![congress](https://img.shields.io/badge/sage_congress-3--category-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
@@ -187,11 +187,24 @@ BRIEF
 > Any new agent / R rule **MUST anchor to ≥ 1 thinker from the bench**.
 
 ```
-✅ Tier 0 deployed (v4.1, 12 sages):
-   Philosophers ×8: #039 Hegel · #058 Foucault · #091 Whitehead · #056 Merleau-Ponty
-                    #092 Laozi · #093 Zhuangzi · #232 Wang Bi · #249 Fazang · #225 Wang Chong
-   Artists ×2:      #A002 Michelangelo (form-liberator) · #A045 Ni Zan (void-painter)
-   Musicians ×2:    #M001 J.S. Bach (counterpoint-architect) · #M020 John Cage (silence-composer)
+✅ Tier 0 deployed (v4.2, 12 sages · 4:4:4 strict balance):
+   Philosophers ×4:  #039 Hegel (dialectician) · #232 Wang Bi (silence-architect)
+                     #249 Fazang (holism-strategist) · #225 Wang Chong (debunk-auditor)
+   Artists ×4:       #A001 Leonardo da Vinci ⭐ (polymath-bridger · cross-disciplinary [+])
+                     #A002 Michelangelo (form-liberator · reductive [-])
+                     #A019 Claude Monet (light-impressionist · color revolution [+])
+                     #A045 Ni Zan (void-painter · Chinese void [-])
+   Musicians ×4:     #M001 J.S. Bach (counterpoint-architect · structure [~])
+                     #M005 Beethoven ⭐ (tension-composer · emotional climax [+])
+                     #M020 John Cage (silence-composer · 4'33" [-] · NO single-veto)
+                     #M025 Brian Eno (ambient-architect · generative companion [~])
+
+🔻 Demoted to Tier 1.5 (still invitable, not auto-summoned):
+   #058 Foucault · #091 Whitehead · #093 Zhuangzi · #056 Merleau-Ponty
+
+🎭 v4.2 dialectic built-in: [-] reductive trio (Wang Bi/Ni Zan/Cage)
+                          ⟷ [+] additive trio (Da Vinci/Monet/Beethoven)
+   Music three-gradient: Cage (silence) ↔ Eno (ambient) ↔ Beethoven (climax)
 
 🌐 Schools covered: Pre-Socratic → Analytic → Post-structural → Pre-Qin → Neo-Confucian →
                     Modern → Contemporary design (Norman/Alexander/Rams) →

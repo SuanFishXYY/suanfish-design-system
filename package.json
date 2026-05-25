@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "4.1.0",
-  "description": "算鱼设计系统 · 44 agent · 8 tier · v4.0 圣人议会民主 (npx github:SuanFishXYY/suanfish-design-system 一键安装)",
+  "version": "4.2.0",
+  "description": "算鱼设计系统 · 52 agent · 8 tier · v4.2 圣人议会民主 4:4:4 均权 · 议会内置加减辩证 · 单一圣人禁一票否决 (npx github:SuanFishXYY/suanfish-design-system 一键安装)",
   "bin": {
     "suanfish-install": "installer/install.mjs"
   },

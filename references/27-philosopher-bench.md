@@ -1,4 +1,4 @@
-# 27 · 思想家板凳 (Thinker Bench · v4.1 三大类)
+# 27 · 思想家板凳 (Thinker Bench · v4.2 三大类 4:4:4)
 
 > 算鱼 v4.0+ 候选思想池 · **三大类 · 400+ 位中外思想家**
 > - 📜 Part I · 哲学家 (Philosophers) · 316 位
@@ -12,34 +12,55 @@
 
 ---
 
-## 1. 已开采 · v4.1 十二位 Tier 0 圣人 (三大类 Sage Congress 核心)
+## 1. 已开采 · v4.2 十二位 Tier 0 圣人 (三大类 4:4:4 均权 Sage Congress)
 
-### 🏛 Part I 哲学家 8 位
-| # | 人物 | 用途 | 已映射到 |
+> **v4.2 重平衡 (P0-1 + P0-2 + P0-3 修订)**: 从 v4.1 的 8 哲+2 艺+2 音 → v4.2 严格 4:4:4
+> 降级 4 位哲学家到 Tier 1.5 (仍可被邀请): 福柯 / 怀特海 / 庄子 / 梅洛庞蒂
+> 新晋 4 位艺音 (含用户点名达芬奇/贝多芬 P0-3 修): 达芬奇 / 莫奈 / 贝多芬 / Brian Eno
+> 加减平衡: 议会内置 [减法派 ⟷ 加法派] 民主辩证, 单一圣人禁一票否决 (P1-6 修)
+
+### 🏛 Part I 哲学家 4 位 (四基石保留)
+| # | 人物 | 立场 | 已映射到 |
 |---|---|---|---|
 | #039 | 黑格尔 | 正反合辩证 | `dialectician` agent · R18 矛盾两端都站 |
-| #058 | 福柯 | 知识考古 / 权力规训 | `historian` agent · R14 抽象交替律 |
-| #091 | 怀特海 | 过程哲学 | `futurist` agent · R13/R15/R16/R17 |
-| #232 | 王弼 | 得意忘象 / 留白 | `silence-architect` agent · 留白美学 |
-| #093 | 庄子 | 齐物论 / 无为 | `wuwei-master` agent · 反过度引导 |
+| #232 | 王弼 | 得意忘象 / 留白 [-] | `silence-architect` agent · 留白美学 |
 | #249 | 法藏 | 华严一即一切 | `holism-strategist` agent · 全局即局部 |
-| #056 | 梅洛庞蒂 | 身体现象学 | `perspectivist` agent · 多视角具身 |
 | #225 | 王充 | 论衡 / 疾虚妄 | `debunk-auditor` agent · R25 引用真实律 |
 
-### 🎨 Part II 艺术家 2 位 (v4.1 新晋 Tier 0)
-| # | 人物 | 用途 | 映射到 |
+### 🎨 Part II 艺术家 4 位 (v4.2 减加平衡)
+| # | 人物 | 立场 | 已映射到 |
 |---|---|---|---|
-| #A002 | 米开朗基罗 | 形从石中显现 / 减法雕塑 | `form-liberator` (新 agent · 与 wuwei-master 互证) |
-| #A045 | 倪瓒 | 中国文人极简 / 留白宗师 | `void-painter` (新 agent · 与 silence-architect 互证) |
+| #A001 | **达芬奇** ⭐用户点名 | 跨学科通才 [+] | `polymath-bridger` (新 agent · R-Cross1 跨学科联结律) |
+| #A002 | 米开朗基罗 | 形从石中显现 / 减法雕塑 [-] | `form-liberator` · 减法美学 |
+| #A019 | **莫奈** | 光色革命 / 印象 [+] | `light-impressionist` (新 agent · R-Cross2 感官完整性律) |
+| #A045 | 倪瓒 | 中国文人极简 / 留白宗师 [-] | `void-painter` · 中国留白 |
 
-### 🎵 Part III 音乐家 2 位 (v4.1 新晋 Tier 0)
-| # | 人物 | 用途 | 映射到 |
+### 🎵 Part III 音乐家 4 位 (v4.2 沉默-陪伴-高潮三档位)
+| # | 人物 | 立场 | 已映射到 |
 |---|---|---|---|
-| #M001 | 巴赫 | 对位法 / 平均律 / 算法美学祖 | `counterpoint-architect` (新 agent · 结构层) |
-| #M020 | 凯奇 (Cage) | 4'33" / 偶然 / 沉默即作品 | `silence-composer` (新 agent · 与 silence-architect 互证) |
+| #M001 | 巴赫 | 对位法 / 算法美学祖 [~] | `counterpoint-architect` · 结构层 |
+| #M005 | **贝多芬** ⭐用户点名 | 情感张力 / 命运叙事 [+] | `tension-composer` (新 agent · R-Cross3 情感张力律) |
+| #M020 | 凯奇 | 4'33" / 沉默即作品 [-] | `silence-composer` · 议会民主表决, **禁一票否决 (P1-6 修)** |
+| #M025 | **Brian Eno** | ambient / 生成式陪伴 [~] | `ambient-architect` (新 agent · R-Cross4 环境陪伴律) |
 
-> 另: #086 维纳 (控制论) 锚定 R16 反馈循环律但未独立成 agent
-> v4.1 设计原则: 留白宗师三角 (王弼 #232 · 倪瓒 #A045 · 凯奇 #M020) — 三大类各出一位"反过度"代表, 形成跨类共振。
+> **v4.2 议会内置辩证机制**:
+> - 留白宗师三角 [-] (王弼 / 倪瓒 / 凯奇) ⟷ 加法平衡三角 [+] (达芬奇 / 莫奈 / 贝多芬)
+> - 沉默-陪伴-高潮三档位音乐家 (凯奇 ↔ Eno ↔ 贝多芬) 形成连续灰度
+> - 12 位 Tier 0 中, 减法 5 / 加法 4 / 中间态 3 — 任一派别都不到 6 票, 无法单方决议
+
+### Tier 1.5 (v4.2 降级 · 仍可邀请, 不再自动入场)
+| # | 人物 | agent |
+|---|---|---|
+| #058 | 福柯 | `historian` (知识考古资产) |
+| #091 | 怀特海 | `futurist` (过程哲学资产) |
+| #093 | 庄子 | `wuwei-master` (无为而治资产) |
+| #056 | 梅洛庞蒂 | `perspectivist` (身体现象学资产) |
+
+### v4.2 新增 R 规则锚 (P2-8 修 · 艺术家/音乐家也有 R 锚)
+- **R-Cross1 跨学科联结律** (polymath-bridger · 达芬奇): 单学科自洽方案 REJECT
+- **R-Cross2 感官完整性律** (light-impressionist · 莫奈): 色彩降级为装饰 REJECT
+- **R-Cross3 情感张力律** (tension-composer · 贝多芬): 关键节点情感曲线为零 REJECT
+- **R-Cross4 环境陪伴律** (ambient-architect · Eno): 持续陪伴元素二分判断 (要么全静要么全响) REJECT
 
 ---
 

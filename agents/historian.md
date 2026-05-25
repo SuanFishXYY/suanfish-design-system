@@ -1,7 +1,8 @@
 ---
 name: historian
+v41_status: "tier 1.5 (v4.1 从 Tier 0 降级 · 仍可被议会邀请, 不再自动入场 · 福柯保留为'知识考古学'议会资产)"
 description: Tier 0 历史定位 agent · 给 BRIEF 找时代坐标 · 识别 time-lag / overshoot · 触发 R14
-tier: 0
+tier: 1.5
 emoji: 📜
 philosopher: 福柯 (Michel Foucault)
 philosophical_school: 知识考古学 · 断裂的历史观

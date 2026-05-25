@@ -4,9 +4,9 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-4.1.0-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.0-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-48-purple)
+![agents](https://img.shields.io/badge/agents-52-purple)
 ![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
@@ -22,7 +22,7 @@
 
 它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
 
-**v4.1 升级**: 圣人议会从"8 位哲学家"扩展到"**12 位三大类 Tier 0**" (8 哲学家 + 2 艺术家 + 2 音乐家)。任务类型路由智能匹配——配色/品牌任务召艺术家, loading/动效任务召音乐家, 哲学/系统任务召哲学家, 复杂任务三大类合议。简单事 1 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
+**v4.2 升级** (P0/P1/P2 蓝军批判全治): 圣人议会从 v4.1 的"8 哲+2 艺+2 音"重平衡为 v4.2 严格"**4:4:4 均权三大类**" — 议会内置 [减法派 ⟷ 加法派] 民主辩证, 单一圣人禁一票否决, task_kind 改 user-declared 优先 (防 LLM 自利路由), 艺术家/音乐家新增 R-Cross1-4 规则锚。简单事 2 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」
@@ -124,49 +124,56 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 
 ---
 
-## 🏛 核心机制 · v4.1 三大类圣人议会民主
+## 🏛 核心机制 · v4.2 三大类圣人议会民主 (4:4:4 均权)
 
-**这是算鱼和其他设计 AI 最根本的区别**——不是"AI 给你答案", 而是"AI 帮你召开一场跨三大类专家会议给你答案"。
+**这是算鱼和其他设计 AI 最根本的区别**——不是"AI 给你答案", 而是"AI 帮你召开一场跨三大类专家会议 + 议会内辩证 + 陪审团表决给你答案"。
 
-### 🌟 v4.1 Tier 0 三大类 · 12 位圣人
+### 🌟 v4.2 Tier 0 三大类 · 12 位圣人 (4:4:4 严格均权)
 
-| 类 | 数 | 圣人 (锚 #ID) |
+| 类 | 数 | 圣人 (锚 #ID · [+]加法 [-]减法 [~]中间) |
 | --- | --- | --- |
-| 🏛 **哲学家** | 8 | 黑格尔#039 · 福柯#058 · 怀特海#091 · 庄子#093 · 王弼#232 · 法藏#249 · 梅洛庞蒂#056 · 王充#225 |
-| 🎨 **艺术家** | 2 | 米开朗基罗#A002 (`form-liberator` 减法雕塑) · 倪瓒#A045 (`void-painter` 中国留白) |
-| 🎵 **音乐家** | 2 | 巴赫#M001 (`counterpoint-architect` 对位结构) · 凯奇#M020 (`silence-composer` 4'33"沉默) |
+| 🏛 **哲学家** | 4 | 黑格尔#039 (辩证) · 王弼#232 (留白[-]) · 法藏#249 (整体) · 王充#225 (引用核验) |
+| 🎨 **艺术家** | 4 | **达芬奇#A001** ⭐ (`polymath-bridger` 跨学科[+]) · 米开朗基罗#A002 (`form-liberator` 减法[-]) · **莫奈#A019** (`light-impressionist` 光色[+]) · 倪瓒#A045 (`void-painter` 留白[-]) |
+| 🎵 **音乐家** | 4 | 巴赫#M001 (`counterpoint-architect` 对位[~]) · **贝多芬#M005** ⭐ (`tension-composer` 张力[+]) · 凯奇#M020 (`silence-composer` 沉默[-]) · **Brian Eno#M025** (`ambient-architect` 陪伴[~]) |
 
-> **设计原则**: 留白宗师三角 (王弼/倪瓒/凯奇) — 三大类各出一位"反过度"代表, 形成跨类共振。
+> ⭐ = v4.2 新晋 (用户点名)。**议会内置辩证机制**:
+> - 留白宗师三角 [-] (王弼/倪瓒/凯奇) ⟷ 加法平衡三角 [+] (达芬奇/莫奈/贝多芬)
+> - 音乐三档位灰度: 凯奇(沉默) ↔ Eno(陪伴) ↔ 贝多芬(高潮)
+> - 任一派别 (减法 5 / 加法 4 / 中间态 3) 都不足 6 票, 无法单方决议 (P1-6 修)
+
+**降级到 Tier 1.5 (仍可被邀请)**: 福柯 / 怀特海 / 庄子 / 梅洛庞蒂 — agent 文件保留, 不再自动入场。
 
 ```
                           你的 BRIEF
                               ↓
-        ┌─────────────────────────────────────────┐
-        │   🏛 议会五步协议 (bench-matcher 全包)     │
-        ├─────────────────────────────────────────┤
-        │  ① 路由   task_kind: visual/motion/...   │
-        │           visual→艺术家 · motion→音乐家   │
-        │  ② 评分   12 位 Tier 0 按需求 5 维打分   │
-        │  ③ 召唤   ≥7.5 分入场 (典型 1-4 位)      │
-        │  ④ 邀请   跨三大类师承网络 (cap 15)       │
-        │  ⑤ 讨论   全员陈述 → 共识 → 调解冲突      │
-        │  ⑥ 投票   Tier 0 = 2 票 / 助手 = 1 票    │
-        │           ≥ 2/3 通过 · 不过重投 (max 3)  │
-        └─────────────────────────────────────────┘
+        ┌─────────────────────────────────────────────┐
+        │   🏛 议会五步协议 (bench-matcher 全包)        │
+        ├─────────────────────────────────────────────┤
+        │  ① 路由   task_kind 由用户声明优先 (v4.2 P1-5)│
+        │           visual→艺术家 +0.5 · motion→音乐家  │
+        │  ② 评分   12 位 Tier 0 按需求 5 维打分        │
+        │  ③ 召唤   ≥7.5 分入场 (典型 2-5 位 · 三大类各≥1)│
+        │  ④ 邀请   跨三大类师承网络 (cap 15)            │
+        │  ⑤ 讨论   全员陈述 → 加减辩证 → 共识            │
+        │  ⑥ 投票   Tier 0=2 票 + 类别匹配 +0.5 (cap 2.5)│
+        │           ≥ 2/3 通过 · 禁一票否决 (P1-6)      │
+        └─────────────────────────────────────────────┘
                               ↓
-                  🔍 引用核验 (R25 兜底)
+        🔍 引用核验 (R25 + R-Cross1-4 五律兜底)
                               ↓
                  🧭 派单 → Path A-G → 🛡 体检
 ```
 
-### 议会的四个关键设计 (v4.1)
+### 议会的五个关键设计 (v4.2 P0/P1/P2 修订)
 
-| 设计 | 解决什么问题 | v4.0 时代的做法 |
+| 设计 | 解决什么问题 | v4.1 时代的做法 |
 | --- | --- | --- |
-| **三大类 Tier 0** | 配色用艺术家 / 动效用音乐家, 不再哲学家硬抗 | v4.0 八圣人皆哲学家, 视觉/动效靠抽象 |
-| **任务类型路由** | task_kind 路由到对应板凳, 不空转 | v4.0 无路由, 哲学家硬评所有任务 |
-| **动态召唤** | 简单需求 1 个圣人就够 | v3.x 八圣人每次固定全上 (token 浪费) |
-| **加权投票 + R24** | Tier 0 = 2 票 / 助手 = 1 票 · 3 轮投不过升级用户 | v3.x 没投票, 谁声音大听谁的 |
+| **4:4:4 均权** | 三大类话语权平等 (P0-1) | v4.1 8:2:2 哲学家压倒 |
+| **加减辩证** | 减法派与加法派议会内辩 (P0-2) | v4.1 4 位新晋全是减法派 |
+| **用户点名 Tier 0** | 达芬奇 + 贝多芬入场 (P0-3) | v4.1 用户点名了但只给 1 个席位 |
+| **任务路由 user-declared** | task_kind 由 BRIEF 显式声明 (P1-5) | v4.1 LLM 自利推断, 可被 hack |
+| **禁一票否决** | silence-composer 等"反对派"必须走议会民主 (P1-6) | v4.1 silence-composer 默认 reject |
+| **R-Cross1-4** | 艺音 Tier 0 也有 R 规则锚 (P2-8) | v4.1 仅哲学家有 R 规则 |
 
 ### 议会调用成本
 
@@ -537,16 +544,21 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 48 位匠人 (v4.1: Tier 0 议会 12 位 = 8哲+2艺+2音 + bench-matcher + quotation-verifier + ...)
-│   ├── bench-matcher.md          # ⭐ v4.1 三大类议会核心
-│   ├── quotation-verifier.md     # ⭐ R25 引用核验
-│   ├── dialectician.md           # ⭐ Tier 0 哲学家 ×8
+├── agents/                  # 52 位匠人 (v4.2: Tier 0 议会 12 位 = 4 哲+4 艺+4 音 + bench-matcher + quotation-verifier + ...)
+│   ├── bench-matcher.md          # ⭐ v4.2 三大类议会核心 (4:4:4 + dynamic voting)
+│   ├── dialectician.md           # ⭐ Tier 0 哲学家 ×4 (黑/王弼/法藏/王充)
+│   ├── polymath-bridger.md       # ⭐ v4.2 Tier 0 艺术家 · 达芬奇 (用户点名)
 │   ├── form-liberator.md         # ⭐ v4.1 Tier 0 艺术家 · 米开朗基罗
+│   ├── light-impressionist.md    # ⭐ v4.2 Tier 0 艺术家 · 莫奈 (反盲点)
 │   ├── void-painter.md           # ⭐ v4.1 Tier 0 艺术家 · 倪瓒
 │   ├── counterpoint-architect.md # ⭐ v4.1 Tier 0 音乐家 · 巴赫
-│   ├── silence-composer.md       # ⭐ v4.1 Tier 0 音乐家 · 凯奇
+│   ├── tension-composer.md       # ⭐ v4.2 Tier 0 音乐家 · 贝多芬 (用户点名)
+│   ├── silence-composer.md       # ⭐ v4.1 Tier 0 音乐家 · 凯奇 (禁一票否决)
+│   ├── ambient-architect.md      # ⭐ v4.2 Tier 0 音乐家 · Brian Eno (中间档)
+│   ├── historian.md / futurist.md / wuwei-master.md / perspectivist.md  # ⬇ Tier 1.5 (v4.2 降级)
+│   ├── quotation-verifier.md     # ⭐ R25 引用核验
 │   ├── moment-strategist.md
-│   ├── ... (44+ agents)
+│   ├── ... (52 agents total)
 │   └── v4-congress-simulation.md # ⭐ 5 TC 议会演示
 └── references/              # 27 份规范 + 420 思想家板凳
     ├── 17-philosophy.md

@@ -98,36 +98,72 @@ ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该输出 44
 
 ---
 
-## 🌗 v3.0 三层哲学体系（What's New）
+## 🏛 核心机制 · v4.0 圣人议会民主
 
-| Layer | 文件 | 回答的问题 | 触发 R 规则 |
-| --- | --- | --- | :---: |
-| **Layer 1 · 价值** | [17-philosophy.md](references/17-philosophy.md) | 该选哪边？ | R1-R12 |
-| **Layer 2 · 辩证** ✨ | [24-philosophy-dialectics.md](references/24-philosophy-dialectics.md) | 为什么有两边？ | R18 |
-| **Layer 3 · 发展规律** ✨ | [25-philosophy-laws.md](references/25-philosophy-laws.md) | 矛盾如何随时间漂移？ | R13-R17 |
-| **Layer 0.5 · 历史定位** ✨ | [26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ | — |
+**这是算鱼和其他设计 AI 最根本的区别**——不是"AI 给你答案", 而是"AI 帮你召开一场专家会议给你答案"。
 
-任何 BRIEF 入场顺序：**🪙 dialectician → 📜 historian → 🔭 futurist → 🧭 moment-strategist → A-G 路径**
+```
+                          你的 BRIEF
+                              ↓
+        ┌─────────────────────────────────────────┐
+        │   🏛 议会五步协议 (bench-matcher 全包)     │
+        ├─────────────────────────────────────────┤
+        │  ① 评分   8 位 Tier 0 圣人按需求 5 维打分  │
+        │  ② 召唤   ≥7.5 分的入场 (通常 1-3 位)      │
+        │  ③ 邀请   入场圣人从 293 板凳叫师弟师妹    │
+        │           (单人配额 3 · 总数封顶 15)       │
+        │  ④ 讨论   全员陈述 → 合并共识 → 调解冲突   │
+        │  ⑤ 投票   Tier 0 = 2 票 / 助手 = 1 票      │
+        │           ≥ 2/3 通过 · 不过重投 (max 3 轮) │
+        └─────────────────────────────────────────┘
+                              ↓
+                  🔍 引用核验 (R25 兜底)
+                              ↓
+                 🧭 派单 → Path A-G → 🛡 体检
+```
+
+### 议会的三个关键设计
+
+| 设计 | 解决什么问题 | v3 时代的做法 |
+| --- | --- | --- |
+| **动态召唤** | 简单需求不需要 8 个 AI 群辩, 一个就够 | v3.x 八圣人每次固定全上 (token 浪费) |
+| **加权投票** | Tier 0 (核心圣人) 权重 2×, 助手 1× | v3.x 没有投票, 谁声音大听谁的 |
+| **议会僵局律 (R24)** | 3 轮投不过 → 不假装通过, 直接升级用户 | v3.x 强行 "和稀泥" 出方案 |
+
+### 议会调用成本
+
+| BRIEF 类型 | 入场人数 | LLM 调用 | 对比 v3.x |
+| --- | --- | --- | --- |
+| 简单调整 (圆角/颜色) | 1 圣人 | ~5 calls | **省 80%** |
+| 中等组件 (毛玻璃卡片) | 8 人 | ~18 calls | 省 30% |
+| 复杂系统 (企业级 DS) | 15 人 (封顶) | ~50 calls | 持平 |
+| 哲学冲突 (要 2 轮投票) | 9 人 | ~25 calls | 持平 |
+
+📖 完整 5 TC 演示 → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
 
 ---
 
-## 📚 v3.0.1 新增 · 301 位哲学家板凳（全球唯一中国哲学驱动）
+## 🌗 三层哲学 + 301 板凳 (议会的"知识库")
 
-> 我们把 301 位中外思想家系统归档到 `references/27-philosopher-bench.md` —— **117 位中国 + 184 位西方 / 全球**。
-> 每位都带"一句话核心 + 装进设计系统的钩子"。
-> v3.x 任何新 agent / 新 R 规则,必须援引板凳里至少 1 位作为哲学锚点。
+**议会能开起来, 是因为底下有 301 位真实哲学家做后盾** —— 不是 LLM 瞎编圣人, 每条引用都能在板凳里查到。
 
-```
-✅ 已开采 4 位:  #039 黑格尔 / #058 福柯 / #091 怀特海 / #086 维纳
-🔥 v3.1 强推:   #092 老子 / #093 庄子 / #232 王弼 / #249 法藏 / #225 王充
-🌐 学派覆盖:    古希腊→分析→后结构→中国先秦→宋明心学→当代新儒家
-```
+| Layer | 回答什么 | R 规则 |
+| --- | --- | --- |
+| **价值** [📖](references/17-philosophy.md) | 该选哪边? | R1-R12 |
+| **辩证** [📖](references/24-philosophy-dialectics.md) | 为什么有两边? | R18 |
+| **发展规律** [📖](references/25-philosophy-laws.md) | 矛盾如何随时间漂移? | R13-R17 |
+| **历史定位** [📖](references/26-historical-positioning.md) | 这个时代该怎么做? | — |
 
-📖 **[查看 301 人完整板凳 →](references/27-philosopher-bench.md)**
+📚 **[301 位哲学家板凳 →](references/27-philosopher-bench.md)**（117 位中国 + 184 位西方/全球, 每位带"一句话核心 + 设计钩子"）
 
 ---
+
+<details>
+<summary>📐 <b>详细架构图 · 33 agent / 7 tier mermaid 流程图</b> (v3 时代图 · 点开看 · 议会民主版图正在制作中)</summary>
 
 ## 🏗️ 架构总览 · v3.0 (36 agent · 8 tier · 7 path · Tier 0 辩证哲学层 + Path G AI-native)
+
+> ⚠️ 下面这张是 v3.0 的图。v4.0 议会民主版图正在制作中——核心流程见上方 [🏛 核心机制](#-核心机制--v40-圣人议会民主) 块。
 
 ```mermaid
 flowchart LR
@@ -370,143 +406,78 @@ classDiagram
 
 </details>
 
----
-
-## 😩 你是不是有这些痛
-
-- **业务方拍脑袋**：「再加个动画」「全屏弹一下」「这里改红色」 —— 没人挡，工程师只能做
-- **AI 工具永远顺从**：让它做什么就做什么，没有判断力，没有底线
-- **设计语言混乱**：今天的暖色仪式动画，明天就被复用到稳态高频界面，3 个月后用户审美疲劳
-- **审计与开发脱节**：design token 一改，审计规则不知道，bug 漏过去
+</details>
 
 ---
 
-## ✨ 核心差异 · 能说 NO 的设计 AI
+## 🥇 为什么选算鱼 · 三大差异
 
-绝大多数「AI 设计助手」是一个**单 prompt 包打天下**，遇到不合理需求只会硬做。
-
-算鱼设计系统是一家**33 位 agent 的虚拟工作室**，分布在 7 个 tier、7 条设计路径上（含 v2.5 新增 AI-native 路径 G），最顶层的 `moment-strategist` 持有 **6 条硬触发的拒单规则**：
-
-| 编号 | 触发条件 |
-| --- | --- |
-| R1 | 时长 > 5s 且非用户主动触发 |
-| R2 | 仪式装饰落在每天 100+ 次的高频界面 |
-| R3 | 需求自相矛盾（要快 + 要仪式感） |
-| R4 | 违反三条铁律之一 |
-| R5 | 想走路径 B 但 4 项硬条件未全满足 |
-| R6 | 一屏内要同时跑两个主导 agent |
-
-命中任一条 → **拒单 · 退回业务方 · 给替代方案**。
-
----
-
-## ⏱ 30 秒小例子
-
-业务方递进来：
-
-> 「给项目列表加一个『删除项目』的二次确认框。」
-
-工作室自动走完：
+### 1. 唯一会"拒单"的设计 AI
 
 ```
-🧭 moment-strategist
-   ├─ 快速通道命中: 行 #1 (危险操作弹窗)
-   ├─ REJECT 检查: 6 项全过 ✅
-   └─ 派单 → 🪟 modal-craftsman
-
-🪟 modal-craftsman 拆树:
-   ├─ 主动协作 (Tier 4):
-   │   📝 copy-writer    → 「删除「{name}」？此操作无法撤销」
-   │   🎯 icon-curator   → TrashIcon outline (颜色找 token-keeper)
-   │   📱 responsive-strategist → 移动端 stack 竖排
-   └─ 被动咨询 (Tier 5):
-       🎨 token-keeper           → red-600 + red-50 ✅ 合规
-       💫 animation-choreographer → scaleIn 200ms 功能词汇 ✅
-       ♿ a11y-guardian           → role=alertdialog · 初始焦点=取消
-
-🔍 ui-auditor 加载 references/15-audit-ruleset-steady.md v1.0.0
-   ├─ 版本同步: ✅
-   ├─ 🟥 0 · 🟧 0 · 🟨 1 [ruleset:H-04 已实现]
-   └─ ✅ 通过 · 可合并
+普通 AI:  "好的, 这就给您做"   ← 灾难的开始
+算鱼:     "等等, 这个需求我看不太合理:
+          R1 + R2 命中, 30 天后 DAU 预计跌 4%。
+          建议改成 [替代方案]。"   ← P8 同事
 ```
 
-**用时**：3 秒 · 派单 + 4 份 SPEC + 1 份 REPORT，全部有可追溯的规则编号与 owner。
+25 条硬规则 (R1-R25), 命中即拒, 附数据化替代方案。
 
----
+### 2. v4.0 圣人议会民主
 
-## 🥇 三大差异化
+不是"一个 AI 包打天下"——按你的需求动态召唤 1-15 位最懂的"圣人专家", 投票 ≥ 2/3 才出方案。简单事省 80% token, 复杂事多人辩论, 不和稀泥。
 
-### 1. **会拒单** —— 唯一一个会说 NO 的设计 AI
-6 项硬触发条件，写死在 `moment-strategist.md`。业务方拍脑袋的需求会被拦下，附带数据化的回退建议。
+### 3. 引用真实律 (R25 兜底)
 
-### 2. **双模式严格隔离** —— 暖嗓子不污染冷嗓子
-- 🎬 **仪式模式**：欢迎、版本介绍、庆贺（暖色 / 粒子 / 大动画）
-- 🏛 **稳态模式**：日常表格、模态、表单（冷色 / 玻璃 / 微动画）
-- **三条铁律**：仪式 keyframes 永不流入稳态界面，反之亦然
+凡是议会引用的圣人观点 (如"老子说...""维特根斯坦认为...") 都要在 301 板凳里查到原文。LLM 编一句话装作圣人说的? `quotation-verifier` 直接打回重审。
 
-### 3. **规则与执行解耦** —— 工程化的版本同步契约
-审计规则不藏在 `ui-auditor` 里，而是独立到 `references/15-audit-ruleset-steady.md` 与 `16-audit-ruleset-onboarding.md`。每份规则集都有 `bound_to_token_version` 字段，token 改动必须同步规则集 PR，否则审计员**直接报错拒绝执行**。
+### 与其他工具一句话对比
 
-### 4. **哲学根基（v2.2）** —— 每位 agent 都有不可让步的命题
-33 位 agent 各配一条哲学锚点（孙子 · 上兵伐谋 / 老子 · 大象无形 / 康德 · 绝对命令 / 赫拉克利特 · 万物皆流 / 福柯 · 知识即权力 ……），REJECT R1-R6 配哲学命题，外加 20 条经典法典（Dieter Rams / Tufte / 包豪斯）和 30+ 条案例。v2.5 AI-native 路径 G 又叠加了 27 条 P-XX 哲学规则（可视化 / 归因化 / 透明化 / 可撤回）。当业务方拍脑袋时，agent 不是机械引用规则——而是引用**信念**。详见 [📜 references/17-philosophy.md](references/17-philosophy.md)。
-
----
-
-## 🆚 与其他工具对比
-
-| 维度 | 算鱼设计系统 | shadcn/ui | Tailwind UI | 普通 AI design skill |
+| 维度 | 算鱼 v4.0 | shadcn/ui | Tailwind UI | 普通 AI design |
 | --- | --- | --- | --- | --- |
-| **本质** | 多 agent 工作室 | 组件库 | 组件库 + 模板 | 单 prompt |
-| **拒单能力** | ✅ 6 项硬规则 | ❌ N/A | ❌ N/A | ❌ 永远 yes |
-| **设计决策树** | ✅ 六维体检 + 快速通道 | ❌ 凭工程师感觉 | ❌ 凭设计师感觉 | ⚠️ LLM 自由发挥 |
-| **仪式 / 稳态隔离** | ✅ 三条铁律 | ❌ 无概念 | ❌ 无概念 | ❌ 无概念 |
-| **审计与规则解耦** | ✅ 版本同步契约 | ❌ N/A | ❌ N/A | ❌ 规则即 prompt |
-| **可追溯性** | ✅ 规则编号 + owner | N/A | N/A | ❌ 黑盒 |
-| **职责边界** | ✅ 33 agent / 7 tier / 7 path | N/A | N/A | ❌ 大锅炖 |
-| **适合谁** | 内部产品 / 需要 design ops 的团队 | 独立开发者 | 商业 SaaS | 个人项目 |
-| **学习成本** | 中等（有快速通道兜底） | 低 | 低 | 极低 |
-| **代表理念** | "Say NO when you should" | "Build your own" | "Pay for done" | "Just ship" |
+| 本质 | 44 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
+| 会说 NO | ✅ R1-R25 | ❌ | ❌ | ❌ 永远 yes |
+| 引用可追溯 | ✅ 301 板凳兜底 | N/A | N/A | ❌ 黑盒 |
+| 适合谁 | 内部产品 / design ops 团队 | 独立开发者 | 商业 SaaS | 个人项目 |
 
 ---
 
-## 🚀 完整安装文档
-
-详见顶部 [⚡ 30 秒上手](#-30-秒上手--quick-install--use) 章节, 含 Claude Code 插件市场 + 直接克隆两种方式 + trigger 示例。
-
----
-
-## 🏛 33 位 agent · 7 个 tier · 7 条路径
+## 🏛 44 agent · 8 tier · 7 path (一图概览)
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│ Tier 1   · 调度          🧭 moment-strategist (可 REJECT)        │
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 1.5 · 协调          🔀 flow-coordinator (跨路径桥)          │
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 2   · 主导 ×4       🎬 onboarding · 🏛 ui-architect          │
-│                          💬 conversation · 🔔 notification        │
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 3   · 容器专科 ×10  🪟 modal · 🧙 wizard · 📊 viz · 📋 table │
-│                          💬 chat-ui · 🌊 stream · 🛠️ tool-call    │
-│                          🧵 thread · 🎨 artifact · ✍️ prompt-input│
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 4   · 内容专科 ×10  📝 copy · 🎯 icon · 🪟 empty-state       │
-│                          📱 responsive · 👤 persona · 🗂 info-arch│
-│                          🔧 error-recovery · 🧠 reasoning-viz     │
-│                          📑 citation · ⏱️ rate-limit              │
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 5   · 横切咨询 ×6   🎨 token · 💫 anim · ♿ a11y · 🏷 brand  │
-│                          🌐 i18n · 🔀 model-switcher              │
-├─────────────────────────────────────────────────────────────────┤
-│ Tier 6   · 质量门        🔍 ui-auditor (加载 ref 15/16, 33 行覆盖)│
-└─────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────┐
+│ Tier 0   · 议会 ×8       🪙 dialectician · 📜 historian · 🔭 futurist │
+│  (辩证哲学层)             🍃 wuwei-master · 🦋 perspectivist          │
+│                          🌫 silence-architect · 🏺 holism-strategist │
+│                          🔬 debunk-auditor                          │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 1   · 调度          🧭 moment-strategist (R1-R23 REJECT)       │
+│ Tier 1.5 · 协调          🔀 flow-coordinator                        │
+│ Tier 1.6 · 议会调度       🏛 bench-matcher (5 步议会自包含)          │
+│ Tier 1.7 · 引用核验       🔍 quotation-verifier (R25)                │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 2   · 主导 ×4       🎬 onboarding · 🏛 ui-architect             │
+│                          💬 conversation · 🔔 notification           │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 3   · 容器专科 ×10  🪟 modal · 🧙 wizard · 📊 viz · 📋 table     │
+│                          💬 chat-ui · 🌊 stream · 🛠️ tool-call       │
+│                          🧵 thread · 🎨 artifact · ✍️ prompt-input   │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 4   · 内容专科 ×10  📝 copy · 🎯 icon · 🪟 empty-state           │
+│                          📱 responsive · 👤 persona · 🗂 info-arch    │
+│                          🔧 error-recovery · 🧠 reasoning-viz         │
+│                          📑 citation · ⏱️ rate-limit                  │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 5   · 横切咨询 ×6   🎨 token · 💫 anim · ♿ a11y · 🏷 brand     │
+│                          🌐 i18n · 🔀 model-switcher                 │
+├────────────────────────────────────────────────────────────────────┤
+│ Tier 6   · 质量门        🛡 ui-auditor                              │
+└────────────────────────────────────────────────────────────────────┘
 
-7 条路径：A 仪式 · B 稳态 · C 聊天 · D 通知 · E 移动 · F 嵌入 · G AI-native（叠加层）
+7 条路径: A 仪式 · B 稳态 · C 聊天 · D 通知 · E 移动 · F 嵌入 · G AI-native
 ```
 
-每位 agent 都是一个独立的 `.md` 文件，有 frontmatter 声明 `reports_to` / `consults` / `audited_by` / `references`，可以独立审阅、独立修改。
-
-详见 [`agents/`](agents/) 目录。
+每位 agent 是一个独立 `.md` 文件, 可独立审阅 / 修改 → [`agents/`](agents/)
 
 ---
 
@@ -520,19 +491,20 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 33 位匠人（v2.5 新增 9 位 AI-native 锚点）
+├── agents/                  # 44 位匠人 (v4.0: Tier 0 议会 8 位 + bench-matcher + quotation-verifier + ...)
+│   ├── bench-matcher.md          # ⭐ v4.0 议会核心
+│   ├── quotation-verifier.md     # ⭐ R25 引用核验
+│   ├── dialectician.md           # ⭐ Tier 0 ×8
 │   ├── moment-strategist.md
-│   ├── onboarding-director.md
-│   ├── ui-architect.md
-│   ├── conversation-director.md
-│   └── ... (29 more · 含 stream/tool-call/thread/reasoning/citation/artifact/...)
-└── references/              # 23 份规范（v2.5 哲学补丁覆盖路径 G）
-    ├── 00-collaboration-protocol.md
-    ├── 01-design-tokens.md
-    ├── 02-onboarding-eureka.md
-    ├── ... (12 more)
-    ├── 15-audit-ruleset-steady.md       # ⭐ v2.1 独立规则集
-    └── 16-audit-ruleset-onboarding.md   # ⭐ v2.1 独立规则集
+│   └── ... (40 more)
+├── docs/
+│   └── v4-congress-simulation.md # ⭐ 5 TC 议会演示
+└── references/              # 27 份规范 + 301 哲学家板凳
+    ├── 17-philosophy.md
+    ├── 24-philosophy-dialectics.md
+    ├── 25-philosophy-laws.md
+    ├── 26-historical-positioning.md
+    └── 27-philosopher-bench.md   # ⭐ 301 圣人板凳
 ```
 
 ---
@@ -542,7 +514,7 @@ suanfish-design-system/
 - ❌ **只想做一个 landing page 的人** —— 杀鸡用牛刀，去用 Tailwind UI
 - ❌ **不喜欢「被 AI 反驳」的团队** —— REJECT 机制对你是负担不是资产
 - ❌ **追求 5 分钟出 demo 的人** —— 学习架构要半小时
-- ❌ **没有 design system 沉淀需求的个人项目** —— 6 tier 是企业级配置
+- ❌ **没有 design system 沉淀需求的个人项目** —— 8 tier 是企业级配置
 
 **适合谁**：
 - ✅ 有真实产品要长期维护的 in-house 团队

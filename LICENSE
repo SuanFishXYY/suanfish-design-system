@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Suanfish Studio
+Copyright (c) 2025 算鱼工作室 (Suanfish Studio · SuanFishXYY)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Related Projects / 关联项目
+
+**kpop-design-system** (https://github.com/SuanFishXYY/kpop-design-system) —
+姊妹项目，复用本仓库的安装器架构和治理体系，新增 97 位 K-pop idol UI agent。
+Sister project that reuses this repo's installer architecture and governance
+lineage, adds 97 K-pop idol UI agents.
+
+两个项目共享：Bug #1-#9 治理史、虚拟环境沙箱、虚拟机装机规约、6 大 CLI 适配层。
+Both projects share: Bug #1-#9 remediation history, virtual sandbox testing,
+virgin-machine install conventions, 6-CLI compatibility layer.

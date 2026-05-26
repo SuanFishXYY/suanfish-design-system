@@ -5,7 +5,7 @@
 //        npx -y github:SuanFishXYY/suanfish-design-system uninstall
 
 import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, symlinkSync, lstatSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
+import { existsSync, mkdirSync, symlinkSync, lstatSync, unlinkSync, readdirSync, rmdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir, platform } from 'node:os';
 import { join } from 'node:path';
 
@@ -98,6 +98,41 @@ function unlinkFrom(cliDir) {
   return false;
 }
 
+// v4.2.2: 把 ~/.<cli>/skills 注册到 Copilot CLI 的 skillDirectories,
+// 让 /skill list 自动识别 (无需用户手动跑 /skill add)
+function registerSkillDir(cliDir) {
+  const settingsPath = join(HOME, cliDir, 'settings.json');
+  if (!existsSync(settingsPath)) return false;
+  try {
+    const raw = readFileSync(settingsPath, 'utf8').replace(/^\uFEFF/, '');
+    const cfg = JSON.parse(raw);
+    const skillsParent = join(HOME, cliDir, 'skills');
+    if (!Array.isArray(cfg.skillDirectories)) cfg.skillDirectories = [];
+    if (cfg.skillDirectories.includes(skillsParent)) return false;
+    cfg.skillDirectories.push(skillsParent);
+    writeFileSync(settingsPath, JSON.stringify(cfg, null, 2));
+    return true;
+  } catch (e) {
+    warn(`无法注册到 ${cliDir}/settings.json: ${e.message}`);
+    return false;
+  }
+}
+
+function unregisterSkillDir(cliDir) {
+  const settingsPath = join(HOME, cliDir, 'settings.json');
+  if (!existsSync(settingsPath)) return false;
+  try {
+    const cfg = JSON.parse(readFileSync(settingsPath, 'utf8').replace(/^\uFEFF/, ''));
+    const skillsParent = join(HOME, cliDir, 'skills');
+    if (!Array.isArray(cfg.skillDirectories)) return false;
+    const before = cfg.skillDirectories.length;
+    cfg.skillDirectories = cfg.skillDirectories.filter(d => d !== skillsParent);
+    if (cfg.skillDirectories.length === before) return false;
+    writeFileSync(settingsPath, JSON.stringify(cfg, null, 2));
+    return true;
+  } catch { return false; }
+}
+
 function detect() {
   return CLIS.filter(cli => existsSync(join(HOME, cli.dir)));
 }
@@ -121,6 +156,9 @@ function cmdInstall() {
   for (const cli of found) {
     const ok_ = linkInto(cli.dir);
     if (ok_) ok(`${cli.name.padEnd(18)} ← ~/${cli.dir}/skills/${NAME}`);
+    if (registerSkillDir(cli.dir)) {
+      info(`  └─ 已注册 ~/${cli.dir}/skills 到 settings.json skillDirectories`);
+    }
   }
 
   head('✅ 安装完成');
@@ -143,7 +181,10 @@ function cmdUpdate() {
 function cmdUninstall() {
   head('🗑  卸载算鱼设计系统');
   let removed = 0;
-  for (const cli of CLIS) if (unlinkFrom(cli.dir)) { ok(`已移除 ~/${cli.dir}/skills/${NAME}`); removed++; }
+  for (const cli of CLIS) {
+    if (unlinkFrom(cli.dir)) { ok(`已移除 ~/${cli.dir}/skills/${NAME}`); removed++; }
+    unregisterSkillDir(cli.dir);
+  }
   if (removed === 0) warn('未发现 symlink');
   info(`仓库目录 ${TARGET} 仍保留 (手动删除: rm -rf "${TARGET}")`);
 }

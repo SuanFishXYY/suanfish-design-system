@@ -1,7 +1,7 @@
-﻿---
+---
 name: suanfish-design-system
 description: "Suanfish Design System v4.2 — 算鱼工作室哲学驱动多智能体设计语言体系 · 52 个 agent · 4:4:4 (哲学家/艺术家/音乐家) 圣人议会 · 加权陪审团 2/3 表决 · R-Cross1-4 跨学科四律 · 25-rule REJECT 机制。Activate on '/suanfish', '/算鱼', '/suanfish-design', '/算鱼设计系统'. Trigger phrases: '算鱼', 'suanfish', '召集议会', 'sage congress', '议会民主', 'bench-matcher', '4:4:4'. Auto-loads on UI design/audit/refactor: hero/landing/dashboard/modal/animation/design-tokens/copywriting/dialectical-review. bench-matcher 跑 5 步议会 → 12 圣人候选 → 自由邀请 (cap 15) → 议会讨论 → 2/3 加权表决。P1-6: 禁单 agent 否决权。R24 议会僵局兜底。"
-version: 4.2.4
+version: 4.2.5
 author: 算鱼工作室
 license: MIT
 language: zh-CN

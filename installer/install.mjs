@@ -145,16 +145,18 @@ function cmdInstall() {
   cloneOrPull();
 
   head('🔌 检测已安装的 CLI');
-  const found = detect();
+  let found = detect();
   if (found.length === 0) {
-    warn('未检测到 .copilot / .claude / .agents / .codex / .gemini / .antigravity');
-    info('如已安装某 CLI 但目录名不同, 手动 symlink:');
-    info(IS_WIN
-      ? `  cmd /c mklink /J "<你的目录>\\skills\\${NAME}" "${TARGET}"`
-      : `  ln -sf "${TARGET}" ~/<你的目录>/skills/${NAME}`);
-    process.exit(0);
+    // v4.2.5 修 Bug #9: 全新机器 (无任何 CLI 目录) 时主动建默认目标
+    // 避免 installer 啥都不装就 exit. 之后装任意 CLI 立刻 /skills 可见.
+    warn('未检测到任何已知 CLI 目录, 主动建立 ~/.copilot/skills 和 ~/.claude/skills');
+    info('(后续装 Copilot CLI 或 Claude Code, skill 都已就位)');
+    const defaults = CLIS.filter(c => c.dir === '.copilot' || c.dir === '.claude');
+    for (const cli of defaults) {
+      mkdirSync(join(HOME, cli.dir, 'skills'), { recursive: true });
+    }
+    found = defaults;
   }
-
   for (const cli of found) {
     const ok_ = linkInto(cli.dir);
     if (ok_) ok(`${cli.name.padEnd(18)} ← ~/${cli.dir}/skills/${NAME}`);

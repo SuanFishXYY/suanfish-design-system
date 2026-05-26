@@ -1,25 +1,25 @@
 {
-  "name": "suanfish-design-system",
-  "version": "4.2.4",
-  "description": "算鱼设计系统 · 52 agent · 8 tier · v4.2 圣人议会民主 4:4:4 均权 · 议会内置加减辩证 · 单一圣人禁一票否决 (npx github:SuanFishXYY/suanfish-design-system 一键安装)",
-  "bin": {
-    "suanfish-install": "installer/install.mjs"
-  },
-  "type": "module",
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SuanFishXYY/suanfish-design-system.git"
-  },
-  "license": "MIT",
-  "keywords": [
-    "claude-code",
-    "claude-code-skill",
-    "design-system",
-    "ai-agents",
-    "philosophy",
-    "ux-design"
-  ]
+    "name":  "suanfish-design-system",
+    "version":  "4.2.5",
+    "description":  "绠楅奔璁捐绯荤粺 路 52 agent 路 8 tier 路 v4.2 鍦ｄ汉璁細姘戜富 4:4:4 鍧囨潈 路 璁細鍐呯疆鍔犲噺杈╄瘉 路 鍗曚竴鍦ｄ汉绂佷竴绁ㄥ惁鍐?(npx github:SuanFishXYY/suanfish-design-system 涓€閿畨瑁?",
+    "bin":  {
+                "suanfish-install":  "installer/install.mjs"
+            },
+    "type":  "module",
+    "engines":  {
+                    "node":  "\u003e=18"
+                },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "https://github.com/SuanFishXYY/suanfish-design-system.git"
+                   },
+    "license":  "MIT",
+    "keywords":  [
+                     "claude-code",
+                     "claude-code-skill",
+                     "design-system",
+                     "ai-agents",
+                     "philosophy",
+                     "ux-design"
+                 ]
 }

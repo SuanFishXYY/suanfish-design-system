@@ -1,5 +1,6 @@
 ﻿---
-agent: error-recovery-designer
+name: error-recovery-designer
+description: "错误恢复设计师 · 哲学锚: 海德格尔 — 工具坏掉的瞬间，工具才显现：错误是用户与产品最真实的对话"
 role: 错误恢复设计师
 icon: 🩹
 tier: 4

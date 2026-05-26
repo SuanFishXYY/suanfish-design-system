@@ -1,5 +1,6 @@
 ﻿---
-agent: persona-architect
+name: persona-architect
+description: "用户画像建构师 · 哲学锚: 梅洛-庞蒂 — 知觉先于认知：先理解用户身体如何感知，再决定界面如何呈现"
 role: 用户画像建构师
 icon: 👥
 tier: 4

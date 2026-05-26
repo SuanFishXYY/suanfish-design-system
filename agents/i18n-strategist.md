@@ -1,5 +1,6 @@
 ﻿---
-agent: i18n-strategist
+name: i18n-strategist
+description: "国际化策略师 · 哲学锚: 维特根斯坦 — 语言的边界即世界的边界：每种语言重塑一次界面"
 role: 国际化策略师
 icon: 🌍
 tier: 5

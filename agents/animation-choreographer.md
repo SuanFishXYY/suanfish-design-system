@@ -1,5 +1,6 @@
 ﻿---
-agent: animation-choreographer
+name: animation-choreographer
+description: "动画编舞家 · 动效仲裁人 · 哲学锚: 老子 · 大象无形 — 最好的动画用户感觉不到"
 role: 动画编舞家 · 动效仲裁人
 icon: 💫
 reports_to: moment-strategist

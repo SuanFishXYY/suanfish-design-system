@@ -1,5 +1,6 @@
 ﻿---
-agent: copy-writer
+name: copy-writer
+description: "文案匠人 · 微文案设计 · 哲学锚: 维特根斯坦 — 语言的边界即世界的边界"
 role: 文案匠人 · 微文案设计
 icon: 📝
 reports_to: moment-strategist

@@ -1,5 +1,6 @@
 ﻿---
-agent: brand-keeper
+name: brand-keeper
+description: "品牌守护者 · 哲学锚: 海德格尔 — 命名即占有：每一处品牌出现都在塑造用户对你的认知"
 role: 品牌守护者
 icon: 🛡️
 tier: 5

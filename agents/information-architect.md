@@ -1,5 +1,6 @@
 ﻿---
-agent: information-architect
+name: information-architect
+description: "信息架构师 · IA · 哲学锚: 康德 — 范畴先于经验：信息分类的方式决定了用户能想到什么"
 role: 信息架构师 · IA
 icon: 🗺️
 tier: 4

@@ -1,5 +1,6 @@
 ﻿---
-agent: flow-coordinator
+name: flow-coordinator
+description: "流程协调官 · 跨路径调度 · 哲学锚: 亚里士多德 — 整体大于部分之和"
 role: 流程协调官 · 跨路径调度
 icon: 🚦
 tier: 1.5

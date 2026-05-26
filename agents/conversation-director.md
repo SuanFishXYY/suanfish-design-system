@@ -1,5 +1,6 @@
 ﻿---
-agent: conversation-director
+name: conversation-director
+description: "对话流总监 · Path C 主理 · 哲学锚: 巴赫金 — 一切话语都是对话；独白是失败的对话"
 role: 对话流总监 · Path C 主理
 icon: 💬
 tier: 2

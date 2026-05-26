@@ -1,5 +1,6 @@
 ﻿---
-agent: responsive-strategist
+name: responsive-strategist
+description: "响应式策略师 · 哲学锚: 赫拉克利特 — 人不能两次踏入同一屏幕"
 role: 响应式策略师
 icon: 📱
 reports_to: moment-strategist

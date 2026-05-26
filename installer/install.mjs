@@ -102,11 +102,13 @@ function unlinkFrom(cliDir) {
 // 让 /skill list 自动识别 (无需用户手动跑 /skill add)
 function registerSkillDir(cliDir) {
   const settingsPath = join(HOME, cliDir, 'settings.json');
-  if (!existsSync(settingsPath)) return false;
+  const skillsParent = join(HOME, cliDir, 'skills');
   try {
-    const raw = readFileSync(settingsPath, 'utf8').replace(/^\uFEFF/, '');
-    const cfg = JSON.parse(raw);
-    const skillsParent = join(HOME, cliDir, 'skills');
+    let cfg = {};
+    if (existsSync(settingsPath)) {
+      const raw = readFileSync(settingsPath, 'utf8').replace(/^\uFEFF/, '');
+      cfg = raw.trim() ? JSON.parse(raw) : {};
+    }
     if (!Array.isArray(cfg.skillDirectories)) cfg.skillDirectories = [];
     if (cfg.skillDirectories.includes(skillsParent)) return false;
     cfg.skillDirectories.push(skillsParent);

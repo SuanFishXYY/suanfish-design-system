@@ -496,6 +496,52 @@ classDiagram
 
 ---
 
+## 🎤 孪生项目 · kpop idol 议会
+
+> **算鱼有一个孪生姐妹: [kpop-design-system](https://github.com/SuanFishXYY/kpop-design-system)**
+
+如果你做的是**娱乐 / 内容平台 / 时尚消费**而不是严肃 B 端工具——
+sage 议会的黑格尔、塞尚、巴赫可能离你的语境太远。
+
+KPOP Design System 把 council 的人选**从哲学家换成 K-pop idol**:
+Jennie (BLACKPINK 主推) · Wonyoung (IVE 团魂) · Karina (aespa 评委) ……186 idol · 52 团魂 · 7 评委。
+
+```mermaid
+graph LR
+    subgraph SAGE["🎭 suanfish · sage 议会"]
+        S["黑格尔 + 塞尚 + 巴赫<br/>420 thinker · 52 agent<br/>严肃 B 端 / SaaS / 工具"]
+    end
+
+    subgraph KPOP["🎤 kpop · idol 议会"]
+        K["Jennie + Wonyoung + Karina<br/>186 idol · 52 团魂 · 35 era<br/>娱乐 / C 端 / 时尚 / 内容"]
+    end
+
+    SAGE -.同源 engine.-> KPOP
+    KPOP -.孪生表达.-> SAGE
+
+    style SAGE fill:#FCF3CF,stroke:#B7950B,stroke-width:2px
+    style KPOP fill:#FFE5EC,stroke:#FF1493,stroke-width:2px
+```
+
+**底层架构完全同源** (engine/dispatch + voting + routing + lineages),
+**表达语言完全不同** (学术 vs 流行 · 永恒 vs 工业)。
+
+kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
+- 🌌 **Era Universe** — 时间维度 (Fancy era ≠ Cheer Up era)
+- 📅 **Comeback Cycle** — 30 天 7 节点 brief 日历
+- 🎨 **Multi-touchpoint** — MV/SNS/Photocard/Lightstick/Stage 五媒介物理补偿
+- 🧬 **Generation Lint** — 2/3/4/5 代审美错位禁止
+- 🧑 **User-as-Judge** — 用户成为评委 (v3.1)
+
+> **算鱼议会**处理 *"什么是好设计"* 的**永恒问题**。
+> **kpop 议会**处理 *"什么是 K-pop 工业级好设计"* 的**工业问题**。
+
+未来 v4.0 计划: **联袂议会** — 让**黑格尔和 Jennie 同台辩论**一个 brief。
+
+→ [前往 kpop-design-system](https://github.com/SuanFishXYY/kpop-design-system)
+
+---
+
 ## 🏛 44 agent · 8 tier · 7 path (一图概览)
 
 ```

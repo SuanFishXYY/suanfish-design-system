@@ -24,6 +24,8 @@ next_evolution: "多模态消息容器，语音与图像融合的对话范式"
 - 工具调用展示（折叠卡片 / 输入参数 / 输出结果）
 - 引用 / quote / 分支视觉
 
+> **边界（与 agent-thread-architect）**：我管**视觉容器的渲染**（气泡 / 输入区 / 滚动 / 流式光标）；多轮对话的**分叉(fork) / 重新生成 / 编辑-重提 / 检查点回溯**那套"对话图模型"归 🌳 agent-thread-architect。我画当前线程长什么样，它决定线程有几条枝、怎么走回。
+
 ## 上游 / 下游
 
 - 上游：conversation-director（拿到 CONVERSATION PLAN）

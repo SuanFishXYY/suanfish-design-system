@@ -1,7 +1,7 @@
 {
   "name": "suanfish-design-system",
-  "version": "4.0.0",
-  "description": "算鱼工作室统一多智能体设计语言体系 v4.0 · 圣人议会民主。44 位 agent · 砸掉 v3.x'Tier 0 八圣人固定每次全上'的地基 · bench-matcher 重铸为议会自包含: 评分 → Layer 1 召唤 k 位 Tier 0 → 自由邀请 (递归 cap 15) → 议会讨论 → 陪审团加权投票 (Tier 0 = 2 票 / 助手 = 1 票, ≥ 2/3 通过) → quotation-verifier 终审引用真实性。R24 议会僵局律 (3 轮未达共识则升级用户决断) + R25 引用真实律。覆盖 7 条设计路径。v2.1 REJECT · v2.2 哲学根基 · v2.3 lint · v2.4 全场景 · v2.5 AI-native · v3.0 三层哲学 + 8 时代 + R13-R18 · v3.0.1 301 板凳 · v3.1 中国五位 + R19-R23 · v3.2 动态召唤 · v3.3 (实验·已撤回) · v4.0 议会民主。",
+  "version": "4.2.6",
+  "description": "算鱼设计系统(Suanfish)——多智能体界面设计系统。当用户要设计、制作、优化、重构或评审网页前端界面与交互体验时调用。常见说法包括：做个页面、做个登录页或注册页、搞个落地页或首屏、做个后台管理界面、加个弹窗或二次确认、做个多步表单或向导、画个图表或做数据看板/仪表盘、整个聊天或智能体对话界面、做个新手引导、加个动效动画、调个样式或配色、美化一下界面、优化交互体验、改改界面布局、做个空状态或图标、写界面文案、做响应式或移动端适配、做无障碍优化，以及需要多视角设计评审与辩证式批判体检时。由一支虚拟设计工作室的数十位专科匠人协作，保证品牌语言、设计令牌、动效、无障碍全程统一。技术栈以 React 与 Tailwind 为主。显式触发：输入 /suanfish 或 /算鱼，或说“用算鱼设计”“帮我审查界面”“召集议会”。",
   "author": "算鱼工作室",
   "license": "MIT",
   "language": "zh-CN",
@@ -29,10 +29,14 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 44,
+  "agent_count": 52,
   "tiers": {
-    "tier_0_dialectical_philosophy": ["dialectician", "historian", "futurist", "wuwei-master", "perspectivist", "silence-architect", "holism-strategist", "debunk-auditor"],
+    "tier_0_sage_congress_444": "12 位默认种子席 (4 哲 + 4 艺 + 4 音 · 4:4:4 骨架) · v4.2.6 起 bench-matcher 从整张 420 厚仙人板凳全员评分动态选出本次常委 (三大类各取 top-N ≥7.5 分) · 此 12 位降为默认种子/人格锚/平局兜底 · 仅厚仙人可当 2 票常委 · 用户点名保底入席",
+    "tier_0_philosophers": ["dialectician", "silence-architect", "holism-strategist", "debunk-auditor"],
+    "tier_0_artists": ["polymath-bridger", "form-liberator", "light-impressionist", "void-painter"],
+    "tier_0_musicians": ["counterpoint-architect", "tension-composer", "silence-composer", "ambient-architect"],
     "tier_1_dispatch": ["moment-strategist"],
+    "tier_1_5_demoted_philosophers": ["historian", "futurist", "wuwei-master", "perspectivist"],
     "tier_1_5_coordination": ["flow-coordinator"],
     "tier_1_6_sage_congress": ["bench-matcher"],
     "tier_1_7_citation_verification": ["quotation-verifier"],
@@ -89,6 +93,14 @@
     "agents/silence-architect.md",
     "agents/holism-strategist.md",
     "agents/debunk-auditor.md",
+    "agents/polymath-bridger.md",
+    "agents/form-liberator.md",
+    "agents/light-impressionist.md",
+    "agents/void-painter.md",
+    "agents/counterpoint-architect.md",
+    "agents/tension-composer.md",
+    "agents/silence-composer.md",
+    "agents/ambient-architect.md",
     "agents/moment-strategist.md",
     "agents/flow-coordinator.md",
     "agents/bench-matcher.md",
@@ -174,7 +186,7 @@
     "removed_from_v3_3": "complexity-triager (删除) · R24 复杂度匹配律 (重定义)"
   },
   "v4_0_0_additions": {
-    "sage_congress_rebuild": "bench-matcher 重铸为议会自包含: 评分 → Layer 1 召唤 k 位 → 自由邀请递归 → 议会讨论 → 陪审团表决 · 5 步骤一体化",
+    "sage_congress_rebuild": "bench-matcher 重铸为议会自包含: 路由 → 评分 → Layer 1 召唤 k 位 → 自由邀请递归 → 议会讨论 → 陪审团表决 · 6 步骤一体化",
     "two_layer_dynamic_summon": "Tier 0 八位优先匹配 (k 位入场), 各自递归从 293 板凳自由邀请师弟师妹 · 总人数 cap 15",
     "weighted_jury_vote": "Tier 0 = 2 票 / 邀请助手 = 1 票 · ≥ 2/3 加权通过 · ABSTAIN 减分母",
     "revision_reballot": "未达 2/3 → 议会修订重投 · 最多 3 轮 · 仍不过触发 R24 议会僵局律",
@@ -185,5 +197,20 @@
     "fixed_pipeline_dismantled": "v3.x'八圣人每次固定全上' 被议会民主取代 · 因事召唤而非默认全员",
     "honest_positioning": "v4.0 是 v3.2 蓝军自审 + v3.3 实验失败 后的根本重铸 · 不是加 feature, 是换底层逻辑",
     "philosophical_anchor": "孔子三人行必有我师 + 哈贝马斯沟通理性 + 阿伦特公共行动"
+  },
+  "v4_1_0_additions": {
+    "tri_disciplinary_council": "Tier 0 议会从'纯哲学家'扩为三大类: 哲学家 + 艺术家 + 音乐家 · 设计是哲思 × 视觉 × 时间律动的交点",
+    "artists_4": "新增 4 位艺术家 agent: polymath-bridger (达芬奇·跨学科联结) / form-liberator (米开朗基罗·减法解放) / light-impressionist (莫奈·光感印象) / void-painter (倪瓒·留白)",
+    "musicians_4": "新增 4 位音乐家 agent: counterpoint-architect (巴赫·对位) / tension-composer (贝多芬·情感张力) / silence-composer (凯奇·留白即声音) / ambient-architect (Brian Eno·环境陪伴)",
+    "R_Cross_1_4": "新增 R-Cross1-4 跨学科四律: R-Cross1 达芬奇跨学科联结 / R-Cross2 莫奈感官完整 / R-Cross3 贝多芬情感张力 / R-Cross4 Eno 环境陪伴",
+    "agent_count_change": "44 → 52 (新增 8 位艺术家/音乐家)"
+  },
+  "v4_2_x_additions": {
+    "weighting_444": "议会权重定为 4:4:4 三类均权 · Tier 0 = 2 票 + task_kind 命中 +0.5 (cap 2.5) · 助手 = 1 票 · ≥ 2/3 加权通过 · 无单 agent 一票否决 (P1-6)",
+    "four_philosophers_demoted": "原 8 哲学家中 4 位 (historian 福柯 / futurist 怀特海 / wuwei-master 老子 / perspectivist 庄子) 降级 Tier 1.5 · 仍可被 bench-matcher 邀请, 不再默认入议会",
+    "twelve_sage_congress": "固定 Tier 0 = 12 位 (4:4:4) · 哲学家 dialectician/silence-architect/holism-strategist/debunk-auditor · 艺术家 polymath-bridger/form-liberator/light-impressionist/void-painter · 音乐家 counterpoint-architect/tension-composer/silence-composer/ambient-architect",
+    "task_kind_routing": "bench-matcher 六步协议新增 user-declared task_kind 路由 · 匹配类别 +0.5 分 · 每类至少召 1 位保证三类视角不缺席",
+    "sage_council_aligned_444": "sage-council 审稿入口同步升级为并行调度 12 圣人 (4:4:4) · 取代旧 8 圣人",
+    "user_named_stars": "用户命名两位新主理 ⭐: polymath-bridger (达芬奇) / tension-composer (贝多芬)"
   }
 }

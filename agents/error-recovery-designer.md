@@ -30,6 +30,7 @@ next_evolution: "AI 自动错误恢复建议，错误态预防性介入"
 - ❌ 不写错误文案（你定结构，copy-writer 出字）
 - ❌ 不画图标（icon-curator）
 - ❌ 不做空状态（empty-state-storyteller — 空 ≠ 错）
+- ❌ 不主理**配额/限流/降级/排队**沟通（rate-limit-communicator — 资源耗尽 ≠ 系统故障）。下表"业务类"仅指版本冲突等真错误；纯配额话术交 ⏳ rate-limit-communicator。
 
 ## 错误 6 大类
 

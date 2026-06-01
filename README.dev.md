@@ -1,21 +1,28 @@
 # 算鱼设计系统 · Suanfish Design System
 
-> **一家工作室，十四位匠人，六个 tier。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。**
+> **一家工作室，五十二位匠人，八个 tier。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。**
 
 一套统一的多智能体设计语言体系，服务于算鱼工作台。它同时治理 **初见的仪式感瞬间**（欢迎、版本更新介绍）和 **日常的稳态界面**（三栏外壳、模态、向导、数据可视化）。
 
-## v2.1 架构亮点
+## v4.2 架构亮点
 
 ```
-Tier 1 · 调度       🧭 moment-strategist (可 REJECT)
-Tier 2 · 主导       🎬 onboarding-director  /  🏛 ui-architect
-Tier 3 · 容器专科   🪟 modal · 🧙 wizard · 📊 viz
-Tier 4 · 内容专科   📝 copy · 🎯 icon · 🪟 empty-state · 📱 responsive
-Tier 5 · 横切咨询   🎨 token · 💫 anim · ♿ a11y
-Tier 6 · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16)
+Tier 0   · 圣人议会   🏛 默认种子席 12 (4:4:4 骨架) · v4.2.6 bench-matcher 从 420 厚仙人全员评分动态选常委
+Tier 1   · 调度       🧭 moment-strategist (可 REJECT)
+Tier 1.5 · 协调       🚦 flow-coordinator · 曾降级四人 (福柯/怀特海/老子/庄子 · v4.2.6 已并入普通板凳, 与全员同台竞选常委)
+Tier 2   · 主导       🎬 onboarding-director / 🏛 ui-architect / 💬 conversation-director / 🔔 notification-director
+Tier 3   · 容器专科   🪟 modal · 🧙 wizard · 📊 viz · 📋 table · 🗨️ chat · 🌊 stream · 🛠️ tool-call · 🌳 thread · 🎨 artifact · ⌨️ prompt-input
+Tier 4   · 内容专科   📝 copy · 🎯 icon · 🪟 empty-state · 📱 responsive · 👥 persona · 🗺️ IA · 🩹 error-recovery · 🧠 reasoning · 📑 citation · ⏳ rate-limit
+Tier 5   · 横切咨询   🎨 token · 💫 anim · ♿ a11y · 🛡️ brand · 🌍 i18n · 🔀 model-switcher
+Tier 6   · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16 / 19) · 🏛 sage-council (已有界面议会点评入口)
 ```
 
-**关键边界（v2.1 厘清）**：
+**v4.2 关键机制**：
+- 圣人议会 4:4:4 三学科均权 · 加权陪审团 2/3 表决 · R-Cross1-4 跨学科四律
+- 420 位思想家板凳 (335 哲学家 + 50 艺术家 + 35 音乐家) · bench-matcher 动态评分召唤
+- 禁单 agent 一票否决 (P1-6) · R1-R25 + R-Cross1-4 REJECT 机制 · R24 议会僵局兜底
+
+**关键边界**：
 - icon-curator 只管「选哪个图标」；颜色 / 尺寸归 token-keeper
 - empty-state-storyteller 只管状态机；文案归 copy-writer
 - 审计规则集与 ui-auditor 解耦，独立版本化
@@ -49,8 +56,8 @@ Tier 6 · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16)
 ```
 suanfish-design-system/
 ├── SKILL.md                 # 总指挥 + 5 套速查表 + 决策森林
-├── agents/                  # 14 位匠人
-└── references/              # 17 份规范（含 2 份独立规则集） + 4 份附录
+├── agents/                  # 52 位匠人 (12 种子圣人 + 34 执行 + 4 曾降级 + bench-matcher/quotation-verifier)
+└── references/              # 27 份规范（含 3 份独立规则集 15/16/19） + 4 份附录
 ```
 
 ## 许可

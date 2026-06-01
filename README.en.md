@@ -4,7 +4,7 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-4.2.0-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
 ![agents](https://img.shields.io/badge/agents-52-purple)
 ![congress](https://img.shields.io/badge/sage_congress-3--category-yellow)
@@ -12,15 +12,15 @@
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![ai-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
-![rules](https://img.shields.io/badge/REJECT-R1--R25-red)
+![rules](https://img.shields.io/badge/rules-R1--R25%20%2B%20R--Cross1--4-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
 **99% of AI assistants always say "Sure!" — this one asks "Should we even do this?" first.**
 
-25 hard rules built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
+25 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
 
-**New in v4.1**: Tier 0 sages expand from 8 philosophers to **12 across 3 categories** (8 philosophers + 2 artists + 2 musicians). Task-type routing: visual briefs summon artists (Michelangelo / Ni Zan), motion briefs summon musicians (Bach / Cage), philosophical briefs summon philosophers, mixed briefs convene all three. Simple task = 1 sage (saves ~80% tokens). Complex task = cross-category debate + 2/3 majority vote.
+**New in v4.2**: Tier 0 is rebalanced from v4.1's philosopher-heavy 8:2:2 into a strict **4:4:4 equal-voice council** (4 philosophers + 4 artists + 4 musicians). User-declared task_kind routes first (LLM inference only as fallback), category matches add +0.5, reductive [-] and additive [+] voices debate inside the council, no single sage gets veto power, and R-Cross1-4 anchors art/music rules.
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."
@@ -32,7 +32,7 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
    Pick a lean and define escape hatches.
 ```
 
-[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.1](#why-v41) · [Congress Protocol](#five-step-congress-protocol) · [5 TC Demo](docs/v4-congress-simulation.md)
+[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.2](#why-v42) · [Congress Protocol](#five-step-congress-protocol-v42--444) · [5 TC Demo](docs/v4.2-congress-simulation.md)
 
 </div>
 
@@ -85,7 +85,7 @@ ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # Gi
 ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
 ln -sf ~/.suanfish-design-system ~/.codex/skills/suanfish-design-system     # Codex CLI
 ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # Generic
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 44
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 52
 ```
 
 On Windows PowerShell use `New-Item -ItemType Junction` instead of `ln -sf`.
@@ -104,54 +104,59 @@ Just talk to your AI normally. **Auto-activates** on keywords like:
 You: "Design a glassmorphism data card for an enterprise dashboard."
 
 Suanfish: 🏛 Convening congress...
-          ① Score: silence-architect (8.5) / holism-strategist (7.85) / wuwei-master (7.65) enter
-          ② Invite: Nishida / Heidegger / Whitehead / Wiener / Zhuangzi (5 helpers)
-          ③ Discuss: blur dialectics (3 states) + 200ms feedback loop + dark mode auto-invert
+          ① Score: silence-architect (8.5) / holism-strategist (7.85) / light-impressionist (7.7) enter
+          ② Invite: Nishida / Heidegger / Da Vinci / Bach / Brian Eno (5 helpers)
+          ③ Discuss: blur dialectics (structure + light + ambient feedback) + dark mode auto-invert
           ④ Vote: 7/10 = 70% ≥ 67% ✓ Round 1 passes
           → 5 concrete decisions + citation audit + Path B recommendation
 ```
 
-Full 5 TC demo → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
+Full 5 TC demo → [docs/v4.2-congress-simulation.md](docs/v4.2-congress-simulation.md)
 
 ---
 
-## Why v4.0?
+## Why v4.2?
 
 v3.x had **"all 8 Tier 0 sages mandatorily on every BRIEF"** as bedrock.
 v3.3 experimented with "let users pick fast/standard/full mode" — but **users shouldn't be forced to make that decision**.
-v4.0 is the fundamental rebuild: let the 301 sages **speak for themselves**, congress decides who's relevant.
+v4.0 rebuilt the system around congress democracy: let the bench **speak for itself**, and let voting decide who's relevant.
+v4.1 then expanded beyond philosophers but stayed philosopher-heavy (**8:2:2**). v4.2 fixes that drift: **strict 4:4:4 equal democracy** across philosophy / art / music, with a built-in reductive [-] ↔ additive [+] dialectic and no single-sage veto.
 
 ### Comparison
 
-| Dimension | v3.0 | v3.2 | v4.0 | **v4.1** |
-| --- | --- | --- | --- | --- |
-| Tier 0 attendance | fixed 3 all-on | fixed 8 all-on | dynamic k of 8 (philosophers only) | **dynamic k of 12 across 3 categories** |
-| Tier 0 categories | philosophy only | philosophy only | philosophy only | **philosophers + artists + musicians** |
-| Task routing | none | none | none | **task_kind → category prior +0.5** |
-| Decision mechanism | pipeline | pipeline | congress + vote | congress + vote (cross-category) |
-| Token cost (simple BRIEF) | medium | high | ~5 calls | ~5 calls |
-| Token cost (complex BRIEF) | high | very high | up to 50+ | up to 50+ |
+| Dimension | v3.0 | v3.2 | v4.0 | v4.1 | **v4.2** |
+| --- | --- | --- | --- | --- | --- |
+| Tier 0 attendance | fixed 3 all-on | fixed 8 all-on | dynamic k of 8 (philosophers only) | dynamic k of 12, but 8:2:2 | **dynamic k of 12, strict 4:4:4** |
+| Tier 0 categories | philosophy only | philosophy only | philosophy only | philosophy + art + music | **4 philosophers + 4 artists + 4 musicians** |
+| Voice balance | philosopher-led | philosopher-led | philosopher-only | philosopher-heavy | **equal weight, 2 votes each** |
+| Task routing | none | none | none | LLM-inferred task_kind | **user-declared task_kind first; LLM fallback only** |
+| Dialectic | implicit | implicit | philosopher-only | cross-category but lopsided | **reductive [-] ↔ additive [+] built in** |
+| Veto model | pipeline gate | pipeline gate | congress vote | silence-composer could over-reject | **no single veto; ≥2/3 weighted vote** |
+| Token cost (simple BRIEF) | medium | high | ~5 calls | ~5 calls | ~5 calls |
+| Token cost (complex BRIEF) | high | very high | up to 50+ | up to 50+ | up to 50+ |
 
 ---
 
-## Five-Step Congress Protocol (v4.1 cross-category)
+## Five-Step Congress Protocol (v4.2 · 4:4:4)
 
 ```
 BRIEF
   ↓
 🏛 bench-matcher · self-contained congress (5 unified steps)
-  ① Route+Score — detect task_kind ∈ {visual, motion, structural, philosophical, mixed}
-                  visual → +0.5 prior to artists · motion → +0.5 to musicians
-                  structural/philosophical → +0.5 to philosophers
-                  score 12 Tier 0 sages on 5 dims (weighted 40/20/15/15/10)
+  ① Route+Score — user-declared task_kind first; LLM inference only as fallback
+                  task_kind ∈ {visual, motion, structural, philosophical, mixed}
+                  visual → +0.5 to artists · motion → +0.5 to musicians
+                  structural/philosophical → +0.5 to philosophers (cap 2.5 voting weight)
+                  score all 12 Tier 0 sages (strict 4:4:4) on 5 dims (40/20/15/15/10)
   ② Summon    — those scoring ≥7.5 enter (k sages, typically 1-4 of 12)
                   fallback: top-1 if none clear threshold
   ③ Invite    — entered sages recursively invite helpers from cross-category bench
                   (philosophers #NNN / artists #ANNN / musicians #MNNN)
                   per-sage quota 3 · total cap 15
   ④ Discuss   — all state positions → consensus merge / mediate / surface blind spots
-  ⑤ Vote      — Tier 0 = 2 votes · helpers = 1 vote · ABSTAIN reduces denominator
-                  ≥ ⌈total × 2/3⌉ to pass · revise & re-vote up to 3 rounds
+  ⑤ Vote      — Tier 0 = 2 votes (+0.5 category match, cap 2.5) · helpers = 1 vote
+                  ABSTAIN reduces denominator · ≥ ⌈total × 2/3⌉ to pass
+                  no single sage gets veto power · revise & re-vote up to 3 rounds
                   3-round failure → R24 Congress-Deadlock → escalate to user
   ↓
 🔍 quotation-verifier (audit all citations against 27-bench · R25)
@@ -159,24 +164,25 @@ BRIEF
 🧭 moment-strategist → Path A-G → ui-auditor
 ```
 
-### Voting math example A · glassmorphism component (v4.0 path)
+### Voting math example A · glassmorphism component (v4.2 structural)
 
-- Layer 1: Wang Bi #232 (8.7) · Fazang #249 (8.0) · Laozi #092 (7.6) enter
-- Layer 2: Wang Bi → Nishida / Fazang → Heidegger / Heidegger → Wittgenstein
-- N = 6 sages · total votes = 3×2 + 3×1 = 9 · threshold = ⌈9 × 2/3⌉ = 6
-- Result: 7 APPROVE / 1 ABSTAIN (reduces denom to 8) / 0 REJECT → 7/8 ≥ 6 → **Round 1 passes** ✓
+- User-declared task_kind = structural → philosophers get +0.5 category-match cap
+- Layer 1: Wang Bi #232 (8.7) · Fazang #249 (8.0) · Monet #A019 (7.7) enter
+- Layer 2: Wang Bi → Nishida / Fazang → Heidegger / Monet → Rothko
+- N = 6 sages · total votes = 2.5 + 2.5 + 2 + 3×1 = 10 · threshold = ⌈10 × 2/3⌉ = 7
+- Result: 7 APPROVE / 1 ABSTAIN (reduces denom to 9) / 0 REJECT → 7/9 ≥ ⌈9 × 2/3⌉=6 → **Round 1 passes** ✓
 
-### Voting math example B · login success toast (v4.1 mixed)
+### Voting math example B · login success toast (v4.2 mixed)
 
-- task_kind = mixed → all 3 categories compete
-- Layer 1: Whitehead #091 (8.4) · Wang Bi #232 (7.8) · Laozi #092 (7.6) enter
-- Layer 2 cross-category: Whitehead → Reich #M023 / Wang Bi → Rothko #A029 / Reich → Satie #M016
-- N = 6 sages (3 philosophers + 1 artist + 2 musicians) · total votes = 3×2 + 3×1 = 9
-- Result: 5 APPROVE / 1 ABSTAIN → 5/8 ≥ ⌈8 × 2/3⌉=6 → **Round 1 passes** ✓ (cross-category consensus)
+- task_kind = mixed → all 3 categories compete without category prior
+- Layer 1: Beethoven #M005 (8.4) · Wang Bi #232 (7.8) · Da Vinci #A001 (7.6) enter
+- Layer 2 cross-category: Beethoven → Reich #M023 / Wang Bi → Ni Zan #A045 / Da Vinci → Bach #M001
+- N = 6 sages (1 philosopher + 2 artists + 3 musicians) · total votes = 3×2 + 3×1 = 9
+- Result: 6 APPROVE / 1 ABSTAIN → 6/8 ≥ ⌈8 × 2/3⌉=6 → **Round 1 passes** ✓ (cross-category consensus)
 
 ---
 
-## 📚 v4.1 · 420-Thinker Bench (3 categories · the only Chinese-philosophy-driven DS)
+## 📚 v4.2 · 420-Thinker Bench (335 philosophers + 50 artists + 35 musicians)
 
 > 420 thinkers cataloged in `references/27-philosopher-bench.md`:
 > - **Part I · 335 Philosophers** (117 Chinese + 218 Western/global, includes Don Norman / Christopher Alexander / Byung-Chul Han / 蒋勋 / 王澍 / 陈嘉映)
@@ -199,8 +205,9 @@ BRIEF
                      #M020 John Cage (silence-composer · 4'33" [-] · NO single-veto)
                      #M025 Brian Eno (ambient-architect · generative companion [~])
 
-🔻 Demoted to Tier 1.5 (still invitable, not auto-summoned):
-   #058 Foucault · #091 Whitehead · #093 Zhuangzi · #056 Merleau-Ponty
+🔁 Once Tier-0 seeds (v4.2.6 default-seed council, no longer fixed): all 420 thick
+   thinkers compete by task-kind score; #058 Foucault · #091 Whitehead ·
+   #092 Laozi · #093 Zhuangzi now run for council like everyone else
 
 🎭 v4.2 dialectic built-in: [-] reductive trio (Wang Bi/Ni Zan/Cage)
                           ⟷ [+] additive trio (Da Vinci/Monet/Beethoven)
@@ -215,18 +222,18 @@ BRIEF
 
 ### Sage Network (invited_helpers field)
 
-Each Tier 0 sage's frontmatter declares 6 disciples they can call:
+This is the helper-invitation network, **not** the council roster. Since v4.2.6 the council is **dynamically elected** from the whole 420-thinker bench (the 12 seats above are default seeds / anchors / tie-breakers, not a fixed roster). The four formerly-demoted philosophers now compete for council like everyone else. Only rows with real frontmatter `invited_helpers` are listed here; no artist/musician invitees are invented.
 
-| Tier 0 sage | Top invitees |
-| --- | --- |
-| **dialectician** (#039 Hegel) | Hume · Popper · Foucault · Arendt · Averroes · Schelling |
-| **historian** (#058 Foucault) | Hegel · Arendt · Fanon · Spivak · Machiavelli · Whitehead |
-| **futurist** (#091 Whitehead) | Wiener · Heidegger · Bostrom · Plotinus · Wittgenstein · Foucault |
-| **wuwei-master** (#092 Laozi) | Epicurus · Diogenes · Ockham · Wang Bi · Zhuangzi · Augustine |
-| **perspectivist** (#093 Zhuangzi) | Merleau-Ponty · Spivak · Fanon · Arendt · Dai Zhen · Laozi |
-| **silence-architect** (#232 Wang Bi) | Nishida (ma) · Heidegger · Laozi · Wittgenstein · Augustine · Fazang |
-| **holism-strategist** (#249 Fazang) | Whitehead · Wiener · Spinoza · Leibniz · Schelling · Wang Bi |
-| **debunk-auditor** (#225 Wang Chong) | Popper · Hume · Bacon · Dai Zhen · Bostrom · Machiavelli |
+| Status | Sage / helper agent | Top invitees declared in frontmatter |
+| --- | --- | --- |
+| **Tier 0 philosopher** | **dialectician** (#039 Hegel) | Hume · Popper · Averroes · Da Vinci · Beethoven · Goya |
+| **Tier 0 philosopher** | **silence-architect** (#232 Wang Bi) | Nishida (ma) · Heidegger · Fazang · Ni Zan · Cage · Brian Eno |
+| **Tier 0 philosopher** | **holism-strategist** (#249 Fazang) | Whitehead · Wiener · Wang Bi · Da Vinci · Bach · Brian Eno |
+| **Tier 0 philosopher** | **debunk-auditor** (#225 Wang Chong) | Popper · Hume · Bacon · Da Vinci · Michelangelo · Bach |
+| **Formerly demoted (now competes)** | **historian** (#058 Foucault) | Hegel · Arendt · Fanon · Spivak · Machiavelli · Whitehead |
+| **Formerly demoted (now competes)** | **futurist** (#091 Whitehead) | Wiener · Heidegger · Bostrom · Plotinus · Wittgenstein · Foucault |
+| **Formerly demoted (now competes)** | **wuwei-master** (#092 Laozi) | Epicurus · Diogenes · Ockham · Wang Bi · Zhuangzi · Augustine |
+| **Formerly demoted (now competes)** | **perspectivist** (#093 Zhuangzi) | Merleau-Ponty · Spivak · Fanon · Arendt · Dai Zhen · Laozi |
 
 ---
 
@@ -241,21 +248,21 @@ If you've built products with AI assistants, you know the real problem isn't cap
 
 Result? Shipped UX garbage.
 
-**Suanfish Design System** is an opinionated multi-agent design SKILL with a **REJECT mechanism** — 25 hard rules that any agent will refuse on sight, then propose alternatives anchored to real philosophy.
+**Suanfish Design System** is an opinionated multi-agent design SKILL with a **REJECT mechanism** — R1-R25 plus R-Cross1-4 anchors that agents can refuse on sight, then propose alternatives anchored to real philosophy.
 
 As of **v2.5** Suanfish covers the entire **AI-native UI surface** — streaming, tool calls, reasoning panels, citations, artifacts, prompt input, rate-limit communication, model switchers, multi-turn thread architecture — through a **Path G overlay**.
 
-As of **v4.1** sage selection itself is democratized across 3 categories — no more forcing all 8 philosopher-only Tier 0 sages on every BRIEF.
+As of **v4.2** sage selection is democratized across 3 equal categories — 4 philosophers + 4 artists + 4 musicians, equal-weight, no single veto.
 
 ---
 
 ## Architecture
 
-**44 specialized agents** organized across **8 tiers** and **7 design paths**:
+**52 specialized agents** organized across **8 tiers** and **7 design paths**:
 
 | Tier | Role | Sample agents |
 |------|------|---------------|
-| **0 · Dialectical Philosophy** | Sage congress · scoring + summoning + voting | `dialectician` · `historian` · `futurist` · `wuwei-master` · `perspectivist` · `silence-architect` · `holism-strategist` · `debunk-auditor` |
+| **0 · 4:4:4 Sage Council** | 12-sage congress · scoring + summoning + voting | 4 philosophers (`dialectician` · `silence-architect` · `holism-strategist` · `debunk-auditor`) + 4 artists + 4 musicians |
 | **1 · Dispatch** | Decide what to do · can REJECT | `moment-strategist` |
 | **1.5 · Coordination** | Cross-path orchestration | `flow-coordinator` |
 | **1.6 · Sage Congress** | Schedule + invite + vote | `bench-matcher` |
@@ -264,7 +271,7 @@ As of **v4.1** sage selection itself is democratized across 3 categories — no 
 | **3 · Container Specialist (×10)** | Build the surface | `modal` · `wizard` · `data-viz` · `table` · `chat-ui` · `stream` · `tool-call-presenter` · `agent-thread-architect` · `artifact-architect` · `prompt-input-craftsman` |
 | **4 · Content Specialist (×10)** | Words · icons · states · reasoning | `copy-writer` · `icon-curator` · `empty-state` · `responsive` · `persona` · `info-architect` · `error-recovery` · `reasoning-visualizer` · `citation-keeper` · `rate-limit-communicator` |
 | **5 · Crosscutting Consult (×6)** | Tokens · motion · a11y · brand · i18n · model | `token-keeper` · `animation` · `a11y-guardian` · `brand-keeper` · `i18n-strategist` · `model-switcher-stylist` |
-| **6 · Quality Gate** | Independent audit · 44-agent coverage | `ui-auditor` |
+| **6 · Quality Gate** | Independent audit · 52-agent coverage | `ui-auditor` · `sage-council` |
 
 ### 7 design paths
 
@@ -280,7 +287,7 @@ As of **v4.1** sage selection itself is democratized across 3 categories — no 
 
 ---
 
-## REJECT Rules (R1-R25)
+## REJECT Rules (R1-R25 + R-Cross1-4)
 
 | Family | Range | Theme |
 | --- | --- | --- |
@@ -291,6 +298,7 @@ As of **v4.1** sage selection itself is democratized across 3 categories — no 
 | Anti-AI-bullshit | R19-R23 | Philosophy-as-Lint family |
 | Congress | R24 | **Congress-Deadlock** (3-round vote failure) |
 | Citation | R25 | **Anti-hallucinated-quote** (must trace to 27-bench) |
+| Cross-category | R-Cross1-R-Cross4 | Da Vinci cross-disciplinary · Monet sensory completeness · Beethoven emotional tension · Eno ambient companionship |
 
 Full definitions:
 - [`references/15-audit-ruleset-steady.md`](./references/15-audit-ruleset-steady.md)
@@ -304,20 +312,20 @@ Full definitions:
 - 🎭 Voting is LLM-simulated, no true multi-agent runtime
 - 🔢 Invitation reasons may be LLM-fabricated; `quotation-verifier` only checks numeric ID truthfulness
 - 💬 "Congressional discussion" is prompt engineering, not real multi-agent debate
-- 📚 We only audit against `references/27-philosopher-bench.md`, not external academic sources (Wikidata / SEP integration planned for v3.4)
+- 📚 We only audit against `references/27-philosopher-bench.md`, not external academic sources (Wikidata / SEP integration remains future work)
 - 🌊 Bench itself may have inaccuracies (e.g. hook mappings); fixes go into 27-bench, not the verifier
 
-Still one rung more honest than v3.x's "8-sage mush."
+Still one rung more honest than v3.x's fixed all-on council — and v4.2 fixes v4.1's philosopher-heavy 8:2:2 drift.
 
-> v4.1 expands beyond philosophers: visual tasks now also summon artists (Michelangelo / Ni Zan), motion tasks summon musicians (Bach / Cage). The "void-master triangle" (Wang Bi #232 + Ni Zan #A045 + Cage #M020) spans 3 categories to triple-check anti-excess.
+> v4.2 balances the council at 4:4:4: visual tasks can summon artists (Da Vinci / Michelangelo / Monet / Ni Zan), motion tasks can summon musicians (Bach / Beethoven / Cage / Eno), and all categories vote as equals. The "void-master triangle" (Wang Bi #232 + Ni Zan #A045 + Cage #M020) now debates against additive voices (Da Vinci / Monet / Beethoven) instead of owning a veto.
 
 ---
 
 ## Philosophy
 
 > "v3.0 wanted 8 teachers per BRIEF — but classrooms shouldn't be one-size-fits-all."
-> "v4.1: consult a few experienced ones across 3 disciplines (philosophy/art/music), let them decide if they need TAs cross-category, debate it, vote."
-> "Not enshrinement, but convening. Not imposition, but resolution."
+> "v4.2: convene a strict 4:4:4 council across philosophy/art/music, then let relevant sages invite helpers, debate, and vote."
+> "Not enshrinement, but convening. Not a single veto, but democratic resolution."
 
 **Anchored to**: Confucius (三人行必有我师 · "among any three walking, one will be my teacher") + Habermas (communicative rationality) + Arendt (public action) + Wang Chong (anti-hallucination)
 
@@ -327,7 +335,7 @@ Still one rung more honest than v3.x's "8-sage mush."
 
 - 🏠 Main repo: https://github.com/SuanFishXYY/suanfish-design-system
 - 🏪 Marketplace: https://github.com/SuanFishXYY/suanfish-marketplace (v2.0.0)
-- 🏛 Congress demo: [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
+- 🏛 Congress demo: [docs/v4.2-congress-simulation.md](docs/v4.2-congress-simulation.md)
 - 📖 Chinese README: [README.md](./README.md)
 - 📜 Changelog: [CHANGELOG.md](./CHANGELOG.md)
 

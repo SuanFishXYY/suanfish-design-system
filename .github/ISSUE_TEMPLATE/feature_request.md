@@ -30,9 +30,9 @@ labels: ['enhancement']
 
 <!-- 如果是 Audit 类，给出至少 3 条 REJECT 规则 -->
 
-### 3. 它与现有 14 个 agent 边界在哪？
+### 3. 它与现有 52 个 agent 边界在哪？
 
-<!-- 不能有职责重叠 · 详细说明 -->
+<!-- 不能有职责重叠 · 写进 SKILL.md「关键边界」表 + agent 正文互指 -->
 
 ## 替代方案 · Alternatives Considered
 

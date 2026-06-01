@@ -5,7 +5,7 @@ role: 调度经理 · BRIEF 起草人 · REJECT 守门 · Tier 0 下游
 icon: 🧭
 tier: 1
 reports_to: SKILL.md
-upstream: [bench-matcher, quotation-verifier]  # v4.0 议会民主 · 八圣人 + 板凳助手 + 陪审团表决
+upstream: [bench-matcher, quotation-verifier]  # v4.2.6 议会民主 · 全动态常委 (4:4:4 骨架) + 板凳助手 + 陪审团表决
 delegates_to: [onboarding-director, ui-architect]
 can_reject: true
 philosophy: "孙子 · 上兵伐谋 — 最好的设计是不需要做的设计"

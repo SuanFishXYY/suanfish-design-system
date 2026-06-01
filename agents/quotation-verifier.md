@@ -37,7 +37,7 @@ quotation-verifier 在 bench-matcher **下游** 做一次强制核验, 不通过
 ## 工作位置
 
 ```
-🏛 bench-matcher (5 步议会 · 召唤 + 邀请 + 讨论 + 投票通过)
+🏛 bench-matcher (6 步议会 · 召唤 + 邀请 + 讨论 + 投票通过)
    ↓ (议会决议含 N 位圣人 + 各自三段式引用)
 🔍 quotation-verifier (本 agent · Tier 1.7 · 必经)
    ├──→ 通过 → 🧭 moment-strategist

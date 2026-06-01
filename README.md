@@ -4,7 +4,7 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-4.2.0-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
 ![agents](https://img.shields.io/badge/agents-52-purple)
 ![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
@@ -34,7 +34,7 @@
    请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4-congress-simulation.md) · [ 🤖 看 48 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4.2-congress-simulation.md) · [ 🤖 看 52 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
 
@@ -113,7 +113,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
       → 5 条具体设计决策 + 引用核验 + 路径推荐 Path B
 ```
 
-完整 5 TC 演示见 → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
+完整 5 TC 演示见 → [docs/v4.2-congress-simulation.md](docs/v4.2-congress-simulation.md)
 
 ### REJECT 示例 · 你会看到的样子
 
@@ -142,13 +142,13 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 > - 音乐三档位灰度: 凯奇(沉默) ↔ Eno(陪伴) ↔ 贝多芬(高潮)
 > - 任一派别 (减法 5 / 加法 4 / 中间态 3) 都不足 6 票, 无法单方决议 (P1-6 修)
 
-**降级到 Tier 1.5 (仍可被邀请)**: 福柯 / 怀特海 / 庄子 / 梅洛庞蒂 — agent 文件保留, 不再自动入场。
+**曾降级四人 (v4.2.6 已并入普通板凳)**: 福柯 / 怀特海 / 老子 / 庄子 — agent 文件保留作人格锚点, v4.2.6 起与全员同台竞选常委, 不再有"不自动入场"的特殊身份。
 
 ```
                           你的 BRIEF
                               ↓
         ┌─────────────────────────────────────────────┐
-        │   🏛 议会五步协议 (bench-matcher 全包)        │
+        │   🏛 议会六步协议 (bench-matcher 全包)        │
         ├─────────────────────────────────────────────┤
         │  ① 路由   task_kind 由用户声明优先 (v4.2 P1-5)│
         │           visual→艺术家 +0.5 · motion→音乐家  │
@@ -187,7 +187,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 | 全链路改版 (品牌系统) | mixed | 10-15 人 (三大类合议) | ~40 calls | 持平 |
 | 哲学冲突 (要 2 轮投票) | philosophical | 9 人 | ~25 calls | 持平 |
 
-📖 完整 5 TC 演示 → [docs/v4-congress-simulation.md](docs/v4-congress-simulation.md)
+📖 完整 5 TC 演示 → [docs/v4.2-congress-simulation.md](docs/v4.2-congress-simulation.md)
 
 ---
 
@@ -213,11 +213,11 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 ---
 
 <details>
-<summary>📐 <b>详细架构图 · 33 agent / 7 tier mermaid 流程图</b> (v3 时代图 · 点开看 · 议会民主版图正在制作中)</summary>
+<summary>📐 <b>详细架构图 · 33 agent / 7 tier mermaid 流程图</b> (v3 时代历史图 · 点开看 · 现行 v4.2 议会版图见上方核心机制块)</summary>
 
 ## 🏗️ 架构总览 · v3.0 (36 agent · 8 tier · 7 path · Tier 0 辩证哲学层 + Path G AI-native)
 
-> ⚠️ 下面这张是 v3.0 的图。v4.0 议会民主版图正在制作中——核心流程见上方 [🏛 核心机制](#-核心机制--v40-圣人议会民主) 块。
+> ⚠️ 下面这张是 v3.0 的历史架构图（保留作演进参考）。**现行 v4.2 圣人议会民主版图见上方** [🏛 核心机制](#-核心机制--v40-圣人议会民主) 块。
 
 ```mermaid
 flowchart LR
@@ -489,7 +489,7 @@ classDiagram
 
 | 维度 | 算鱼 v4.0 | shadcn/ui | Tailwind UI | 普通 AI design |
 | --- | --- | --- | --- | --- |
-| 本质 | 44 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
+| 本质 | 52 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
 | 会说 NO | ✅ R1-R25 | ❌ | ❌ | ❌ 永远 yes |
 | 引用可追溯 | ✅ 420 思想家板凳兜底 | N/A | N/A | ❌ 黑盒 |
 | 适合谁 | 内部产品 / design ops 团队 | 独立开发者 | 商业 SaaS | 个人项目 |
@@ -536,13 +536,13 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 > **算鱼议会**处理 *"什么是好设计"* 的**永恒问题**。
 > **kpop 议会**处理 *"什么是 K-pop 工业级好设计"* 的**工业问题**。
 
-未来 v4.0 计划: **联袂议会** — 让**黑格尔和 Jennie 同台辩论**一个 brief。
+未来计划: **联袂议会** — 让**黑格尔和 Jennie 同台辩论**一个 brief。
 
 → [前往 kpop-design-system](https://github.com/SuanFishXYY/kpop-design-system)
 
 ---
 
-## 🏛 44 agent · 8 tier · 7 path (一图概览)
+## 🏛 52 agent · 8 tier · 7 path (一图概览)
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -553,7 +553,7 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 ├────────────────────────────────────────────────────────────────────┤
 │ Tier 1   · 调度          🧭 moment-strategist (R1-R23 REJECT)       │
 │ Tier 1.5 · 协调          🔀 flow-coordinator                        │
-│ Tier 1.6 · 议会调度       🏛 bench-matcher (5 步议会自包含)          │
+│ Tier 1.6 · 议会调度       🏛 bench-matcher (6 步议会自包含)          │
 │ Tier 1.7 · 引用核验       🔍 quotation-verifier (R25)                │
 ├────────────────────────────────────────────────────────────────────┤
 │ Tier 2   · 主导 ×4       🎬 onboarding · 🏛 ui-architect             │
@@ -606,7 +606,7 @@ suanfish-design-system/
 │   ├── quotation-verifier.md     # ⭐ R25 引用核验
 │   ├── moment-strategist.md
 │   ├── ... (52 agents total)
-│   └── v4-congress-simulation.md # ⭐ 5 TC 议会演示
+│   └── v4.2-congress-simulation.md # ⭐ 5 TC 议会演示
 └── references/              # 27 份规范 + 420 思想家板凳
     ├── 17-philosophy.md
     ├── 24-philosophy-dialectics.md

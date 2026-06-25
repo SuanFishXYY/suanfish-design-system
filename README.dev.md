@@ -17,6 +17,22 @@ Tier 5   · 横切咨询   🎨 token · 💫 anim · ♿ a11y · 🛡️ brand 
 Tier 6   · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16 / 19) · 🏛 sage-council (已有界面议会点评入口)
 ```
 
+**v4.2.7 内容评价审核制度 · 三道门端到端**（生成物放行/退回/事后治理）：
+
+```
+入口门 ref 28        退回门 ref 29         事后门 ref 30
+六步放行 G1-G6  ──FAIL──→  整改闭环 R1-R5    K轨查内容衰弱 + M轨查审核者腐烂
+G1立案 G2辩论         R1开单 R2认领(SLA)     双轨交叉喂食 · 闭环套闭环
+G3评分 G4投票(2/3)    R3修复 R4复审          meta-auditor 独立元审计
+G5蓝军否决 G6放行     R5销项→回G3复审        套娃止于 sage_congress 仲裁
+   │ PASS                                  ↑
+   └──────────→ 归档 ──────────→ K轨抽样池──┘ 衰弱→回ref29 失准→套娃ref28/29
+```
+
+- ref 28 [入口门](references/28-content-review-charter.md)：6维rubric(准确/完整/原创/合规/一致/价值) + 短板红线 + 蓝军一票否决
+- ref 29 [退回门](references/29-remediation-loop-charter.md)：缺陷工单 SLA + 超时升级 L1-L4 + 屡犯提规则PR(个案沉淀为制度)
+- ref 30 [事后门](references/30-posthoc-governance-charter.md)：归档复审四态(存活/衰弱/过时/推翻) + 元审计五步(双盲/校准/元审/蓝军互攻/下岗) + 新增 meta-auditor
+
 **v4.2 关键机制**：
 - 圣人议会 4:4:4 三学科均权 · 加权陪审团 2/3 表决 · R-Cross1-4 跨学科四律
 - 420 位思想家板凳 (335 哲学家 + 50 艺术家 + 35 音乐家) · bench-matcher 动态评分召唤
@@ -57,7 +73,7 @@ Tier 6   · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16 / 1
 suanfish-design-system/
 ├── SKILL.md                 # 总指挥 + 5 套速查表 + 决策森林
 ├── agents/                  # 52 位匠人 (12 种子圣人 + 34 执行 + 4 曾降级 + bench-matcher/quotation-verifier)
-└── references/              # 27 份规范（含 3 份独立规则集 15/16/19） + 4 份附录
+└── references/              # 30 份规范（含 3 份独立规则集 15/16/19 + 3 份审核制度 28/29/30） + 4 份附录
 ```
 
 ## 许可

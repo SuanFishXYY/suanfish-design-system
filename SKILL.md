@@ -49,6 +49,11 @@ BRIEF
 🧭 moment-strategist (A-G 路径分流 / R1-R6)
   ↓
 ... Path agent · ui-auditor
+  ↓
+📜 内容评价审核制度 · 三道门端到端（v4.2.7 · ref 28-30 · 🎼 review-orchestrator 编排）
+  ├─ 入口门 [ref 28](references/28-content-review-charter.md) · 六步放行 G1立案→G2辩论→G3评分→G4投票(2/3)→G5蓝军否决→G6放行/退回
+  │     └─ FAIL → 退回门 [ref 29](references/29-remediation-loop-charter.md) · 整改闭环 R1开单→R2认领(SLA)→R3修复→R4复审→R5销项 → 回 G3 复审
+  └─ PASS → 事后门 [ref 30](references/30-posthoc-governance-charter.md) · 双轨 K轨(查内容衰弱/下架) + M轨(查审核者腐烂/下岗) · 交叉喂食
 ```
 - **v4.2 把 v4.1 "8:2:2 哲学家压倒" 重平衡为三大类 4:4:4 均权** — 因事召唤 · 加减辩证 · 表决决议 · 禁一票否决
 - **v4.2.6 全动态常委**：常委席位不再固定 12 人, 而是每次任务从整张 420 板凳按分动态选拔 (三大类各取 top-N)。固定 12 位降为默认种子 / 人格稳定锚 / 平局兜底；历史降级四人 (福柯 / 怀特海 / 老子 / 庄子) 并入普通板凳, 与全员同台竞选常委, 不再有"自动入场"或"被排除"的特殊身份
@@ -83,7 +88,7 @@ BRIEF
 
 ---
 
-## 🎭 工作室组织架构 · 52 位 Agent · 8 个 Tier · 7 条路径（v4.2 · 新增 Tier 0 三大类圣人议会）
+## 🎭 工作室组织架构 · 54 位 Agent · 8 个 Tier · 7 条路径（v4.2.7 · 新增 Tier 0 圣人议会 + Tier 6 三道门编排）
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -130,6 +135,8 @@ BRIEF
 │  Tier 6 · 质量门                                                        │
 │  🔍 ui-auditor   ── 接 BRIEF 出口 · 加载 ref 15 + 16 + 19 · 分级 REPORT  │
 │  🏛 sage-council ── 接已有文件/组件/截图 · 并行调度 Tier 0 圣人审稿       │
+│  🎼 review-orchestrator ── 三道门流程编排 · case_id/SLA/工单 (v4.2.7)     │
+│  🛡️ meta-auditor ── 审审核者 · ref 30 M轨 · 独立于被审对象 (v4.2.7)      │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -192,7 +199,7 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 
 > ⭐ = v4.2 用户点名 (被点名即入常委保底席, P0-3)。[+]加法派 / [-]减法派 / [~]中间态。当选常委须含减加两端 (P0-2), 任一派别不得一票否决 (P1-6)。这 4 位曾被称"降级 Tier 1.5", v4.2.6 起与 416 位同侪平等竞选 —— 它们仍保留 agent 文件作人格锚点。
 
-### 执行层 agent 一览（Tier 1–6 · 共 34 位）
+### 执行层 agent 一览（Tier 1–6 · 共 36 位）
 
 | Tier | # | Agent | 主动 / 被动 | 职责 |
 | --- | --- | --- | --- | --- |
@@ -230,6 +237,8 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 | 5 | 32 | 🔀 [`model-switcher-stylist`](agents/model-switcher-stylist.md) | 被动 | **模型切换造型（v2.5 新 · Path G）** |
 | 6 | 33 | 🔍 [`ui-auditor`](agents/ui-auditor.md) | 主动 | 加载 ref 15+16+19 · 分级 REPORT |
 | 6 | 34 | 🏛 [`sage-council`](agents/sage-council.md) | 主动 | 接已有文件/组件审稿 · 并行调度 Tier 0 圣人（v3.1.1 新） |
+| 6 | 35 | 🎼 [`review-orchestrator`](agents/review-orchestrator.md) | 主动 | **三道门流程编排 · case_id/SLA/工单（v4.2.7 新）** |
+| 6 | 36 | 🛡️ [`meta-auditor`](agents/meta-auditor.md) | 主动 | **审审核者 · ref 30 M轨 · 独立于被审对象（v4.2.7 新）** |
 
 ---
 
@@ -339,6 +348,15 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 
 ### 🛑 REJECT R1-R6 哲学命题映射
 
+> **⚠️ R 编号两套体系术语表（v4.2.7 厘清，勿混）**：
+> | 写法 | 体系 | 含义 | 出处 |
+> | --- | --- | --- | --- |
+> | `R1` ~ `R25`（无连字符） | **哲学命题 REJECT 规则** | 全局编号 · 25 条 · moment-strategist/议会层拒绝做某需求的哲学依据 | ref 17 §REJECT + 扩展 |
+> | `R-01` ~ `R-06`（带连字符） | **审计规则集** | 每份规则集独立从 01 编 · 🟥严重级 · ui-auditor grep 检测 | ref 15（稳态）/ ref 16（仪式） |
+> | `W-01` / `H-01` | 审计规则集 | 🟧警告级 / 🟨提示级 · 同 ref 15/16 | ref 15/16 |
+>
+> 下表 `R1-R6` 是**哲学命题**（无连字符）；ref 15/16 里的 `R-01` 是**审计规则**（带连字符）。两套不冲突——哲学命题管「要不要做」，审计规则管「做得对不对」。
+
 | 规则 | 条件 | 哲学命题 | 出处 |
 | --- | --- | --- | --- |
 | R1 | 时长 > 5s 非主动触发 | 人是目的，不是手段 | 康德 |
@@ -419,6 +437,9 @@ agent 输出 SPEC 时建议显式标注哲学推理路径：
 | **25** | [philosophy-laws.md](references/25-philosophy-laws.md) | 全员（**v3.0 发展规律层 · 矛盾随时间漂移**） |
 | **26** | [historical-positioning.md](references/26-historical-positioning.md) | 全员（**v3.0 历史定位层 · 来自/去向哪个时代**） |
 | **27** | [philosopher-bench.md](references/27-philosopher-bench.md) | 🏛 bench-matcher（**v4.2.6 420 厚仙人板凳(全员档案卡) + 12 默认种子席 + 动态常委 + R-Cross1-4**） |
+| **28** | [content-review-charter.md](references/28-content-review-charter.md) | 🔍 全员（**v4.2.7 入口门 · 议会六步放行 G1-G6 · 6维rubric + 2/3投票 + 蓝军否决**） |
+| **29** | [remediation-loop-charter.md](references/29-remediation-loop-charter.md) | 🔍 全员（**v4.2.7 退回门 · 整改闭环 R1-R5 + SLA + 超时升级 + 屡犯提规则PR**） |
+| **30** | [posthoc-governance-charter.md](references/30-posthoc-governance-charter.md) | 🔍 meta-auditor（**v4.2.7 事后门 · K轨归档复审 + M轨元审计 + 双轨交叉喂食**） |
 
 附录资产 4 份：`animation-keyframes.css`、`component-patterns.md`、`interaction-patterns.md`、`steps-schema.md`
 

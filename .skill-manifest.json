@@ -1,6 +1,6 @@
 {
   "name": "suanfish-design-system",
-  "version": "4.2.6",
+  "version": "4.2.7",
   "description": "算鱼设计系统(Suanfish)——多智能体界面设计系统。当用户要设计、制作、优化、重构或评审网页前端界面与交互体验时调用。常见说法包括：做个页面、做个登录页或注册页、搞个落地页或首屏、做个后台管理界面、加个弹窗或二次确认、做个多步表单或向导、画个图表或做数据看板/仪表盘、整个聊天或智能体对话界面、做个新手引导、加个动效动画、调个样式或配色、美化一下界面、优化交互体验、改改界面布局、做个空状态或图标、写界面文案、做响应式或移动端适配、做无障碍优化，以及需要多视角设计评审与辩证式批判体检时。由一支虚拟设计工作室的数十位专科匠人协作，保证品牌语言、设计令牌、动效、无障碍全程统一。技术栈以 React 与 Tailwind 为主。显式触发：输入 /suanfish 或 /算鱼，或说“用算鱼设计”“帮我审查界面”“召集议会”。",
   "author": "算鱼工作室",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "chinese"
   ],
   "entrypoint": "SKILL.md",
-  "agent_count": 52,
+  "agent_count": 54,
   "tiers": {
     "tier_0_sage_congress_444": "12 位默认种子席 (4 哲 + 4 艺 + 4 音 · 4:4:4 骨架) · v4.2.6 起 bench-matcher 从整张 420 厚仙人板凳全员评分动态选出本次常委 (三大类各取 top-N ≥7.5 分) · 此 12 位降为默认种子/人格锚/平局兜底 · 仅厚仙人可当 2 票常委 · 用户点名保底入席",
     "tier_0_philosophers": ["dialectician", "silence-architect", "holism-strategist", "debunk-auditor"],
@@ -73,7 +73,7 @@
       "i18n-strategist",
       "model-switcher-stylist"
     ],
-    "tier_6_quality_gate": ["ui-auditor", "sage-council"]
+    "tier_6_quality_gate": ["ui-auditor", "sage-council", "review-orchestrator", "meta-auditor"]
   },
   "paths": {
     "A_ceremonial": "onboarding-director",
@@ -136,11 +136,13 @@
     "agents/i18n-strategist.md",
     "agents/model-switcher-stylist.md",
     "agents/ui-auditor.md",
-    "agents/sage-council.md"
+    "agents/sage-council.md",
+    "agents/review-orchestrator.md",
+    "agents/meta-auditor.md"
   ],
   "references_dir": "references",
-  "reference_count": 24,
-  "appendix_count": 3,
+  "reference_count": 30,
+  "appendix_count": 4,
   "v3_0_changes": {
     "philosophy_three_layer": "Layer 1 价值 (17) + Layer 2 辩证 (24) + Layer 3 发展规律 (25) + Layer 0.5 历史定位 (26)",
     "tier_0_added": "新增 3 个 Tier 0 agent：dialectician (黑格尔·辩证) / historian (福柯·历史) / futurist (怀特海·过程)",
@@ -212,5 +214,16 @@
     "task_kind_routing": "bench-matcher 六步协议新增 user-declared task_kind 路由 · 匹配类别 +0.5 分 · 每类至少召 1 位保证三类视角不缺席",
     "sage_council_aligned_444": "sage-council 审稿入口同步升级为并行调度 12 圣人 (4:4:4) · 取代旧 8 圣人",
     "user_named_stars": "用户命名两位新主理 ⭐: polymath-bridger (达芬奇) / tension-composer (贝多芬)"
+  },
+  "v4_2_7_additions": {
+    "content_review_three_gates": "给所有生成物建端到端审核制度 · ref 28 入口门(六步放行 G1-G6 + 蓝军一票否决) + ref 29 退回门(整改闭环 R1-R5 + SLA + 屡犯提规则PR) + ref 30 事后门(K轨查内容衰弱/M轨查审核者腐烂 · 双轨交叉喂食)",
+    "ruleset_vs_charter": "规则集 ref 15/16/19 管「单条规则对不对」· 三道门 ref 28-30 管「整件生成物能不能放行」· 正交不替代",
+    "new_agents": "新增 🎼 review-orchestrator (三道门流程编排 · case_id/SLA/工单) + 🛡️ meta-auditor (审审核者 · ref 30 M轨 · 独立于被审对象 · 套娃止于 sage_congress 仲裁)",
+    "agent_count_change": "52 → 54 · tier_6 从 2 扩到 4",
+    "bound_to_ruleset_version": "ref 28-30 加版本同步契约 · 规则集升级时检查同步 · 不同步则 CHARTER_OUT_OF_SYNC 挂起(同 ref 15 RULESET_OUT_OF_SYNC 套路)",
+    "entry_link_fixed": "moment-strategist 派单触发 review-orchestrator G1 立案 · ref 00 协作协议标准流程接入三道门 · 修入口断链",
+    "r_numbering_clarified": "R 编号两套体系术语表 · R1-R25(哲学命题·无连字符·全局) vs R-01(审计规则·带连字符·每份规则集独立)",
+    "demo_case": "examples/02-three-gates-modal · 完整三道门 demo(故意埋 R-05 走 G1-G6退回+R1-R5整改+K1-K4事后)",
+    "reference_count_change": "24 → 30 (ref 28-30 · 含历史遗留 24→27 一并对齐)"
   }
 }

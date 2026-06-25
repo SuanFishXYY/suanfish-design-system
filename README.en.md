@@ -4,15 +4,16 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.7-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-52-purple)
+![agents](https://img.shields.io/badge/agents-54-purple)
 ![congress](https://img.shields.io/badge/sage_congress-3--category-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![ai-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![rules](https://img.shields.io/badge/rules-R1--R25%20%2B%20R--Cross1--4-red)
+![gates](https://img.shields.io/badge/review-3--gates-9cf)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
@@ -21,6 +22,8 @@
 25 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
 
 **New in v4.2**: Tier 0 is rebalanced from v4.1's philosopher-heavy 8:2:2 into a strict **4:4:4 equal-voice council** (4 philosophers + 4 artists + 4 musicians). User-declared task_kind routes first (LLM inference only as fallback), category matches add +0.5, reductive [-] and additive [+] voices debate inside the council, no single sage gets veto power, and R-Cross1-4 anchors art/music rules.
+
+**New in v4.2.7** (Content Review Charter · Three Gates end-to-end): Every generated artifact (design / spec / plan / copy / report) now flows through a three-gate review pipeline — **Entry Gate** (ref 28 · council 6-step pass G1-G6 + blue-army veto) + **Remediation Gate** (ref 29 · defect ticket loop R1-R5 with SLA + repeat-offense→rule-PR) + **Post-Hoc Gate** (ref 30 · dual track: K-track audits content decay/cull, M-track audits reviewer rot/keeper-test, cross-fed). Rulesets ref 15/16/19 decide "is this single rule OK"; the three gates decide "can this whole artifact ship." Two new agents: 🎼 review-orchestrator (flow orchestration) + 🛡️ meta-auditor (audits the auditors) — 52→54. Full demo: [examples/02-three-gates-modal](examples/02-three-gates-modal/).
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."

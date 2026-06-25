@@ -58,19 +58,22 @@ description 里出现的每一个名词（如「4:4:4」「R-Cross」「12 圣�
 | 事实 | 单一信源(SOURCE OF TRUTH) | 必须同步的联动文件 |
 | --- | --- | --- |
 | **版本号** | `package.json` | `.skill-manifest.json` · `SKILL.md` frontmatter · `README.md` badge · `README.en.md` badge · `bench-matcher.md` desc · `CHANGELOG.md` 新条目 |
-| **agent 总数(52)** | `agents/` 实际文件数 | `SKILL.md`(frontmatter desc + 正文表 + 架构图) · `.skill-manifest.json`(agent_count + agents[]) · `README.md` · `README.en.md` · `README.dev.md` · `docs/antigravity-integration.md` |
+| **agent 总数(54)** | `agents/` 实际文件数 | `SKILL.md`(frontmatter desc + 正文表 + 架构图) · `.skill-manifest.json`(agent_count + agents[]) · `README.md` · `README.en.md` · `README.dev.md` · `docs/antigravity-integration.md` |
 | **议会协议步数(6 步)** | `agents/bench-matcher.md` | `SKILL.md` · `.skill-manifest.json` · `README.md` · `docs/test-cases.md` · `docs/v4.2-congress-simulation.md` · `quotation-verifier.md` · `docs/antigravity-integration.md` |
 | **板凳数(420=335 哲+50 艺+35 音)** | `references/27-philosopher-bench.md` | `SKILL.md` · `README.md` · `README.en.md` · `README.dev.md` · `bench-matcher.md` · `docs/test-cases.md` · `docs/antigravity-integration.md` · `CHANGELOG.md` |
 | **12 默认种子席 4:4:4 名册** | `agents/bench-matcher.md`(`default_seeds` 区) | `agents/sage-council.md` · `.skill-manifest.json`(twelve_sage_congress) · `SKILL.md`(默认种子席一览表) |
 | **常委选拔机制(全动态/厚仙人门槛)** | `agents/bench-matcher.md`(Step 3 `layer_1_rules`) | `SKILL.md`(六步协议②③ + 可达性红线) · `agents/sage-council.md`(frontmatter + 正文) · `references/27`(§0 schema) · `CHANGELOG.md` |
 | **REJECT 规则集(R1-R25 + R-Cross1-4)** | `references/17` · `references/19` · `references/27` | `SKILL.md`(规则说明) · 引用该规则的 agent 正文 |
+| **R 编号两套体系(R1-R25 哲学命题 vs R-01 审计规则)** | `SKILL.md`(R 编号术语表) | `references/15` · `references/16` · `references/28-30`(引用 R 规则处) · `examples/02`(demo 引用 R-05 处) |
+| **内容评价审核三道门制度(ref 28-30)** | `references/28` · `references/29` · `references/30` | `SKILL.md`(主流程图 + 参考库表 + 组织架构 Tier 6) · `agents/moment-strategist.md`(G1 立案指针) · `agents/ui-auditor.md`(三道门角色段) · `agents/review-orchestrator.md` · `agents/meta-auditor.md` · `references/00-collaboration-protocol.md`(标准流程接入) · `README.md` · `README.en.md` · `README.dev.md` · `examples/02-three-gates-modal` · `CHANGELOG.md` |
+| **三道门 bound_to_ruleset_version 同步** | `references/15` · `references/16` · `references/19`(ruleset_version) | `references/28` · `references/29` · `references/30`(bound_to_ruleset_version 字段) · 不同步则 `CHARTER_OUT_OF_SYNC` |
 | **Tier 数(8 个)** | `SKILL.md` 架构图 | `.skill-manifest.json` · `README.dev.md` |
 
 ### 改完必跑的自检（任选其一验证零漏网）
 
 ```bash
 # 1. 旧数字全库搜（确认没有残留 v 旧版数字裸露在当前态文字里）
-grep -rn "14 个 agent\|44 agent\|301 板凳\|八圣人\|5 步议会\|8:2:2" . --include=*.md
+grep -rn "14 个 agent\|44 agent\|52 agent\|52 位\|301 板凳\|八圣人\|5 步议会\|8:2:2\|version-4.2.6" . --include=*.md
 # 命中只允许出现在 CHANGELOG / manifest 的历史块里，正文/当前态命中 = 漂移
 
 # 2. manifest JSON 合法性（UTF-8 no-BOM，勿用 PowerShell Get-Content）

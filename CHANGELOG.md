@@ -1,5 +1,27 @@
 # 变更日志（Changelog）
 
+## [4.2.7] —— 内容评价审核制度 · 三道门端到端
+
+> **THREE GATES**: 给所有生成物（设计稿/spec/plan/copy/report）建一套端到端审核制度——入口门（放行）+ 退回门（整改）+ 事后门（复审）。规则集 ref 15/16/19 管「单条规则对不对」，三道门管「整件生成物能不能放行 + 退回后怎么闭环 + 放行后会不会衰弱」。
+
+> **POST-HOC DUAL TRACK**: 事后门双轨并行——K 轨查内容衰弱（定期抽样复审，衰弱→整改 / 过时→CULL 下架），M 轨查审核者腐烂（评分通胀/蓝军形同虚设/复审放水 → Keeper Test 下岗）。两轨交叉喂食：K 下架率喂给 M 判松严，M 失准喂给 K 重采样。套娃止于 sage_congress 仲裁，不无限递归。
+
+### Added
+- 📜 **ref 28 入口门**：议会六步放行 G1立案→G2辩论→G3评分(6维rubric)→G4投票(2/3)→G5蓝军否决→G6放行/退回 · 短板红线 + 蓝军一票否决制衡议会
+- 🔧 **ref 29 退回门**：整改闭环 R1开单→R2认领(SLA)→R3修复→R4复审→R5销项 · 超时升级 L1-L4 · 屡犯同缺陷强制提规则 PR（个案沉淀为制度）
+- 🛡️ **ref 30 事后门**：K 轨归档复审四态(存活/衰弱/过时/推翻) + M 轨元审计五步(双盲/校准/元审/蓝军互攻/下岗) · 双轨交叉喂食 · 新增 meta-auditor 角色
+- 🎼 **review-orchestrator agent**：三道门流程编排器 · case_id 挂号/跨门流转/SLA 计时/工单调度/制度自检指标采集（52→54 agent）
+- 🛡️ **meta-auditor agent**：元审计员 · 独立于 sage_congress 与 ui-auditor · 专审"审的过程" · 套娃止层（meta-auditor 自身失准由 sage_congress 2/3 仲裁）
+- 🔗 **bound_to_ruleset_version 契约**：ref 28-30 加版本同步字段 · 规则集升级时三道门制度检查同步 · 不同步则 G5/R1/K2 挂起输出 `CHARTER_OUT_OF_SYNC`（同 ref 15 `RULESET_OUT_OF_SYNC` 套路）
+- 📚 **examples/02-three-gates-modal**：完整三道门 demo case · 故意埋 R-05 违规 · 走 G1-G6 退回 + R1-R5 整改 + K1-K4 事后复审全流程 · 证明制度可执行可验证
+- 🔢 **R 编号两套体系术语表**：SKILL.md 厘清 `R1-R25`（哲学命题·无连字符·全局）vs `R-01`（审计规则·带连字符·每份规则集独立）· 消除混淆
+
+### Changed
+- 📄 **SKILL.md**：主流程图挂三道门(ref 28-30) · 组织架构 52→54 agent + Tier 6 加 review-orchestrator/meta-auditor · 执行层表 34→36 位 · 参考库表加 ref 28-30 · R 编号术语表
+- 📄 **agents/ui-auditor.md**：补三道门角色段(G5蓝军终审/R1开单R4复审/K轨执行M4被互攻) + frontmatter description
+- 📄 **README.dev.md**：补三道门 ASCII 流程图段 · 目录"27 份"→"30 份规范"
+- 📄 **examples/README.md**：02 三道门 demo 标 ✅ 完成 · 原 02-04 顺延为 03-05
+
 ## [4.2.6] —— 全动态常委 · 420 板凳全员厚仙人
 
 > **DYNAMIC COUNCIL**: 常委席位从「固定 12 人雷打不动」升级为「每次任务从整张 **420 板凳按分动态选拔**」。做伦理任务可能罗尔斯/阿伦特当常委，做配色任务可能康定斯基/伊登当常委。固定 12 位降为**默认种子 + 人格稳定锚 + 平局兜底**。

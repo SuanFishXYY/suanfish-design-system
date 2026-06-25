@@ -4,15 +4,16 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.7-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-52-purple)
+![agents](https://img.shields.io/badge/agents-54-purple)
 ![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![AI-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![rules](https://img.shields.io/badge/REJECT-R1--R25-red)
+![gates](https://img.shields.io/badge/review-3--gates-9cf)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
@@ -23,6 +24,8 @@
 它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
 
 **v4.2 升级** (P0/P1/P2 蓝军批判全治): 圣人议会从 v4.1 的"8 哲+2 艺+2 音"重平衡为 v4.2 严格"**4:4:4 均权三大类**" — 议会内置 [减法派 ⟷ 加法派] 民主辩证, 单一圣人禁一票否决, task_kind 改 user-declared 优先 (防 LLM 自利路由), 艺术家/音乐家新增 R-Cross1-4 规则锚。简单事 2 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
+
+**v4.2.7 升级** (内容评价审核制度 · 三道门端到端): 给所有生成物建一套审核流水线——**入口门**(ref 28 · 议会六步放行 G1-G6 + 蓝军一票否决) + **退回门**(ref 29 · 整改闭环 R1-R5 + SLA + 屡犯提规则PR) + **事后门**(ref 30 · 双轨: K轨查内容衰弱下架 / M轨查审核者腐烂下岗 · 交叉喂食)。规则集 ref 15/16/19 管「单条规则对不对」, 三道门管「整件生成物能不能放行」。新增 🎼 review-orchestrator(流程编排) + 🛡️ meta-auditor(审审核者) 两个 agent (52→54)。完整 demo 见 [examples/02-three-gates-modal](examples/02-three-gates-modal/)。
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」

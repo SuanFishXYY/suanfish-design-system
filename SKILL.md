@@ -352,7 +352,7 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 > **⚠️ R 编号两套体系术语表（v4.2.7 厘清，勿混）**：
 > | 写法 | 体系 | 含义 | 出处 |
 > | --- | --- | --- | --- |
-> | `R1` ~ `R25`（无连字符） | **哲学命题 REJECT 规则** | 全局编号 · 25 条 · moment-strategist/议会层拒绝做某需求的哲学依据 | ref 17 §REJECT + 扩展 |
+> | `R1` ~ `R25`（无连字符） | **哲学命题 REJECT 规则** | 全局编号 · 19 条已定义（R1-R6 ∪ R13-R25 · R7-R12 为编号预留空洞·未启用，见 ref 17 §三 R 全景） · moment-strategist/议会层拒绝做某需求的哲学依据 | ref 17 §REJECT + 扩展 |
 > | `R-01` ~ `R-06`（带连字符） | **审计规则集** | 每份规则集独立从 01 编 · 🟥严重级 · ui-auditor grep 检测 | ref 15（稳态）/ ref 16（仪式） |
 > | `W-01` / `H-01` | 审计规则集 | 🟧警告级 / 🟨提示级 · 同 ref 15/16 | ref 15/16 |
 >
@@ -367,7 +367,7 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 | R5 | 路径 B 硬条件未满足 | 可证伪性 | 波普尔 |
 | R6 | 双主导冲突 | 名不正则言不顺 | 孔子 |
 
-> **v4.0–v4.2 扩展**：REJECT 规则已由 R1-R6 扩到 **R1-R25**（含 R18 辩证两端 / R19 无为减法 / R20 齐物多视角 / R24 议会僵局 / R25 引用真实），并新增 **R-Cross1-4 跨学科四律**（达芬奇跨学科联结 / 莫奈感官完整 / 贝多芬情感张力 / Eno 环境陪伴）。Tier 0 圣人 (默认 12 种子席 + 全板凳动态常委) 的哲学锚点与 R 规则详见 [`references/27-philosopher-bench.md`](references/27-philosopher-bench.md) 与 [`agents/bench-matcher.md`](agents/bench-matcher.md)。下表 14 锚点为 Tier 1–6 执行层。
+> **v4.0–v4.2 扩展**：REJECT 规则已由 R1-R6 扩到 **R1-R6 ∪ R13-R25**（R7-R12 为编号预留空洞·未启用，见 [ref 17 §三 R 全景](references/17-philosophy.md)；含 R18 辩证两端 / R19 无为减法 / R20 齐物多视角 / R24 议会僵局 / R25 引用真实），并新增 **R-Cross1-4 跨学科四律**（达芬奇跨学科联结 / 莫奈感官完整 / 贝多芬情感张力 / Eno 环境陪伴）。Tier 0 圣人 (默认 12 种子席 + 全板凳动态常委) 的哲学锚点与 R 规则详见 [`references/27-philosopher-bench.md`](references/27-philosopher-bench.md) 与 [`agents/bench-matcher.md`](agents/bench-matcher.md)。下表 14 锚点为 Tier 1–6 执行层。
 
 ### 🌸 / 🏛️ 东方 / 西方双轨
 

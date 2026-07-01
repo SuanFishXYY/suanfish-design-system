@@ -197,6 +197,30 @@ for (const refFile of ['28-content-review-charter.md', '29-remediation-loop-char
   }
 }
 
+// B1b · charter↔ruleset 版本同步（第一把同步刀 · ref 28 §版本同步契约）
+//    ref 28-30 的 bound_to_ruleset_version 必须 == ref 15/16/19 ruleset_version 的最高（取三者最高）。
+//    与 B2b（ruleset↔token，第二把刀）对称。落后 → CHARTER_OUT_OF_SYNC。
+{
+  const rulesetVersions = ['15-audit-ruleset-steady.md', '16-audit-ruleset-onboarding.md', '19-audit-ruleset-philosophy.md']
+    .map((f) => frontmatter(`references/${f}`))
+    .filter(Boolean)
+    .map((fm) => fm.ruleset_version)
+    .filter(Boolean);
+  if (rulesetVersions.length) {
+    // semver 最高（简单比较：split . 取数字）
+    const highest = rulesetVersions
+      .map((v) => v.split('.').map(Number))
+      .reduce((max, v) => (v > max ? v : max), [0, 0, 0])
+      .join('.');
+    for (const refFile of ['28-content-review-charter.md', '29-remediation-loop-charter.md', '30-posthoc-governance-charter.md']) {
+      const fm = frontmatter(`references/${refFile}`);
+      if (fm && fm.bound_to_ruleset_version && fm.bound_to_ruleset_version !== highest) {
+        block('B1b', `references/${refFile} bound_to_ruleset_version=${fm.bound_to_ruleset_version} ≠ 规则集最高 ${highest}（ref 15/16/19）→ 第一把同步刀 charter↔ruleset 断，应输出 CHARTER_OUT_OF_SYNC（ref 28 契约）。须同步。`);
+      }
+    }
+  }
+}
+
 // B2 · ref 15/16 必含 ruleset_version + bound_to_token_version
 for (const refFile of ['15-audit-ruleset-steady.md', '16-audit-ruleset-onboarding.md']) {
   const fm = frontmatter(`references/${refFile}`);

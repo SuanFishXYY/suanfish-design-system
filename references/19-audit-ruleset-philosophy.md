@@ -1,7 +1,7 @@
 ---
 ref: 19
 title: 哲学层审计规则集
-ruleset_version: 2.3.0
+ruleset_version: 1.0.0
 bound_to_skill_version: 2.3.0
 owner: ui-auditor（执行）· 各 agent（遵守）
 audited_by: ui-auditor

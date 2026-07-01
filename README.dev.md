@@ -73,7 +73,7 @@ G5蓝军否决 G6放行     R5销项→回G3复审        套娃止于 sage_cong
 suanfish-design-system/
 ├── SKILL.md                 # 总指挥 + 5 套速查表 + 决策森林
 ├── agents/                  # 54 位匠人 (12 种子圣人 + 34 执行 + 4 曾降级 + bench-matcher/quotation-verifier + review-orchestrator + meta-auditor)
-├── references/              # 48 份规范（含 3 份独立规则集 15/16/19 + 3 份审核制度 28/29/30 + 5 份横向规范 31-35 + 6 份 AI-native 36-41 + 2 份品牌/i18n 42-43 + 2 份通用组件/基础控件 44-45 + 1 份设计美学 46 + 1 份哲学映射 47 + 1 份议会推演 48） + 3 份附录（component-patterns / interaction-patterns / steps-schema）
+├── references/              # 49 份规范（含 3 份独立规则集 15/16/19 + 3 份审核制度 28/29/30 + 5 份横向规范 31-35 + 6 份 AI-native 36-41 + 2 份品牌/i18n 42-43 + 2 份通用组件/基础控件 44-45 + 1 份设计美学 46 + 1 份哲学映射 47 + 1 份议会推演 48） + 3 份附录（component-patterns / interaction-patterns / steps-schema）
 ├── scripts/                 # charter-lint.mjs · 五类检测机器可检（A 元数据 / B 章程契约 / C refs 悬空 / D 引用网络 / E 语义逻辑债）
 └── examples/                # 5 份端到端 demo（01 仪式 / 02 三道门 / 03 工作台 / 04 否决 / 05 流式） + visual-evidence 可视证据
 ```

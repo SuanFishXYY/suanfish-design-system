@@ -91,6 +91,56 @@ code{font-family:var(--mono);font-size:11px;background:rgba(255,255,255,.08);pad
 </div>
 
 <div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 3 · display:none 硬切换</div><div class="demo">内容瞬切出现/消失，用户无感知<br><code>className={show ? 'block' : 'hidden'}</code></div></div>
+  <div class="good"><div class="label">✅ 正确 · opacity 过渡</div><div class="demo">渐显/渐隐，视觉连续<br><code>opacity + transition-opacity duration-300</code></div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 5 · 乱配色</div><div class="demo"><span style="color:#ec4899">pink</span> + <span style="color:#facc15">yellow</span> + <span style="color:#22c55e">green</span><br>非令牌色组合，无语义</div></div>
+  <div class="good"><div class="label">✅ 正确 · 语义色</div><div class="demo"><span style="color:var(--blue-500)">动作</span> + <span style="color:var(--emerald-500)">成功</span> + <span style="color:var(--red-600)">危险</span><br>走 ref 01 §1 语义色阶</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 7 · 自定义滚动条</div><div class="demo">各处自写 <code>::-webkit-scrollbar</code> 样式不统一<br>每个容器滚动条都不一样</div></div>
+  <div class="good"><div class="label">✅ 正确 · custom-scrollbar</div><div class="demo">统一用全局 <code>custom-scrollbar</code> 工具类<br>ref 01 §10 统一滚动条</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 10 · 内联 style</div><div class="demo"><code>&lt;style&gt;@keyframes...</code> 在组件内<br>绕过全局动画库，重复定义难维护</div></div>
+  <div class="good"><div class="label">✅ 正确 · animate-*</div><div class="demo"><code>className="animate-fade-in"</code><br>走 ref 11 §1 全局动画工具类</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 12 · 任意字号</div><div class="demo"><span style="font-size:17px">17px 文字</span><br><code>text-[17px]</code> — 不在字号尺标</div></div>
+  <div class="good"><div class="label">✅ 正确 · text-sm</div><div class="demo"><span style="font-size:14px">14px (text-sm)</span><br><code>text-sm</code> — ref 01 §4 字号尺标</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 13 · 任意间距</div><div class="demo"><code>mt-2 mt-4 mb-3 mb-6</code> 拼凑<br>逐个间距手动调，无系统</div></div>
+  <div class="good"><div class="label">✅ 正确 · space-y-4</div><div class="demo"><code>space-y-4</code> 统一节奏<br>ref 01 §7 间距尺标</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 16 · 重复确认模态</div><div class="demo">确认/删除确认各写各的<br>样式不一致，逻辑重复</div></div>
+  <div class="good"><div class="label">✅ 正确 · ConfirmModal</div><div class="demo">统一用 <code>ConfirmModal</code> / <code>DeleteConfirmModal</code><br>ref 07 §7 + ref 14 反模式 16</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 6 · 向导步骤跳改</div><div class="demo">步骤数/顺序擅改不经 wizard-designer<br><code>steps.push(newStep)</code> — 破坏流程契约</div></div>
+  <div class="good"><div class="label">✅ 正确 · 走 wizard-designer</div><div class="demo">步骤变更经 wizard-designer 审<br>ref 14 反模式 6 · ref 08 向导规范</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 9 · 主内容区脱锚</div><div class="demo">MainContent 布局锚点擅改<br>影响整体栅格 <code>features/layout/MainContent.tsx</code></div></div>
+  <div class="good"><div class="label">✅ 正确 · 守 ref 04 骨架</div><div class="demo">三栏骨架固定 <code>80px + 256px + flex-1</code><br>ref 04 §0 骨架不动</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 14 · 图标散落</div><div class="demo">各处内联 SVG <code>&lt;svg&gt;...&lt;/svg&gt;</code><br>语义不统一，维护困难</div></div>
+  <div class="good"><div class="label">✅ 正确 · icons.tsx</div><div class="demo">统一进 <code>features/layout/components/icons.tsx</code><br>ref 12 §1 图标文件分布</div></div>
+</div>
+
+<div class="pattern">
   <div class="bad"><div class="label">❌ 反模式 17 · text-yellow</div><div class="demo"><span class="demo-text-bad">警告文字</span><br><code>text-yellow-600</code> — 暖色是仪式专属，稳态禁用</div></div>
   <div class="good"><div class="label">✅ 正确 · text-amber</div><div class="demo"><span class="demo-text-good">警告文字</span><br><code>text-amber-600</code> — ref 01 §1 稳态警告色</div></div>
 </div>

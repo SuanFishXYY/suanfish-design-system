@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="算鱼 · Streaming Chat · AI-native 视觉证据">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>算鱼 · Streaming Chat · AI-native 视觉证据</title>
@@ -133,6 +133,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--slate-100);padding:
 .info strong{color:var(--blue-400)}
 @media (max-width: 768px) { .wrap{padding:16px} .grid-4,.grid-3,.grid-2,.sages,.notif-grid,.dialectic{grid-template-columns:1fr !important} .three-pane{grid-template-columns:1fr !important;height:auto} .steps{flex-wrap:wrap} .step-pill{flex:1 1 30%} h1{font-size:22px} }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:80ms !important; animation-iteration-count:1 !important; transition-duration:80ms !important } }
+body.dark-mode{background:var(--slate-900);color:var(--slate-100)}body.dark-mode .topbar{background:var(--slate-800);border-color:var(--slate-700)}body.dark-mode .msg.assistant .msg-bubble{background:var(--slate-700);color:var(--slate-100)}body.dark-mode .input-area{background:var(--slate-800);border-color:var(--slate-700)}body.dark-mode .input-row{background:var(--slate-700)}body.dark-mode .input-row textarea{color:var(--slate-100)}body.dark-mode .reasoning-body{background:var(--slate-800);color:var(--slate-400)}
 </style>
 </head>
 <body>
@@ -147,7 +148,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--slate-100);padding:
       <div class="model-chip">Gemini</div>
     </div>
   </div>
-  <div class="quota">今日还剩 <span id="quota-num">18</span> 条</div>
+  <div style="display:flex;align-items:center;gap:12px"><button onclick="document.body.classList.toggle('dark-mode')" style="background:none;border:1px solid var(--gray-200);border-radius:8px;padding:4px 8px;cursor:pointer;font-size:14px">🌙</button><div class="quota">今日还剩 <span id="quota-num">18</span> 条</div></div>
 </div>
 
 <!-- MessageStream (ref 36) -->

@@ -441,6 +441,39 @@ for (const f of listMd('references')) {
   }
 }
 
+// ── E4 · R-Cross 编号全集空洞（对应 R3 同构 · R-Cross1-4 跨学科律编号体系）────
+// E1 只扫 R1-R25 范围，R-Cross1-4 是另一套编号体系（散落 ref 27+ref 46+4 agent，
+// 无单一索引，与 R 规则塌陷前同构）。扫"R-Cross1-4/跨学科四律"全集声称 → 对比
+// 实际定义的 R-Cross 编号 → 空洞且无声明 → 🟥。防 R-Cross 体系演进中塌陷无人发现。
+{
+  const allFiles = [...listMd('references'), ...listMd('agents'), ...listMdRecursive('examples'), join('SKILL.md')];
+  const allText = {};
+  for (const f of allFiles) { if (exists(f)) allText[rel(f)] = readText(f); }
+  // 收集实际定义的 R-Cross 编号
+  const definedRC = new Set();
+  const defRe = /R-Cross(\d)/g;
+  for (const t of Object.values(allText)) {
+    for (const m of t.matchAll(defRe)) definedRC.add(Number(m[1]));
+  }
+  // 扫"R-Cross1-4"式范围声称（含"跨学科四律"全集声明）
+  const rangeRe = /R-Cross(\d)\s*[-–]\s*(?:R-Cross)?(\d)/g;
+  const setClaim = /跨学科四律|R-Cross1-4|R-Cross 1-4/;
+  for (const [p, t] of Object.entries(allText)) {
+    const claims = [];
+    for (const m of t.matchAll(rangeRe)) claims.push([Number(m[1]), Number(m[2])]);
+    // 无范围声称但有"四律"全集声明 → 默认 1-4
+    if (!claims.length && setClaim.test(t)) claims.push([1, 4]);
+    for (const [lo, hi] of claims) {
+      // R-Cross 无跳号历史（不像 R 规则有 R7-R12 预留），全集声称缺定义即报，不做文件级排除
+      const holes = [];
+      for (let n = lo; n <= hi; n++) if (!definedRC.has(n)) holes.push(n);
+      if (holes.length) {
+        block('E4', `${p}: 声明 "R-Cross${lo}-${hi}" 全集但 R-Cross${holes.join(',')} 全库无定义 → R-Cross 编号体系空洞（R3 同构幽灵律）。补定义或显式标预留。`);
+      }
+    }
+  }
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // C. 输出 REPORT（仿 ui-auditor 分级）
 // ════════════════════════════════════════════════════════════════════════════

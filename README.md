@@ -610,7 +610,7 @@ suanfish-design-system/
 │   ├── moment-strategist.md
 │   ├── ... (54 agents total)
 │   └── v4.2-congress-simulation.md # ⭐ 5 TC 议会演示
-└── references/              # 49 份规范（含 ref 28-30 审核制度 + ref 31-35 横向规范 + ref 36-41 AI-native + ref 42-43 品牌/i18n + ref 44-45 通用组件/基础控件 + ref 46 设计美学 + ref 47 哲学映射 + ref 48 议会推演）+ 420 思想家板凳
+└── references/              # 50 份规范（含 ref 28-30 审核制度 + ref 31-35 横向规范 + ref 36-41 AI-native + ref 42-43 品牌/i18n + ref 44-45 通用组件/基础控件 + ref 46 设计美学 + ref 47 哲学映射 + ref 48 议会推演）+ 420 思想家板凳
     ├── 17-philosophy.md
     ├── 24-philosophy-dialectics.md
     ├── 25-philosophy-laws.md

@@ -20,7 +20,8 @@
 
 | 文件 | 内容 | 对应 ref |
 | --- | --- | --- |
-| [visual-evidence/index.html](visual-evidence/index.html) | 算鱼内核首个可直接浏览器打开的 HTML——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |
+| [visual-evidence/index.html](visual-evidence/index.html) | 稳态内核——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |
+| [visual-evidence/eureka.html](visual-evidence/eureka.html) | 仪式模式 Eureka 欢迎闪现——8 keyframes + 5 层粒子组合真实动画（扩散环/光球/火花/灯泡/标题渐变+扫光），点按钮重放 | 02 / 11 / 46 |
 
 > 03 / 04 / 05 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
 

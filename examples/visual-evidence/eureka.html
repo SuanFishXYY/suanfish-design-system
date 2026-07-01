@@ -2,6 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="算鱼 · Eureka 欢迎闪现 · 仪式模式视觉证据">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>算鱼 · Eureka 欢迎闪现 · 仪式模式视觉证据</title>
 <!--
@@ -122,6 +124,7 @@ body { -webkit-font-smoothing: antialiased; font-family: var(--font); background
 .idle-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--slate-500); font-size: 14px; text-align: center; }
 .stage.playing .idle-hint { display: none; }
 @media (max-width: 768px) { .wrap{padding:16px} .grid-4,.grid-3,.grid-2,.sages,.notif-grid,.dialectic{grid-template-columns:1fr !important} .three-pane{grid-template-columns:1fr !important;height:auto} .steps{flex-wrap:wrap} .step-pill{flex:1 1 30%} h1{font-size:22px} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:80ms !important; animation-iteration-count:1 !important; transition-duration:80ms !important } }
 </style>
 </head>
 <body>

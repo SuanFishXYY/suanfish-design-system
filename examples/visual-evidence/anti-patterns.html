@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="算鱼 · 反模式对比可视化 · ref 14">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼 · 反模式对比可视化 · ref 14</title>
+<style>
+:root{--blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;--red-600:#dc2626;--red-50:#fef2f2;--red-100:#fee2e2;--emerald-600:#059669;--emerald-500:#10b981;--emerald-100:#d1fae5;--emerald-50:#ecfdf5;--amber-600:#d97706;--amber-500:#f59e0b;--amber-400:#fbbf24;--amber-100:#fef3c7;--slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;--white:#fff;--font:-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif;--mono:"SF Mono","Fira Code",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-900);color:var(--slate-100);min-height:100vh;-webkit-font-smoothing:antialiased;padding:32px 24px 80px}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.lead{color:var(--slate-400);font-size:14px;margin-top:8px;margin-bottom:32px}
+h2{font-size:18px;font-weight:700;margin:32px 0 12px;color:var(--white)}
+.pattern{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.bad,.good{border-radius:12px;padding:16px;border:1px solid}
+.bad{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.2)}
+.good{background:rgba(16,185,129,.05);border-color:rgba(16,185,129,.2)}
+.bad .label,.good .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.bad .label{color:var(--red-600)}
+.good .label{color:var(--emerald-500)}
+.demo{font-size:13px;color:var(--slate-300);line-height:1.6}
+code{font-family:var(--mono);font-size:11px;background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px;color:var(--amber-400)}
+.bad code{background:rgba(239,68,68,.1);color:#fca5a5}
+.good code{background:rgba(16,185,129,.1);color:#6ee7b7}
+.rule-tag{font-size:10px;font-weight:600;padding:1px 7px;border-radius:9999px;background:rgba(255,255,255,.1);color:var(--slate-400);margin-left:8px}
+.section-title{display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--slate-300);margin:24px 0 8px}
+/* 坏示例真实渲染 */
+.demo-alert{padding:8px 12px;border-radius:8px;font-size:13px}
+.demo-alert-bad{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+.demo-alert-good{background:var(--slate-800);color:var(--slate-100);border:1px solid var(--slate-700);border-radius:12px;padding:12px}
+.demo-color-bad{color:#3b82f6;font-weight:600}
+.demo-color-good{color:var(--blue-500);font-weight:600}
+.demo-btn-bad{background:#ef4444!important;color:#fff!important;padding:8px 16px!important;border:none!important;border-radius:8px!important}
+.demo-btn-good{background:var(--red-600);color:var(--white);padding:8px 16px;border:none;border-radius:8px}
+.demo-z-bad{position:relative;background:var(--slate-800);padding:8px;border-radius:8px;font-size:11px;color:var(--slate-400)}
+.demo-z-bad::after{content:'z-99999';position:absolute;top:2px;right:4px;font-size:9px;color:var(--red-600)}
+.demo-z-good{position:relative;background:var(--slate-800);padding:8px;border-radius:8px;font-size:11px;color:var(--slate-400)}
+.demo-z-good::after{content:'z-100';position:absolute;top:2px;right:4px;font-size:9px;color:var(--emerald-500)}
+.demo-shadow-bad{box-shadow:0 5px 20px rgba(0,0,0,.1);padding:12px;border-radius:8px;background:var(--slate-800)}
+.demo-shadow-good{box-shadow:var(--slate-700) 0 4px 6px -1px;padding:12px;border-radius:8px;background:var(--slate-800)}
+.demo-font-bad{font-size:14px;padding:8px;background:var(--slate-800);border-radius:8px}
+.demo-font-good{font-size:14px;padding:8px;background:var(--slate-800);border-radius:8px}
+.demo-text-bad{color:#fbbf24}
+.demo-text-good{color:var(--amber-400)}
+.footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:var(--slate-500);line-height:1.7}
+@media (max-width:768px){.pattern{grid-template-columns:1fr}.wrap{padding:0 16px}h1{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:80ms!important;transition-duration:80ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🚫 算鱼反模式对比可视化 <span class="rule-tag">ref 14</span></h1>
+<p class="lead">18 条反模式 · ❌ 坏设计 vs ✅ 好设计并排可看对比 · 看到 bad next to good 才知道为什么</p>
+
+<div class="section-title">交互反模式</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 1 · alert()</div><div class="demo"><div class="demo-alert demo-alert-bad">⚠ 弹窗阻塞页面！点击确定继续。</div><br><code>alert('创建成功!')</code> — 原生弹窗阻断、丑、无 a11y</div></div>
+  <div class="good"><div class="label">✅ 正确 · modal</div><div class="demo"><div class="demo-alert-good"><strong style="color:var(--white)">项目已创建</strong><br><span style="font-size:12px">算鱼项目 准备就绪</span></div><br><code>&lt;SuccessModal&gt;</code> — ref 07 模态，Portal+z-[100]</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 4 · !important</div><div class="demo"><button class="demo-btn-bad">删除</button><br><code>className="!bg-red-500"</code> — 破坏优先级链</div></div>
+  <div class="good"><div class="label">✅ 正确 · token</div><div class="demo"><button class="demo-btn-good">删除</button><br><code>className="bg-red-600"</code> — 走 ref 01 令牌</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 8 · div onClick</div><div class="demo"><div style="padding:8px 16px;background:var(--slate-700);border-radius:8px;cursor:pointer;display:inline-block">假按钮</div><br><code>&lt;div onClick&gt;</code> — 键盘不可达、无 ARIA</div></div>
+  <div class="good"><div class="label">✅ 正确 · button</div><div class="demo"><button style="padding:8px 16px;background:var(--blue-600);color:var(--white);border:none;border-radius:8px;cursor:pointer">真按钮</button><br><code>&lt;button type="button"&gt;</code> — 原生键盘+ARIA</div></div>
+</div>
+
+<div class="section-title">令牌反模式</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 2 · HEX</div><div class="demo"><span class="demo-color-bad">蓝色文字</span><br><code>color: '#3b82f6'</code> — 绕过令牌，散落不可维护</div></div>
+  <div class="good"><div class="label">✅ 正确 · token</div><div class="demo"><span class="demo-color-good">蓝色文字</span><br><code>className="text-blue-500"</code> — ref 01 §1 语义色</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 11 · 任意阴影</div><div class="demo"><div class="demo-shadow-bad">box-shadow: 0 5px 20px rgba(0,0,0,.1)</div><br><code>shadow-[0_5px_20px...]</code> — 任意值</div></div>
+  <div class="good"><div class="label">✅ 正确 · shadow-md</div><div class="demo"><div class="demo-shadow-good">shadow-md (令牌)</div><br><code>shadow-md</code> — ref 01 §6 阴影尺标</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 15 · 任意 z-index</div><div class="demo"><div class="demo-z-bad">modal 层</div><br><code>z-[99999]</code> — 不在 z-index 表</div></div>
+  <div class="good"><div class="label">✅ 正确 · z-[100]</div><div class="demo"><div class="demo-z-good">modal 层</div><br><code>z-[100]</code> — ref 01 §8 z-index 表</div></div>
+</div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 17 · text-yellow</div><div class="demo"><span class="demo-text-bad">警告文字</span><br><code>text-yellow-600</code> — 暖色是仪式专属，稳态禁用</div></div>
+  <div class="good"><div class="label">✅ 正确 · text-amber</div><div class="demo"><span class="demo-text-good">警告文字</span><br><code>text-amber-600</code> — ref 01 §1 稳态警告色</div></div>
+</div>
+
+<div class="section-title">文案反模式 <span class="rule-tag">ref 35</span></div>
+
+<div class="pattern">
+  <div class="bad"><div class="label">❌ 反模式 18 · 文案空话</div><div class="demo">「点击此处保存」<br>「您的项目已成功保存！」<br>「错误：500」<br><span style="color:var(--slate-500)">「点击此处」是 PC 时代废词 · 「您的」「成功」「！」三处冗余 · 错误码不给用户看</span></div></div>
+  <div class="good"><div class="label">✅ 正确 · 动词开头</div><div class="demo">「保存」<br>「已保存」<br>「服务器开小差，请稍后重试」<br><span style="color:var(--slate-500)">2-6 字动词 · 去冗余 · 去错误码 · 说人话</span></div></div>
+</div>
+
+<div class="footer">
+  <strong>算鱼反模式对比 · ref 14 可视化</strong><br>
+  18 条反模式（alert/HEX/!important/任意z-index/div onClick/任意阴影/text-yellow/文案空话）并排对比 · 每条 ❌ 坏设计 next to ✅ 好设计 · 看到 bad 才知道为什么 good<br>
+  对应 ref: 01 令牌 / 07 模态 / 14 反模式 / 35 文案 / 34 a11y
+</div>
+
+</div>
+</body>
+</html>

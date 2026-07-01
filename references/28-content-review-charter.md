@@ -101,6 +101,8 @@ supersedes: 无（新增 · 与 ref 15/16/19 规则集正交，规则集管「�
 | **ui-auditor** | 跑 ref 15/16/19 规则集，🟥 严重级命中 | 任何 R 规则命中 |
 | **debunk-auditor** | 疾虚妄，找伪智能/伪个性化/装腔 | R23 命中 |
 
+> **⚠️ debunk-auditor 双角色（v4.2.7 哲理审计 R20）**：debunk-auditor 主职是 **Tier 0 圣人**（王充·#225·哲学家类·议会成员，见 ref 27），**兼** G5 蓝军（上表）。manifest `tier_6_quality_gate` 只列专职质量门 agent（ui-auditor/sage-council/review-orchestrator/meta-auditor），**不重复列 debunk-auditor**（防双计）——它以 Tier 0 圣人身份在 manifest `tier_0_philosophers`，G5 蓝军是其兼职否决权。读者勿因 tier_6 数组无 debunk 误以为蓝军只有 ui-auditor 一把刀。
+
 - 蓝军**不参与 G4 投票**，只在 G5 行使一票否决——制衡议会「集体通过但集体翻车」。
 - 蓝军否决必须给出**可证伪的定位**（文件:行 / 规则编号 / 复现路径），否则否决无效（防蓝军滥权）。
 - **规则集不同步**（`bound_to_token_version` 落后）→ ui-auditor 输出 `RULESET_OUT_OF_SYNC`，审计直接挂起，强制 owner 先同步规则集（同 ref 15 契约）。

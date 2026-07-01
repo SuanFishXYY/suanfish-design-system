@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼设计系统 · 视觉证据画廊</title>
+<style>
+:root {
+  --blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;
+  --emerald-500:#10b981;--amber-400:#fbbf24;--amber-500:#f59e0b;--purple-600:#9333ea;
+  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;
+  --white:#fff;
+  --font:-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-900);color:var(--slate-100);min-height:100vh;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:32px;font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#fff 0%,var(--slate-300) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--slate-400);font-size:15px;margin-top:8px;line-height:1.6}
+.stats{display:flex;gap:24px;margin:24px 0;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 20px;min-width:100px}
+.stat .num{font-size:28px;font-weight:800;color:var(--white)}
+.stat .lbl{font-size:11px;color:var(--slate-400);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:32px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.card:hover{border-color:rgba(255,255,255,.25);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.card-preview{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
+.card-preview::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(15,23,42,.8));pointer-events:none}
+.card-body{padding:16px 20px}
+.card-title{font-size:16px;font-weight:700;color:var(--white)}
+.card-desc{font-size:13px;color:var(--slate-400);margin-top:4px;line-height:1.5}
+.card-refs{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.card-ref{font-size:10px;font-weight:600;padding:1px 7px;border-radius:9999px;background:rgba(255,255,255,.1);color:var(--slate-300)}
+.footer{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:var(--slate-500);line-height:1.7}
+.footer strong{color:var(--slate-300)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>算鱼设计系统 · 视觉证据画廊</h1>
+<p class="subtitle">48 份 ref + 5 份 demo + 5 份可渲染 HTML · 从哲学命题到像素到声音的完整闭环</p>
+
+<div class="stats">
+  <div class="stat"><div class="num">48</div><div class="lbl">ref 规范</div></div>
+  <div class="stat"><div class="num">5</div><div class="lbl">demo 案例</div></div>
+  <div class="stat"><div class="num">5</div><div class="lbl">HTML 证据</div></div>
+  <div class="stat"><div class="num">54</div><div class="lbl">agents</div></div>
+  <div class="stat"><div class="num">5</div><div class="lbl">lint 检测类</div></div>
+</div>
+
+<div class="gallery">
+
+  <a class="card" href="index.html">
+    <div class="card-preview" style="background:linear-gradient(135deg,#1e293b,#334155)">🏛</div>
+    <div class="card-body">
+      <div class="card-title">稳态内核</div>
+      <div class="card-desc">色谱 / 加减辩证 / 组件 / 三栏 / D3 映射 / dark mode 全渲染</div>
+      <div class="card-refs"><span class="card-ref">ref 01</span><span class="card-ref">ref 44</span><span class="card-ref">ref 45</span><span class="card-ref">ref 46</span><span class="card-ref">ref 47</span></div>
+    </div>
+  </a>
+
+  <a class="card" href="eureka.html">
+    <div class="card-preview" style="background:radial-gradient(ellipse at center,rgba(251,191,36,.3),rgba(15,23,42,.8))">✨</div>
+    <div class="card-body">
+      <div class="card-title">仪式模式 · Eureka</div>
+      <div class="card-desc">8 keyframes + 5 层粒子组合真实动画 · 点按钮重放</div>
+      <div class="card-refs"><span class="card-ref">ref 02</span><span class="card-ref">ref 11</span><span class="card-ref">ref 46</span></div>
+    </div>
+  </a>
+
+  <a class="card" href="streaming-chat.html">
+    <div class="card-preview" style="background:linear-gradient(135deg,#1e293b,#4f46e5)">💬</div>
+    <div class="card-body">
+      <div class="card-title">AI-native 流式聊天</div>
+      <div class="card-desc">cursor 三态 + 工具四态卡 + 思维链折叠 + 引用角标 + IME 安全 + 完成脉冲</div>
+      <div class="card-refs"><span class="card-ref">ref 36</span><span class="card-ref">ref 37</span><span class="card-ref">ref 39</span><span class="card-ref">ref 40</span><span class="card-ref">ref 41</span></div>
+    </div>
+  </a>
+
+  <a class="card" href="council-debate.html">
+    <div class="card-preview" style="background:linear-gradient(135deg,#1e293b,#7c3aed)">🏛</div>
+    <div class="card-body">
+      <div class="card-title">议会辩证可视化</div>
+      <div class="card-desc">六步推演 + 加减辩证交锋 + D2/D7 矛盾映射 + 端到端追溯链 · 点按钮推进</div>
+      <div class="card-refs"><span class="card-ref">ref 24</span><span class="card-ref">ref 27</span><span class="card-ref">ref 46</span><span class="card-ref">ref 47</span><span class="card-ref">ref 48</span></div>
+    </div>
+  </a>
+
+  <a class="card" href="sound-design.html">
+    <div class="card-preview" style="background:linear-gradient(135deg,#1e293b,#059669)">🔊</div>
+    <div class="card-body">
+      <div class="card-title">声音设计可听证据</div>
+      <div class="card-desc">R-Cross 三档位（凯奇/Eno/贝多芬）+ 通知音四优先级 · Web Audio API 真实播放</div>
+      <div class="card-refs"><span class="card-ref">ref 32</span><span class="card-ref">ref 46</span></div>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  <strong>算鱼设计系统 v4.2.7 · 至尊版</strong><br>
+  五层内核：功能规范（01-14, 31-45）+ 哲学（00, 17-27）+ 设计美学（46）+ 哲学映射（47）+ 议会推演总纲（48）<br>
+  五类校验：A 元数据 / B 章程契约 / C agent refs / D ref 引用网络 / E 语义逻辑债<br>
+  从哲学命题到像素到声音——每个决策可追溯回矛盾 / 规律 / 时代 / 圣人投票
+</div>
+
+</div>
+</body>
+</html>

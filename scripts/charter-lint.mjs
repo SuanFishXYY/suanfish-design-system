@@ -142,6 +142,7 @@ const M_REF_COUNT = Number(manifest.reference_count);
     ...['README.md', 'README.en.md', 'README.dev.md', 'SKILL.md', 'CONTRIBUTING.md'].map((f) => join(f)),
     ...listMdRecursive('docs'),
     ...listMdRecursive('.github'),
+    ...listMd('agents'),   // R14: agents/ 也扫（ui-auditor 曾漏 33→54，A5 没覆盖 agents/）
   ];
   // 模式 → 期望值（来自 manifest）
   const patterns = [
@@ -159,7 +160,9 @@ const M_REF_COUNT = Number(manifest.reference_count);
   const skipLine = (line) =>
     /grep\s+-rn/.test(line) ||                                              // 自检 grep 行本身（含待查陈旧串，合法）
     /v[1-3](?:\.\d)?\b|历史(?:图|架构|段|表|版本)|v3\s*时代/.test(line) ||   // 历史叙述（v1-v3 / 历史图 · v4 不排）
-    /哲学锚点|案例库|各\s*\d+\s*[正反]|主审\s*[Aa]gent|该维主审|位主审/.test(line); // 子集语义（非总 agent 数）
+    /哲学锚点|案例库|各\s*\d+\s*[正反]|主审\s*[Aa]gent|该维主审|位主审/.test(line) // 子集语义（非总 agent 数）
+    || /扩到\s*\d+\s*agent|v\d\.\d.*扩|现\s*\d+\s*agent|v\d\.\d.*补.*\d+\s*agent|累计\s*\d+\s*位/.test(line) // R14: agents/ 历史变更叙述（"v2.5 扩到 33""累计 33 位"）
+    || /Tier\s*\d+\s*agent|\d+\s*个\s*Tier|\d+\s*个\s*其他|\d+\s*个\s*前/.test(line); // R14: "Tier 0 agent""前 N 个 Tier"子集语义（非总 agent 数）
   for (const file of targets) {
     if (!exists(file)) continue;
     const lines = readText(file).split(/\r?\n/);

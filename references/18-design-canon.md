@@ -135,6 +135,8 @@ audited_by: ui-auditor
 
 ## 五、东方设计哲学（E1-E2）
 
+> **⚠️ E 命名空间声明（v4.2.7 哲理审计 R14 · 防命名空间污染）**：本节 `E1-E2` 是 **Canon 东方哲学体系**（间/物哀），**不是** [ref 26](26-historical-positioning.md) 的 `E1-E8` 时代体系（Pre-Web/Web1.0.../Spatial）。两套 E 同号不同义且都在活跃使用——Canon-E 在设计原则引用语境（规范 `[Canon-E1]` 带前缀，见 cases），Era-E 在 frontmatter `historical_era` 字段 + 历史定位语境（98 处 agent frontmatter 锁定编码，无法带前缀）。**隔离规则**：① Canon-E 引用必须带 `Canon-` 前缀，禁裸 `[E1]`；② frontmatter `historical_era` 值的 E 永远是 Era 体系（字段名锁定）；③ 两套 E 永不交叉引用（Canon-E 是美学原则，Era-E 是时代坐标，语义无重叠）。同 D 命名空间（R13）一样，靠前缀+语境隔离，非重命名。
+
 ### E1 · 间（Ma）
 > 留白即存在
 

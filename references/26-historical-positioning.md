@@ -9,7 +9,9 @@ audited_by: ui-auditor
 
 > *"每个 agent 都是某个时代为了解决某类问题而诞生的产物。不知道自己来自哪里的 agent，没有资格预测要去哪里。"*
 
-本文档为 v3.0 引入的「**Layer 0.5 · 历史定位**」哲学层。为 33 agent 各发一张"时代身份证"，配合 [25-philosophy-laws.md](25-philosophy-laws.md) 使用。
+本文档为 v3.0 引入的「**Layer 0.5 · 历史定位**」哲学层。为各 agent 发"时代身份证"（frontmatter `historical_era` 锁定编码），配合 [25-philosophy-laws.md](25-philosophy-laws.md) 使用。
+
+> **⚠️ E 命名空间声明（v4.2.7 哲理审计 R14）**：本文档 `E1-E8` 是 **Era 时代体系**（Pre-Web→Spatial），用于 frontmatter `historical_era` 字段锁定编码（98 处 agent 在用），**不是** [ref 18 §五](18-design-canon.md) 的 `E1-E2` Canon 东方哲学体系（间/物哀）。两套 E 同号不同义，靠语境隔离：Era-E 在历史定位/frontmatter，Canon-E 在设计原则引用（带 `Canon-` 前缀）。永禁裸 `[E1]` 跨体系引用。
 
 ---
 
@@ -32,7 +34,7 @@ audited_by: ui-auditor
 
 ---
 
-## 二、33 agent 时代身份证（按 Tier 分组）
+## 二、agent 时代身份证（按 Tier 分组）
 
 > 以下身份证基于真实 agent 文件 `frontmatter` 的 `role` / `description` / `philosophy` 字段推断，Era 采用 E1-E8 锁定编码。
 

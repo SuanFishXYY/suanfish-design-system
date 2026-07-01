@@ -111,6 +111,8 @@ BRIEF
 
 每一步都有 ref 锚定——决策不悬空，像素可追溯回矛盾/规律/时代。
 
+> **完整实跑 trace 见 [examples/03-dashboard-workbench/plan.md](../examples/03-dashboard-workbench/plan.md) §议会推演**（v4.2.7 R24 指针）：D3 矛盾 dashboard BRIEF 实跑六步——Step1 路由 structural·Step2 5 维评分（黑格尔8.8/莫奈8.6/倪瓒8.5/贝多芬7.9/法藏7.6·k=5 常委含加减平衡）·Step5 三段式讨论（黑格尔主矛盾选个性化倾向+莫奈加法光色+倪瓒减法冷暗+贝多芬张力曲线）·Step6 投票（票权13/门槛⌈13×2/3⌉=9/APPROVE13≥9 通过 Round 1）。六步协议非纸上闭环，具体 case 端到端可执行——同 R21(M5)/R23(Lite) 补 worked example 的逻辑，至尊版议会的可执行性证据在 examples/03。
+
 ## 9. R24 议会僵局律
 
 **触发**：3 轮投票未达 2/3。

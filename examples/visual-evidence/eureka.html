@@ -20,7 +20,7 @@
   --font: -apple-system, "SF Pro Display", "Helvetica Neue", "PingFang SC", sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font); background: var(--slate-900); color: var(--slate-100); min-height: 100vh; overflow-x: hidden; }
+body { -webkit-font-smoothing: antialiased; font-family: var(--font); background: var(--slate-900); color: var(--slate-100); min-height: 100vh; overflow-x: hidden; }
 .controls { position: fixed; top: 16px; right: 16px; z-index: 1000; display: flex; gap: 8px; }
 .controls button { background: rgba(255,255,255,.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.2); color: var(--white); padding: 8px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: all .2s; }
 .controls button:hover { background: rgba(255,255,255,.2); }
@@ -121,6 +121,7 @@ body { font-family: var(--font); background: var(--slate-900); color: var(--slat
 .stage.idle .title-wrap { opacity: .3; }
 .idle-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--slate-500); font-size: 14px; text-align: center; }
 .stage.playing .idle-hint { display: none; }
+@media (max-width: 768px) { .wrap{padding:16px} .grid-4,.grid-3,.grid-2,.sages,.notif-grid,.dialectic{grid-template-columns:1fr !important} .three-pane{grid-template-columns:1fr !important;height:auto} .steps{flex-wrap:wrap} .step-pill{flex:1 1 30%} h1{font-size:22px} }
 </style>
 </head>
 <body>

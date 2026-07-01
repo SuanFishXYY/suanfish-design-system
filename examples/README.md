@@ -18,6 +18,8 @@
 
 ## 🖼️ 视觉证据（可直接渲染）
 
+> 入口：[visual-evidence/gallery.html](visual-evidence/gallery.html) — 画廊导航页，一键跳转所有证据
+
 | 文件 | 内容 | 对应 ref |
 | --- | --- | --- |
 | [visual-evidence/index.html](visual-evidence/index.html) | 稳态内核——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |

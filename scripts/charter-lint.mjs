@@ -477,6 +477,32 @@ for (const f of listMd('references')) {
   }
 }
 
+// ── E5 · P-XX 规则前缀跨 agent 冲突（对应 R15 · P-MS 命名空间污染）────────────
+// ref 19 各 agent 专项规则用 P-XX 前缀（XX=agent 缩写，如 P-OD=onboarding-director）。
+// 同前缀归属不同 agent = 命名空间污染（agent 引用 [P-MS1] 不知指哪个 agent 的规则）。
+// 扫 ref 19 ### `agent` 段下的 #### P-XX数字 定义，同前缀跨 agent → 🟥。
+{
+  const ref19 = join('references/19-audit-ruleset-philosophy.md');
+  if (exists(ref19)) {
+    const lines = readText(ref19).split(/\r?\n/);
+    let curAgent = null;
+    const prefixAgent = {}; // P-XX -> Set(agent)
+    for (const line of lines) {
+      const am = line.match(/^### `([a-z-]+)`/);
+      if (am) curAgent = am[1];
+      const pm = line.match(/^#### (P-[A-Z]{2,4})\d/);
+      if (pm && curAgent) {
+        (prefixAgent[pm[1]] = prefixAgent[pm[1]] || new Set()).add(curAgent);
+      }
+    }
+    for (const [pfx, agents] of Object.entries(prefixAgent)) {
+      if (agents.size > 1) {
+        block('E5', `references/19-audit-ruleset-philosophy.md: 规则前缀 ${pfx} 被多个 agent 占用 (${[...agents].join(', ')}) → 命名空间污染（R15 类 P-MS 冲突）。各 agent 须用唯一前缀（agent 名缩写）。`);
+      }
+    }
+  }
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // C. 输出 REPORT（仿 ui-auditor 分级）
 // ════════════════════════════════════════════════════════════════════════════

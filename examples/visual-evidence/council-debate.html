@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼 · 议会辩证可视化 · 内核灵魂</title>
+<!--
+  算鱼设计系统 · 议会辩证可视化
+  把 ref 48 六步推演 + ref 46 加减辩证 + ref 47 哲学映射渲染成可看的议会辩论过程。
+  单文件 HTML · 零依赖 · 浏览器直接打开 · 点按钮推进六步。
+  对应 ref: 48 议会 / 46 美学 / 47 哲学映射 / 24 矛盾 / 27 板凳
+-->
+<style>
+:root {
+  --blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;--blue-200:#bfdbfe;
+  --red-600:#dc2626;--red-50:#fef2f2;
+  --emerald-600:#059669;--emerald-500:#10b981;--emerald-100:#d1fae5;--emerald-50:#ecfdf5;
+  --amber-600:#d97706;--amber-500:#f59e0b;--amber-400:#fbbf24;--amber-100:#fef3c7;--amber-50:#fffbeb;
+  --purple-600:#9333ea;--purple-50:#faf5ff;--purple-100:#f3e8ff;
+  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;
+  --gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;
+  --white:#fff;
+  --font:-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif;
+  --mono:"SF Mono","Fira Code",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-900);color:var(--slate-100);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
+h1 .tag{font-size:12px;font-weight:600;padding:2px 10px;border-radius:9999px;background:rgba(99,102,241,.2);color:#a5b4fc;margin-left:8px;vertical-align:middle}
+.lead{color:var(--slate-400);font-size:14px;margin-top:8px}
+.ref-tag{display:inline-block;font-size:10px;font-weight:600;padding:1px 7px;border-radius:9999px;background:rgba(255,255,255,.1);color:var(--slate-300);margin-left:6px}
+
+/* 六步进度条 */
+.steps{display:flex;gap:4px;margin:32px 0 24px}
+.step-pill{flex:1;padding:10px 8px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:all .3s;background:rgba(255,255,255,.05);color:var(--slate-500);border:1px solid transparent}
+.step-pill.active{background:var(--blue-600);color:var(--white);border-color:var(--blue-500);box-shadow:0 0 16px rgba(37,99,235,.4)}
+.step-pill.done{background:rgba(16,185,129,.15);color:var(--emerald-500);border-color:rgba(16,185,129,.3)}
+.step-pill .num{display:block;font-size:20px;font-weight:800;margin-bottom:2px}
+
+/* 内容面板 */
+.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:16px;display:none}
+.panel.show{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel h2{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--white)}
+.panel p{font-size:14px;line-height:1.7;color:var(--slate-300);margin-bottom:12px}
+.panel .meta{font-size:12px;color:var(--slate-500);font-family:var(--mono)}
+
+/* BRIEF 卡 */
+.brief-box{background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);border-radius:12px;padding:16px;margin:12px 0}
+.brief-box .label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--blue-500);margin-bottom:4px}
+.brief-box .val{font-size:15px;color:var(--white);font-weight:500}
+.contradiction-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 10px;border-radius:9999px;margin:2px}
+.contradiction-badge.d2{background:rgba(245,158,11,.2);color:var(--amber-400)}
+.contradiction-badge.d7{background:rgba(147,51,234,.2);color:#c084fc}
+
+/* 圣人卡 */
+.sages{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0}
+.sage{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;transition:all .3s;position:relative;overflow:hidden}
+.sage:hover{border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
+.sage .emoji{font-size:28px;margin-bottom:6px}
+.sage .name{font-size:14px;font-weight:700;color:var(--white)}
+.sage .phil{font-size:11px;color:var(--slate-400);margin-top:2px}
+.sage .faction{position:absolute;top:8px;right:8px;font-size:10px;font-weight:700;padding:1px 6px;border-radius:9999px}
+.sage .faction.plus{background:rgba(16,185,129,.2);color:var(--emerald-500)}
+.sage .faction.minus{background:rgba(239,68,68,.2);color:#f87171}
+.sage .faction.mid{background:rgba(148,163,184,.2);color:var(--slate-400)}
+.sage .stance{font-size:12px;color:var(--slate-300);margin-top:8px;line-height:1.5}
+.sage .vote{margin-top:8px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;display:inline-block}
+.sage .vote.approve{background:rgba(16,185,129,.15);color:var(--emerald-500)}
+.sage .vote.reject{background:rgba(239,68,68,.15);color:#f87171}
+.sage .vote.abstain{background:rgba(148,163,184,.15);color:var(--slate-400)}
+
+/* 三段式发言 */
+.trichotomy{border-left:3px solid var(--blue-500);padding-left:12px;margin:8px 0}
+.trichotomy .seg{font-size:13px;margin:4px 0}
+.trichotomy .seg .h{font-weight:600;color:var(--blue-400)}
+
+/* 投票统计 */
+.vote-summary{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:12px;padding:16px;margin:16px 0;text-align:center}
+.vote-summary .big{font-size:36px;font-weight:800;color:var(--emerald-500)}
+.vote-summary .label{font-size:12px;color:var(--slate-400);text-transform:uppercase;letter-spacing:.1em}
+.vote-bar{height:24px;border-radius:12px;overflow:hidden;display:flex;margin:12px 0}
+.vote-bar .approve-bar{background:var(--emerald-500);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--white)}
+.vote-bar .reject-bar{background:var(--red-600);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--white)}
+.vote-bar .abstain-bar{background:var(--slate-600);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--white)}
+
+/* 哲学映射链 */
+.trace-chain{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--slate-400);background:rgba(0,0,0,.3);border-radius:8px;padding:16px;margin:12px 0}
+.trace-chain .key{color:var(--amber-400)}
+.trace-chain .val{color:var(--slate-300)}
+.trace-chain .ok{color:var(--emerald-500)}
+
+/* 控制按钮 */
+.controls{display:flex;gap:8px;margin-top:24px}
+.controls button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:all .2s}
+.controls button:hover{background:rgba(255,255,255,.2)}
+.controls button.primary{background:var(--blue-600);border-color:var(--blue-500)}
+.controls button.primary:hover{background:var(--blue-500)}
+
+/* 加减辩证视觉 */
+.dialectic{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.dialectic .side{border-radius:12px;padding:16px;text-align:center}
+.dialectic .plus{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(20,184,166,.1));border:1px solid rgba(16,185,129,.3)}
+.dialectic .minus{background:rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.2)}
+.dialectic .side .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;opacity:.7}
+.dialectic .side .nm{font-size:16px;font-weight:700;margin:4px 0}
+.dialectic .side .qt{font-size:12px;opacity:.8;font-style:italic}
+.dialectic .plus .nm{color:var(--emerald-400)}
+.dialectic .minus .nm{color:var(--slate-300)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🏛 算鱼议会辩证可视化 <span class="tag">ref 48</span></h1>
+<p class="lead">把 ref 48 六步推演 + ref 46 加减辩证 + ref 47 哲学映射渲染成可看的议会辩论过程 · 点按钮推进六步</p>
+
+<!-- 六步进度条 -->
+<div class="steps" id="steps">
+  <div class="step-pill active" onclick="goStep(1)"><span class="num">1</span>路由</div>
+  <div class="step-pill" onclick="goStep(2)"><span class="num">2</span>评分</div>
+  <div class="step-pill" onclick="goStep(3)"><span class="num">3</span>常委</div>
+  <div class="step-pill" onclick="goStep(4)"><span class="num">4</span>邀请</div>
+  <div class="step-pill" onclick="goStep(5)"><span class="num">5</span>讨论</div>
+  <div class="step-pill" onclick="goStep(6)"><span class="num">6</span>投票</div>
+</div>
+
+<!-- Step 1: 路由 -->
+<div class="panel show" id="panel-1">
+  <h2>Step 1 · 任务路由 <span class="ref-tag">ref 48 §2</span></h2>
+  <p>BRIEF 进来 → task_kind 路由 → 决定哪几板凳参与评分。task_kind 由用户显式声明优先（防 LLM 自利路由）。</p>
+  <div class="brief-box">
+    <div class="label">BRIEF</div>
+    <div class="val">「AI 帮用户自动分类邮件」</div>
+    <div style="margin-top:8px">
+      <span class="contradiction-badge d2">D2 自动化⟷掌控</span>
+      <span class="contradiction-badge d7">D7 透明⟷神秘</span>
+    </div>
+    <div class="meta" style="margin-top:8px">task_kind: mixed → 三大类全开</div>
+  </div>
+  <p>主矛盾 <span class="ref-tag">ref 24</span>：D2（AI 自动分类 = 自动化倾向）+ D7（分类理由可见 = 透明倾向）。留位：用户可改规则 + 撤销（D2 掌控）+ 简化视图折叠细节（D7 神秘）。</p>
+</div>
+
+<!-- Step 2: 评分 -->
+<div class="panel" id="panel-2">
+  <h2>Step 2 · 420 板凳全员评分 <span class="ref-tag">ref 48 §3</span></h2>
+  <p>对整张 420 板凳按 5 维打分（设计钩子 40% / 矛盾契合 20% / 时代契合 15% / 反盲点 15% / 中西分布 10%）。仅列 top 命中：</p>
+  <table style="width:100%;font-size:13px;border-collapse:collapse;margin:12px 0">
+    <thead><tr style="border-bottom:1px solid rgba(255,255,255,.1)"><th style="text-align:left;padding:8px;color:var(--slate-400)">思想家</th><th style="color:var(--slate-400)">类</th><th style="color:var(--slate-400)">得分</th><th style="color:var(--slate-400)">常委?</th></tr></thead>
+    <tbody>
+      <tr><td style="padding:8px">海德格尔 #052</td><td style="text-align:center">哲</td><td style="text-align:center;color:var(--amber-400);font-weight:600">8.9</td><td style="text-align:center">✓</td></tr>
+      <tr><td style="padding:8px">黑格尔 #039</td><td style="text-align:center">哲</td><td style="text-align:center;color:var(--amber-400)">8.7</td><td style="text-align:center">✓</td></tr>
+      <tr><td style="padding:8px">贝多芬 #M005</td><td style="text-align:center">音</td><td style="text-align:center;color:var(--amber-400)">8.4</td><td style="text-align:center">✓</td></tr>
+      <tr><td style="padding:8px">Brian Eno #M025</td><td style="text-align:center">音</td><td style="text-align:center;color:var(--amber-400)">8.3</td><td style="text-align:center">✓</td></tr>
+      <tr><td style="padding:8px">王充 #225</td><td style="text-align:center">哲</td><td style="text-align:center;color:var(--amber-400)">8.1</td><td style="text-align:center">✓</td></tr>
+      <tr><td style="padding:8px">莫奈 #A019</td><td style="text-align:center">艺</td><td style="text-align:center;color:var(--amber-400)">7.8</td><td style="text-align:center">✓</td></tr>
+      <tr style="opacity:.5"><td style="padding:8px">其余 414 位</td><td>—</td><td style="text-align:center">&lt;7.5</td><td style="text-align:center">✗</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--slate-500)">→ k=6 常委，含哲学(3)+音乐(2)+艺术(1)，4:4:4 骨架内每类≥1。</p>
+</div>
+
+<!-- Step 3: 常委 -->
+<div class="panel" id="panel-3">
+  <h2>Step 3 · 动态常委召唤 <span class="ref-tag">ref 48 §4</span></h2>
+  <p>6 位常委入场（厚仙人 only · 2 票 + 三段式）。加减平衡校验（P0-2）：含 [+] 加法派（贝多芬/莫奈）与 [-] 减法派（海德格尔/王充），辩证不塌方。</p>
+  <div class="sages">
+    <div class="sage"><div class="faction minus">[-]</div><div class="emoji">🪙</div><div class="name">黑格尔</div><div class="phil">正反合辩证 · R18 锚</div><div class="stance">命名 D2 矛盾，要求选倾向+留位</div></div>
+    <div class="sage"><div class="faction minus">[-]</div><div class="emoji">📜</div><div class="name">海德格尔</div><div class="phil">zuhanden · 工具透明</div><div class="stance">D7 透明：分类理由须可见</div></div>
+    <div class="sage"><div class="faction minus">[-]</div><div class="emoji">🔍</div><div class="name">王充</div><div class="phil">疾虚妄 · R25</div><div class="stance">防假装秒回，thinking 须真显示</div></div>
+    <div class="sage"><div class="faction plus">[+]</div><div class="emoji">⚡</div><div class="name">贝多芬</div><div class="phil">命运四音 · R-Cross3</div><div class="stance">分类完成须有张力曲线</div></div>
+    <div class="sage"><div class="faction mid">[~]</div><div class="emoji">🌊</div><div class="name">Brian Eno</div><div class="phil">ambient · R-Cross4</div><div class="stance">通知音温和可忽略</div></div>
+    <div class="sage"><div class="faction plus">[+]</div><div class="emoji">🌅</div><div class="name">莫奈</div><div class="phil">光色 · R-Cross2</div><div class="stance">分类标签配色有氛围</div></div>
+  </div>
+</div>
+
+<!-- Step 4: 邀请 -->
+<div class="panel" id="panel-4">
+  <h2>Step 4 · 自由邀请（全板凳开放）<span class="ref-tag">ref 48 §5</span></h2>
+  <p>每位常委可从 420 板凳跨三大类邀助手（cap 15 · 递归 · 全板凳可达）。</p>
+  <div style="font-size:13px;line-height:2;color:var(--slate-300)">
+    <div>🪙 黑格尔 → 邀 <span style="color:var(--blue-400)">#091 怀特海</span>（过程·流式即流变）</div>
+    <div>⚡ 贝多芬 → 邀 <span style="color:var(--blue-400)">#M023 Steve Reich</span>（相位·token 节奏）</div>
+    <div>🌊 Eno → 邀 <span style="color:var(--blue-400)">#M020 凯奇</span>（沉默·默认不打扰边界）</div>
+  </div>
+  <p style="margin-top:12px;color:var(--emerald-500)">→ N=9 入场（6 常委 + 3 助手）。怀特海经相关性邀请可达——板凳无人被永久排除。</p>
+</div>
+
+<!-- Step 5: 讨论三段式 -->
+<div class="panel" id="panel-5">
+  <h2>Step 5 · 议会讨论（三段式）<span class="ref-tag">ref 48 §6</span></h2>
+  <p>每位圣人陈述 📚 理论依据 / 🎯 设计方向 / 🔧 改造动作。加减辩证在此交锋：</p>
+
+  <div class="dialectic">
+    <div class="side plus">
+      <div class="lbl">[+] 加法派</div>
+      <div class="nm">莫奈 · 光色</div>
+      <div class="qt">"色彩不是装饰，是真理"</div>
+      <div style="font-size:12px;margin-top:8px;color:var(--emerald-400)">分类标签用光色渐变，有氛围</div>
+    </div>
+    <div class="side minus">
+      <div class="lbl">[-] 减法派</div>
+      <div class="nm">海德格尔 · 隐而不见</div>
+      <div class="qt">"工具好用到消失"</div>
+      <div style="font-size:12px;margin-top:8px;color:var(--slate-400)">分类应自动完成，用户不该感知</div>
+    </div>
+  </div>
+
+  <div class="sages" style="grid-template-columns:1fr">
+    <div class="sage">
+      <div class="faction mid">[~]</div>
+      <div class="emoji">🪙</div><div class="name">黑格尔 · 调解</div>
+      <div class="stance">D2 倾向自动化（AI 分类）+ 留位：用户可改规则 + 撤销。D7 倾向透明（理由可见）+ 留位：简化视图折叠。两派各让一步。</div>
+      <div class="trichotomy">
+        <div class="seg"><span class="h">📚 理论：</span>D2 矛盾选自动化倾向 + D7 选透明倾向</div>
+        <div class="seg"><span class="h">🎯 方向：</span>自动分类 + 规则可编辑 + 撤销 + 理由可见</div>
+        <div class="seg"><span class="h">🔧 动作：</span>AI 预分类 → 用户可改 → 分类理由 tooltip → 撤销出口</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Step 6: 投票 -->
+<div class="panel" id="panel-6">
+  <h2>Step 6 · 陪审团投票 <span class="ref-tag">ref 48 §7</span></h2>
+  <p>常委 2 票 + 助手 1 票。通过门槛 ⌈有效票权 × 2/3⌉。禁一票否决（P1-6）。</p>
+
+  <div class="sages">
+    <div class="sage"><div class="name" style="font-size:13px">黑格尔</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">海德格尔</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">王充</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">贝多芬</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">Eno</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">莫奈</div><div class="vote approve">👍 2票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">怀特海(助)</div><div class="vote approve">👍 1票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">Reich(助)</div><div class="vote approve">👍 1票</div></div>
+    <div class="sage"><div class="name" style="font-size:13px">凯奇(助)</div><div class="vote abstain">✋ 1票</div></div>
+  </div>
+
+  <div class="vote-bar">
+    <div class="approve-bar" style="flex:12">12 APPROVE</div>
+    <div class="abstain-bar" style="flex:1">1 ABSTAIN</div>
+  </div>
+
+  <div class="vote-summary">
+    <div class="big">12 / 13</div>
+    <div class="label">有效票权（凯奇 abstain 不计入分母）</div>
+    <div style="margin-top:8px;font-size:14px;color:var(--emerald-500)">门槛 ⌈12×2/3⌉=8 · 12 ≥ 8 → <strong>Round 1 通过 ✓</strong></div>
+  </div>
+
+  <h2 style="margin-top:24px">端到端推演链 <span class="ref-tag">ref 48 §8</span></h2>
+  <div class="trace-chain">
+    <span class="key">BRIEF</span>: AI 自动分类邮件<br>
+    ├ <span class="key">矛盾</span> (ref 24): <span class="val">D2 自动化⟷掌控</span> <span class="ok">✓</span><br>
+    ├ <span class="key">倾向</span>: 自动化 + <span class="val">UI: AI 预分类 + 撤销出口</span> <span class="ok">✓</span><br>
+    ├ <span class="key">规律</span> (ref 25): <span class="val">L3 控制权下移 → AI 该接管（可回看）</span> <span class="ok">✓</span><br>
+    ├ <span class="key">路径</span>: <span class="val">G AI-native 默认透明+掌控</span> <span class="ok">✓</span><br>
+    ├ <span class="key">历史</span> (ref 26): <span class="val">E7 AI-native</span> <span class="ok">✓</span><br>
+    ├ <span class="key">美学</span> (ref 46): <span class="val">R-Cross3 完成张力 + R-Cross4 陪伴</span> <span class="ok">✓</span><br>
+    └ <span class="key">底线</span>: <span class="val">a11y/错误透明/不可逆确认</span> <span class="ok">✓</span><br>
+    <br><span class="ok">三维对齐 ✓ · 决策有底层逻辑 · 像素可追溯回矛盾/规律/圣人投票</span>
+  </div>
+</div>
+
+<!-- 控制按钮 -->
+<div class="controls">
+  <button onclick="prevStep()" id="prevBtn" style="opacity:.5">← 上一步</button>
+  <button onclick="nextStep()" class="primary" id="nextBtn">下一步 →</button>
+</div>
+
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 6;
+
+function goStep(n) {
+  if (n < 1 || n > totalSteps) return;
+  // 隐藏所有面板
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('show'));
+  // 显示目标
+  document.getElementById('panel-' + n).classList.add('show');
+  // 更新进度条
+  document.querySelectorAll('.step-pill').forEach((pill, i) => {
+    pill.classList.remove('active', 'done');
+    if (i + 1 < n) pill.classList.add('done');
+    else if (i + 1 === n) pill.classList.add('active');
+  });
+  currentStep = n;
+  // 按钮状态
+  document.getElementById('prevBtn').style.opacity = n === 1 ? '.5' : '1';
+  document.getElementById('nextBtn').textContent = n === totalSteps ? '完成 ✓' : '下一步 →';
+  // 滚动到顶
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() {
+  if (currentStep < totalSteps) goStep(currentStep + 1);
+}
+function prevStep() {
+  if (currentStep > 1) goStep(currentStep - 1);
+}
+</script>
+</body>
+</html>

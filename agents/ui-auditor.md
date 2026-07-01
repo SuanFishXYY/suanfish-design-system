@@ -112,7 +112,7 @@ REPORT 必须输出本表，标出每个相关 agent 的"是否检查 / 是否�
 | 5 | a11y-guardian | ARIA / 键盘 / 对比度 | (横切) |
 | 5 | brand-keeper | logo / 命名一致 | P-BK1/2/3 |
 | 5 | i18n-strategist | 多语种安全 | P-I18-1/2/3 |
-| 5 | **model-switcher-stylist** ✨ | 切换告知 / 跨模型一致 / 卡片字段 | **P-MS1/2/3** |
+| 5 | **model-switcher-stylist** ✨ | 切换告知 / 跨模型一致 / 卡片字段 | **P-MSS1/2/3** |
 | 6 | ui-auditor | （即你自己 · 元审计） | (本表) |
 
 ✨ = v2.4 / v2.5 新增 agent · 模式叠加时必检。

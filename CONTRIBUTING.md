@@ -80,7 +80,7 @@ grep -rn "14 个 agent\|44 agent\|52 agent\|52 位\|301 板凳\|八圣人\|5 步
 python -c "import io,json; json.load(io.open('.skill-manifest.json',encoding='utf-8')); print('JSON OK')"
 
 # 3. 三道门制度 + 元数据一致性 lint（上方 #1 那条手工 grep 的自动化升级版）
-node scripts/charter-lint.mjs   # 🟥=严重漂移(agent数/规则数/版本号/章程frontmatter契约) 非零即拦；🟧=agent references 指向占位 ref 的悬空警告(填实对应 ref 即消)
+node scripts/charter-lint.mjs   # 五类检测：A 元数据一致性 / B 章程 frontmatter 契约 / C agent refs 悬空 / D ref 间引用网络 / **E 语义逻辑债（v4.2.7 R8·E1 编号空洞/R3 + E2 被审者审自己/R5 + E3 escape-hatch 无防滥用/R7）**。🟥 非零即拦；🟧 警告（填实对应 ref / 补防滥用词即消）。
 ```
 
 > ⚠️ **编码红线**：本仓库所有文件是 **UTF-8 无 BOM**。编辑含中文的文件请用编辑器/工具直接改，**勿经 PowerShell 命令串传中文**（乱码），**勿用 `Get-Content`/`ConvertFrom-Json` 读**（按 GBK 误读成乱码 + 假 JSON 报错）。批量替换写 Python 脚本 + `io.open(..., encoding="utf-8")`。

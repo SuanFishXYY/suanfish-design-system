@@ -81,7 +81,13 @@ if (!exists(manifestPath)) {
   console.error('✗ 找不到 .skill-manifest.json');
   process.exit(2);
 }
-const manifest = readJSON(manifestPath);
+let manifest;
+try {
+  manifest = readJSON(manifestPath);
+} catch (e) {
+  console.error('✗ .skill-manifest.json JSON 语法错误（合并冲突/手动编辑损坏？）:\n  ' + e.message);
+  process.exit(1);
+}
 const M_VERSION = String(manifest.version);
 const M_AGENT_COUNT = Number(manifest.agent_count);
 const M_REF_COUNT = Number(manifest.reference_count);
@@ -177,9 +183,13 @@ const M_REF_COUNT = Number(manifest.reference_count);
 {
   const pkgPath = join('package.json');
   if (exists(pkgPath)) {
-    const pkg = readJSON(pkgPath);
-    if (String(pkg.version) !== M_VERSION) {
-      block('A6', `package.json version ${pkg.version} ≠ manifest version ${M_VERSION}`);
+    try {
+      const pkg = readJSON(pkgPath);
+      if (String(pkg.version) !== M_VERSION) {
+        block('A6', `package.json version ${pkg.version} ≠ manifest version ${M_VERSION}`);
+      }
+    } catch (e) {
+      block('A6', `package.json JSON 语法错误: ${e.message}`);
     }
   }
   // SKILL.md frontmatter version（entrypoint，与 manifest 必须同步）
@@ -335,6 +345,94 @@ for (const f of listMd('references')) {
       seen.add(num);
       if (!refMap[num]) {
         block('D1', `references/${base} 引用 ref ${num} 但无对应 frontmatter ref: 文件 → 推演链断链。`);
+      }
+    }
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// E. 语义检测类（v4.2.7 哲理审计 R8 · 固化七轮审计模式为机器可检）
+//    抓 A/B/C/D 抓不到的"逻辑债"——编号空洞 / 被审者审自己 / escape-hatch 无防滥用。
+//    只做确定性 grep 级检测，不靠 LLM 推理。
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── E1 · R 编号全集声称 vs 实际定义连续性（对应 R3 · R7-R12 幽灵规则）────────
+// 扫全库"R1-R25 / R1-R17"式全集范围声称 → 对比实际定义的 R 编号 → 中间空洞且
+// 同文件无"预留/空洞/未启用"声明 → 🟥（完整性装腔伪制度）。
+{
+  const allText = {};
+  for (const f of [...listMd('references'), ...listMd('agents'), ...listMdRecursive('examples')]) {
+    allText[rel(f)] = readText(f);
+  }
+  // 收集实际定义的 R 编号（哲学命题级·无连字符）：ref 17 R 全景表 + 各 R 定义行
+  const definedR = new Set();
+  const defRe = /\bR(\d{1,2})\b(?!\s*-)/g; // R 后跟数字，但非 R-XX（连字符是审计规则集）
+  for (const [p, t] of Object.entries(allText)) {
+    for (const m of t.matchAll(defRe)) {
+      const n = Number(m[1]);
+      if (n >= 1 && n <= 25) definedR.add(n);
+    }
+  }
+  // 扫"R1-R25 / R1-R17 / R1-R12"全集声称，检空洞
+  const rangeRe = /R(\d{1,2})\s*[-–]\s*R?(\d{1,2})/g;
+  for (const [p, t] of Object.entries(allText)) {
+    for (const m of t.matchAll(rangeRe)) {
+      const lo = Number(m[1]), hi = Number(m[2]);
+      if (hi <= lo || hi > 25) continue;
+      // 排除 frontmatter 字段值（hard_rules: R1-R25 是意图声明非正文声称）
+      const lineStart = t.lastIndexOf('\n', m.index) + 1;
+      const lineEnd = t.indexOf('\n', m.index);
+      const line = t.slice(lineStart, lineEnd === -1 ? undefined : lineEnd);
+      if (/^\s*-?\s*(hard_rules|bound_to|ruleset)/.test(line)) continue;
+      // 排除已澄清的（含"预留/空洞/未启用/跳号/非连续"声明的文件）
+      if (/预留|空洞|未启用|跳号|非连续|R1-R6 ∪ R13-R25|19 条已定义/.test(t)) continue;
+      // 找范围内未定义的编号
+      const holes = [];
+      for (let n = lo; n <= hi; n++) if (!definedR.has(n)) holes.push(n);
+      if (holes.length) {
+        block('E1', `${p}: 声明 "R${lo}-R${hi}" 全集但 R${holes.join(',')} 全库无定义 → 完整性装腔伪制度（R3 类幽灵规则）。补定义或显式标"预留空洞"。`);
+      }
+    }
+  }
+}
+
+// ── E2 · 被审者审自己循环（对应 R5 · meta-auditor↔sage_congress 利益冲突）────
+// 检测"X 审 Y 且 Y 仲裁 X"成对模式 → 须同文件含避嫌机制词 → 否则 🟧。
+// 聚焦 ref 30（套娃止层主场）+ meta-auditor agent。
+{
+  const targets = ['references/30-posthoc-governance-charter.md', 'agents/meta-auditor.md'];
+  for (const tp of targets) {
+    const p = join(tp);
+    if (!exists(p)) continue;
+    const t = readText(p);
+    // meta-auditor 审 sage_congress/议会 + sage_congress 仲裁 meta-auditor 双向
+    const metaAuditsCouncil = /meta-auditor.*审.*议会|meta-auditor.*审议会|审.*审的过程/.test(t);
+    const councilArbMeta = /sage_congress.*仲裁.*meta-auditor|议会.*仲裁.*meta|集体仲裁.*meta/.test(t);
+    if (metaAuditsCouncil && councilArbMeta) {
+      const hasRecusal = /避嫌|回避|recuse|不计入分母|独立核验|不审自己/.test(t);
+      if (!hasRecusal) {
+        block('E2', `${tp}: meta-auditor 审议会 且 议会仲裁 meta-auditor 双向闭环，但无避嫌机制 → 被审者审自己循环（R5 类利益冲突）。补避嫌律。`);
+      }
+    }
+  }
+}
+
+// ── E3 · escape-hatch 无防滥用（对应 R7 · 降级 escape hatch 逃审）──────────────
+// 含"降级 / 扩召补齐 / escape"等 escape-hatch 词的段 → 同段须含防滥用词 → 否则 🟧。
+{
+  const hatchWords = /降级处理|扩召补齐|escape\s*hatch|转\s*A\s*级法定人数|缺类降级|S 级弹劾转 A 级/;
+  const guardWords = /核验|公开|监督|独立|不伪造|如实记录|禁.*自报/;
+  for (const tp of [...listMd('references'), ...listMd('agents')]) {
+    const t = readText(tp);
+    // 按段（双换行）切
+    const paras = t.split(/\n\s*\n/);
+    for (const para of paras) {
+      if (hatchWords.test(para) && !guardWords.test(para)) {
+        // 只报"规则性"段落（含 🔴/律/机制/条件 词的），避免噪声
+        if (/🔴|律|机制|触发条件|→|须/.test(para)) {
+          warn('E3', `${rel(tp)}: escape-hatch 段（降级/扩召补齐/缺类）缺防滥用词（核验/公开/监督/独立）→ R7 类逃审风险。补防滥用核验。`);
+          break; // 每文件只报一次，防刷屏
+        }
       }
     }
   }

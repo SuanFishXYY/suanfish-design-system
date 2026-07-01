@@ -88,7 +88,7 @@ ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # Gi
 ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
 ln -sf ~/.suanfish-design-system ~/.codex/skills/suanfish-design-system     # Codex CLI
 ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # Generic
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 52
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 54
 ```
 
 On Windows PowerShell use `New-Item -ItemType Junction` instead of `ln -sf`.
@@ -261,7 +261,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 
 ## Architecture
 
-**52 specialized agents** organized across **8 tiers** and **7 design paths**:
+**54 specialized agents** organized across **8 tiers** and **7 design paths**:
 
 | Tier | Role | Sample agents |
 |------|------|---------------|
@@ -274,7 +274,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 | **3 · Container Specialist (×10)** | Build the surface | `modal` · `wizard` · `data-viz` · `table` · `chat-ui` · `stream` · `tool-call-presenter` · `agent-thread-architect` · `artifact-architect` · `prompt-input-craftsman` |
 | **4 · Content Specialist (×10)** | Words · icons · states · reasoning | `copy-writer` · `icon-curator` · `empty-state` · `responsive` · `persona` · `info-architect` · `error-recovery` · `reasoning-visualizer` · `citation-keeper` · `rate-limit-communicator` |
 | **5 · Crosscutting Consult (×6)** | Tokens · motion · a11y · brand · i18n · model | `token-keeper` · `animation` · `a11y-guardian` · `brand-keeper` · `i18n-strategist` · `model-switcher-stylist` |
-| **6 · Quality Gate** | Independent audit · 52-agent coverage | `ui-auditor` · `sage-council` |
+| **6 · Quality Gate** | Independent audit · 54-agent coverage | `ui-auditor` · `sage-council` · `review-orchestrator` · `meta-auditor` |
 
 ### 7 design paths
 

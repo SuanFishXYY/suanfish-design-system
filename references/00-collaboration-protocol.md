@@ -1,3 +1,10 @@
+---
+ref: 00
+title: 协作协议 · agent 交接规范
+owner: flow-coordinator（流程协调）· 全 agent（交接）
+audited_by: ui-auditor
+---
+
 # 00 · 协作协议（Collaboration Protocol）
 
 > *9 位 agent 在工作室内部如何彼此交接，不掉信息。*

@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "多模型产品缺乏统一的切换界面，用户无法感知模型能力差异"
 core_contradiction: "D2 自动化⟷掌控（掌控）"
 next_evolution: "AI 自动推荐最优模型，切换成本趋零与跨模型一致性"
+references: [40-rate-limit-and-model-switch.md]
 ---
 
 # 🔀 model-switcher-stylist · 模型切换造型师

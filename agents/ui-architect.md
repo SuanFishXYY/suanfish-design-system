@@ -8,6 +8,7 @@ historical_era: "Web2.0 → Flat/Material (E3→E4)"
 emerged_to_solve: "复杂应用缺乏可扩展的页面骨架与视图组织规范"
 core_contradiction: "D1 简洁⟷可发现（可发现）"
 next_evolution: "AI 驱动自适应布局，视图按语境与用户行为动态重组"
+references: [04-three-pane-layout.md, 05-icon-sidebar.md, 06-detail-sidebar.md, 44-common-components.md]
 ---
 
 # 🏛 ui-architect · 架构师

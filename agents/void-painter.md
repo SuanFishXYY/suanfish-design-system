@@ -16,6 +16,7 @@ design_hook: "视觉密度审视 · 默认页签的'冷'温度 · 品牌克制�
 philosophy: "萧疏 · 冷逸 · 不染"
 voting_weight: 2
 twin_anchor: [silence-architect, form-liberator]
+references: [46-design-aesthetics.md]
 ---
 
 # 🖼 void-painter · 中国文人极简

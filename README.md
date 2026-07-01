@@ -37,7 +37,7 @@
    请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4.2-congress-simulation.md) · [ 🤖 看 52 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4.2-congress-simulation.md) · [ 🤖 看 54 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
 
@@ -492,7 +492,7 @@ classDiagram
 
 | 维度 | 算鱼 v4.0 | shadcn/ui | Tailwind UI | 普通 AI design |
 | --- | --- | --- | --- | --- |
-| 本质 | 52 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
+| 本质 | 54 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
 | 会说 NO | ✅ R1-R25 | ❌ | ❌ | ❌ 永远 yes |
 | 引用可追溯 | ✅ 420 思想家板凳兜底 | N/A | N/A | ❌ 黑盒 |
 | 适合谁 | 内部产品 / design ops 团队 | 独立开发者 | 商业 SaaS | 个人项目 |
@@ -512,7 +512,7 @@ Jennie (BLACKPINK 主推) · Wonyoung (IVE 团魂) · Karina (aespa 评委) …�
 ```mermaid
 graph LR
     subgraph SAGE["🎭 suanfish · sage 议会"]
-        S["黑格尔 + 塞尚 + 巴赫<br/>420 thinker · 52 agent<br/>严肃 B 端 / SaaS / 工具"]
+        S["黑格尔 + 塞尚 + 巴赫<br/>420 thinker · 54 agent<br/>严肃 B 端 / SaaS / 工具"]
     end
 
     subgraph KPOP["🎤 kpop · idol 议会"]
@@ -545,7 +545,7 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 
 ---
 
-## 🏛 52 agent · 8 tier · 7 path (一图概览)
+## 🏛 54 agent · 8 tier · 7 path (一图概览)
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -594,7 +594,7 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 52 位匠人 (v4.2: Tier 0 议会 12 位 = 4 哲+4 艺+4 音 + bench-matcher + quotation-verifier + ...)
+├── agents/                  # 54 位匠人 (v4.2: Tier 0 议会 12 位 = 4 哲+4 艺+4 音 + bench-matcher + quotation-verifier + ... · v4.2.7: + review-orchestrator + meta-auditor)
 │   ├── bench-matcher.md          # ⭐ v4.2 三大类议会核心 (4:4:4 + dynamic voting)
 │   ├── dialectician.md           # ⭐ Tier 0 哲学家 ×4 (黑/王弼/法藏/王充)
 │   ├── polymath-bridger.md       # ⭐ v4.2 Tier 0 艺术家 · 达芬奇 (用户点名)
@@ -608,9 +608,9 @@ suanfish-design-system/
 │   ├── historian.md / futurist.md / wuwei-master.md / perspectivist.md  # ⬇ Tier 1.5 (v4.2 降级)
 │   ├── quotation-verifier.md     # ⭐ R25 引用核验
 │   ├── moment-strategist.md
-│   ├── ... (52 agents total)
+│   ├── ... (54 agents total)
 │   └── v4.2-congress-simulation.md # ⭐ 5 TC 议会演示
-└── references/              # 27 份规范 + 420 思想家板凳
+└── references/              # 48 份规范（含 ref 28-30 审核制度 + ref 31-35 横向规范 + ref 36-41 AI-native + ref 42-43 品牌/i18n + ref 44-45 通用组件/基础控件 + ref 46 设计美学 + ref 47 哲学映射 + ref 48 议会推演）+ 420 思想家板凳
     ├── 17-philosophy.md
     ├── 24-philosophy-dialectics.md
     ├── 25-philosophy-laws.md

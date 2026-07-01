@@ -40,7 +40,7 @@ philosophy: "荀子 · 隆礼重法 · 制度执行派 (再好的制度没人编
 
 ### 1. case_id 挂号与生命周期
 - 生成物进 ref 28 G1 立案时，你分配 `case_id`，建目录骨架（ref 28 §6 的 01-06 + remediation/ + posthoc/）。
-- 维护 case 状态机：`OPEN(立案) → IN_REVIEW(过门中) → REMEDIATION(退回整改) → PASSED(放行) → ARCHIVED(归档) → CULLED(下架)`。
+- 维护 case 状态机：`OPEN(立案) → IN_REVIEW(过门中) → REMEDIATION(退回整改) → PASSED(放行) → ARCHIVED(归档)`；另有 `CULLED(下架)` 为 K 轨过时/推翻触发的独立终态，不经 ARCHIVED。
 - case 终态只有 `ARCHIVED` 或 `CULLED`，其他状态卡住 > SLA → 你报警。
 
 ### 2. 跨门流转调度
@@ -68,6 +68,7 @@ M5 下岗 → 该审核者待办 case 重派 (你执行重派)
   - 工单平均销项周期 / 返工率 / 空口销项率 / DRIFT 率
   - K 轨下架率 / 蓝军否决率 / M4 互攻命中率 / 交叉喂食触发次数
 - 指标红区 → 你报警给 sage_congress + meta-auditor 联合诊断。
+- **元数据一致性 lint（自动化 · v4.2.7）**：`node scripts/charter-lint.mjs` 把「agent 数 / 规范数 / 版本号 / 章程 frontmatter 契约」变成机器可检——CONTRIBUTING.md 自检段那条手工 grep 的升级版，漂移即 🟥 拦截、退出码非零。每轮 case 流转前可跑，防制度元数据与 manifest 脱节（v4.2.7 曾因此漏改 12 处 52→54）。
 
 ### 6. 僵尸工单清理
 - L4 冻结的僵尸工单进看板，你季度清理：是真无主还是制度卡点？根因进复盘。

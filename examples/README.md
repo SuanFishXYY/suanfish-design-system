@@ -12,11 +12,11 @@
 | --- | --- | --- | --- | --- | --- |
 | 01 | [Onboarding Eureka 欢迎页](01-onboarding-eureka/) | onboarding-director | 🎬 仪式 | ⭐⭐⭐ | ✅ |
 | 02 | [Three-Gates Modal 三道门端到端](02-three-gates-modal/) | modal-craftsman + review-orchestrator | 🎼 审核制度 | ⭐⭐⭐⭐ | ✅ |
-| 03 | Dashboard 三栏工作台 | ui-architect | 🏛 稳态 | ⭐⭐⭐⭐ | 🚧 规划中 |
-| 04 | Wizard 多步表单（REJECT 触发演示） | wizard-designer | 🏛 稳态 | ⭐⭐⭐ | 🚧 规划中 |
-| 05 | Streaming Chat（v2.5 Path G） | conversation-director | 💬 AI-native | ⭐⭐⭐⭐ | 🚧 规划中 |
+| 03 | [Dashboard 三栏工作台](03-dashboard-workbench/) | ui-architect + light-impressionist + void-painter | 🏛 稳态+美学辩证 | ⭐⭐⭐⭐ | ✅ |
+| 04 | [Wizard 多步表单（REJECT 触发演示）](04-wizard-reject/) | wizard-designer + dialectician | 🚫 否决机制 | ⭐⭐⭐ | ✅ |
+| 05 | [Streaming Chat](05-streaming-chat/) | conversation-director + stream-craftsman | 💬 AI-native | ⭐⭐⭐⭐⭐ | ✅ |
 
-> 02 / 03 / 04 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
+> 03 / 04 / 05 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
 

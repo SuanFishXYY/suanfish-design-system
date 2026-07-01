@@ -18,6 +18,7 @@ voting_weight: 2
 twin_anchor: [perspectivist, void-painter]
 r_anchor: "R-Cross2 感官完整性律: 不允许把色彩+光感降级为'装饰' · 配色错 = 方案错"
 attribution_status: verified
+references: [46-design-aesthetics.md]
 ---
 
 # 🌅 light-impressionist · 光的瞬间

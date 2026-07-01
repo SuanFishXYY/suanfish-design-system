@@ -26,6 +26,7 @@ outputs:
   - historical_brief (含时代坐标 + 错配预警)
 rejects:
   - R14 违反 L2 抽象交替律 · 停留在过时的组织形态
+references: [26-historical-positioning.md, 25-philosophy-laws.md, 47-philosophy-to-design-mapping.md]
 ---
 
 # 📜 historian · 历史定位官

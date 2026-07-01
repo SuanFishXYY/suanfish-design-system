@@ -2,7 +2,7 @@
 ref: 15
 title: 稳态模式审计规则集
 ruleset_version: 1.0.0
-bound_to_token_version: 1.0.0
+bound_to_token_version: 1.0.1
 owner: token-keeper（颜色 / 间距相关）、animation-choreographer（动画相关）、ui-architect（结构相关）
 audited_by: ui-auditor
 ---

@@ -1,3 +1,10 @@
+---
+ref: 18
+title: 设计经典法典 · Design Canon
+owner: 全 agent（经典范式引用）
+audited_by: ui-auditor
+---
+
 # 📐 设计经典法典 · Design Canon
 
 > *汇集 20 条跨越时代仍生效的设计原则。所有 agent 决策应可追溯至 Canon 编号。*

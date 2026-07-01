@@ -1,15 +1,19 @@
-# 参考文档
+---
+ref: interaction-patterns
+title: 仪式模式交互模式 · 12 段
+owner: onboarding-director (交互编排)
+audited_by: ui-auditor
+---
 
-> 本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。
+# 🖱 ref · 仪式模式交互模式
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+> *仪式模式的 12 段交互配方——视差、键盘、滚轮、拖拽、自动播放、完成庆祝。*
+>
+> onboarding-director 的交互实现规范。与 component-patterns 配合。
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+## 1. 鼠标视差
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
-
-## 参考章节
-1. 说明：本条描述设计规则、交互约束或实现注意事项。
+HeroStage 跟随鼠标偏移（-0.5~0.5）：
 
 ```tsx
 const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -31,15 +35,14 @@ useEffect(() => {
 }, []);
 ```
 
-*说明：本条描述设计规则、交互约束或实现注意事项。
+应用（各 Stage 幅度不同，见 ref 03）：
 ```tsx
 <div style={{ transform: `translate(${parallax.x * 8}px, ${parallax.y * 8}px)` }}>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 2. 键盘导航
 
-## 参考章节
-2. 说明：本条描述设计规则、交互约束或实现注意事项。
+`← →` 切换、`Esc` 关闭：
 
 ```tsx
 useEffect(() => {
@@ -54,10 +57,11 @@ useEffect(() => {
 }, [isOpen, stepIndex]);
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `← → 切换` 不变。
+与 §8 键盘提示（`← → 切换`）呼应。
 
-## 参考章节
-3. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 3. 滚轮切换
+
+滚轮切步，700ms 节流防连触：
 
 ```tsx
 const wheelLock = useRef(false);
@@ -76,12 +80,12 @@ useEffect(() => {
 }, [isOpen, stepIndex]);
 ```
 
-## 参考章节
-4. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 4. 拖拽切换
+
+水平拖拽 >60px 切步：
 
 ```tsx
-const dragStartX = useRef<number 
-| null>(null);
+const dragStartX = useRef<number | null>(null);
 
 const onPointerDown = (e: React.PointerEvent) => {
   dragStartX.current = e.clientX;
@@ -98,13 +102,14 @@ const onPointerUp = (e: React.PointerEvent) => {
 };
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+挂载：
 ```tsx
 <div onPointerDown={onPointerDown} onPointerUp={onPointerUp}>
 ```
 
-## 参考章节
-5. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 5. 自动播放
+
+6s 自动下一步，带进度条；任意手动操作 `setAutoplay(false)` 停止：
 
 ```tsx
 const [autoplay, setAutoplay] = useState(true);
@@ -112,8 +117,7 @@ const [autoplayProgress, setAutoplayProgress] = useState(0);
 const AUTOPLAY_MS = 6000;
 
 useEffect(() => {
-  if (!autoplay || !isOpen |
-| isLast) return;
+  if (!autoplay || !isOpen || isLast) return;
   setAutoplayProgress(0);
   const start = Date.now();
   const tick = setInterval(() => {
@@ -127,20 +131,14 @@ useEffect(() => {
 }, [autoplay, isOpen, stepIndex, isLast]);
 ```
 
-*说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `setAutoplay(false)` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-  
-
+进度条：
 ```tsx
-  {autoplay && <div className={`absolute top-0 left-0 h-1 bg-gradient-to-r ${step.accent.gradient}`} style={{ width: `${autoplayProgress * 100}%` }} />}
-  
-
+{autoplay && <div className={`absolute top-0 left-0 h-1 bg-gradient-to-r ${step.accent.gradient}`} style={{ width: `${autoplayProgress * 100}%` }} />}
 ```
 
-## 参考章节
-6. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 6. 方向感知切换
+
+记录方向，配 `onb-slide-${direction}` 做左/右滑入场：
 
 ```tsx
 const [direction, setDirection] = useState<'next' | 'prev'>('next');
@@ -154,22 +152,22 @@ const goNext = () => isLast ? handleFinish() : goTo(stepIndex + 1, 'next');
 const goPrev = () => !isFirst && goTo(stepIndex - 1, 'prev');
 ```
 
-*说明：本条描述设计规则、交互约束或实现注意事项。 保持 `translate-x` 不变。
+切换容器带 `key={stepIndex}` 重挂载 + 方向 class：
 ```tsx
 <div key={stepIndex} className={`onb-slide-${direction}`}>...</div>
 ```
 
-## 参考章节
-7. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 7. visited 跟踪
+
+记录已访问步骤（Footer 步骤点用 done 态）：
 
 ```tsx
 const visited = useRef<Set<number>>(new Set([0]));
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 8. 完成庆祝（彩带 + Eureka）
 
-## 参考章节
-8. 说明：本条描述设计规则、交互约束或实现注意事项。
+最后一步触发彩带 + Welcome 灵光动画，2.8s 后关闭：
 
 ```tsx
 const handleFinish = () => {
@@ -194,34 +192,25 @@ const handleFinish = () => {
 };
 ```
 
-*说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
+时序：彩带 900ms 清除，Eureka 2800ms 后关模态（与 ref 02 Eureka 2.8s 时长一致）。
 
-## 参考章节
-9. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 9. 关闭（Esc + 遮罩点击）
 
+Esc 见 §2，遮罩 `onClick={onClose}`：
 ```tsx
-// Esc 见 §2 键盘导航
-// 遮罩 onClick
 <div className="..." onClick={onClose} />
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 10. SSR 安全
 
-## 参考章节
-10. 说明：本条描述设计规则、交互约束或实现注意事项。
-
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `window` `localStorage` 不变。
+localStorage 访问前判 window：
 ```tsx
 if (typeof window === 'undefined') return;
 ```
 
-## 参考章节
-11. 说明：本条描述设计规则、交互约束或实现注意事项。
+## 11. 关闭按钮
+
+右上角圆形玻璃按钮，hover 旋转 90°：
 
 ```tsx
 <button
@@ -235,14 +224,20 @@ if (typeof window === 'undefined') return;
 </button>
 ```
 
-## 参考章节
-12. 说明：本条描述设计规则、交互约束或实现注意事项。
+`aria-label` 保 a11y。
 
-| 说明 | 说明 | 说明 |
-|---- |--------- |------|
-| 说明 | `z-50` | 说明 |
-| 说明 | `z-50` | 说明 |
-| 说明 | `z-20`（模态内部） | 说明 |
-| 说明 | `z-30`（模态内部） | 说明 |
-| 说明 | `z-[60]` | 说明 |
-| 说明 | `z-40`（模态内部） | 说明 |
+## 12. z-index 层级（仪式模态内）
+
+| 元素 | z-index |
+| --- | --- |
+| 遮罩 / 模态主体 | `z-50` |
+| 关闭按钮 | `z-20`（模态内部） |
+| 彩带 | `z-30`（模态内部） |
+| WelcomeOverlay | `z-[60]` |
+| 步骤点 tooltip | `z-40`（模态内部） |
+
+## 变更日志
+
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版仪式交互模式：12 段（视差/键盘/滚轮/拖拽/自动播放/方向/visited/完成/关闭/SSR/关闭按钮/z-index）。对齐 onboarding-director 依赖。 |

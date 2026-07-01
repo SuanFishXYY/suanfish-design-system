@@ -7,6 +7,7 @@ historical_era: "LLM Pre-Native → AI-native (E6→E7)"
 emerged_to_solve: "RAG 产品答案无来源标注，用户无法验证 AI 输出可信度"
 core_contradiction: "D7 透明⟷神秘（透明）"
 next_evolution: "多源比对可视化，引用可信度评分与断链预警"
+references: [41-citation-and-sources.md]
 ---
 
 # 📑 citation-keeper · 引用守护人

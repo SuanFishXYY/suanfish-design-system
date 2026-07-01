@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "多轮 Agent 对话缺乏历史承载、分叉与重提的线程抽象"
 core_contradiction: "D2 自动化⟷掌控（掌控）"
 next_evolution: "多 Agent 协作可视化，决策检查点可审计与回溯"
+references: [37-ai-thread-input-artifact.md, 36-ai-streaming-and-tools.md]
 ---
 
 # 🌳 agent-thread-architect · 对话线程架构师

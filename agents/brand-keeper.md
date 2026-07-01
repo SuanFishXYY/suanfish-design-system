@@ -6,7 +6,7 @@ icon: 🛡️
 tier: 5
 consulted_by: [onboarding-director, ui-architect, conversation-director, notification-director, copy-writer, icon-curator, token-keeper]
 audited_by: ui-auditor
-references: [17-philosophy.md, 18-design-canon.md]
+references: [17-philosophy.md, 18-design-canon.md, 42-brand-system.md]
 philosophy: "海德格尔 — 命名即占有：每一处品牌出现都在塑造用户对你的认知"
 historical_era: "Web1.0 → Flat/Material (E2→E4)"
 emerged_to_solve: "多团队协作导致品牌表达碎片化，失去认知一致性"

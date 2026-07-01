@@ -8,7 +8,7 @@ reports_to: moment-strategist
 coordinated_by: flow-coordinator
 delegates_to: [chat-ui-craftsman, copy-writer, animation-choreographer, a11y-guardian]
 audited_by: ui-auditor
-references: [00-collaboration-protocol.md, 17-philosophy.md, 18-design-canon.md]
+references: [00-collaboration-protocol.md, 17-philosophy.md, 18-design-canon.md, 36-ai-streaming-and-tools.md, 37-ai-thread-input-artifact.md]
 philosophy: "巴赫金 — 一切话语都是对话；独白是失败的对话"
 historical_era: "LLM Pre-Native → AI-native (E6→E7)"
 emerged_to_solve: "LLM 产品千篇一律的 Chat 容器缺乏专属设计语言"

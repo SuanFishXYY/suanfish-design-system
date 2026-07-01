@@ -8,7 +8,7 @@ reports_to: moment-strategist
 coordinated_by: flow-coordinator
 delegates_to: [copy-writer, icon-curator, animation-choreographer, a11y-guardian]
 audited_by: ui-auditor
-references: [00-collaboration-protocol.md, 14-anti-patterns.md, 17-philosophy.md]
+references: [00-collaboration-protocol.md, 14-anti-patterns.md, 17-philosophy.md, 32-notification-system.md]
 philosophy: "海德格尔 — 烦（Sorge）是此在的存在结构 — 通知是制造烦的工具，须节制"
 historical_era: "Flat/Material → AI-native (E4→E7)"
 emerged_to_solve: "通知泛滥，用户注意力被过度消耗，缺乏节制规范"

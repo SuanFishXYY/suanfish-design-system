@@ -16,6 +16,7 @@ design_hook: "通知/动效/音/反馈的'是否必要'审视 · 默认 = 零"
 philosophy: "偶然 · 沉默 · 反默认打扰"
 voting_weight: 2
 twin_anchor: [silence-architect, wuwei-master, void-painter]
+references: [46-design-aesthetics.md, 32-notification-system.md]
 ---
 
 # 🤫 silence-composer · 沉默即作品

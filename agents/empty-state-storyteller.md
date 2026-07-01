@@ -6,7 +6,7 @@ icon: 🪟
 reports_to: moment-strategist
 defers_to: [copy-writer, icon-curator, token-keeper]
 audited_by: ui-auditor
-references: [09-form-controls.md]
+references: [09-form-controls.md, 31-empty-and-error-states.md]
 philosophy: "海德格尔 · Dasein — 空状态是存在的提示"
 historical_era: "Web2.0 → Flat/Material (E3→E4)"
 emerged_to_solve: "空状态被设计遗忘，用户面对空白无引导无情感联结"
@@ -147,4 +147,5 @@ next_evolution: "AI 个性化空状态推荐，动态内容填充与引导"
 
 ## 完整参考
 
-- `references/09-form-controls.md` —— 错误状态规范
+- `references/31-empty-and-error-states.md` —— 空状态四态机 + 错误恢复规范
+- `references/09-form-controls.md` —— 表单空态/校验态

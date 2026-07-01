@@ -1,29 +1,40 @@
-# 参考文档
+---
+ref: 07
+title: 模态系统 · 9 尺寸 + 4 变体 + Portal
+owner: modal-craftsman (模态构建) · responsive-strategist (响应式)
+audited_by: ui-auditor
+---
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+# 🪟 ref 07 · 模态系统
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+> *模态是打断——必须值得打断。*
+>
+> modal-craftsman 的 14 种模态详细规范。强制 Portal 挂载（ref 15 R-05：没 Portal = 🟥 严重）。稳态冷色谱（ref 01）。
 
-## 参考章节
+## 1. 尺寸表
 
-| 说明 | 说明 | 说明 | 说明                                          |
-| --- | -------------------- | ---------------------------- | -------------------------------------------- |
-| 说明 | `max-w-sm` | 说明 | 说明                          |
-| 说明 | `w-96` | 说明 | 说明                              |
-| 说明 | `max-w-lg` | 说明 | 说明                      |
-| 说明 | `sm:max-w-lg` | `min-h-[300px]` | 说明                |
-| 说明 | `sm:max-w-3xl` | 说明 | 说明                     |
-| 说明 | `max-w-4xl` | `h-[70vh]` | 说明                         |
-| 说明 | `sm:max-w-5xl` | `max-h-[85vh]` flex column | 说明                      |
-| 说明 | `max-w-6xl` | `h-[85vh]` | 说明                          |
-| 说明 | `fixed inset-0` | 说明 | 说明 |
+9 档尺寸，按内容量选：
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+| 尺寸 | 宽 | 高 | 用途 |
+| --- | --- | --- | --- |
+| XS | `max-w-sm` | — | 确认/提示 |
+| S | `w-96` | — | 小表单 |
+| M | `max-w-lg` | — | 标准对话框 |
+| M+ | `sm:max-w-lg` | `min-h-[300px]` | 带最小高的标准 |
+| L | `sm:max-w-3xl` | — | 多字段表单 |
+| L+ | `max-w-4xl` | `h-[70vh]` | 长内容 |
+| XL | `sm:max-w-5xl` | `max-h-[85vh] flex column` | 大面板 |
+| XXL | `max-w-6xl` | `h-[85vh]` | 全功能面板 |
+| 全屏 | `fixed inset-0` | — | 沉浸式 |
+
+可双值约束（CSS 复合）：
 ```tsx
 <div className="sm:max-w-5xl" style={{ height: '80vh', maxHeight: '800px' }}>
 ```
 
-## 参考章节
+## 2. Portal 骨架（强制）
+
+模态必须 `createPortal` 到 `document.body`，带遮罩 + z-[100] + 滚动锁：
 
 ```tsx
 {createPortal(
@@ -48,9 +59,9 @@
 )}
 ```
 
-#参考文档
+遮罩 `bg-gray-900/40 backdrop-blur-sm`，点击遮罩关闭（`onClick={onClose}`），面板 `stopPropagation` 防误关。`role="dialog"` + `aria-modal="true"` 保 a11y。
 
-## 参考章节
+## 3. Header
 
 ```tsx
 <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
@@ -67,9 +78,7 @@
 </div>
 ```
 
-#参考文档
-
-## 参考章节
+## 4. Body
 
 ```tsx
 <div className="px-6 py-6 flex-1 overflow-y-auto custom-scrollbar">
@@ -77,9 +86,9 @@
 </div>
 ```
 
-#参考文档
+`flex-1` 撑满 + `overflow-y-auto` 滚动 + `custom-scrollbar` 统一滚动条（ref 01 §10）。
 
-## 参考章节
+## 5. Footer
 
 ```tsx
 <div className="px-6 py-4 border-t border-gray-100 bg-gray-50/50 flex justify-end gap-3">
@@ -88,21 +97,16 @@
 </div>
 ```
 
-## 参考章节
+## 6. 动画
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+- backdrop：`animate-fade-in` (300ms)
+- panel：`animate-scale-in` (300ms) + `translate-y-4 → translate-y-0`（上滑入场）
+- 关闭：`opacity-0 translate-y-4 sm:scale-95` + `setTimeout(unmount, 300)`（等动画完再卸载）
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `animate-fade-in` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `animate-scale-in` `cubic-bezier(0.16, 1, 0.3, 1)` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `translate-y-4 → translate-y-0` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `opacity-0 sm:scale-95` 不变。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `setTimeout(unmount, 300)` 不变。
+缓动 `cubic-bezier(0.16, 1, 0.3, 1)`。
 
-## 参考章节
+## 7. 危险确认模态（DeleteConfirm）
 
-#参考文档
-
-## 参考章节
 ```tsx
 <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
   <TrashIcon className="w-6 h-6 text-red-600" />
@@ -110,46 +114,23 @@
 <h2 className="text-lg font-bold text-red-600 text-center">确认删除</h2>
 <p className="text-sm text-gray-600 text-center mt-2">此操作无法撤销，请谨慎操作。</p>
 ```
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `border-gray-300` `bg-red-600` 不变。
 
-#参考文档
+危险态：red-50 圆形图标底 + red-600 标题 + 明确"无法撤销"文案。确认按钮 `bg-red-600`，边框 `border-gray-300`。
 
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `w-96` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `text-lg font-bold` `type="danger"` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
+## 8. 变体
 
-#参考文档
+| 变体 | 尺寸 | 特征 |
+| --- | --- | --- |
+| 标准 | `w-96` | 小型确认 |
+| 危险 | `w-96` | red-600 + `type="danger"` |
+| 大面板 | `sm:max-w-5xl` | `80vh / 800px` + 图标 `getSourceIcon(type)` |
+| 全屏 | `max-w-4xl h-[70vh]` | 多内容 |
+| 超大面板 | `max-w-6xl h-[85vh]` | `requestAnimationFrame` 入场 |
+| 沉浸全屏 | `fixed inset-0 z-[10000] bg-white` | 无遮罩全屏 |
 
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `sm:max-w-5xl` `80vh / 800px` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
+## 9. 滚动锁
 
-#参考文档
-
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `max-w-4xl h-[70vh]` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `getSourceIcon(type)` 不变。
-
-#参考文档
-
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `max-w-6xl h-[85vh]` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `requestAnimationFrame` 不变。
-
-#参考文档
-
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `fixed inset-0 z-[10000] bg-white` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
+模态打开时锁 body 滚动：
 
 ```tsx
 useEffect(() => {
@@ -159,8 +140,15 @@ useEffect(() => {
 }, [isOpen]);
 ```
 
-## 参考章节
+## 10. 通用约束
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
+- 确认/删除确认统一用 `ConfirmModal` / `DeleteConfirmModal`，不各写各的（ref 14 反模式 16）。
+- 模态必须 Portal（R-05），否则 ui-auditor 🟥 拦截。
+- 模态 z-[100]，全屏模态 z-[10000]（ref 01 §8）。
+- 关闭动画必须 `setTimeout(unmount, 300)` 等动画完，不可瞬卸。
+
+## 变更日志
+
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版模态系统：9 尺寸 + Portal 骨架 + Header/Body/Footer + 危险确认 + 6 变体 + 滚动锁。对齐 modal-craftsman / responsive-strategist 依赖。 |

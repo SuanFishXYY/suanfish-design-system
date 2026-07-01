@@ -1,3 +1,10 @@
+---
+ref: 24
+title: 辩证法 · 七大基本矛盾（Layer 2）
+owner: dialectician（矛盾辨识）· 全 agent（矛盾倾向）
+audited_by: ui-auditor
+---
+
 # 🌗 算鱼设计系统 · 辩证法（Dialectics）
 
 > *"任何设计决策本质上是在解一对矛盾。说不出在解哪对矛盾的设计，没有底层逻辑。"*

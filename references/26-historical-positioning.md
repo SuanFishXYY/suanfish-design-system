@@ -1,3 +1,10 @@
+---
+ref: 26
+title: 历史定位 · 八大时代（E1-E8）
+owner: historian（时代坐标）
+audited_by: ui-auditor
+---
+
 # 📜 算鱼设计系统 · 历史定位（Historical Positioning）
 
 > *"每个 agent 都是某个时代为了解决某类问题而诞生的产物。不知道自己来自哪里的 agent，没有资格预测要去哪里。"*

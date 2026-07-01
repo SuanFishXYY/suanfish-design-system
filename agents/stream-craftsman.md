@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "LLM token 流式输出缺乏渐进渲染与视觉稳定性设计"
 core_contradiction: "D6 即时⟷深思（即时）"
 next_evolution: "预测性预渲染，多模态流式与首 token 感知优化"
+references: [36-ai-streaming-and-tools.md]
 ---
 
 # 🌊 stream-craftsman · token 流式工匠

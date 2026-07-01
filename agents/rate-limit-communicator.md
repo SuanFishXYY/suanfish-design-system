@@ -7,6 +7,7 @@ historical_era: "LLM Pre-Native → AI-native (E6→E7)"
 emerged_to_solve: "AI 产品配额限制靠技术腔错误信息传达，用户体验断崖"
 core_contradiction: "D7 透明⟷神秘（透明）"
 next_evolution: "配额感知个性化提示，降级路径 AI 辅助决策"
+references: [40-rate-limit-and-model-switch.md, 31-empty-and-error-states.md]
 ---
 
 # ⏳ rate-limit-communicator · 配额沟通师

@@ -6,7 +6,7 @@ icon: 📝
 reports_to: moment-strategist
 consults: [token-keeper]
 audited_by: ui-auditor
-references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, 14-anti-patterns.md]
+references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, 14-anti-patterns.md, 35-copy-system.md]
 philosophy: "维特根斯坦 — 语言的边界即世界的边界"
 historical_era: "Web1.0 → Flat/Material (E2→E4)"
 emerged_to_solve: "UI 文案靠感觉，缺乏与品牌一致、情感精准的微文案规范"
@@ -112,5 +112,6 @@ next_evolution: "AI 文案 A/B 测试自动化，动态本地化与情感自适�
 
 ## 完整参考
 
+- `references/35-copy-system.md` —— 双声调 + 长度铁律 + 文案 SPEC
 - `references/03-onboarding-step-modal.md` —— 步骤标题文案模式
 - `references/14-anti-patterns.md` —— 文案反模式清单

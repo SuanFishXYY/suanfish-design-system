@@ -16,7 +16,7 @@
 
 1. **它属于哪个 tier？** Tier 0 议会 / 1 调度 / 1.5 协调 / 2 主导 / 3 容器 / 4 内容 / 5 横切 / 6 质量门
 2. **它能拒绝什么？** 如果是 `ui-auditor` 类，给出至少 3 条 REJECT 规则
-3. **它与现有 52 个 agent 边界在哪？** 不能有职责重叠（边界写进 SKILL.md「关键边界」表 + agent 自身正文互指）
+3. **它与现有 54 个 agent 边界在哪？** 不能有职责重叠（边界写进 SKILL.md「关键边界」表 + agent 自身正文互指）
 
 满足以上 3 点再提 PR。
 
@@ -78,6 +78,9 @@ grep -rn "14 个 agent\|44 agent\|52 agent\|52 位\|301 板凳\|八圣人\|5 步
 
 # 2. manifest JSON 合法性（UTF-8 no-BOM，勿用 PowerShell Get-Content）
 python -c "import io,json; json.load(io.open('.skill-manifest.json',encoding='utf-8')); print('JSON OK')"
+
+# 3. 三道门制度 + 元数据一致性 lint（上方 #1 那条手工 grep 的自动化升级版）
+node scripts/charter-lint.mjs   # 🟥=严重漂移(agent数/规则数/版本号/章程frontmatter契约) 非零即拦；🟧=agent references 指向占位 ref 的悬空警告(填实对应 ref 即消)
 ```
 
 > ⚠️ **编码红线**：本仓库所有文件是 **UTF-8 无 BOM**。编辑含中文的文件请用编辑器/工具直接改，**勿经 PowerShell 命令串传中文**（乱码），**勿用 `Get-Content`/`ConvertFrom-Json` 读**（按 GBK 误读成乱码 + 假 JSON 报错）。批量替换写 Python 脚本 + `io.open(..., encoding="utf-8")`。

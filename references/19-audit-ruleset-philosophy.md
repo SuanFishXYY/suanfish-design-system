@@ -1,3 +1,12 @@
+---
+ref: 19
+title: 哲学层审计规则集
+ruleset_version: 2.3.0
+bound_to_skill_version: 2.3.0
+owner: ui-auditor（执行）· 各 agent（遵守）
+audited_by: ui-auditor
+---
+
 # 📜 19 · 哲学层审计规则集
 
 > **v2.3 新增** — 让哲学不只是字符，而是可校验的规则。

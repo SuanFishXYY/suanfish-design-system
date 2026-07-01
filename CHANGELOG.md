@@ -15,12 +15,65 @@
 - 🔗 **bound_to_ruleset_version 契约**：ref 28-30 加版本同步字段 · 规则集升级时三道门制度检查同步 · 不同步则 G5/R1/K2 挂起输出 `CHARTER_OUT_OF_SYNC`（同 ref 15 `RULESET_OUT_OF_SYNC` 套路）
 - 📚 **examples/02-three-gates-modal**：完整三道门 demo case · 故意埋 R-05 违规 · 走 G1-G6 退回 + R1-R5 整改 + K1-K4 事后复审全流程 · 证明制度可执行可验证
 - 🔢 **R 编号两套体系术语表**：SKILL.md 厘清 `R1-R25`（哲学命题·无连字符·全局）vs `R-01`（审计规则·带连字符·每份规则集独立）· 消除混淆
+- 🎼 **`scripts/charter-lint.mjs` 制度 lint 脚本**：把 ref 28-30 章程里能 grep 的硬约束 + manifest/agent/规则数/版本号同步变成机器可检。A 类（元数据一致性）+ B 类（章程 frontmatter 契约：B1/B2/**B2b 扩展——不只检 ref 01 有无 version，还检 ref 15/16 bound_to_token_version 是否 == ref 01 version，版本号漂移即 🟥**/B3）+ **C 类 agent references 悬空检测：C1 frontmatter 数组 / C2 正文 prose（补 C1 盲区）**。frontmatter 解析支持数组 + 吃 UTF-8 BOM。🟥 非零退出。`node scripts/charter-lint.mjs` 或 `npm run charter-lint`。
+- 🆕 **新增 5 份设计元素 ref（31-35）**：补"agent 存在、职责明确、但缺对应规范 ref"的缺口。**ref 31 空状态与错误恢复**（四态机 FIRST_TIME/POPULATED/FILTERED/ERROR/LOADING + 切换规则 + 加载档位 + 布局 + 错误 6 类 + 三段文案 + 恢复矩阵，对齐 empty-state-storyteller / error-recovery-designer）· **ref 32 通知系统**（Toast/Banner/Badge/Push 四载体 + 触发哲学 + 视觉优先级 + 聚合 + PLAN，对齐 notification-director）· **ref 33 响应式断点**（sm/md/lg/xl/2xl 断点 + 三栏/模态/表格响应式 + 字号缩放 + 触控目标 44px，对齐 responsive-strategist）· **ref 34 可访问性 a11y**（5 项必检：键盘/焦点/ARIA/对比度/运动 + SPEC 模板，对齐 a11y-guardian）· **ref 35 文案系统**（双声调仪式/稳态 + 5 类文案 + 长度铁律，对齐 copy-writer）。同步 manifest reference_count 30→35 + 6 个 agent references 依赖修正（empty-state/error-recovery/notification/responsive/a11y/copy-writer）。
+- 🌗 **ref 01 §13 dark mode 令牌段 + 升 version 1.0.1**：demo case-2026-0622-001 的"dark 适配衰弱整改"声称令牌 1.0.0→1.0.1 新增 dark mode 令牌，但 ref 01 实无 dark 段——悬空。补 §13：中性/语义色 dark 映射 + 玻璃阴影 dark + 切换机制 + 铁律。ref 01 version 1.0.0→1.0.1，ref 15/16 bound_to_token_version 同步 1.0.0→1.0.1（B2b 新检测项首次跑即抓到版本漂移，实证价值）。
+- 🆕 **新增 4 份 AI-native 设计元素 ref（36-39）**：补 Path G AI-native agent "有职责无 ref" 的缺口。**ref 36 AI 流式与工具调用**（聊天容器气泡 4 形态 + token 流式 cursor 三态/增量 markdown 稳态边界/渐进披露/中断 + 工具调用四态卡/IO 展示/批量合并/敏感二阶段，对齐 stream-craftsman/tool-call-presenter/chat-ui-craftsman）· **ref 37 AI 对话线程与输入**（线程树 regenerate/edit-resubmit/checkpoint/跨分支对比 + 提示输入容器增高/键盘 IME/@ / / 命令/附件/send 状态机/草稿 + 产物画布脱出阈值/布局/版本 diff/双向桥接，对齐 agent-thread-architect/prompt-input-craftsman/artifact-architect）· **ref 38 表格规范**（4 规模 + 密度 + 列定义 + 表头操作 + Tufte 三铁律 + 树形，对齐 table-craftsman）· **ref 39 思维链可视化**（三形态折叠/展开/流式 + 嵌套识别 + 与答案关系 + 用时 token 透明化 + 隐私边界 + 异常报警，对齐 reasoning-visualizer）。同步 manifest reference_count 35→39 + 9 个 agent references 依赖修正。
+- 🆕 **新增 ref 40 AI 资源约束与模型切换 + ref 41 引用与来源标注**：**ref 40**（配额可见性三层 + 用量文案库 + 模型降级 + 排队 + 付费墙禁暗黑模式 + 历史归档 + 切换器 5 形态 + 模型卡片字段 + 温度差提示 + 跨模型一致性，对齐 rate-limit-communicator / model-switcher-stylist）· **ref 41**（inline 引用三形态 + 引用列表区 + hover 预览 + 可信度三档 + 断链处理 + 用户辅助 + AI 生成标记，对齐 citation-keeper）。同步 manifest reference_count 39→41 + 8 个 agent references 依赖修正（rate-limit/model-switcher/citation 新增 + modal/wizard/data-viz/ui-architect/token-keeper 修正 prose 错配——这些 agent 正文引 ref 但没进 frontmatter）。
+- 🔧 **5 agent prose→frontmatter 引用错配修正**：modal-craftsman（引 07 未进 fm）/ wizard-designer（引 08）/ data-viz-engineer（引 10）/ ui-architect（引 04/05/06）/ token-keeper（引 01）—— 这些 agent 正文"完整参考"段引用了 ref 但 frontmatter 无 references 字段，C2 检测本该抓但 ref 已填实无占位故未报。本轮补齐 frontmatter，让依赖关系机读化。
+- 🆕 **新增 ref 42 品牌规范 + ref 43 i18n 国际化**：**ref 42**（品牌四件套 Logo/色/字/声调 + 5 硬规则 + BRAND VERDICT 模板 + REJECT，对齐 brand-keeper）· **ref 43**（i18n 6 大决策点 LTR/RTL/字宽/行高/数字日期 + 文案空间预算 + RTL 适配清单 + 4 硬规则 + 不翻译清单，对齐 i18n-strategist）。同步 manifest reference_count 41→43 + brand-keeper/i18n references + onboarding-director 补 ref 13/11（owner 错配修正）。
+- 🆕 **新增 ref 44 通用组件元素 + ref 45 基础控件系统**：纠正上轮"无 agent owner 不补"的过窄判断——高频复用元素有 UI 共识范式（非臆造），散落各 ref 无系统载体即真缺口。**ref 44**（卡片/骨架屏/Tooltip-Popover/Tab/面包屑/抽屉/分页/顶部导航，8 类散落 64+35+32+15+13+11+14+7 次引用的元素收口）· **ref 45**（按钮五级三尺寸/标签chip/徽章角标红点/头像/进度条/spinner三点/分割线，按钮散落 139+132 次引用却无系统 ref）。同步 manifest 43→45 + ui-architect references。
+- 🎨 **新增 ref 46 设计美学与艺术原则（深入内核）**：补"设计艺术层"——前 45 份是功能规范（做得对不对），ref 46 是美学原则（做得有没有灵魂）。沉淀散在 6 个艺术类 agent 的美学主张：加减辩证（莫奈光色 vs 倪瓒冷逸留白）+ R-Cross2 感官完整性律（莫奈）+ R-Cross3 情感张力律（贝多芬·命运四音）+ R-Cross4 环境陪伴律（Eno·ignorable as interesting）+ 音乐三档位辩证（凯奇-Eno-贝多芬）+ 对位结构美学（巴赫·多旋律并行融贯）。同步 manifest 45→46 + 6 艺术类 agent references。
+- 🧭 **新增 ref 47 哲学到设计的决策映射（内核的内核）**：ref 17/24/25 讲哲学命题"是什么"，ref 47 讲"怎么落到 UI 决策"——哲学层到功能层的翻译器。D1-D7 矛盾→UI 决策映射 + L1-L5 规律→时代对齐决策 + 矛盾×规律×路径三维决策 + 不可投票底线。同步 manifest 46→47 + dialectician/historian/futurist references。
+- 🏛 **新增 ref 48 议会推演范式（内核总纲）**：bench-matcher 六步议会协议散在 agent 文件，无系统 ref；且未串联哲学/艺术/功能层。ref 48 沉淀六步协议 + 端到端推演链（BRIEF→像素每步可追溯回 ref）+ R24 僵局律 + 议会报告 + 诚实声明。同步 manifest 47→48 + bench-matcher/sage-council references。
+- 🔧 **哲学层 8 份 ref 补 frontmatter（ref 编号机读化 · 深入内核）**：扫描 ref 间引用网络发现 28 条断链——根因是哲学层 ref（00/17/18/19/24/25/26/27）全无 frontmatter `ref:` 编号字段，文件存在但不可机读为 ref 编号，导致引用网络断裂 + charter-lint B 类覆盖不到。补全 8 份 frontmatter（ref/title/owner/audited_by），引用网络断链 28→0，48 份 ref 全连通。这是"深入内核"的真动作——ref 48 推演链声称"每步可追溯"，但追溯到的哲学根基之前不可机读，现在根基机读化。
+- 🆕 **charter-lint 加 D 类 ref 引用网络校验**：D1 检测 ref 正文 "ref N" 引用是否对应有 frontmatter 的文件，断链即 🟥。注入测试证实有效。charter-lint 四类：A 元数据一致性 / B 章程 frontmatter 契约 / C agent references 悬空 / D ref 间引用网络。
+- 🏛 **新增 examples/03 Dashboard 三栏工作台 demo（设计艺术可视化载体）**：把 ref 46 美学律 + ref 47 哲学映射 + ref 48 议会推演落成真实三栏工作台。brief（D3 矛盾声明）+ plan（六步实跑·5 常委含加减两端·Round 1 通过）+ specs（token 加减辩证/animation R-Cross3/layout D3 映射决策表）+ report（美学律体检+哲学追溯）。demo 引用 20 ref 全连通。
+- 💬 **新增 examples/05 Streaming Chat demo（AI-native 内核可视化）**：把 ref 36-41 AI-native 五件套内核落成真实流式聊天界面。brief（D2+D7 双主矛盾）+ plan（六步实跑·6 常委·Reich/怀特海调解·Round 1 通过）+ specs（streaming/thread-input/reasoning-citation/quota-model）+ report。demo 引用 ref 36-41+46+47+48 全连通。
+- 🚫 **新增 examples/04 Wizard demo（REJECT 否决机制可视化）**：把 ref 14 反模式 + ref 47 R18 + ref 31 错误恢复 + ref 29 整改闭环落成"故意埋 6 雷的向导被议会 REJECT 后整改通过"。brief（故意矛盾）+ plan（6 雷 + 首轮 REJECT 10/10 + ref 29 六工单整改 + Round 2 PASS）+ specs/wizard（埋雷 vs 整改对照表）+ report（四层否决联动）。examples/README 04 从🚧→✅。**至此 examples 全集 5/5 完成**：01 仪式 / 02 三道门审核 / 03 工作台美学辩证 / 04 否决机制 / 05 AI-native 全栈。
+- 🔧 **ref 46 美学律 cross-ref 补全（内核质量深审）**：发现 ref 46 cross-ref 仅 2，美学律在 ref 01/11/32/36 有落地却未反向串联=内核断链。补 7 处 cross-ref（加减辩证→ref 01/33/examples-03；R-Cross2→ref 01；R-Cross3→ref 11/36；R-Cross4→ref 32/36）。ref 46 cross-ref 2→7。同时确认 ref 47 D1-D7 与 ref 24、L1-L5 与 ref 25、ref 48 六步与 bench-matcher 一致。
+- 🔧 **ref 27 圣人卡 vs agent 矛盾标注一致性深审**：抽审 12 种子席圣人卡的"主矛盾"标注 vs 对应 agent frontmatter `core_contradiction`，发现巴赫卡标 D3 但 counterpoint-architect agent 标 D1 → 修巴赫卡为 D1（对位=多声部多元融贯，与 agent 对齐）。同时发现 8 个圣人卡矛盾标注与 agent 不同（如凯奇卡 D1 vs silence-composer agent D2）——判定为**历史哲学语境 vs 设计系统语境的合法双面性**（非 bug），在 ref 27 §0 加"视角说明"显式声明，避免后人误判。
+- 🎨 **ref 01-14 + 3 patterns 全量填实**：14 份 references（除已填实的 ref 01/09/14 外，本轮补 02/03/04/05/06/07/08/10/11/12/13 + component-patterns/interaction-patterns/steps-schema）全部从"说明：本条描述"占位模板填实为真规范——每份读真实数据骨架（占位符仅 1-28%，余为真实 SPEC/代码），填语义标签 + frontmatter + 决策日志，对齐依赖 agent 的引用语义。同时清理 ref 02/09 等的"本段补充说明"重复噪声段。全库占位符归零，C1/C2 全清，charter-lint 零漂移零警告。
+- 🚫 **ref 14 反模式清单填实**：18 条交互/令牌反模式 + a11y 专项 + 文案专项。
+- 📝 **ref 09 表单控件规范填实**：11 类控件 + AI 控件 + 拖拽上传 + 状态表。
+- ✨ **ref 02 Eureka 欢迎闪现**：8 keyframes + 5 层组合组件 + 触发逻辑。
+- 🎬 **ref 03 仪式步骤模态 HeroStage**：Imagine/Vision/Translate 三舞台 + 视差 + 步骤布局。
+- 🏛 **ref 04 三栏布局**：Icon/Detail/Main 骨架 + 折叠 + 全宽白名单 + z-index + 路由。
+- 📐 **ref 05 IconSidebar** / **ref 06 DetailSidebar**：侧栏容器/switcher/nav/avatar/右键菜单/空态。
+- 🪟 **ref 07 模态系统**：9 尺寸 + Portal 骨架 + Header/Body/Footer + 危险确认 + 6 变体 + 滚动锁。
+- 🧙 **ref 08 向导模式**：面包屑 Stepper + 状态 + 布局 + 网格 + 等待态。
+- 📊 **ref 10 数据可视化**：图谱画布/节点配色/连线/缩放/表格/分页/指标卡/chip/Popover/Tooltip/AI 面板。
+- 🎞 **ref 11 动画库**：8 稳态工具类 + 时长/缓动令牌 + 仪式 keyframes 清单 + 铁律 + 降级。
+- 🎨 **ref 12 图标库**：9 域文件分布 + SVG 模板 + Material Symbols + 4 变体 + 清单。
+- 🔦 **ref 13 Tour 引导**：spotlight 遮罩 + 高亮 ring + Tooltip + 位置计算 + 持久化。
+- 🧩 **component-patterns**：11 段仪式组件（骨架/头部/高亮卡/Footer/checkbox/按钮/tooltip/键盘/彩带/polaroid/持久化）。
+- 🖱 **interaction-patterns**：12 段仪式交互（视差/键盘/滚轮/拖拽/自动播放/方向/visited/完成/关闭/SSR/关闭按钮/z-index）。
+- 📋 **steps-schema**：Step 接口 + 三步主题渐变 + 示例 + 填充约束。
 
 ### Changed
 - 📄 **SKILL.md**：主流程图挂三道门(ref 28-30) · 组织架构 52→54 agent + Tier 6 加 review-orchestrator/meta-auditor · 执行层表 34→36 位 · 参考库表加 ref 28-30 · R 编号术语表
 - 📄 **agents/ui-auditor.md**：补三道门角色段(G5蓝军终审/R1开单R4复审/K轨执行M4被互攻) + frontmatter description
 - 📄 **README.dev.md**：补三道门 ASCII 流程图段 · 目录"27 份"→"30 份规范"
 - 📄 **examples/README.md**：02 三道门 demo 标 ✅ 完成 · 原 02-04 顺延为 03-05
+
+### Fixed
+- 🐛 **ref 28 §4 合规门槛自相矛盾**：原「合规维 = 5」门槛与 §3「W 命中仅扣分不自动否决」冲突（W 命中必使合规 < 5 → 强制退回，等同自动否决）。改为「R 规则零命中」门槛，W 命中仅扣分拉低总分，与 §3 一致。
+- 🐛 **ref 30 §2-K1 触发条件过窄**：原「令牌大版本升级（跳 major）才全采」与 demo（1.0.0 → 1.0.1 新增 dark mode 令牌触发采样）矛盾。改为「令牌任何变更（含新增令牌集的小版本升级）即全采」——旧内容当时令牌齐全不代表现在齐全。
+- 🐛 **ref 29 §1 入口遗漏**：K3 衰弱复用 ref 29 R1 开 W 级工单是制度设计（ref 30 §2-K3 / review-orchestrator 跨门流转均已声明），但 ref 29 §1 入口只写了 G6 FAIL。补 K3 衰弱为第二入口，事后门 → 退回门回灌可追溯。
+- ✏️ **demo r1-r5 状态拼写**：`REMEDICATION` → `REMEDIATION`（多一 C，与 review-orchestrator 状态机 / case-verdict 不一致）。
+- ✏️ **demo r1-r5 加权总分算术**：`0.25×4.5 + 0.2×5 + 0.15×4.5 + 0.15×4.5 + 0.15×4 + 0.1×4 = 4.475`（原误标 4.5），case-verdict 状态机同步 4.5 → 4.475。
+- ✏️ **demo case-verdict 工单状态**：ticket-3（dark 适配）状态机已标「销项后 ARCHIVED 续用」，SLA 表却标「进行中」——改为已销项，终态自洽。
+- ✏️ **review-orchestrator 状态机箭头**：原 `… → ARCHIVED → CULLED` 暗示 CULLED 是 ARCHIVED 的后继，实为 K 轨过时/推翻的独立终态。改为分支标注。
+- 🐛 **agent 数 52→54 全库同步漏改**：v4.2.7 commit 把 manifest/SKILL 改到 54，但漏改了正文多处 `52`——README.md（导航链「看 52 位 agent」+ 目录树「52 位匠人」+ 对比表「52 agent + 议会民主」+ mermaid「420 thinker · 52 agent」+ 章节标题「52 agent · 8 tier」）、README.dev.md（「52 位匠人」）、README.en.md（`wc -l # should print 52` + 「52 specialized agents」+ 「52-agent coverage」）、CONTRIBUTING.md（「52 个 agent 边界」）、.github/ISSUE_TEMPLATE/feature_request.md（同款边界问题）、docs/antigravity-integration.md（「52 个 agent」）。CONTRIBUTING.md:76 自检 grep 本就列 `52 agent|52 位` 为待查陈旧串（正确，保留），其余正文一律 52→54。这正是该自检 grep 该拦住的漂移，本轮补跑。
+- 🐛 **references 数 27→30 全库同步漏改**：README.md 目录树仍写「27 份规范」、docs/antigravity-integration.md 仍写「27 份规范」（README.dev.md 已改 30），一并改 30（含 ref 28-30 审核制度）。
+- ✏️ **examples/README.md 筹备中清单未顺延**：表格已把 02 换成 Three-Gates Modal（✅）、原 02-04 顺延 03-05，但表下备注仍写「02 / 03 / 04 案例正在筹备中」——02 已完成。改为「03 / 04 / 05」。
+- 🐛 **ref 01 设计令牌表是占位模板但全库当真令牌库引用**：token-keeper 称其为「圣经·唯一真相·完整冷暖色双段」、00-collaboration-protocol 称「视觉原子唯一真相」、ui-auditor 据其 `bound_to_token_version` 拒绝执行——但 ref 01 本体是"说明：本条描述…"占位符（虽含冷暖色数据骨架但无标签无 version）。9 处引用承诺 vs 占位现实的实现债。填实为真令牌库（见上 Added）+ 补 version 1.0.0，契约兑现。由 charter-lint B2b/B3 首次跑即抓出（脚本拦截价值再证实）。
+- 🐛 **package.json version 4.2.6≠manifest 4.2.7**：v4.2.7 commit 改了 manifest/SKILL，漏了 package.json。由新增的 `charter-lint.mjs` A6 项首次跑即抓到（脚本实证拦截价值），修为 4.2.7。
+- 🐛 **02-14 references 同 ref 01 同性质占位债（性质纠正 + 全量填实）**：此前误判 02-14 为「纯占位·需领域设计决策·超机械修复边界」。经核实 02-14 非纯占位——有真实数据骨架（占位符仅 1-28%，余为真实 SPEC/代码），与 ref 01 同性质=「数据在、标签缺、机械可补」。且 agent frontmatter `references:` / 正文 prose 将它们列为依赖，占位部分=承诺悬空。新增 charter-lint C 类检测（C1 frontmatter + C2 prose）抓出悬空。本轮全量填实 14 份 ref，占位符归零，C1/C2 全清。
+- 🐛 **charter-lint frontmatter 解析遇 UTF-8 BOM 静默失败**：带 BOM 的 agent 文件（如 modal-craftsman.md 开头 `EF BB BF`）致 `^---` 匹配失败 → frontmatter 返回 `{}` → C 类检测漏报。修：解析前吃掉 BOM。此 bug 会让所有带 BOM agent 的 references 悬空检测失效，C 类上线即暴露并修复。
+- 🐛 **[机制与机理内核审计 R2 · ref 28 §版本同步契约不完整]**：§版本同步契约只写了 charter↔ruleset 检查（`bound_to_ruleset_version`→`CHARTER_OUT_OF_SYNC`），漏写 G5 同时继承 ref 15/16 的 ruleset↔token 检查（`bound_to_token_version`→`RULESET_OUT_OF_SYNC`）。这造成 §2-G5/§9 的 `RULESET_OUT_OF_SYNC` 看似与契约段 `CHARTER_OUT_OF_SYNC` 自相矛盾的假象（审计一度误判为字段错配）。补「G5 跑两把同步刀」段——两把刀·两个字段·两个码·两层 owner 各归位，假矛盾消除。（⚠️ 反误判记录：审计 agent 据此一度提议把 §2-G5 改成 `CHARTER_OUT_OF_SYNC`，那会反而破坏与 ui-auditor.md:74 / ref 15:21 契约的一致性——人工核验 ref 15 + ui-auditor 后否决该提议，改为补全契约段。）
+- 🐛 **[机制与机理内核审计 R2 · ref 28 §2-G1 R18 误标]**：G1「缺 BRIEF 或验收标准」误标为 R18（矛盾两端都站·没选倾向）命中。R18 是 dialectician 的病因级规则（既要 A 又要 ¬A 没选倾向，见 ref 24 §五 / moment-strategist:133），不管缺件——缺件是 G1 完整性硬门。误标会污染 ref 29 §6「屡犯同缺陷→提规则 PR」的 `rule_hit` 信号（缺件被记成 R18 屡犯 → 错误地提 R18 规则 PR）+ ref 30 M 轨元审计诊断。改为「立案要件不全」G1 硬门，并显式注明「非 R18」防再混。
+- 🐛 **[机制与机理内核审计 R2 · bench-matcher §Step6 投票公式与示例自相矛盾]**：`total_votes: 2*k + (N - k)` 用扁平 2 票且把全员 N 计入分母，与本文件 dynamic_bonus（task_kind +0.5 cap 2.5，见 §voting_weight）+ `abstain_handling: 不计入分母` + Example A（有效票权 2+2+2.5+2.5+1+1=11.0，海德格尔 abstain 不计，门槛 ⌈11.0×2/3⌉=8）+ ref 48 §7 全部冲突。按例 A 真值改写为 `Σ(base+dynamic_bonus) over 投票圣人 · abstain 不计入`。原公式在「有 task_kind 加成」或「有人弃权」时算错门槛——Example A 巧合凑整（11→8 两可）掩盖了 bug。
 
 ## [4.2.6] —— 全动态常委 · 420 板凳全员厚仙人
 

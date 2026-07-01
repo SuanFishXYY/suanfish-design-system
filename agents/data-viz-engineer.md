@@ -8,6 +8,7 @@ historical_era: "Web1.0 → Flat/Material (E2→E4)"
 emerged_to_solve: "数据可视化靠视觉炫技，数据墨水比失控，图表说谎"
 core_contradiction: "D5 数据⟷直觉（数据）"
 next_evolution: "交互式数据叙事，AI 自动摘要与异常高亮"
+references: [10-data-visualization.md, 38-tables.md]
 ---
 
 # 📊 data-viz-engineer · 数据可视化工程师

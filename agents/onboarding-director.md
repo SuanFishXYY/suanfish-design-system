@@ -6,7 +6,7 @@ icon: 🎬
 reports_to: moment-strategist
 consults: [animation-choreographer, token-keeper]
 audited_by: ui-auditor
-references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, component-patterns.md, interaction-patterns.md, steps-schema.md, animation-keyframes.css]
+references: [02-onboarding-eureka.md, 03-onboarding-step-modal.md, 13-tour-guide.md, 11-animation-library.md, component-patterns.md, interaction-patterns.md, steps-schema.md, animation-keyframes.css]
 philosophy: "庄子 · 庖丁解牛 — 顺应用户认知的肌理"
 historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
 emerged_to_solve: "新用户首次体验缺乏仪式感与情绪引导，拟物时代美学失语"

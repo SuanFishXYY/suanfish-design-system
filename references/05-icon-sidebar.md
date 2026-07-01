@@ -1,21 +1,23 @@
-# 参考文档
+---
+ref: 05
+title: IconSidebar · 左侧图标导航栏
+owner: ui-architect (结构)
+audited_by: ui-auditor
+---
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+# 📐 ref 05 · IconSidebar
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+> *80px 玻璃侧栏——工作区的入口锚点。*
+>
+> ui-architect 的 IconSidebar 规范（三栏布局左栏，见 ref 04）。稳态玻璃 `bg-white/60 backdrop-blur-xl`。
 
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 0. 容器
 
-## 参考章节
+- 宽 `w-[80px]`，内边距 `py-5`，z 层 `z-30`。
+- 玻璃底 `bg-white/60 backdrop-blur-xl border-r border-white/20`。
+- 内部纵向 `space-y-4`。
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `w-[80px]` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `py-5` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `z-30` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `bg-white/60 backdrop-blur-xl border-r border-white/20` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `space-y-4` 不变。
-
-## 参考章节
+## 1. 间距尺标
 
 ```
 mb-8  → between logo and workspace switcher
@@ -25,7 +27,9 @@ space-y-4 → between main nav items
 mt-auto → push avatar to bottom
 ```
 
-## 参考章节
+`mt-auto` 把 avatar 推到底部，logo/switcher/nav 在顶部。
+
+## 2. Logo
 
 ```tsx
 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-200 flex items-center justify-center">
@@ -33,9 +37,9 @@ mt-auto → push avatar to bottom
 </div>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 3. Workspace switcher
 
-## 参考章节
+工作区切换按钮（首字母 + 类型角标）：
 
 ```tsx
 <button
@@ -52,10 +56,11 @@ mt-auto → push avatar to bottom
 </button>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `bg-blue-500` `bg-emerald-500` 不变。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `bg-gray-500` 不变。
+类型角标色：个人 `bg-blue-500`、团队 `bg-emerald-500`、其他 `bg-gray-500`。
 
-## 参考章节
+## 4. Nav item
+
+主导航项（图标按钮，active 态高亮）：
 
 ```tsx
 <button
@@ -69,12 +74,13 @@ mt-auto → push avatar to bottom
 </button>
 ```
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
+- active：蓝底白字 + 阴影。
+- 非 active：透明 + hover 半透明白底。
+- hover `scale-105` 微放大。
 
-## 参考章节
+## 5. Avatar
+
+头像按钮（首字母 + 未读红点）：
 
 ```tsx
 <button
@@ -87,9 +93,11 @@ mt-auto → push avatar to bottom
 </button>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `h-3.5 w-3.5` 不变。
+未读红点 `h-3.5 w-3.5` + `ring-2 ring-white`（白边脱离头像）。
 
-## 参考章节
+## 6. Avatar 弹出菜单
+
+点击 avatar 弹出菜单（个人信息 / 设置 / 退出）：
 
 ```tsx
 <div className="absolute bottom-16 left-4 z-20 w-64 bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 py-2 animate-fade-in-up">
@@ -104,24 +112,20 @@ mt-auto → push avatar to bottom
 </div>
 ```
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `h-px bg-gray-200/50` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `animate-fade-in-up` 不变。
+- 定位 `bottom-16 left-4`（avatar 上方）。
+- 玻璃底 + `animate-fade-in-up` 入场。
+- 分隔线 `h-px bg-gray-200/50`。
+- 退出 `text-red-600` 危险色。
 
-## 参考章节
+## 7. 新增 nav item 流程
 
-1. 说明：本条描述设计规则、交互约束或实现注意事项。
-2. 说明：本条描述设计规则、交互约束或实现注意事项。
-3. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `my-2` 不变。
-4. 说明：本条描述设计规则、交互约束或实现注意事项。
-5. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `mt-auto` 不变。
-6. 说明：本条描述设计规则、交互约束或实现注意事项。
+1. 图标进 `features/layout/components/icons.tsx`（ref 12）。
+2. 加 nav item（§4 模板），绑 `activeView`。
+3. 在 ref 04 MainContent switch 加对应 case。
+4. 间距遵循 §1 尺标，分隔线用 `my-2`。
 
-## 参考章节
+## 变更日志
 
-1. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `features/layout/components/icons.tsx` 不变。
-2. 说明：本条描述设计规则、交互约束或实现注意事项。
-3. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `activeView` 不变。
-4. 说明：本条描述设计规则、交互约束或实现注意事项。
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版 IconSidebar：容器/间距/logo/switcher/nav/avatar/弹出菜单/新增流程。对齐 ui-architect 依赖。 |

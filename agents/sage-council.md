@@ -12,6 +12,7 @@ core_contradiction: "D5 数据⟷直觉 (并存 · 诸常委各持立场 · 不�
 next_evolution: "v3.2 引入投票机制 + 立场权重 + 与 ui-auditor 联合签发"
 philosophical_anchor: "孔子 · 三人行必有我师 + 法藏 · 一即一切"
 philosophy: "圣人议会 · 三人行必有我师 · 多元立场不求合一,但求穷尽"
+references: [48-council-deliberation.md, 27-philosopher-bench.md, 46-design-aesthetics.md]
 ---
 
 # 🏛️ sage-council · 圣人议会审稿编排器

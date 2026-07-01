@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "LLM 推理过程完全不可见，用户无法评估答案可信度"
 core_contradiction: "D7 透明⟷神秘（透明）"
 next_evolution: "用户可调思考深度，推理链可交互批注与折叠"
+references: [39-reasoning-visualization.md, 36-ai-streaming-and-tools.md]
 ---
 
 # 🧠 reasoning-visualizer · 思维链可视化师

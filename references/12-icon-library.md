@@ -1,40 +1,37 @@
-# 参考文档
+---
+ref: 12
+title: 图标库 · SVG 组件 + Material Symbols
+owner: icon-curator (图标守门)
+audited_by: ui-auditor
+---
 
-> 本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。
+# 🎨 ref 12 · 图标库
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+> *图标统一进 icons.tsx，散落即失控。*
+>
+> icon-curator 的图标规范。禁各处内联 SVG（见 ref 14 反模式 14）。
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+## 1. 图标文件分布
 
-## 参考章节
+每个 feature 区一个 `icons.tsx`，按域就近管理：
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+| 路径 | 域 | 说明 |
+| --- | --- | --- |
+| `src/features/layout/components/icons.tsx` | 布局（侧栏/导航/通用） | 全局通用图标 |
+| `src/features/workspace/components/icons.tsx` | 工作区 | 工作区专属 |
+| `src/features/user/components/icons.tsx` | 用户 | 用户/账户 |
+| `src/features/notification/components/icons.tsx` | 通知 | 通知/消息 |
+| `src/features/onboarding/components/icons.tsx` | 仪式引导 | 仪式模式专属 |
+| `src/features/<workArea>/components/icons.tsx` | 业务工作区 | 该工作区通用 |
+| `src/features/<workArea>/<moduleA>/components/icons.tsx` | 模块 A | 模块专属 |
+| `src/features/<workArea>/<moduleB>/components/icons.tsx` | 模块 B | 模块专属 |
+| `src/features/<workArea>/<moduleC>/components/icons.tsx` | 模块 C | 模块专属 |
 
-| 说明 | 说明 | 说明                                        |
-| -------------------------------------------------------------------------- | ----- | ---------------------------------------------- |
-| `src/features/layout/components/icons.tsx`                                 | 说明 | 说明 |
-| `src/features/workspace/components/icons.tsx`                              | 说明 | 说明                            |
-| `src/features/user/components/icons.tsx`                                   | 说明 | 说明                    |
-| `src/features/notification/components/icons.tsx`                           | 说明 | 说明                             |
-| `src/features/onboarding/components/icons.tsx`                             | 说明 | 说明                     |
-| `src/features/<workArea>/components/icons.tsx`                             | 说明 | 说明     |
-| `src/features/<workArea>/<moduleA>/components/icons.tsx`                   | 说明 | 说明                             |
-| `src/features/<workArea>/<moduleB>/components/icons.tsx`                   | 说明 | 说明                             |
-| `src/features/<workArea>/<moduleC>/components/icons.tsx`                   | 说明 | 说明 |
+`<workArea>` / `<moduleA/B/C>` 为业务占位符，按实际域替换。
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `<workArea>` `<moduleA/B/C>` 不变。
+## 2. SVG 组件模板
 
-## 参考章节
-
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `features/layout/components/icons.tsx` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `icons.tsx` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `icons.tsx` 不变。
-
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
+所有 SVG 图标用统一模板（`features/layout/components/icons.tsx` 为基准）：
 
 ```tsx
 export const FooIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
@@ -45,14 +42,16 @@ export const FooIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
 );
 ```
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `viewBox="0 0 24 24"` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `PinIcon` `PinSolidIcon` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `stroke-width: 1.5` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `currentColor` 不变。
+铁律：
+- `viewBox="0 0 24 24"`（24 网格统一）。
+- `stroke-width: 1.5`（线宽统一，描边图标）。
+- `currentColor`（颜色继承父级 text-*，不硬编码）。
+- 实心变体用 `PinSolidIcon` 之类命名，与线框 `PinIcon` 区分。
+- 默认尺寸 `w-5 h-5`，可由调用方覆盖。
 
-## 参考章节
+## 3. Material Symbols（字体图标）
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `index.css` 不变。
+部分图标用 Material Symbols 字体（进 `index.css`）：
 
 ```css
 .material-symbols-outlined {
@@ -70,37 +69,44 @@ export const FooIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
 }
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+调用：
 
 ```tsx
 <span className="material-symbols-outlined text-blue-600 text-base">analytics</span>
 ```
 
-## 参考章节
+字体图标颜色走 `text-*` 令牌，尺寸走 `text-*` 字号。
 
-| 说明 | 说明                  |
-| -------------- | ------------------------ |
-| `Icon` | 说明           |
-| `SolidIcon` | 说明       |
-| `ShortIcon` | 说明    |
-| `FunctionIcon` | 说明 |
+## 4. 图标变体
 
-## 参考章节
+| 类型 | 用途 |
+| --- | --- |
+| `Icon` | 默认线框 |
+| `SolidIcon` | 实心（选中/强调态） |
+| `ShortIcon` | 简版（小尺寸/紧凑） |
+| `FunctionIcon` | 功能/AI 专属（配 Sparkle） |
 
-1. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `icons.tsx` 不变。
-2. 说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `features/layout/components/icons.tsx` 不变。
-3. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `viewBox="0 0 24 24"` `strokeWidth={1.5}` `currentColor` 不变。
-4. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `w-5 h-5` 不变。
+## 5. 新增图标流程
 
-## 参考章节
+1. 图标进对应域的 `icons.tsx`（不在域里则进 `features/layout/components/icons.tsx`）。
+2. 用 §2 模板，保持 `viewBox 24` / `strokeWidth 1.5` / `currentColor`。
+3. 默认 `w-5 h-5`，需其他尺寸调用方传 className。
+4. 实心/简版/AI 变体按 §4 命名约定。
 
-| 说明 | 说明                                                                                  |
-| ----------- | ----------------------------------------------------------------------------------------- |
-| 说明 | `ChevronLeftIcon`, `ChevronRightIcon`, `ChevronDownIcon`, `XMarkIcon`                     |
-| 说明 | `PlusIcon`, `TrashIcon`, `PencilSquareIcon`, `PinIcon`, `LogoutIcon`                      |
-| 说明 | `CheckCircleIcon`, `WarningTriangleIcon`, `InformationCircleIcon`, `ShieldCheckIcon`      |
-| 说明 | `SparkleIcon`, `SparkleFunctionIcon`, `LightBulbIcon`                                     |
-| 说明 | `ChartBarIcon`, `TableCellsIcon`, `FilterIcon`, `SortIcon`                                |
-| 说明 | `UserIcon`, `UserGroupIcon`, `UsersIcon`, `KeyIcon`                                       |
-| 说明 | `FolderIcon`, `BookIcon`, `CubeTransparentIcon`                                           |
+## 6. 常用图标清单
+
+| 类别 | 图标 |
+| --- | --- |
+| 方向/关闭 | `ChevronLeftIcon`, `ChevronRightIcon`, `ChevronDownIcon`, `XMarkIcon` |
+| 操作 | `PlusIcon`, `TrashIcon`, `PencilSquareIcon`, `PinIcon`, `LogoutIcon` |
+| 状态 | `CheckCircleIcon`, `WarningTriangleIcon`, `InformationCircleIcon`, `ShieldCheckIcon` |
+| AI | `SparkleIcon`, `SparkleFunctionIcon`, `LightBulbIcon` |
+| 数据 | `ChartBarIcon`, `TableCellsIcon`, `FilterIcon`, `SortIcon` |
+| 用户 | `UserIcon`, `UserGroupIcon`, `UsersIcon`, `KeyIcon` |
+| 文件/资源 | `FolderIcon`, `BookIcon`, `CubeTransparentIcon` |
+
+## 变更日志
+
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版图标库：9 域文件分布 + SVG 模板 + Material Symbols + 4 变体 + 新增流程 + 清单。对齐 icon-curator 依赖。 |

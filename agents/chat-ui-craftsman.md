@@ -9,6 +9,7 @@ historical_era: "LLM Pre-Native → AI-native (E6→E7)"
 emerged_to_solve: "AI 对话界面容器缺乏气泡、流式、工具调用的统一规范"
 core_contradiction: "D6 即时⟷深思（即时）"
 next_evolution: "多模态消息容器，语音与图像融合的对话范式"
+references: [36-ai-streaming-and-tools.md, 37-ai-thread-input-artifact.md]
 ---
 
 # 🗨️ chat-ui-craftsman · 聊天容器匠人

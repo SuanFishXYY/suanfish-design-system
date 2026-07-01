@@ -1,10 +1,17 @@
-# 参考文档
+---
+ref: 04
+title: 三栏布局 · IconSidebar / DetailSidebar / Main
+owner: ui-architect (结构) · responsive-strategist (断点形态)
+audited_by: ui-auditor
+---
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+# 🏛 ref 04 · 三栏布局
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+> *Icon / Detail / Main 三栏——工作台的骨架。*
+>
+> ui-architect 的三栏布局规范，responsive-strategist 据此定断点形态。稳态模式冷色谱（ref 01）。
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 0. 骨架
 
 ```
 ┌──────┬──────────┬───────────────────────────────────┐
@@ -14,8 +21,6 @@
 └──────┴──────────┴───────────────────────────────────┘
 ```
 
-## 参考章节
-
 ```tsx
 <div className="h-screen flex overflow-hidden bg-white text-gray-800 font-sans antialiased">
   <IconSidebar />
@@ -24,31 +29,21 @@
 </div>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+容器约束：`h-screen`（满高）+ `flex`（横向排）+ `overflow-hidden`（滚动交给内部各栏）+ `bg-white` + `font-sans antialiased` + `text-slate-800`。
 
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `h-screen` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `flex` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `overflow-hidden` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `bg-white` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `font-sans antialiased` `text-slate-800` 不变。
+## 1. DetailSidebar 折叠
 
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
+DetailSidebar 可折叠（部分视图需要 Main 全宽）：
 
 ```tsx
 const showDetailSidebar = isDetailSidebarVisible && !fullWidthViews.includes(activeView);
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `showDetailSidebar` `w-0` `w-64` 不变。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `transition-all duration-300 ease-in-out overflow-hidden` 不变。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `w-64 flex-shrink-0` 不变。
+折叠用宽度过渡（`w-0` ↔ `w-64`），配 `transition-all duration-300 ease-in-out overflow-hidden`；展开态 `w-64 flex-shrink-0`。不渲染时也保持过渡，避免硬切。
 
-#参考文档
+## 2. 全宽视图白名单
 
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
+以下视图 Main 占满（隐藏 DetailSidebar），新增全宽视图在此加 key：
 
 ```ts
 const fullWidthViews = [
@@ -64,16 +59,11 @@ const fullWidthViews = [
 ];
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+iframe 子工具与聊天/搜索类视图走全宽，其余视图保留 DetailSidebar。
 
-#参考文档
+## 3. 折叠手柄
 
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+DetailSidebar 边缘的折叠按钮，位置随 sidebar 展开/折叠联动：
 
 ```tsx
 <button
@@ -89,24 +79,23 @@ const fullWidthViews = [
 </button>
 ```
 
-## 参考章节
+## 4. z-index 层级
 
-| 说明 | 说明       |
-| ----------------------------- | ------------- |
-| 说明 | `z-10`        |
-| 说明 | `z-20`        |
-| 说明 | `z-30`        |
-| 说明 | `z-50`        |
-| 说明 | `z-[100]`     |
-| 说明 | `z-[9999]`    |
-| 说明 | `z-[10000]` |
+三栏布局内的 z 轴（与 ref 01 §8 全局表一致）：
 
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+| 元素 | z-index |
+| --- | --- |
+| iframe-loader overlay | `z-10` |
+| 折叠手柄 | `z-20` |
+| IconSidebar | `z-30` |
+| detail-sidebar popover menu | `z-50` |
+| modal backdrop | `z-[100]` |
+| portal tooltip | `z-[9999]` |
+| fullscreen overlay | `z-[10000]` |
 
-## 参考章节
+## 5. MainContent 视图路由
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `MainContent.tsx` 不变。
+Main 区按 `activeView` 路由到具体视图组件（`MainContent.tsx`）：
 
 ```tsx
 function MainContent({ activeView, ...props }) {
@@ -120,21 +109,16 @@ function MainContent({ activeView, ...props }) {
 }
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 6. 新增视图流程
 
-## 参考章节
+1. 定 `activeView` key（白名单/非白名单决定是否全宽）。
+2. 在 `MainContent.tsx` 的 switch 加 case。
+3. 决定是否进 `fullWidthViews`（全宽则折叠 DetailSidebar）。
+4. iframe 子工具进 `features/layout/components/iframe-loaders/`，加载层 `z-10` + `animate-fade-in`。
+5. 视图组件放 `src/features/<area>/components/<PageName>View.tsx`。
 
-1. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `activeView` 不变。
-2. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `MainContent.tsx` 不变。
-3. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `fullWidthViews` 不变。
-4. 说明：本条描述设计规则、交互约束或实现注意事项。
-5. 说明：本条描述设计规则、交互约束或实现注意事项。
-6. 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `src/features/<area>/components/<PageName>View.tsx` 不变。
+## 变更日志
 
-## 参考章节
-
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `features/layout/components/iframe-loaders/` 不变。
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `z-10` `animate-fade-in` 不变。
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版三栏布局：骨架/折叠/全宽白名单/手柄/z-index/路由/新增流程。对齐 ui-architect / responsive-strategist 依赖。 |

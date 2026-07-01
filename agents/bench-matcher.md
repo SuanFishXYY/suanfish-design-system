@@ -12,6 +12,7 @@ core_contradiction: "D3 个性化⟷一致性 (动态召唤但用统一议会协
 next_evolution: "v4.2 引入跨语种思想家 (印度/伊斯兰/非洲) 拓宽议会代表性"
 philosophical_anchor: "孔子 · 三人行必有我师 + 哈贝马斯 · 沟通理性 + 阿伦特 · 公共行动 + 瓦格纳 · Gesamtkunstwerk 整体艺术"
 philosophy: "民主产出 · 非强加 · 议会决议 > 流水线指令 · 跨界融贯 > 单领域独白"
+references: [48-council-deliberation.md, 27-philosopher-bench.md, 24-philosophy-dialectics.md, 47-philosophy-to-design-mapping.md]
 ---
 
 # 🏛 bench-matcher · 圣人议会自包含调度器 (v4.0)
@@ -252,8 +253,8 @@ vote_protocol:
     tier_0_sage: 2 votes        # Layer 1 召唤的有 2 票
     invited_helper: 1 vote       # Layer 2+ 被邀请的有 1 票
   
-  total_votes: 2*k + (N - k)
-  threshold: ceil(total_votes * 2 / 3)
+  total_votes: Σ(base + dynamic_bonus) over 投票圣人   # 常委 2 + task_kind +0.5 (cap 2.5) · 助手 1 · abstain 不计入 (同 ref 48 §7)
+  threshold: ceil(total_votes * 2 / 3)               # 例 A: 有效票权 11.0 → ⌈11.0 × 2/3⌉ = 8
   
   ballot_per_sage:
     vote: APPROVE | REJECT | ABSTAIN

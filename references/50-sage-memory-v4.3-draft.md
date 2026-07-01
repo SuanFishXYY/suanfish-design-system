@@ -132,7 +132,7 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 - 借鉴 sptler 记忆机制（已落地验证），但 suanfish 设计场景的记忆内容/触发需 v4.3.0 实施时验证。
 - **不与 sptler 记忆互通**（R25 设计）——两套独立，转 skill 不带记忆。
 - 令牌成本 +~1k/议会（Formal 轨），可 `--no-memory` 关—— Lite 用户可选省令牌不积累。
-- **memory-keeper agent · 已定新增独立（v4.2.7 R33 决策）**：不复用 quotation-verifier。核验职责（quotation-verifier：读 ref 27 板凳核引用真实·一次性·R25）与维护职责（memory-keeper：读写 memories/ 档案·价值驱动 compact·supersedeable 管理·持续维护）本质不同维度，复用会职责混淆（同 R15 P-MS 命名空间污染逻辑）。memory-keeper 定 **Tier 5 横切被咨询层**（同 token-keeper/animation-choreographer 守护型），v4.3.0 新增 `agents/memory-keeper.md`，职责：① 议会 Step6 后写记忆 ② 价值驱动 compact 清理零价值 ③ supersedeable 标记转折点 ④ bench-matcher Step3 读记忆时注入 long-term+recent。agent_count 54→55（v4.3.0）。
+- **memory-keeper agent · 已定新增独立（v4.2.7 R33 决策）**：不复用 quotation-verifier。核验职责（quotation-verifier：读 ref 27 板凳核引用真实·一次性·R25）与维护职责（memory-keeper：读写 memories/ 档案·价值驱动 compact·supersedeable 管理·持续维护）本质不同维度，复用会职责混淆（同 R15 P-MS 命名空间污染逻辑）。memory-keeper 定 **Tier 5 横切被咨询层**（同 token-keeper/animation-choreographer 守护型），v4.3.0 新增。**stub 骨架已建**（v4.2.7 R34）：[`references/v4.3-stubs/memory-keeper.md`](v4.3-stubs/memory-keeper.md)（frontmatter+职责+边界已定，运行时逻辑待 v4.3.0）。v4.3.0 实施时移入 `agents/memory-keeper.md` + manifest agent_count 54→55 + tier_5。职责：① 议会 Step6 后写记忆 ② 价值驱动 compact 清理零价值 ③ supersedeable 标记转折点 ④ bench-matcher Step3 读记忆时注入 long-term+recent。
 
 ## 变更日志
 

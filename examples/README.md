@@ -22,6 +22,7 @@
 | --- | --- | --- |
 | [visual-evidence/index.html](visual-evidence/index.html) | 稳态内核——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |
 | [visual-evidence/eureka.html](visual-evidence/eureka.html) | 仪式模式 Eureka 欢迎闪现——8 keyframes + 5 层粒子组合真实动画（扩散环/光球/火花/灯泡/标题渐变+扫光），点按钮重放 | 02 / 11 / 46 |
+| [visual-evidence/streaming-chat.html](visual-evidence/streaming-chat.html) | AI-native 流式聊天——cursor 三态闪烁 + 工具调用四态卡 + 思维链折叠 + 引用角标 hover 预览 + 模型切换 + IME 安全输入 + 完成脉冲 | 36 / 37 / 39 / 40 / 41 / 46 / 47 |
 
 > 03 / 04 / 05 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
 

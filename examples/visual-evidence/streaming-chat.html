@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼 · Streaming Chat · AI-native 视觉证据</title>
+<!--
+  算鱼设计系统 · AI-native 视觉证据
+  把 ref 36 流式 cursor 三态 + 工具调用四态卡 + ref 39 思维链折叠 + ref 41 引用角标 hover 预览
+  渲染成真实可看的流式聊天界面。单文件 HTML · 零依赖 · 浏览器直接打开。
+  对应 ref: 36 流式 / 39 思维链 / 41 引用 / 46 美学(R-Cross3/4) / 47 哲学(D2/D7)
+-->
+<style>
+:root {
+  --blue-600:#2563eb;--blue-500:#3b82f6;--blue-400:#60a5fa;--blue-100:#dbeafe;--blue-50:#eff6ff;--blue-200:#bfdbfe;
+  --red-600:#dc2626;--red-50:#fef2f2;--red-200:#fecaca;
+  --emerald-600:#059669;--emerald-500:#10b981;--emerald-100:#d1fae5;--emerald-50:#ecfdf5;
+  --amber-600:#d97706;--amber-500:#f59e0b;--amber-100:#fef3c7;--amber-50:#fffbeb;
+  --purple-600:#9333ea;--purple-50:#faf5ff;--purple-100:#f3e8ff;
+  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;
+  --gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;--gray-600:#4b5563;
+  --white:#fff;
+  --font:-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif;
+  --mono:"SF Mono","Fira Code",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-50);color:var(--slate-800);height:100vh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
+code{font-family:var(--mono);font-size:12px;background:var(--slate-100);padding:1px 5px;border-radius:3px;color:var(--blue-600)}
+
+/* TopBar + ModelSwitcher + QuotaIndicator (ref 40) */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:var(--white);border-bottom:1px solid var(--gray-200);flex-shrink:0}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.model-chips{display:flex;gap:4px}
+.model-chip{padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;border:1px solid transparent}
+.model-chip.active{background:var(--blue-50);color:var(--blue-600);border-color:var(--blue-200)}
+.model-chip:not(.active){color:var(--slate-500)}
+.model-chip:not(.active):hover{background:var(--gray-100)}
+.quota{font-size:11px;color:var(--slate-400)}
+.quota.warn{color:var(--amber-600)}
+
+/* MessageStream (ref 36) */
+.stream{flex:1;overflow-y:auto;padding:16px 24px;display:flex;flex-direction:column;gap:16px}
+.msg{display:flex;gap:12px;max-width:80%}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg-avatar{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+.msg.assistant .msg-avatar{background:var(--purple-50);color:var(--purple-600)}
+.msg.user .msg-avatar{background:var(--blue-600);color:var(--white)}
+.msg-bubble{padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.6}
+.msg.assistant .msg-bubble{background:var(--gray-100);color:var(--slate-800)}
+.msg.user .msg-bubble{background:var(--blue-600);color:var(--white)}
+
+/* cursor 三态 (ref 36 §二 ①) */
+.cursor{display:inline-block;width:2px;height:16px;vertical-align:text-bottom;margin-left:2px}
+.cursor.blink{background:var(--blue-600);animation:blink 530ms steps(2) infinite}
+.cursor.breathe{background:var(--slate-400);animation:breathe 1.5s ease-in-out infinite}
+.cursor.dots{background:transparent;width:auto;letter-spacing:2px}
+.cursor.dots::after{content:'···';color:var(--slate-400);animation:dots 1.4s steps(4) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes breathe{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes dots{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* Reasoning 折叠 (ref 39) */
+.reasoning{margin-bottom:8px}
+.reasoning summary{cursor:pointer;font-size:12px;color:var(--slate-500);display:flex;align-items:center;gap:4px;list-style:none}
+.reasoning summary::-webkit-details-marker{display:none}
+.reasoning summary:hover{color:var(--slate-700)}
+.reasoning-body{margin-top:8px;padding:8px 12px;background:var(--slate-100);border-left:2px solid var(--slate-300);border-radius:0 6px 6px 0;font-size:13px;color:var(--slate-500);user-select:none;line-height:1.6}
+.chevron{display:inline-block;transition:transform .2s}
+.reasoning[open] .chevron{transform:rotate(180deg)}
+
+/* ToolCall 四态卡 (ref 36 §三) */
+.tool-card{margin:8px 0;border-radius:8px;border:1px solid;overflow:hidden;transition:all .3s}
+.tool-card.pending{border-color:var(--slate-300);background:var(--slate-50)}
+.tool-card.running{border-color:var(--blue-400);background:var(--blue-50);animation:running-pulse 2s ease-in-out infinite}
+.tool-card.success{border-color:var(--emerald-500);background:var(--emerald-50)}
+.tool-card.error{border-color:var(--red-600);background:var(--red-50)}
+@keyframes running-pulse{0%,100%{box-shadow:0 0 0 0 rgba(96,165,250,.3)}50%{box-shadow:0 0 0 4px rgba(96,165,250,.1)}}
+.tool-header{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:13px;cursor:pointer}
+.tool-icon{font-size:16px}
+.tool-name{font-weight:600}
+.tool-status{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:9999px;font-weight:600}
+.tool-card.pending .tool-status{background:var(--slate-200);color:var(--slate-600)}
+.tool-card.running .tool-status{background:var(--blue-100);color:var(--blue-600)}
+.tool-card.success .tool-status{background:var(--emerald-100);color:var(--emerald-600)}
+.tool-card.error .tool-status{background:var(--red-200);color:var(--red-600)}
+.tool-body{padding:8px 12px;font-size:12px;font-family:var(--mono);color:var(--slate-600);border-top:1px solid rgba(0,0,0,.05);display:none}
+.tool-card.expanded .tool-body{display:block}
+
+/* spinner (ref 45 §6) */
+.spinner{width:14px;height:14px;border:2px solid var(--blue-200);border-top-color:var(--blue-600);border-radius:50%;animation:spin .8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 引用角标 (ref 41) */
+.cite{display:inline-block;font-size:10px;font-weight:600;color:var(--blue-600);cursor:pointer;vertical-align:super;margin:0 1px}
+.cite:hover+.cite-preview,.cite-preview:hover{opacity:1;transform:translateY(0)}
+.cite-preview{position:absolute;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1);padding:12px;width:280px;font-size:12px;color:var(--slate-600);z-index:100;opacity:0;transform:translateY(4px);transition:all .2s;pointer-events:none}
+.cite-preview img{width:100%;height:72px;object-fit:cover;border-radius:6px;margin-bottom:8px}
+.cite-preview .ct{font-weight:600;color:var(--slate-800);font-size:13px}
+.cite-preview .cd{color:var(--slate-400);font-size:11px;margin:2px 0}
+.cite-preview .cs{color:var(--slate-500);font-size:11px;background:var(--slate-100);padding:4px 6px;border-radius:4px;margin-top:4px}
+.cite-wrap{position:relative;display:inline}
+
+/* 引用列表 (ref 41 §2) */
+.cite-list{margin-top:8px;border-top:1px solid var(--gray-200);padding-top:8px}
+.cite-list summary{cursor:pointer;font-size:12px;color:var(--slate-500);list-style:none}
+.cite-list summary::-webkit-details-marker{display:none}
+.cite-item{display:flex;align-items:flex-start;gap:8px;margin-top:6px;font-size:12px}
+.cite-item .cn{font-weight:600;color:var(--blue-600)}
+.cite-item .ct{color:var(--blue-600);text-decoration:underline}
+.cite-item .cd{color:var(--slate-400)}
+.confidence{font-size:10px;padding:1px 6px;border-radius:9999px;font-weight:600}
+.confidence.high{background:var(--emerald-100);color:var(--emerald-600)}
+.confidence.med{background:var(--amber-100);color:var(--amber-600)}
+.confidence.unknown{background:var(--gray-100);color:var(--gray-500)}
+
+/* PromptInput (ref 37) */
+.input-area{padding:12px 24px 16px;background:var(--white);border-top:1px solid var(--gray-200);flex-shrink:0}
+.input-row{display:flex;align-items:flex-end;gap:8px;background:var(--gray-100);border-radius:12px;padding:8px 12px;transition:all .2s}
+.input-row:focus-within{border:2px solid var(--blue-400);background:var(--white)}
+.input-row textarea{flex:1;border:none;background:transparent;resize:none;font-size:14px;font-family:var(--font);outline:none;line-height:1.5;color:var(--slate-800);max-height:120px}
+.send-btn{width:32px;height:32px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;flex-shrink:0}
+.send-btn.ready{background:var(--blue-600);color:var(--white)}
+.send-btn.empty{background:var(--slate-200);color:var(--slate-400);cursor:not-allowed}
+.send-btn.streaming{background:var(--red-600);color:var(--white)}
+.input-meta{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--slate-400)}
+.input-meta .hint{display:flex;gap:12px}
+.input-meta kbd{background:var(--gray-100);border:1px solid var(--gray-200);border-radius:3px;padding:0 4px;font-size:10px;font-family:var(--mono)}
+
+.info{position:fixed;bottom:60px;right:16px;z-index:1000;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:10px 14px;border-radius:8px;font-size:11px;color:var(--slate-300);max-width:280px;line-height:1.5;display:none}
+.info.show{display:block}
+.info strong{color:var(--blue-400)}
+</style>
+</head>
+<body>
+
+<!-- TopBar (ref 40) -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span style="font-weight:700;font-size:15px">💬 算鱼 Chat</span>
+    <div class="model-chips">
+      <div class="model-chip active">GPT-4</div>
+      <div class="model-chip">Claude</div>
+      <div class="model-chip">Gemini</div>
+    </div>
+  </div>
+  <div class="quota">今日还剩 <span id="quota-num">18</span> 条</div>
+</div>
+
+<!-- MessageStream (ref 36) -->
+<div class="stream" id="stream">
+
+  <!-- 用户消息 -->
+  <div class="msg user">
+    <div class="msg-avatar">你</div>
+    <div class="msg-bubble">用一句话解释量子纠缠，并引用来源</div>
+  </div>
+
+  <!-- AI 消息 -->
+  <div class="msg assistant">
+    <div class="msg-avatar">AI</div>
+    <div class="msg-bubble" style="min-width:320px">
+
+      <!-- 思维链折叠 (ref 39) -->
+      <details class="reasoning">
+        <summary>💭 已思考 8.3 秒 · 1.2k tokens <span class="chevron">▼</span></summary>
+        <div class="reasoning-body">
+          ① 用户要"一句话解释"——需要极简但准确<br>
+          ② 量子纠缠核心：两粒子状态关联，测量一个立即知道另一个<br>
+          ③ "幽灵般的超距作用"——爱因斯坦原话，好引用<br>
+          ④ 需要引用来源（用户明确要求）
+        </div>
+      </details>
+
+      <!-- 流式内容 + cursor (ref 36) -->
+      <div id="streaming-content"></div><span class="cursor blink" id="cursor"></span>
+
+      <!-- 工具调用四态卡 (ref 36 §三) -->
+      <div style="margin-top:8px">
+        <div class="tool-card success expanded" onclick="this.classList.toggle('expanded')">
+          <div class="tool-header">
+            <span class="tool-icon">🔍</span>
+            <span class="tool-name">联网搜索</span>
+            <span class="tool-status">✓ 完成</span>
+          </div>
+          <div class="tool-body">query: "quantum entanglement einstein spooky action"<br>→ 找到 3 个来源</div>
+        </div>
+        <div class="tool-card running" onclick="this.classList.toggle('expanded')">
+          <div class="tool-header">
+            <span class="tool-icon">📊</span>
+            <span class="tool-name">数据验证</span>
+            <span class="tool-status"><span class="spinner"></span> 执行中</span>
+          </div>
+          <div class="tool-body">验证纠缠态实验数据来源...</div>
+        </div>
+      </div>
+
+      <!-- 引用列表 (ref 41) -->
+      <details class="cite-list">
+        <summary>📚 参考来源 (2)</summary>
+        <div class="cite-item">
+          <span class="cn">[1]</span>
+          <div>
+            <span class="ct">Einstein's "Spooky Action" Explained</span>
+            <span class="confidence high">🟢 高</span>
+            <div class="cd">scientificamerican.com · 2024</div>
+          </div>
+        </div>
+        <div class="cite-item">
+          <span class="cn">[2]</span>
+          <div>
+            <span class="ct">Quantum Entanglement - Stanford Encyclopedia</span>
+            <span class="confidence high">🟢 高</span>
+            <div class="cd">plato.stanford.edu · 2023</div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- PromptInput (ref 37) -->
+<div class="input-area">
+  <div class="input-row">
+    <textarea id="input" rows="1" placeholder="输入消息... (Enter 发送 / Shift+Enter 换行)" oninput="onInput()" onkeydown="onKey(event)"></textarea>
+    <button class="send-btn empty" id="send" onclick="onSend()">↑</button>
+  </div>
+  <div class="input-meta">
+    <div class="hint">
+      <span><kbd>Enter</kbd> 发送</span>
+      <span><kbd>Shift+Enter</kbd> 换行</span>
+      <span style="color:var(--emerald-600)">✓ IME 安全</span>
+    </div>
+    <span>D2 自动化⟷掌控 · D7 透明⟷神秘</span>
+  </div>
+</div>
+
+<div class="info" id="info">
+  <strong>算鱼 · AI-native 视觉证据</strong><br>
+  ref 36 流式 cursor 三态 + 工具四态卡<br>
+  ref 39 思维链折叠<br>
+  ref 41 引用角标 + 可信度<br>
+  ref 40 配额 + 模型切换<br>
+  ref 37 IME 安全输入<br>
+  R-Cross3 完成张力 / R-Cross4 陪伴
+</div>
+<script>
+// 流式逐字渲染 (ref 36 §二 ② 增量 markdown)
+const text = '量子纠缠是两个粒子之间一种神秘的关联——无论相隔多远，测量其中一个粒子的状态，另一个粒子的状态会立即确定。爱因斯坦称之为"幽灵般的超距作用"<span class="cite-wrap"><span class="cite" onmouseenter="showPreview(event,1)">[1]</span><span class="cite-preview"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='72'%3E%3Crect fill='%23dbeafe' width='280' height='72'/%3E%3Ctext x='140' y='40' text-anchor='middle' fill='%232563eb' font-size='14' font-family=sans-serif%3EScientific American%3C/text%3E%3C/svg%3E"><div class="ct">Einstein's "Spooky Action" Explained</div><div class="cd">scientificamerican.com · 2024</div><div class="cs">"spooky action at a distance" — Einstein, 1935</div></span></span>，但 2022 年诺贝尔物理学奖证实了它的真实存在<span class="cite-wrap"><span class="cite" onmouseenter="showPreview(event,2)">[2]</span><span class="cite-preview"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='72'%3E%3Crect fill='%23ecfdf5' width='280' height='72'/%3E%3Ctext x='140' y='40' text-anchor='middle' fill='%23059669' font-size='14' font-family=sans-serif%3EStanford Encyclopedia%3C/text%3E%3C/svg%3E"><div class="ct">Quantum Entanglement - SEP</div><div class="cd">plato.stanford.edu · 2023</div><div class="cs">Bell inequality violation experiments</div></span></span>。';
+
+const content = document.getElementById('streaming-content');
+const cursor = document.getElementById('cursor');
+let idx = 0, timer;
+
+function startStream() {
+  cursor.className = 'cursor blink';
+  timer = setInterval(() => {
+    if (idx < text.length) {
+      // 逐字添加（模拟 per-block，简化为逐字）
+      content.innerHTML = text.slice(0, idx + 1);
+      idx++;
+      // 滚动到底
+      document.getElementById('stream').scrollTop = 999999;
+    } else {
+      clearInterval(timer);
+      cursor.style.display = 'none';
+      // R-Cross3 完成脉冲
+      content.style.animation = 'pulse-once 1.5s ease-out';
+      setTimeout(() => content.style.animation = '', 1500);
+    }
+  }, 35); // 35ms/字 ≈ 仪式感节奏
+}
+
+// pulse-once keyframe (R-Cross3)
+const style = document.createElement('style');
+style.textContent = '@keyframes pulse-once{0%{box-shadow:0 0 0 0 rgba(16,185,129,.4)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}';
+document.head.appendChild(style);
+
+// Input (ref 37)
+const input = document.getElementById('input');
+const send = document.getElementById('send');
+function onInput() {
+  if (input.value.trim()) { send.className = 'send-btn ready'; }
+  else { send.className = 'send-btn empty'; }
+}
+let streaming = false;
+function onSend() {
+  if (streaming) {
+    // Stop (D2 掌控)
+    clearInterval(timer);
+    cursor.style.display = 'none';
+    streaming = false;
+    send.className = 'send-btn ready';
+    send.textContent = '↑';
+    return;
+  }
+  if (!input.value.trim()) return;
+  streaming = true;
+  send.className = 'send-btn streaming';
+  send.textContent = '⏹';
+  input.value = '';
+  startStream();
+}
+function onKey(e) {
+  // IME 安全 (ref 37 §二 ②): IME 选词时 Enter 不发送
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    onSend();
+  }
+}
+
+// 引用预览 (ref 41 §3)
+function showPreview(e, n) {
+  // hover ≥200ms 已由 CSS :hover 处理，这里仅定位
+}
+
+// 模型切换 (ref 40)
+document.querySelectorAll('.model-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.model-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+});
+
+// 自动开始第一次流式
+setTimeout(() => { startStream(); }, 800);
+
+// info 显示
+setTimeout(() => document.getElementById('info').classList.add('show'), 2000);
+setTimeout(() => document.getElementById('info').classList.remove('show'), 8000);
+</script>
+</body>
+</html>

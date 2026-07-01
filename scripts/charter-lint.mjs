@@ -353,6 +353,43 @@ for (const f of listMd('references')) {
   }
 }
 
+// ── D2 · 带前缀编号引用悬空（对应 R16 · Canon-D / P-XX / R-Cross 引用网络）────
+// D1 只检 "ref N" 引用，但系统有三套带前缀编号体系（R13-R15 引入）：
+// [Canon-D8] / [P-MS1] / [R-Cross1] —— 写错编号（如 [Canon-D11] 不存在）D1 抓不到。
+// 扫全库 [Canon-X数字] / [P-XX数字] / [R-Cross数字] 引用，对照定义集，悬空即 🟥。
+{
+  const defs = new Set();
+  // Canon- 定义：ref 18 的 ### XN（D1-D10 / B1-B3 / V1-V3 / A1-A2 / E1-E2）
+  const ref18 = join('references/18-design-canon.md');
+  if (exists(ref18)) {
+    for (const m of readText(ref18).matchAll(/^### ([A-Z])(\d+)/gm)) defs.add(`Canon-${m[1]}${m[2]}`);
+  }
+  // P-XX 定义：ref 19 的 #### P-XX数字
+  const ref19 = join('references/19-audit-ruleset-philosophy.md');
+  if (exists(ref19)) {
+    for (const m of readText(ref19).matchAll(/^#### (P-[A-Z]{2,4}\d+)/gm)) defs.add(m[1]);
+  }
+  // R-Cross 定义：ref 27 + ref 46 + 各艺音 agent
+  for (const f of [...listMd('references'), ...listMd('agents')]) {
+    for (const m of readText(f).matchAll(/R-Cross(\d)/g)) defs.add(`R-Cross${m[1]}`);
+  }
+  // 扫全库引用
+  const citeRe = /\[(Canon-[A-Z]\d+|P-[A-Z]{2,4}\d+|R-Cross\d+)\]/g;
+  const targets = [...listMd('references'), ...listMd('agents'), ...listMdRecursive('examples'), join('SKILL.md')];
+  for (const f of targets) {
+    if (!exists(f)) continue;
+    const t = readText(f);
+    const seen = new Set();
+    for (const m of t.matchAll(citeRe)) {
+      if (seen.has(m[1])) continue; // 同文件同编号只报一次
+      seen.add(m[1]);
+      if (!defs.has(m[1])) {
+        block('D2', `${rel(f)}: 引用 [${m[1]}] 但无对应定义 → 带前缀编号引用悬空（ref 18 Canon / ref 19 P-XX / R-Cross 定义集均无）。补定义或修正引用。`);
+      }
+    }
+  }
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // E. 语义检测类（v4.2.7 哲理审计 R8 · 固化七轮审计模式为机器可检）
 //    抓 A/B/C/D 抓不到的"逻辑债"——编号空洞 / 被审者审自己 / escape-hatch 无防滥用。

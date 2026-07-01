@@ -80,7 +80,7 @@ grep -rn "14 个 agent\|44 agent\|52 agent\|52 位\|301 板凳\|八圣人\|5 步
 python -c "import io,json; json.load(io.open('.skill-manifest.json',encoding='utf-8')); print('JSON OK')"
 
 # 3. 三道门制度 + 元数据一致性 lint（上方 #1 那条手工 grep 的自动化升级版）
-node scripts/charter-lint.mjs   # 五类检测：A 元数据一致性 / B 章程 frontmatter 契约 / C agent refs 悬空 / D ref 间引用网络 / **E 语义逻辑债（E1 R编号空洞/R3 + E2 被审者审自己/R5 + E3 escape-hatch无防滥用/R7 + E4 R-Cross编号空洞/R12 + E5 P-XX前缀跨agent冲突/R15）**。🟥 非零即拦；🟧 警告（填实对应 ref / 补防滥用词即消）。
+node scripts/charter-lint.mjs   # 五类检测：A 元数据一致性 / B 章程 frontmatter 契约 / C agent refs 悬空 / D 引用网络（D1 ref N / **D2 带前缀编号 Canon-D·P-XX·R-Cross·R16**）/ **E 语义逻辑债（E1 R编号空洞/R3 + E2 被审者审自己/R5 + E3 escape-hatch无防滥用/R7 + E4 R-Cross编号空洞/R12 + E5 P-XX前缀跨agent冲突/R15）**。🟥 非零即拦；🟧 警告（填实对应 ref / 补防滥用词即消）。
 ```
 
 > ⚠️ **编码红线**：本仓库所有文件是 **UTF-8 无 BOM**。编辑含中文的文件请用编辑器/工具直接改，**勿经 PowerShell 命令串传中文**（乱码），**勿用 `Get-Content`/`ConvertFrom-Json` 读**（按 GBK 误读成乱码 + 假 JSON 报错）。批量替换写 Python 脚本 + `io.open(..., encoding="utf-8")`。

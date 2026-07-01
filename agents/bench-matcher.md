@@ -106,7 +106,7 @@ brief_signals:
 ```yaml
 layer_1_rules:
   threshold: 7.5
-  council_shape: "4:4:4"          # 骨架不变: 哲学家 / 艺术家 / 音乐家 三类并立
+  council_shape: "4:4:4"          # 三类等权比例符号 (每类等量 top-N · 典型 1-2 位/类 · 硬上限每类 4) · 非字面"每类 4 位满编 12" · 候选池 335:50:35 不击穿均权 (类内选拔非跨类竞争)
   eligibility: thick_only         # 必须是 ref-27 已增厚档案卡 (有 立场/打法) 才能当常委
 
   selection:                      # 每次任务动态执行 (取代旧"固定12评分")

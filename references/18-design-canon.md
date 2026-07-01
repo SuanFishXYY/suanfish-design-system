@@ -151,6 +151,8 @@ audited_by: ui-auditor
 
 ## 六、引用矩阵 · agent × Canon
 
+> **⚠️ D 命名空间声明（v4.2.7 哲理审计 R13 · 防命名空间污染）**：本表的 `D1-D10` 是 **Canon 体系**（Dieter Rams 十诫，见 §一），**不是** ref 24 的矛盾体系 `D1-D7`（简洁⟷可发现等）。两套 D 同号不同义——Canon-D8 = thorough down to the last detail；矛盾候选 D8 = 同步⟷异步（ref 24 §九·未启用）。规范引用须带前缀 `[Canon-D8]` 区分；本矩阵为紧凑裸写 D，但语境锁定为 Canon 体系。agent 正文引用时若涉歧义须带 `Canon-` 前缀，禁裸 `D8` 跨体系引用。
+
 | Agent | 高频引用 Canon |
 | --- | --- |
 | moment-strategist | D10, B3 |

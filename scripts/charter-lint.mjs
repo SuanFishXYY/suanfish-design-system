@@ -157,6 +157,11 @@ const M_REF_COUNT = Number(manifest.reference_count);
     { re: /version-(\d+\.\d+\.\d+)/g, want: M_VERSION, label: 'version-x.y.z badge' },
   ];
   // 行级排除：命中任一则跳过整行（这些行的数字是历史值或子集数，非当前总数）
+  // ⚠️ 已知盲区（R14 记录·R29 穷尽验证不可机器修）：agent description 长行常混
+  // "v2.5 历史子句 + 当前态数字" 同行（如 ui-auditor "逐54agent...v2.5起识别..."），
+  // skipLine 命中 v2.5 整行跳过，连带漏同行数字漂移。R29 试子句级剥离（按句号切子句单独判）
+  // 不可行：① 中文逗号/句号混用切割不准 ② Lite "1 agent""7-9 位"子集语义误报难排除。
+  // 独立 frontmatter 字段方案需改 54 agent + A5，大工程不划算。故留人工核（CONTRIBUTING 自检 grep 兜底）。
   const skipLine = (line) =>
     /grep\s+-rn/.test(line) ||                                              // 自检 grep 行本身（含待查陈旧串，合法）
     /v[1-3](?:\.\d)?\b|历史(?:图|架构|段|表|版本)|v3\s*时代/.test(line) ||   // 历史叙述（v1-v3 / 历史图 · v4 不排）

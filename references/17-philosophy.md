@@ -13,7 +13,7 @@ audited_by: ui-auditor
 
 ---
 
-## 🆕 v3.0 三层哲学体系
+## 🆕 三层哲学体系（v3.0 立 · v4.2 议会升维）
 
 | Layer | 文件 | 回答的问题 |
 | --- | --- | --- |
@@ -21,8 +21,11 @@ audited_by: ui-auditor
 | **Layer 2 · 辩证** | [24-philosophy-dialectics.md](24-philosophy-dialectics.md) | 为什么有两边？ |
 | **Layer 3 · 发展规律** | [25-philosophy-laws.md](25-philosophy-laws.md) | 矛盾如何随时间漂移？ |
 | **Layer 0.5 · 历史定位** | [26-historical-positioning.md](26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
+| **附录 · 思想家板凳** ✨v4.2 | [27-philosopher-bench.md](27-philosopher-bench.md) | 420 厚仙人候选池（335 哲+50 艺+35 音）· 供圣人议会跨三大类援引 |
 
-四层文档配合 Tier 0 三件套 (dialectician / historian / futurist) 构成 v3.0 哲学完整体。
+四层文档 + 板凳附录，配合 **v4.2 三大类圣人议会（🏛哲4·🎨艺4·🎵音4 · 4:4:4 均权 · 因事召唤·辩证·≥2/3 表决）** 构成哲学完整体。Tier 0 圣人锚点（dialectician 黑格尔 / silence-architect 王弼 / holism-strategist 法藏 / debunk-auditor 王充 等 12 席 + 420 板凳）见 [ref 27](27-philosopher-bench.md) 与 [`agents/bench-matcher.md`](../agents/bench-matcher.md)；本文档 §二 只收 **Tier 1-6 执行层** agent 的哲学锚点。
+
+> **v3.0→v4.2 演进注**：v3.0 曾以「Tier 0 三件套 dialectician/historian/futurist」为哲学入口。v4.2 升为三大类 4:4:4 议会后，historian(福柯)/futurist(怀特海) 于 v4.2.6 并入普通板凳、与全员同台竞选常委，不再有「三件套」特殊身份；dialectician 升为议会 12 席之一。
 
 ---
 
@@ -40,9 +43,14 @@ audited_by: ui-auditor
 
 ---
 
-## 二、14 Agent 哲学锚点（按 Tier 排序）
+## 二、执行层 Agent 哲学锚点（Tier 1-6 · 跨版本累积）
 
-### 🚦 Tier 0 · 入口调度
+> **⚠️ 覆盖范围与 Tier 编号诚实声明（v4.2.7 哲理审计 R4）**：
+> - 本节**非全集**。v3.0 首版列 14 位 → v2.4 补 10 位 → v2.5 补 9 位 Path G，累计 33 位执行层锚点。系统现 54 agent，**缺的 21 位**（Tier 0 议会 12 席 + 部分 Tier 3-5 新增）的哲学锚点在 [ref 27 板凳档案卡](27-philosopher-bench.md) 与各 agent 文件，本节不重复。补齐 54 位全集锚点是领域写作议题，非机械修复。
+> - **Tier 编号用 v4.2.7 当前脊柱**：Tier 0=圣人议会 / Tier 1=调度(moment-strategist) / Tier 1.5=协调 / Tier 2=主导 / Tier 3=容器 / Tier 4=内容 / Tier 5=横切 / Tier 6=质量（见 SKILL.md §组织架构）。下方旧子标题「Tier 0·入口调度」是 v3.0 残留脊柱——moment-strategist 实为 **Tier 1**（v4.2 议会插入 Tier 0 后整体下移一位）；本节 §二补 的「Tier 1.5 协调」已对齐新脊柱。两套编号并存是历史增量遗留，以本声明为准。
+> - 锚点内容（哲学家·命题·行为约束）本身不过时，是各 agent 的灵魂底色。
+
+### 🚦 Tier 0 · 入口调度（⚠️ v3.0 残留编号 · 实为 Tier 1 调度层 · moment-strategist）
 
 #### `moment-strategist`
 - **锚点**：**孙子 ·「上兵伐谋，其次伐交，其下攻城」**

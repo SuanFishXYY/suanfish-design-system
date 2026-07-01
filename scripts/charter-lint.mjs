@@ -173,7 +173,7 @@ const M_REF_COUNT = Number(manifest.reference_count);
   }
 }
 
-// A6 · package.json version == manifest version
+// A6 · package.json + SKILL.md version == manifest version
 {
   const pkgPath = join('package.json');
   if (exists(pkgPath)) {
@@ -181,6 +181,11 @@ const M_REF_COUNT = Number(manifest.reference_count);
     if (String(pkg.version) !== M_VERSION) {
       block('A6', `package.json version ${pkg.version} ≠ manifest version ${M_VERSION}`);
     }
+  }
+  // SKILL.md frontmatter version（entrypoint，与 manifest 必须同步）
+  const skillFm = frontmatter('SKILL.md');
+  if (skillFm && skillFm.version && String(skillFm.version) !== M_VERSION) {
+    block('A6', `SKILL.md frontmatter version ${skillFm.version} ≠ manifest version ${M_VERSION}（SKILL.md 是 skill 入口，版本必须同步）`);
   }
 }
 

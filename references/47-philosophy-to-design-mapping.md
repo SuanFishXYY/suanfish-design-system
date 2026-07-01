@@ -15,6 +15,8 @@ audited_by: ui-auditor
 
 ref 24 定义 D1-D7 矛盾。本节给每对矛盾"选 A 极 / 选 B 极 / 平衡"时的**具体 UI 决策**。
 
+> **不选倾向 → R18 退回**：本节每对矛盾都必须选一极并给对方留位。**两端都站、不选倾向** = [ref 24 §五 R18](24-philosophy-dialectics.md) 病因级 REJECT（dialectician 触发，返回 BRIEF 要求选倾向）。本节映射的是"选了之后怎么落 UI"；"不选"不进映射，直接 R18。
+
 ### D1 简洁 ⟷ 可发现
 
 | 倾向 | UI 决策 | 留位（给对方） |

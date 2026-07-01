@@ -10,6 +10,8 @@ audited_by: ui-auditor
 > *功能规范回答"做得对不对"，美学原则回答"做得有没有灵魂"。算鱼的设计艺术内核——感官完整性、情感张力、环境陪伴三律，加减辩证，音乐三档位。*
 >
 > 这些不是装饰层主张，是议会内置的美学辩证。R-Cross 规则集（ref 19 §哲学层）的视觉/听觉延伸。哲学锚见各 agent。
+>
+> **R-Cross 四律归属（v4.2.7 哲理审计 R4）**：R-Cross1-4 称"跨学科四律"为套装，但归属按律性拆分——**R-Cross1 跨学科联结律**（达芬奇·polymath-bridger）是结构/认知律，非美学范畴，定义在 [`agents/polymath-bridger.md`](../agents/polymath-bridger.md) + [ref 27](27-philosopher-bench.md)；**R-Cross2/3/4**（感官/张力/陪伴）是感官美学律，本文档 §二/三/四 收其完整版。R-Cross1 不在本文档是设计取舍（结构律 vs 美学律分治），非缺漏。四律执行均在议会 Step 5 讨论（见 [`agents/sage-council.md`](../agents/sage-council.md)），不由 quotation-verifier 执行。
 
 ## 一、加减辩证（视觉艺术双生子）
 

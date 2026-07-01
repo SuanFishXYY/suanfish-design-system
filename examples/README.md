@@ -16,6 +16,12 @@
 | 04 | [Wizard 多步表单（REJECT 触发演示）](04-wizard-reject/) | wizard-designer + dialectician | 🚫 否决机制 | ⭐⭐⭐ | ✅ |
 | 05 | [Streaming Chat](05-streaming-chat/) | conversation-director + stream-craftsman | 💬 AI-native | ⭐⭐⭐⭐⭐ | ✅ |
 
+## 🖼️ 视觉证据（可直接渲染）
+
+| 文件 | 内容 | 对应 ref |
+| --- | --- | --- |
+| [visual-evidence/index.html](visual-evidence/index.html) | 算鱼内核首个可直接浏览器打开的 HTML——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |
+
 > 03 / 04 / 05 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---

@@ -397,15 +397,17 @@ for (const f of listMd('references')) {
 }
 
 // ── E2 · 被审者审自己循环（对应 R5 · meta-auditor↔sage_congress 利益冲突）────
-// 检测"X 审 Y 且 Y 仲裁 X"成对模式 → 须同文件含避嫌机制词 → 否则 🟧。
-// 聚焦 ref 30（套娃止层主场）+ meta-auditor agent。
+// 检测特定 agent 对双向闭环(meta↔sage_congress)无避嫌词 → 🟥。
+// ⚠️ R11 曾试加"通用自审措辞"第二层(审/复核+自己/原放行)→误报率 4/4 全误报
+// (合法反例句"自己审自己等于没审"+哲学描述"每日自审审视自身"+避嫌声明本身被段落切割)，
+// 噪声远大于价值，撤回。通用层留待句法角色分析(非 grep 能胜任)。
 {
+  // ① 特定对：ref 30 + meta-auditor agent 的 meta↔sage_congress 双向闭环
   const targets = ['references/30-posthoc-governance-charter.md', 'agents/meta-auditor.md'];
   for (const tp of targets) {
     const p = join(tp);
     if (!exists(p)) continue;
     const t = readText(p);
-    // meta-auditor 审 sage_congress/议会 + sage_congress 仲裁 meta-auditor 双向
     const metaAuditsCouncil = /meta-auditor.*审.*议会|meta-auditor.*审议会|审.*审的过程/.test(t);
     const councilArbMeta = /sage_congress.*仲裁.*meta-auditor|议会.*仲裁.*meta|集体仲裁.*meta/.test(t);
     if (metaAuditsCouncil && councilArbMeta) {
@@ -415,6 +417,7 @@ for (const f of listMd('references')) {
       }
     }
   }
+  // ② 通用自审层（R11 试加后撤回）——见文件头 E2 注释说明，噪声>价值，留待句法分析。
 }
 
 // ── E3 · escape-hatch 无防滥用（对应 R7 · 降级 escape hatch 逃审）──────────────

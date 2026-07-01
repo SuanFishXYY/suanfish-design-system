@@ -499,6 +499,14 @@ classDiagram
 
 ---
 
+## 🏛 孪生项目 · sptler 真人议会
+
+> **算鱼有一个孪生兄弟: sptler（算鱼真人议会）** —— 同作者，本地兄弟项目（`X:/suanfish-draft-system/sptler`）。
+
+suanfish 的圣人议会用的是**思想家板凳**（黑格尔/莫奈/倪瓒），适合**设计辩证**。sptler 的议会用的是**真人专家班子**（邹蕴/王升/张鑫等 28 位），适合**专利/技术/架构决策**——且 sptler 已落地**圣人记忆系统**（价值驱动+分层+supersedeable+双画像），suanfish v4.3 圣人记忆（[ref 50](references/50-sage-memory-v4.3-draft.md)）借鉴其机制。两 skill 场景分治、记忆不互通（[R25 设计](references/49-lite-mode.md)）。
+
+> ⚠️ 本仓库内 `[sptler](../sptler)` 链接依赖本地兄弟项目存在；clone 本仓库后该路径不存在，请视为「sptler 孪生项目」的文字引用而非可点击链接。
+
 ## 🎤 孪生项目 · kpop idol 议会
 
 > **算鱼有一个孪生姐妹: [kpop-design-system](https://github.com/SuanFishXYY/kpop-design-system)**

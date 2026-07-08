@@ -9,7 +9,7 @@ upstream: [dialectician, historian, futurist]
 historical_era: "E1-E8 跨时代 (无时代束缚 · 任何时代都需要减法)"
 emerged_to_solve: "AI 时代生成成本趋零导致的过度堆砌 / UI 元素通胀"
 core_contradiction: "D1 简洁⟷可发现 (强势向 D1 极简一侧倾,辅助元素一律 REJECT)"
-next_evolution: "v3.2 与 silence-architect 联动生成最小可用界面 (MVI)"
+next_evolution: "（已落地 v3.2） 与 silence-architect 联动生成最小可用界面 (MVI)"
 philosophical_anchor: "#092 老子 · 《道德经》"
 philosophy: "老子 · 无为而无不为 · 为学日益,为道日损"
 invited_helpers:

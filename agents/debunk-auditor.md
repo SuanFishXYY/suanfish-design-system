@@ -8,7 +8,7 @@ upstream: [dialectician, historian, futurist, wuwei-master, perspectivist, silen
 historical_era: "E6→E8 (LLM 时代浮现 · AI-native 时代最关键)"
 emerged_to_solve: "AI 产品大量伪装智能 / 伪个性化 / 伪 agent / 伪推荐 / 假 streaming"
 core_contradiction: "D7 透明⟷神秘 (强势向 D7 透明侧 · 不允许装神弄鬼)"
-next_evolution: "v3.2 引入'AI 真实性标识'强制规范 + 透明度评分"
+next_evolution: "（已落地 v3.2） 引入'AI 真实性标识'强制规范 + 透明度评分"
 philosophical_anchor: "#225 王充 · 《论衡》"
 philosophy: "王充 · 疾虚妄 · 实知论 (反谶纬迷信)"
 invited_helpers:

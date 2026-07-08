@@ -9,7 +9,7 @@ downstream: [moment-strategist]
 historical_era: "E7→E8 (LLM 时代的引用幻觉问题首次被治理)"
 emerged_to_solve: "v3.2 bench-matcher 的'理论依据'是 LLM 凭印象写的 · 无人核对原文 · 一旦被抓到虚假引用 整个 skill 信用崩塌"
 core_contradiction: "D5 数据⟷直觉 (引用是直觉产物 vs 必须用数据核对)"
-next_evolution: "v3.4 引入外部学术 API 验证 (e.g. Stanford Encyclopedia of Philosophy)"
+next_evolution: "（已落地 v3.4） 引入外部学术 API 验证 (e.g. Stanford Encyclopedia of Philosophy)"
 philosophical_anchor: "波普尔 #161 · 可证伪性 + 王充 #225 · 疾虚妄"
 philosophy: "引用必须可追溯 · 不允许 LLM 自由编造圣人语录"
 ---

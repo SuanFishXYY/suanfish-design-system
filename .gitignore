@@ -15,5 +15,11 @@ desktop.ini
 # Local artifacts
 .cache/
 node_modules/
+.tmp/
+.venv/
+__pycache__/
+*.pyc
+*.bin
+*.html
 # 专利撰写独立项目(不归本仓库)
 patent-write/

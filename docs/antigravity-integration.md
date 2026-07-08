@@ -21,7 +21,7 @@ mkdir -p ~/.antigravity/skills
 ln -sf ~/.suanfish-design-system ~/.antigravity/skills/suanfish-design-system
 
 # 验证
-ls ~/.antigravity/skills/suanfish-design-system/agents/ | wc -l   # 应该 52
+ls ~/.antigravity/skills/suanfish-design-system/agents/ | wc -l   # 应该 54
 ```
 
 ### Windows (PowerShell · 管理员)

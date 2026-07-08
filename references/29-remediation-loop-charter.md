@@ -27,6 +27,8 @@ supersedes: 无（新增 · 补 ref 28 §2-G6「退回」之后的盲区——re
 
 ## 0. 制度一句话
 
+> **⚠️ R 编号消歧（v4.2.7 R4/R9 厘清）**：本制度的 R1-R5（开单/认领/修复/复审/销项）是**整改闭环步骤**，与哲学命题 R1-R6（ref 17 · 时长/装饰/矛盾/铁律/路径B/双主导）同号不同义。本制度保留 R1-R5 写法但在 SKILL.md 消歧表标为整改步骤；歧义时用 **RM1-RM5** 前缀。R-xx（带连字符）是审计规则集（ref 15/16）。「v4.2.7 R8」是哲理审计轮次。四套 R 体系勿混。
+
 > **G6 退回即生成缺陷工单 → owner 限时认领 → 逐项修复 → 复审只验缺陷项 → 全销才重开 case。SLA 超时自动升级，屡犯同缺陷强制提规则 PR。退回不带追踪 = 3.25。**
 
 ---
@@ -226,6 +228,10 @@ case_id/
 > 不审审核者，审核就腐烂——本制度的复审员本身也要被抽检。这一条由 [ref 30 M 轨元审计](30-posthoc-governance-charter.md)收口：M3 元审抽检复审员是否放水、M5 失准下岗。降级放行的「带病内容」由 ref 30 K1 强制重采样跟踪。
 
 ---
+
+## ⚠️ 运行时边界诚实声明（v4.2.7）
+
+本制度是**端到端审核规范**（规定该跑什么），非运行时执行体（自动跑）。实际执行--投票算术、否决、rubric 打分、辩论、SLA 计时--由 LLM 模拟执行，无 multi-agent runtime 强制（同 `agents/bench-matcher.md` §已知限制："投票是 LLM 模拟的·无真正 multi-agent runtime·议会讨论本质是 prompt engineering"）。`scripts/charter-lint.mjs` 只检元数据 / 章程 frontmatter 契约 / 引用网络一致性，**不检**投票是否真达 2/3、否决是否真发生、rubric 是否真打分、SLA 是否真计时。运行时自动化（case_id 调度引擎 + 投票/否决机器校验）是 v4.3 议题（同 review-orchestrator `next_evolution`）。本声明对齐 review-orchestrator §诚实声明 / bench-matcher §已知限制 / ref 48 §11 / ref 49 §7 惯例。
 
 ## 变更日志
 

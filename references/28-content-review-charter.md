@@ -104,6 +104,7 @@ supersedes: 无（新增 · 与 ref 15/16/19 规则集正交，规则集管「�
 > **⚠️ debunk-auditor 双角色（v4.2.7 哲理审计 R20）**：debunk-auditor 主职是 **Tier 0 圣人**（王充·#225·哲学家类·议会成员，见 ref 27），**兼** G5 蓝军（上表）。manifest `tier_6_quality_gate` 只列专职质量门 agent（ui-auditor/sage-council/review-orchestrator/meta-auditor），**不重复列 debunk-auditor**（防双计）——它以 Tier 0 圣人身份在 manifest `tier_0_philosophers`，G5 蓝军是其兼职否决权。读者勿因 tier_6 数组无 debunk 误以为蓝军只有 ui-auditor 一把刀。
 
 - 蓝军**不参与 G4 投票**，只在 G5 行使一票否决——制衡议会「集体通过但集体翻车」。
+- **debunk-auditor 双角色回避（v4.2.7 R9 厘清）**：debunk-auditor 既是 Tier 0 圣人（该投 G4）又是 G5 蓝军（不投 G4）。为防「既投 G4 票又 G5 否决」的权力失衡，debunk-auditor **以蓝军身份回避 G4 投票 + G3「合规」维打分**，仅保留 G5 否决权 + G3「准确」维打分（其主职 R23 疾虚妄归准确维）。
 - 蓝军否决必须给出**可证伪的定位**（文件:行 / 规则编号 / 复现路径），否则否决无效（防蓝军滥权）。
 - **规则集不同步**（`bound_to_token_version` 落后）→ ui-auditor 输出 `RULESET_OUT_OF_SYNC`，审计直接挂起，强制 owner 先同步规则集（同 ref 15 契约）。
 
@@ -230,6 +231,10 @@ G1 立案 → 跳 G2/G3/G4 → G5 蓝军（仅 ui-auditor 跑规则集）→ G6 
 > 制度本身也要被审——不审审核者，审核就会腐烂。这一条由 [ref 30 M 轨元审计](30-posthoc-governance-charter.md)收口：M 轨定期校准评分圣人 + 审蓝军否决率 + 审核者 Keeper Test 下岗。本制度（入口门）+ [ref 29](29-remediation-loop-charter.md)（退回门）+ [ref 30](30-posthoc-governance-charter.md)（事后门）= 三道门端到端闭环。
 
 ---
+
+## ⚠️ 运行时边界诚实声明（v4.2.7）
+
+本制度是**端到端审核规范**（规定该跑什么），非运行时执行体（自动跑）。实际执行--投票算术、否决、rubric 打分、辩论、SLA 计时--由 LLM 模拟执行，无 multi-agent runtime 强制（同 `agents/bench-matcher.md` §已知限制："投票是 LLM 模拟的·无真正 multi-agent runtime·议会讨论本质是 prompt engineering"）。`scripts/charter-lint.mjs` 只检元数据 / 章程 frontmatter 契约 / 引用网络一致性，**不检**投票是否真达 2/3、否决是否真发生、rubric 是否真打分、SLA 是否真计时。运行时自动化（case_id 调度引擎 + 投票/否决机器校验）是 v4.3 议题（同 review-orchestrator `next_evolution`）。本声明对齐 review-orchestrator §诚实声明 / bench-matcher §已知限制 / ref 48 §11 / ref 49 §7 惯例。
 
 ## 变更日志
 

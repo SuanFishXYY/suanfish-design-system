@@ -142,6 +142,7 @@
   ],
   "references_dir": "references",
   "reference_count": 50,
+  "draft_reference_count": 1,
   "appendix_count": 4,
   "v3_0_changes": {
     "philosophy_three_layer": "Layer 1 价值 (17) + Layer 2 辩证 (24) + Layer 3 发展规律 (25) + Layer 0.5 历史定位 (26)",
@@ -208,7 +209,7 @@
     "agent_count_change": "44 → 52 (新增 8 位艺术家/音乐家)"
   },
   "v4_2_x_additions": {
-    "weighting_444": "议会权重定为 4:4:4 三类均权 · Tier 0 = 2 票 + task_kind 命中 +0.5 (cap 2.5) · 助手 = 1 票 · ≥ 2/3 加权通过 · 无单 agent 一票否决 (P1-6)",
+    "weighting_444": "议会权重定为 4:4:4 三类均类（席位等额·非票权等值）· Tier 0 = 2 票 + task_kind 命中 +0.5 (cap 2.5) · 助手 = 1 票 · ≥ 2/3 加权通过 · 无单 agent 一票否决 (P1-6)",
     "four_philosophers_demoted": "原 8 哲学家中 4 位 (historian 福柯 / futurist 怀特海 / wuwei-master 老子 / perspectivist 庄子) 降级 Tier 1.5 · 仍可被 bench-matcher 邀请, 不再默认入议会",
     "twelve_sage_congress": "固定 Tier 0 = 12 位 (4:4:4) · 哲学家 dialectician/silence-architect/holism-strategist/debunk-auditor · 艺术家 polymath-bridger/form-liberator/light-impressionist/void-painter · 音乐家 counterpoint-architect/tension-composer/silence-composer/ambient-architect",
     "task_kind_routing": "bench-matcher 六步协议新增 user-declared task_kind 路由 · 匹配类别 +0.5 分 · 每类至少召 1 位保证三类视角不缺席",
@@ -224,6 +225,6 @@
     "entry_link_fixed": "moment-strategist 派单触发 review-orchestrator G1 立案 · ref 00 协作协议标准流程接入三道门 · 修入口断链",
     "r_numbering_clarified": "R 编号两套体系术语表 · R1-R25(哲学命题·无连字符·全局) vs R-01(审计规则·带连字符·每份规则集独立)",
     "demo_case": "examples/02-three-gates-modal · 完整三道门 demo(故意埋 R-05 走 G1-G6退回+R1-R5整改+K1-K4事后)",
-    "reference_count_change": "24 → 30 (ref 28-30 · 含历史遗留 24→27 一并对齐)"
+    "reference_count_change": "24 → 50 (ref 28-30 + ref 31-50 v4.0-v4.2 历史增量一并对齐)"
   }
 }

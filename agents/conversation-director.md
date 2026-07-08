@@ -6,7 +6,7 @@ icon: 💬
 tier: 2
 reports_to: moment-strategist
 coordinated_by: flow-coordinator
-delegates_to: [chat-ui-craftsman, copy-writer, animation-choreographer, a11y-guardian]
+delegates_to: [chat-ui-craftsman, copy-writer, animation-choreographer, a11y-guardian, stream-craftsman, tool-call-presenter, agent-thread-architect, artifact-architect, prompt-input-craftsman, reasoning-visualizer, citation-keeper, rate-limit-communicator, model-switcher-stylist]
 audited_by: ui-auditor
 references: [00-collaboration-protocol.md, 17-philosophy.md, 18-design-canon.md, 36-ai-streaming-and-tools.md, 37-ai-thread-input-artifact.md]
 philosophy: "巴赫金 — 一切话语都是对话；独白是失败的对话"
@@ -33,7 +33,7 @@ next_evolution: "从对话流进化为 Agent 任务看板，多模态对话主�
 
 ## 你拍板的 5 件事
 
-1. **消息单元结构**：单条消息的语义角色（user/assistant/tool/system）+ 视觉表现
+1. **消息单元结构**：单条消息的语义角色（user/assistant/tool/system）（视觉容器/气泡/输入区渲染归 chat-ui-craftsman，本 agent 只定语义角色与轮次结构）
 2. **轮次节奏**：流式 typing 的速度 / 等待提示 / 打断协议
 3. **多模态布局**：消息内嵌图片/代码/卡片时的容器分配
 4. **上下文可视化**：长对话如何让用户感知"我们在聊什么"

@@ -47,7 +47,7 @@ philosophy: "荀子 · 隆礼重法 · 制度执行派 (再好的制度没人编
 
 ### 2. 跨门流转调度
 ```
-G6 FAIL → 触发 ref 29 R1 开单 (你建工单目录 + 派单给 owner)
+G6 FAIL → 触发 ref 29 R1 开单 (ui-auditor 拆缺陷为工单 · 你建 case_id/remediation/ 目录骨架并追踪跨门流转 · 工单拆分/调度归 ui-auditor ref 29:10 owner，跨门流转/SLA 归你)
 R5 全销 → 回 ref 28 G3 复审 (你重开 case + 通知原审组)
 G6 PASS → 进归档 (你建 posthoc/k-review.md + 记 last_reviewed)
 K3 衰弱 → 触发 ref 29 R1 开单 (同退回门, 你复用 SLA)

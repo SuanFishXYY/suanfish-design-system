@@ -19,7 +19,7 @@
 
 **99% of AI assistants always say "Sure!" — this one asks "Should we even do this?" first.**
 
-25 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
+19 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
 
 **New in v4.2**: Tier 0 is rebalanced from v4.1's philosopher-heavy 8:2:2 into a strict **4:4:4 equal-voice council** (4 philosophers + 4 artists + 4 musicians). User-declared task_kind routes first (LLM inference only as fallback), category matches add +0.5, reductive [-] and additive [+] voices debate inside the council, no single sage gets veto power, and R-Cross1-4 anchors art/music rules.
 
@@ -35,7 +35,7 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
    Pick a lean and define escape hatches.
 ```
 
-[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.2](#why-v42) · [Congress Protocol](#five-step-congress-protocol-v42--444) · [5 TC Demo](docs/v4.2-congress-simulation.md)
+[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.2](#why-v42) · [Congress Protocol](#six-step-congress-protocol-v42--444) · [5 TC Demo](docs/v4.2-congress-simulation.md)
 
 </div>
 
@@ -43,7 +43,7 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
 
 ## ⚡ One-line Install
 
-> Auto-detects which CLIs you have (`.copilot` / `.claude` / `.agents` / `.codex` / `.gemini`), auto-symlinks, supports `update` / `uninstall`.
+> Auto-detects which CLIs you have (`.copilot` / `.claude` / `.agents` / `.codex` / `.gemini` / `.antigravity`), auto-symlinks, supports `update` / `uninstall`.
 
 ### 🚀 Method 0 · One liner (recommended · cross-platform)
 
@@ -140,24 +140,24 @@ v4.1 then expanded beyond philosophers but stayed philosopher-heavy (**8:2:2**).
 
 ---
 
-## Five-Step Congress Protocol (v4.2 · 4:4:4)
+## Six-Step Congress Protocol (v4.2 · 4:4:4)
 
 ```
 BRIEF
   ↓
-🏛 bench-matcher · self-contained congress (5 unified steps)
-  ① Route+Score — user-declared task_kind first; LLM inference only as fallback
+🏛 bench-matcher · self-contained congress (6 unified steps)
+  ① Route     — user-declared task_kind first; LLM inference only as fallback
                   task_kind ∈ {visual, motion, structural, philosophical, mixed}
                   visual → +0.5 to artists · motion → +0.5 to musicians
                   structural/philosophical → +0.5 to philosophers (cap 2.5 voting weight)
-                  score all 12 Tier 0 sages (strict 4:4:4) on 5 dims (40/20/15/15/10)
-  ② Summon    — those scoring ≥7.5 enter (k sages, typically 1-4 of 12)
+  ② Score     — score all 12 Tier 0 sages (strict 4:4:4) on 5 dims (40/20/15/15/10)
+  ③ Summon    — those scoring ≥7.5 enter (k sages, typically 1-4 of 12)
                   fallback: top-1 if none clear threshold
-  ③ Invite    — entered sages recursively invite helpers from cross-category bench
+  ④ Invite    — entered sages recursively invite helpers from cross-category bench
                   (philosophers #NNN / artists #ANNN / musicians #MNNN)
                   per-sage quota 3 · total cap 15
-  ④ Discuss   — all state positions → consensus merge / mediate / surface blind spots
-  ⑤ Vote      — Tier 0 = 2 votes (+0.5 category match, cap 2.5) · helpers = 1 vote
+  ⑤ Discuss   — all state positions → consensus merge / mediate / surface blind spots
+  ⑥ Vote      — Tier 0 = 2 votes (+0.5 category match, cap 2.5) · helpers = 1 vote
                   ABSTAIN reduces denominator · ≥ ⌈total × 2/3⌉ to pass
                   no single sage gets veto power · revise & re-vote up to 3 rounds
                   3-round failure → R24 Congress-Deadlock → escalate to user
@@ -295,7 +295,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 | Family | Range | Theme |
 | --- | --- | --- |
 | Heuristic | R1-R6 | Forced duration · ritual-on-high-freq · need-contradiction · iron-law-violation · path-B-unmet · dual-led |
-| Value-tension | R7-R12 | 6 value-tension rules |
+| Value | R7-R12 | (reserved gap · not defined · see ref 17 §三) |
 | Development laws | R13-R17 | Complexity · abstraction · control-handoff · feedback-loop · modal-fusion |
 | Dialectical | R18 | Contradiction-without-lean |
 | Anti-AI-bullshit | R19-R23 | Philosophy-as-Lint family |

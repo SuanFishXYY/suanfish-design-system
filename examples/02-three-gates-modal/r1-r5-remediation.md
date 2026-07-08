@@ -1,4 +1,5 @@
 # 🔧 R1-R5 退回门整改闭环 — case-2026-0622-001
+> ⚠️ 本 demo 演示制度规定的流转·非运行时执行证据（review-orchestrator v4.2.7 `tools:[view,grep,glob]` 无 write·运行时自动化待 v4.3·详见 case-verdict.md 收官声明与 review-orchestrator §v4.2.7 运行时边界诚实声明）
 
 **编排**：review-orchestrator
 **SLA**：S 级 P0 = 24h / P1 = 72h（ref 29 §3）

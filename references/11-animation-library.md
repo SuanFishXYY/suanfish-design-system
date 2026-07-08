@@ -59,7 +59,7 @@ audited_by: ui-auditor
 ## 5. 仪式 keyframes（onboarding 专属）
 
 仪式模式动画 keyframes 进 `references/animation-keyframes.css`，统一 `onb*` / `onboarding*` 前缀（稳态模式禁引用，ref 15 R-01）。含：
-- `onbEureka*` / `onbWelcome*`：Eureka 欢迎 + 入场（ref 02）
+- `onbEureka*`：Eureka 欢迎 + 入场（ref 02）
 - `onboardingPolaroid*` / `onboardingDot` / `onboardingBarFill`：拍立得/进度
 - `onboardingConicSweep` / `onboardingScanRingExpand` / `onboardingBoxBlink`：扫描视觉
 - `onboardingIrisPulse` / `onboardingOrbitA/B` / `onboardingToggleSwap`：虹膜/轨道/切换

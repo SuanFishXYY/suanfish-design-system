@@ -1,7 +1,7 @@
 ---
 ref: 46
 title: 设计美学与艺术原则 · 感官/张力/陪伴三律 + 加减辩证
-owner: light-impressionist (光色) · void-painter (留白) · tension-composer (张力) · ambient-architect (陪伴) · silence-composer (静默)
+owner: light-impressionist (光色) · void-painter (留白) · tension-composer (张力) · ambient-architect (陪伴) · silence-composer (静默) · counterpoint-architect (对位)
 audited_by: ui-auditor
 ---
 

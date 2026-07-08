@@ -21,7 +21,7 @@
 
 **99% 的 AI 永远说"好的"。这个 AI 会先反问你: 这事真该做吗?**
 
-它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
+它内置 19 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
 
 **v4.2 升级** (P0/P1/P2 蓝军批判全治): 圣人议会从 v4.1 的"8 哲+2 艺+2 音"重平衡为 v4.2 严格"**4:4:4 均权三大类**" — 议会内置 [减法派 ⟷ 加法派] 民主辩证, 单一圣人禁一票否决, task_kind 改 user-declared 优先 (防 LLM 自利路由), 艺术家/音乐家新增 R-Cross1-4 规则锚。简单事 2 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
 
@@ -90,7 +90,7 @@ ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system     # 
 ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system      # Claude Code
 ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system      # 通用
 ln -sf ~/.suanfish-design-system ~/.antigravity/skills/suanfish-design-system # Antigravity (Google)
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 52
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 54
 ```
 
 Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
@@ -206,7 +206,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 
 | Layer | 回答什么 | R 规则 |
 | --- | --- | --- |
-| **价值** [📖](references/17-philosophy.md) | 该选哪边? | R1-R12 |
+| **价值** [📖](references/17-philosophy.md) | 该选哪边? | R1-R6 |
 | **辩证** [📖](references/24-philosophy-dialectics.md) | 为什么有两边? | R18 |
 | **发展规律** [📖](references/25-philosophy-laws.md) | 矛盾如何随时间漂移? | R13-R17 |
 | **历史定位** [📖](references/26-historical-positioning.md) | 这个时代该怎么做? | — |
@@ -478,7 +478,7 @@ classDiagram
           建议改成 [替代方案]。"   ← P8 同事
 ```
 
-25 条硬规则 (R1-R25), 命中即拒, 附数据化替代方案。
+19 条硬规则 (R1-R25 · R7-R12 预留空洞), 命中即拒, 附数据化替代方案。
 
 ### 2. v4.0 圣人议会民主
 
@@ -555,6 +555,8 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 
 ## 🏛 54 agent · 8 tier · 7 path (一图概览)
 
+> ⚠️ 下图为 v3.x 历史架构示意；当前 54 agent 完整组织架构见 SKILL.md §工作室组织架构
+
 ```
 ┌────────────────────────────────────────────────────────────────────┐
 │ Tier 0   · 议会 ×8       🪙 dialectician · 📜 historian · 🔭 futurist │
@@ -562,7 +564,7 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 │                          🌫 silence-architect · 🏺 holism-strategist │
 │                          🔬 debunk-auditor                          │
 ├────────────────────────────────────────────────────────────────────┤
-│ Tier 1   · 调度          🧭 moment-strategist (R1-R23 REJECT)       │
+│ Tier 1   · 调度          🧭 moment-strategist (R1-R25 REJECT)       │
 │ Tier 1.5 · 协调          🔀 flow-coordinator                        │
 │ Tier 1.6 · 议会调度       🏛 bench-matcher (6 步议会自包含)          │
 │ Tier 1.7 · 引用核验       🔍 quotation-verifier (R25)                │

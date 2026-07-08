@@ -15,9 +15,9 @@ tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal
 
 > 🎯 **快速召唤**: 在 Copilot / Claude / Codex / Gemini / Antigravity 任一 CLI 输入 `/suanfish` 或 `/算鱼` 即可强制激活本 skill 进入议会模式。也可直接说 "用算鱼设计 XXX" / "召集议会" 等自然语言。
 
-> *一家工作室，五十二位匠人。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。*
+> *一家工作室，五十四位匠人。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。*
 >
-> **v4.2 议会升维**：在 40 位执行匠人之上设 Tier 0 三大类圣人议会（🏛 哲学家 4 · 🎨 艺术家 4 · 🎵 音乐家 4，严格 4:4:4 均权）。每一个 BRIEF 入场前先经议会按需召唤、加法派⟷减法派辩证、陪审团 ≥2/3 表决，再交派单。
+> **v4.2 议会升维**：在 42 位执行匠人之上设 Tier 0 三大类圣人议会（🏛 哲学家 4 · 🎨 艺术家 4 · 🎵 音乐家 4，严格 4:4:4 均类 · 三类席位等额 · 加权票制见 bench-matcher）。每一个 BRIEF 入场前先经议会按需召唤、加法派⟷减法派辩证、陪审团 ≥2/3 表决，再交派单。
 
 ## 🌗 v3.0 三层哲学体系（必读）
 
@@ -29,7 +29,7 @@ tags: [design-system, multi-agent, philosophy, dialectics, onboarding, ui, modal
 | **Layer 0.5 · 历史定位** | [references/26-historical-positioning.md](references/26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
 | **附录 · 思想家板凳** ✨v4.2 | [references/27-philosopher-bench.md](references/27-philosopher-bench.md) | 420 位中外思想家候选池（335 哲学家 + 50 艺术家 + 35 音乐家），供圣人议会跨三大类援引 |
 
-**任何 BRIEF 入场顺序（v4.2 三大类圣人议会 · 4:4:4 均权民主）**：
+**任何 BRIEF 入场顺序（v4.2 三大类圣人议会 · 4:4:4 均类民主）**：
 ```
 BRIEF
   ↓
@@ -56,7 +56,7 @@ BRIEF
   └─ PASS → 事后门 [ref 30](references/30-posthoc-governance-charter.md) · 双轨 K轨(查内容衰弱/下架) + M轨(查审核者腐烂/下岗) · 交叉喂食
 
   🎼 制度元数据 lint（v4.2.7）：`node scripts/charter-lint.mjs` —— 五类检测机器可检，🟥漂移非零退出。**A** 元数据一致性（agent数/规则数/版本号）· **B** 章程 frontmatter 契约 · **C** agent refs 悬空 · **D** 引用网络（D1 ref N / D2 带前缀编号 Canon-D·P-XX·R-Cross）· **E** 语义逻辑债（E1 R编号空洞 / E2 被审者审自己 / E3 escape-hatch无防滥用 / E4 R-Cross编号空洞 / E5 P-XX前缀跨agent冲突）。改完制度必跑（见 CONTRIBUTING.md 自检段）。
-- **v4.2 把 v4.1 "8:2:2 哲学家压倒" 重平衡为三大类 4:4:4 均权** — 因事召唤 · 加减辩证 · 表决决议 · 禁一票否决
+- **v4.2 把 v4.1 "8:2:2 哲学家压倒" 重平衡为三大类 4:4:4 均类**（三类席位等额 · 加权票制） — 因事召唤 · 加减辩证 · 表决决议 · 议会内禁单一圣人一票否决（P1-6）· G5 蓝军否决权另见 ref 28
 - **v4.2.6 全动态常委**：常委席位不再固定 12 人, 而是每次任务从整张 420 板凳按分动态选拔 (三大类各取 top-N)。固定 12 位降为默认种子 / 人格稳定锚 / 平局兜底；历史降级四人 (福柯 / 怀特海 / 老子 / 庄子) 并入普通板凳, 与全员同台竞选常委, 不再有"自动入场"或"被排除"的特殊身份
 - **🔴 全板凳可达性红线**：420 板凳上每一位思想家都有入场路径 = (a) 被任一在场常委按相关性邀请 (全板凳开放, `invited_helpers` 只是优先建议, 非白名单) (b) 用户点名直召 (c) **自身得分进入三大类 top-N 即当选本次常委**。配合递归邀请, 无人被永久排除。
 - **🔴 厚仙人门槛**：仅 ref-27 已落地档案卡 (有 立场/打法 字段) 的"厚仙人"可当 2 票动态常委并发三段式；未增厚的薄仙人仍可经邀请作 1 票助手。v4.2.6 起 420 位全部已增厚为厚仙人。
@@ -193,6 +193,7 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 | 「多轮对话的**分叉 / 重提 / 检查点回溯**（对话图模型）」 | 🌳 agent-thread-architect |
 | 「**故障/出错**后的恢复路径与文案」 | 🩹 error-recovery-designer |
 | 「**配额/限制/降级/排队**的传达（资源耗尽，非故障）」 | ⏳ rate-limit-communicator |
+| 「**品牌色用量/误用合规**（≤30% 覆盖 · 非品牌强调位误用 · 第三方品牌大小）」 | 🛡️ brand-keeper |
 
 ### 🏛 默认种子席一览（v4.2.6 · 三大类 4:4:4 骨架 · 12 位=默认种子/平局兜底 · 常委每次任务动态选拔）
 
@@ -219,9 +220,9 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 | 🪑 普通板凳 | [`wuwei-master`](agents/wuwei-master.md) | #092 老子 | 与全员同台竞选常委 | R19 |
 | 🪑 普通板凳 | [`perspectivist`](agents/perspectivist.md) | #093 庄子 | 与全员同台竞选常委 | R20 |
 
-> ⭐ = v4.2 用户点名 (被点名即入常委保底席, P0-3)。[+]加法派 / [-]减法派 / [~]中间态。当选常委须含减加两端 (P0-2), 任一派别不得一票否决 (P1-6)。这 4 位曾被称"降级 Tier 1.5", v4.2.6 起与 416 位同侪平等竞选 —— 它们仍保留 agent 文件作人格锚点。
+> ⭐ = v4.2 用户点名 (被点名即入常委保底席, P0-3)。[+]加法派 / [-]减法派 / [~]中间态。当选常委须含减加两端 (P0-2), 任一派别不得一票否决 (P1-6)。这 4 位曾被称"降级 Tier 1.5", v4.2.6 起与全员 420 位同台竞选 —— 它们仍保留 agent 文件作人格锚点。
 
-### 执行层 agent 一览（Tier 1–6 · 共 36 位）
+### 执行层 agent 一览（Tier 1–6 · 不含种子席 · 共 36 位）
 
 | Tier | # | Agent | 主动 / 被动 | 职责 |
 | --- | --- | --- | --- | --- |
@@ -376,6 +377,8 @@ Path G 是**增强层**——它不独立存在，永远叠加在 C / B / F 之�
 > | `R1` ~ `R25`（无连字符） | **哲学命题 REJECT 规则** | 全局编号 · 19 条已定义（R1-R6 ∪ R13-R25 · R7-R12 为编号预留空洞·未启用，见 ref 17 §三 R 全景） · moment-strategist/议会层拒绝做某需求的哲学依据 | ref 17 §REJECT + 扩展 |
 > | `R-01` ~ `R-06`（带连字符） | **审计规则集** | 每份规则集独立从 01 编 · 🟥严重级 · ui-auditor grep 检测 | ref 15（稳态）/ ref 16（仪式） |
 > | `W-01` / `H-01` | 审计规则集 | 🟧警告级 / 🟨提示级 · 同 ref 15/16 | ref 15/16 |
+> | `RM1` ~ `RM5` | **整改闭环步骤**（非 REJECT 规则） | 退回门五步·开单/认领/修复/复审/销项 · 与哲学 R 同号故独立前缀 | ref 29 §2 |
+> | `v4.2.7 R<n>` | **哲理审计轮次** | 制度自检轮次编号 · 与哲学命题 R 同号碰撞故强制带版本前缀（如 v4.2.7 R8）| CHANGELOG / ref 17 §三注 |
 >
 > 下表 `R1-R6` 是**哲学命题**（无连字符）；ref 15/16 里的 `R-01` 是**审计规则**（带连字符）。两套不冲突——哲学命题管「要不要做」，审计规则管「做得对不对」。
 
@@ -429,7 +432,7 @@ agent 输出 SPEC 时建议显式标注哲学推理路径：
 
 ---
 
-## 📚 参考资料库（共 24 份编号文档 + 案例库 + 示例库）
+## 📚 参考资料库（共 47 份编号文档 · 含 ref 50 v4.3 草案 + 案例库 + 示例库）
 
 | # | 文件 | 主要使用者 |
 | --- | --- | --- |
@@ -461,7 +464,27 @@ agent 输出 SPEC 时建议显式标注哲学推理路径：
 | **27** | [philosopher-bench.md](references/27-philosopher-bench.md) | 🏛 bench-matcher（**v4.2.6 420 厚仙人板凳(全员档案卡) + 12 默认种子席 + 动态常委 + R-Cross1-4**） |
 | **28** | [content-review-charter.md](references/28-content-review-charter.md) | 🔍 全员（**v4.2.7 入口门 · 议会六步放行 G1-G6 · 6维rubric + 2/3投票 + 蓝军否决**） |
 | **29** | [remediation-loop-charter.md](references/29-remediation-loop-charter.md) | 🔍 全员（**v4.2.7 退回门 · 整改闭环 R1-R5 + SLA + 超时升级 + 屡犯提规则PR**） |
-| **30** | [posthoc-governance-charter.md](references/30-posthoc-governance-charter.md) | 🔍 meta-auditor（**v4.2.7 事后门 · K轨归档复审 + M轨元审计 + 双轨交叉喂食**） |
+| **30** | [posthoc-governance-charter.md](references/30-posthoc-governance-charter.md) | 🔍 meta-auditor · ui-auditor(K轨) · sage_congress（**v4.2.7 事后门 · K轨归档复审 + M轨元审计 + 双轨交叉喂食**） |
+| **31** | [empty-and-error-states.md](references/31-empty-and-error-states.md) | 🪟 🩹 共享 |
+| **32** | [notification-system.md](references/32-notification-system.md) | 🔔 |
+| **33** | [responsive-breakpoints.md](references/33-responsive-breakpoints.md) | 📱 |
+| **34** | [accessibility.md](references/34-accessibility.md) | ♿ |
+| **35** | [copy-system.md](references/35-copy-system.md) | 📝 |
+| **36** | [ai-streaming-and-tools.md](references/36-ai-streaming-and-tools.md) | 🌊 🛠️ Path G |
+| **37** | [ai-thread-input-artifact.md](references/37-ai-thread-input-artifact.md) | 🌳 ⌨️ 🎨 Path G |
+| **38** | [tables.md](references/38-tables.md) | 📋 |
+| **39** | [reasoning-visualization.md](references/39-reasoning-visualization.md) | 🧠 Path G |
+| **40** | [rate-limit-and-model-switch.md](references/40-rate-limit-and-model-switch.md) | ⏳ 🔀 Path G |
+| **41** | [citation-and-sources.md](references/41-citation-and-sources.md) | 📑 Path G |
+| **42** | [brand-system.md](references/42-brand-system.md) | 🛡️ |
+| **43** | [i18n.md](references/43-i18n.md) | 🌍 |
+| **44** | [common-components.md](references/44-common-components.md) | 共享 |
+| **45** | [basic-controls.md](references/45-basic-controls.md) | 共享 |
+| **46** | [design-aesthetics.md](references/46-design-aesthetics.md) | 🎨 全员（**v4.2 美学层**） |
+| **47** | [philosophy-to-design-mapping.md](references/47-philosophy-to-design-mapping.md) | 全员 |
+| **48** | [council-deliberation.md](references/48-council-deliberation.md) | 🏛 bench-matcher（**v4.2 议会讨论协议**） |
+| **49** | [lite-mode.md](references/49-lite-mode.md) | 全员（**v4.2.7 Lite 四轨**） |
+| **50** | [sage-memory-v4.3-draft.md](references/50-sage-memory-v4.3-draft.md) | 📌 **v4.3 草案 · 非稳定 · 不计入运行时** |
 
 附录资产 4 份：`animation-keyframes.css`、`component-patterns.md`、`interaction-patterns.md`、`steps-schema.md`
 
@@ -475,4 +498,4 @@ React 19 · TypeScript 5.8 · Vite 6 · Tailwind 3.4.19 · Heroicons · 无路�
 
 ---
 
-*一家工作室。一种语言。两把嗓子。三大类圣人议会。五十二位匠人。八个 tier。零越界。*
+*一家工作室。一种语言。两把嗓子。三大类圣人议会。五十四位匠人。八个 tier。零越界。*

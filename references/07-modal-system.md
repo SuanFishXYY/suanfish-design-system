@@ -1,6 +1,6 @@
 ---
 ref: 07
-title: 模态系统 · 9 尺寸 + 4 变体 + Portal
+title: 模态系统 · 9 尺寸 + 6 变体 + Portal
 owner: modal-craftsman (模态构建) · responsive-strategist (响应式)
 audited_by: ui-auditor
 ---

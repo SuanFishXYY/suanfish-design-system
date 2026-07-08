@@ -15,7 +15,7 @@ core_contradiction: "D4 引导 ⟷ 自由（倾向强引导：必须出 BRIEF �
 next_evolution: "Tier 0 接管 → 路由层薄化"
 ---
 
-## 🌗 v3.0 · Tier 0 上游协议（必读）
+## 🌗 v3.0 · Tier 0 上游协议（⚠️ v3.0 历史协议·已被 v4.2 bench-matcher 六步议会取代·见 ref 48·保留作历史参考）
 
 从 v3.0 起，**任何 BRIEF 进入本 agent 之前，先过 Tier 0 三件套**；v3.1 在 Tier 0 后半段加入中国哲学五位：
 

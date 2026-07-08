@@ -239,7 +239,7 @@ council_report:
 sage_council_report:
   artifact_id: "..."
   artifact_type: file | screenshot | code | link
-  sage_count: 8
+  sage_count: 12
   observations:
     - sage_id: dialectician
       sage_name_cn: 黑格尔
@@ -264,7 +264,7 @@ sage_council_report:
 >
 > AI 时代单一审稿员 (单 LLM judge) 容易被自己的偏见绑架。
 > 圣人议会的本质是 **认知多样性 (cognitive diversity)** —
-> 8 个不同立场的 agent 各看一片, 拼起来才看见全貌。
+> 12 个不同立场的 agent 各看一片, 拼起来才看见全貌。
 >
 > 这就是 sage-council 的使命: **不求合一, 但求穷尽。**
 

@@ -137,7 +137,7 @@ audited_by: ui-auditor
 | --- | --- |
 | 左抽屉 | IconSidebar 移动态（ref 33） |
 | 右抽屉 | 详情/设置面板 |
-| 底抽屉 | 移动端 artifact（ref 37 §二） |
+| 底抽屉 | 移动端 artifact（ref 37 §三） |
 
 铁律：遮罩点击关闭；Esc 关闭（ref 34）；`transition-transform` 滑入不硬切；焦点陷阱（a11y）。
 

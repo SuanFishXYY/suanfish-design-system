@@ -473,7 +473,7 @@ ui-auditor 加载本规则集后，REPORT 结构升级：
 
 ## 三·补 · v2.5 新增 9 agent · Path G AI-native 专项检查
 
-> *9 位新 agent，对应 27 条新 P-XX 规则。审计时按 agent 触发。*
+> *9 位新 agent，对应 28 条新 P-XX 规则。审计时按 agent 触发。*
 
 ### `stream-craftsman` (赫拉克利特 · 万物流变)
 

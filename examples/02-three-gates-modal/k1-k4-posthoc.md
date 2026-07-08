@@ -1,4 +1,5 @@
 # 🛡️ K1-K4 事后门归档复审 — case-2026-0622-001
+> ⚠️ 本 demo 演示制度规定的流转·非运行时执行证据（review-orchestrator v4.2.7 `tools:[view,grep,glob]` 无 write·运行时自动化待 v4.3·详见 case-verdict.md 收官声明与 review-orchestrator §v4.2.7 运行时边界诚实声明）
 
 **执行**：ui-auditor（K 轨）+ meta-auditor（M 轨观察）
 **触发**：归档后 3 个月例行月度采样（中危层 10%）+ 演示衰弱分支

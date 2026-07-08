@@ -99,7 +99,7 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 ```
         通过决议（议会投票形成结论）   ← suanfish 适配：议会 Step6 通过/Lite Formal 通过
               ×
-        被引用次数（同类矛盾后续被引用） ← suanfish 适配：后续议会同 D 矛盾引用此条
+        (被引用次数 + 1)（同类矛盾后续被引用·+1 保「通过但零引用」=低价值非零·对齐 §2.2 schema） ← suanfish 适配：后续议会同 D 矛盾引用此条
               =
         记忆价值分 value_score
 

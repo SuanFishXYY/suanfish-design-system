@@ -34,6 +34,7 @@ audited_by: ui-auditor
 
 **字段约定**:
 - **时代** E1-E8 (见 ref-26): E1 前现代 / E2 Web1.0 / E3 Web2.0+Mobile / E4 Flat+Material / E5 Glass+Neu / E6 LLM-PreNative / E7 AI-native / E8 Spatial.
+  > **E1 消歧（v4.2.7）**: ref27 的 E1「前现代」= 思想家历史时代（古典~近代哲学家），≠ ref26 的 E1「Pre-Web 1980-1995」（技术时代）。两套 E 命名空间同号不同义，ref27 标 E1 的哲学家卡不属 ref26 的 CLI/Terminal 时代。
 - **主矛盾** D1-D7 (见 ref-24 §三) + 倾向端: D1 简洁⟷可发现 · D2 自动化⟷掌控 · D3 个性化⟷一致性 · D4 引导⟷自由 · D5 数据⟷直觉 · D6 即时⟷深思 · D7 透明⟷神秘.
   > **视角说明**: 卡片的"主矛盾"标注该思想家**历史哲学主张**的核心矛盾; 对应 agent frontmatter 的 `core_contradiction` 标注该 agent 在**设计系统中代表**的矛盾。两者可能不同视角 (如凯奇哲学上 D1 减法/沉默, 但 silence-composer agent 在设计系统管"是否打扰"= D2)。这不是 bug, 是历史哲学语境 vs 设计系统语境的合法双面性——议会按需取用对应视角。
 - **加减派**: `[-]` 减法/留白 · `[+]` 加法/表达 · `[~]` 中间态/结构.

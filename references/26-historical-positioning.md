@@ -42,7 +42,7 @@ audited_by: ui-auditor
 
 | Agent | Emoji | Era | Emerged To Solve | Core Contradiction | Next Evolution |
 | --- | :---: | :---: | --- | --- | --- |
-| **dialectician** | 🪙 | E7 | BRIEF 模糊不选边，既要又要导致设计精分 | D18（选倾向⟷留余地，倾向显式选边） | E8 时矛盾自我命名，dialectician 退化为审计员 |
+| **dialectician** | 🪙 | E7 | BRIEF 模糊不选边，既要又要导致设计精分 | 选倾向⟷留余地（倾向显式选边） | E8 时矛盾自我命名，dialectician 退化为审计员 |
 | **historian** | 📜 | E7 | 设计无历史感，被趋势绑架无法判断时代错配 | D5 数据⟷直觉（数据） | 历史+数据双引擎驱动设计决策 |
 | **futurist** | 🔭 | E7 | 设计落后或超前时代，缺乏演进路径预测 | D6 即时⟷深思（深思） | 演进路径成主动预测器，now/mid/future 三段输出 |
 

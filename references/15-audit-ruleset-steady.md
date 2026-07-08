@@ -39,7 +39,7 @@ audited_by: ui-auditor
 | --- | --- | --- |
 | W-01 | 动画时长 > 400ms | animation-choreographer |
 | W-02 | 动了 `width` / `height` / `top` / `left`（应用 transform） | animation-choreographer |
-| W-03 | 新模态尺寸不在 8 种规范内 | modal-craftsman |
+| W-03 | 新模态尺寸不在 9 种规范内 | modal-craftsman |
 | W-04 | 装饰性循环动画（仅 `pulseSubtle` 允许用于 Loading） | animation-choreographer |
 | W-05 | 错误状态用了红色（red-* 留给「危险操作」） | token-keeper / empty-state-storyteller |
 | W-06 | 加载 > 1s 仍用 spinner 而非进度条 | empty-state-storyteller |

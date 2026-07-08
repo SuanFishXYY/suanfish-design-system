@@ -8,7 +8,7 @@ upstream: [dialectician, historian, futurist, wuwei-master, perspectivist, silen
 historical_era: "E5→E8 (设计系统时代浮现 · AI-native 时代是必需)"
 emerged_to_solve: "组件局部改动破坏全局一致性 / token 改动未做影响评估 / 视觉方言滋生"
 core_contradiction: "D3 个性化⟷一致性 (强势向 D3 一致性侧 · 任何'个性'必须不破坏'整体')"
-next_evolution: "v3.2 引入跨组件 token 影响图 + ui-auditor mode_5 全局一致性"
+next_evolution: "（已落地 v3.2） 引入跨组件 token 影响图 + ui-auditor mode_5 全局一致性"
 philosophical_anchor: "#249 法藏 · 华严宗 · 《华严经探玄记》"
 philosophy: "法藏 · 一即一切,一切即一 · 因陀罗网 (帝释天宝网每颗珠映出全部其他珠)"
 invited_helpers:

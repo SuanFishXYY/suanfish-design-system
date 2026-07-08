@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # 算鱼设计系统 · 一键安装 (Mac / Linux)
 # usage: curl -sSL https://raw.githubusercontent.com/SuanFishXYY/suanfish-design-system/main/installer/install.sh | bash
+# ⚠️ 本脚本不自动注册 skillDirectories（仅 install.mjs 支持），Mac/Linux 用户需手动 /skill list 或用 install.mjs
 set -e
 
 REPO="https://github.com/SuanFishXYY/suanfish-design-system.git"
@@ -35,7 +36,15 @@ for pair in ".copilot:GitHub Copilot CLI" ".claude:Claude Code" ".agents:通用 
   mkdir -p "$HOME/$DIR/skills"
   LINK="$HOME/$DIR/skills/$NAME"
   [ -L "$LINK" ] && rm "$LINK"
-  if [ -e "$LINK" ]; then warn "$LINK 已存在且非 symlink, 跳过"; continue; fi
+  if [ -e "$LINK" ]; then
+    # v4.2.1 修: 真实目录如果为空 (空文件夹), 删除并建 symlink
+    if [ -d "$LINK" ] && [ -z "$(ls -A "$LINK" 2>/dev/null)" ]; then
+      rmdir "$LINK"
+      info "$LINK 是空目录, 已清理并将建立 symlink"
+    else
+      warn "$LINK 已存在且非 symlink, 跳过"; continue
+    fi
+  fi
   ln -sf "$TARGET" "$LINK"
   ok "$LABEL → ~/$DIR/skills/$NAME"
   LINKED=$((LINKED+1))

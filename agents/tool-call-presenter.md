@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "Agent 工具调用过程完全黑箱，用户无法感知 AI 在做什么"
 core_contradiction: "D7 透明⟷神秘（透明）"
 next_evolution: "用户可干预中间步骤，工具调用审批与溯源流程"
+references: [36-ai-streaming-and-tools.md]
 ---
 
 # 🛠️ tool-call-presenter · 工具调用展示师

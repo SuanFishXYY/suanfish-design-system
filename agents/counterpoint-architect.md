@@ -16,6 +16,7 @@ design_hook: "loading 节奏 · 转场曲线 · 多 agent 并行调度 · 信息
 philosophy: "对位 · 结构 · 算法美学"
 voting_weight: 2
 twin_anchor: [futurist, dialectician]
+references: [46-design-aesthetics.md, 11-animation-library.md]
 ---
 
 # 🎼 counterpoint-architect · 对位与平均律

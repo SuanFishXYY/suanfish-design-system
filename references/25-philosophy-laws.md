@@ -1,3 +1,10 @@
+---
+ref: 25
+title: 发展规律 · 五大律（Layer 3）
+owner: futurist（演进预测）· historian（时代定位）
+audited_by: ui-auditor
+---
+
 # 🌀 算鱼设计系统 · 发展规律（Development Laws）
 
 > *"理解事物发展的规律，才能做好系统。"* — v3.0 立项语

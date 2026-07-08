@@ -2,7 +2,7 @@
 ref: 16
 title: 仪式模式审计规则集
 ruleset_version: 1.0.0
-bound_to_token_version: 1.0.0
+bound_to_token_version: 1.0.1
 owner: token-keeper（颜色相关）、animation-choreographer（动画相关）、onboarding-director（流程相关）
 audited_by: ui-auditor
 ---
@@ -29,7 +29,7 @@ audited_by: ui-auditor
 | R-01 | 主视觉使用了冷色谱（blue / slate / emerald / red） | token-keeper | grep 冷色 token |
 | R-02 | 缺少 `prefers-reduced-motion` 降级 | a11y-guardian | 检查媒体查询 |
 | R-03 | 没有 `localStorage` dismiss key / 没有 `ONBOARDING_VERSION` 常量 | onboarding-director | grep `ONBOARDING_VERSION` |
-| R-04 | 出现「跳过」按钮（仪式必须看完） | copy-writer | grep "跳过\|Skip" |
+| R-04 | 出现「跳过」按钮（**纯仪式首次登录**必须看完 · 版本更新/eureka 模式允许 skip per P-OD2 · 见下方 R-04 scope 注） | copy-writer | grep "跳过\|Skip" |
 | R-05 | 版本介绍模态步骤数 > 3 | onboarding-director | 检查 steps schema 长度 |
 | R-06 | 引用了稳态调色板（slate / blue / emerald 作为主色） | token-keeper | grep 主视觉 token |
 
@@ -52,10 +52,14 @@ audited_by: ui-auditor
 | H-02 | 暖色装饰图标用 outline 而非 solid（大尺寸 ≥ 32px） | icon-curator |
 | H-03 | 没有粒子 / 拍立得装饰（Eureka 模式建议保留） | onboarding-director |
 
+## R-04 scope 注（v4.2.7 厘清 · R17c）
+
+R-04「禁跳过按钮」仅适用于**纯仪式首次登录**（首次 Welcome 必须看完）。**版本更新 / eureka 模式**按 P-OD2（ref 19）允许 skip（控制权下移律 L3）--dialectician 依此仲裁（ref 26:156）。两规则不矛盾，scope 不同：审计时 skip 按钮出现在版本更新类 onboarding 不触发 R-04。此 scope 修复 R17c（无为减法 vs R-04）与 example 01（P-OD2 vs R-04）的张力。
+
 ## 变更日志
 
 ### v1.0.0 —— 从 ui-auditor 中拆出
-- 13 条规则全部从 v2.0 的 ui-auditor.md 迁移过来
+- 15 条规则（6 R + 6 W + 3 H · 12 从 v2.0 ui-auditor.md 迁移 + 3 新增 R-06/W-06/H-03）
 - 新增 R-06（冷色谱明确禁入）
 - 新增 W-06（仪式模态移动端全屏要求）
 - 新增 H-03（Eureka 装饰建议）

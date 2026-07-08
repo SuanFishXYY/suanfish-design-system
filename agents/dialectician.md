@@ -26,6 +26,7 @@ outputs:
   - dialectical_brief (含主矛盾 / 倾向 / 容忍度 / R18 风险)
 rejects:
   - R18 矛盾两端都站
+references: [24-philosophy-dialectics.md, 25-philosophy-laws.md, 47-philosophy-to-design-mapping.md]
 ---
 
 # 🪙 dialectician · 辩证调度官

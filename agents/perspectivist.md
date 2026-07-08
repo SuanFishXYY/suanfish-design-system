@@ -9,7 +9,7 @@ upstream: [dialectician, historian, futurist, wuwei-master]
 historical_era: "E1-E8 跨时代 (任何时代都需要多视角)"
 emerged_to_solve: "AI 容易给出单一最优解 / 默认强迫用户走一条路径"
 core_contradiction: "D3 个性化⟷一致性 (向 D3 多视角并存,但用统一容器约束)"
-next_evolution: "v3.2 与 persona-architect 联动生成至少 3 视图选择"
+next_evolution: "（已落地 v3.2） 与 persona-architect 联动生成至少 3 视图选择"
 philosophical_anchor: "#093 庄子 · 《齐物论》"
 philosophy: "庄子 · 齐物 · 自彼则不见自是则知之 · 朝三暮四"
 invited_helpers:

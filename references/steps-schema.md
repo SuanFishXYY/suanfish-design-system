@@ -1,12 +1,17 @@
-# 参考文档
+---
+ref: steps-schema
+title: 仪式步骤 Schema · Step 数据结构
+owner: onboarding-director (步骤编排) · copy-writer (文案填充)
+audited_by: ui-auditor
+---
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+# 📋 ref · 仪式步骤 Schema
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+> *每步的内容结构——文案、KPI、高亮、配色统一契约。*
+>
+> onboarding-director 的 Step 数据结构，copy-writer 据此填文案。仪式模式暖色谱 + 三步渐变。
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
-
-## 参考章节
+## 1. Step 接口
 
 ```typescript
 interface Step {
@@ -50,33 +55,19 @@ interface Step {
 }
 ```
 
-## 参考章节
+## 2. 三步主题与渐变
 
-#参考文档
+每步一个主题色 + 三段式 tagline，渐变进 ref 01 §11 仪式渐变表：
 
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `from-indigo-500 via-blue-500 to-cyan-500` `from-amber-500 via-orange-500 to-rose-500` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `Imagine · Generate · Beyond` 不变。
+| 步 | 主题 | 渐变 | tagline |
+| --- | --- | --- | --- |
+| 1 · 想象 | 文生图 | `from-indigo-500 via-blue-500 to-cyan-500` | `Imagine · Generate · Beyond` |
+| 2 · 视觉 | 图像理解 | `from-emerald-500 via-teal-500 to-green-500` | `See · Understand · Decode` |
+| 3 · 翻译 | 多语引擎 | `from-amber-500 via-orange-500 to-rose-500` | `Translate · Switch · Smarter` |
 
-#参考文档
+三步渐变覆盖冷光开场 / 生机铺底 / 暖场高潮，呼应 HeroStage（ref 03）。
 
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `from-emerald-500 via-teal-500 to-green-500` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `See · Understand · Decode` 不变。
-
-#参考文档
-
-## 参考章节
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `from-amber-500 via-orange-500 to-rose-500` 不变。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。
-- 说明：本条描述设计规则、交互约束或实现注意事项。 保持 `Translate · Switch · Smarter` 不变。
-
-## 参考章节
+## 3. 示例（Step 1 · 文生图）
 
 ```tsx
 const STEPS: Step[] = [
@@ -123,14 +114,18 @@ const STEPS: Step[] = [
 ];
 ```
 
-## 参考章节
+## 4. 填充约束
 
-*说明：本条描述设计规则、交互约束或实现注意事项。
+| 字段 | 约束 |
+| --- | --- |
+| `kpis` | 每步固定 3 个，value 带具体数字/级别（不空写"高"） |
+| `highlights` | 必须 3 个，icon 全局不重复，tag 大写英文 |
+| `tagline` | 三段式英文，动词 · 动词 · 形容词 |
+| `keyword` | 4 字中文，视觉锚点 |
+| `accent.glowRgb` | R,G,B 不含 alpha（alpha 由阴影 class 控制） |
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 变更日志
 
-| 说明 | 说明 | 说明 | 说明 |
-|--------- |-------- |-------- |--------|
-| 说明 | 说明 | 说明 | 说明 |
-| 说明 | 说明 | 说明 | 说明 |
-| 说明 | 说明 | 说明 | 说明 |
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版 Step Schema：接口 + 三步主题渐变 + 示例 + 填充约束。对齐 onboarding-director / copy-writer 依赖。 |

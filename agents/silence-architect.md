@@ -8,7 +8,7 @@ upstream: [dialectician, historian, futurist, wuwei-master, perspectivist]
 historical_era: "E2→E4→E8 (扁平化时代正名 · AI 时代再次救命)"
 emerged_to_solve: "AI 生成 UI 容易过度修饰 / 渐变阴影粒子动效堆砌 / 视觉膨胀"
 core_contradiction: "D7 透明⟷神秘 (向 D7 透明侧 · 装饰应退场让 intent 显现)"
-next_evolution: "v3.2 与 token-keeper 联动 emit '装饰预算' 上限"
+next_evolution: "（已落地 v3.2） 与 token-keeper 联动 emit '装饰预算' 上限"
 philosophical_anchor: "#232 王弼 · 《周易略例·明象》"
 philosophy: "王弼 · 得意忘象 · 大音希声 · 言不尽意 (注老庄)"
 invited_helpers:

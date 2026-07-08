@@ -9,7 +9,7 @@
 npx -y github:SuanFishXYY/suanfish-design-system
 ```
 
-安装器会在 `~/.antigravity/skills/suanfish-design-system` 建立 symlink, Antigravity 启动后自动发现 52 个 agent + 27 份规范 + 420 思想家板凳。
+安装器会在 `~/.antigravity/skills/suanfish-design-system` 建立 symlink, Antigravity 启动后自动发现 54 个 agent + 50 份规范 + 420 思想家板凳。
 
 ## 手动安装 (掌控派)
 
@@ -21,7 +21,7 @@ mkdir -p ~/.antigravity/skills
 ln -sf ~/.suanfish-design-system ~/.antigravity/skills/suanfish-design-system
 
 # 验证
-ls ~/.antigravity/skills/suanfish-design-system/agents/ | wc -l   # 应该 52
+ls ~/.antigravity/skills/suanfish-design-system/agents/ | wc -l   # 应该 54
 ```
 
 ### Windows (PowerShell · 管理员)

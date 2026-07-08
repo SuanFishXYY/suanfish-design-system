@@ -18,6 +18,7 @@ voting_weight: 2
 twin_anchor: [silence-composer, tension-composer]
 r_anchor: "R-Cross4 环境陪伴律: 持续陪伴类音/动效必须满足 'ignorable as interesting' 平衡 · 非全沉默, 非全打扰"
 attribution_status: verified
+references: [46-design-aesthetics.md, 32-notification-system.md]
 ---
 
 # 🌊 ambient-architect · 环境陪伴

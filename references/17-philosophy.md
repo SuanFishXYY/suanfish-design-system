@@ -1,12 +1,19 @@
+---
+ref: 17
+title: 哲学根基 · 价值层（Layer 1）
+owner: 全 agent（哲学锚点之源）
+audited_by: ui-auditor
+---
+
 # 📜 算鱼设计系统 · 哲学根基（Layer 1 · 价值）
 
 > *"工具是把柄，哲学是骨头。没有骨头的工具，迟早被流派、被趋势、被甲方意志拆得稀碎。"*
 
-本文档是 **33 agent 的灵魂锚点 + REJECT R1-R12 的哲学命题 + 跨文化分流原理**。所有 agent 在面对模糊指令、权力压力、流行风潮时，必须**先回到哲学锚点**做判断。
+本文档是全部 agent 的灵魂锚点 + REJECT R1-R6 哲学命题映射 + **R 规则编号全景（§三 · R1-R6 ∪ R13-R25，R7-R12 预留空洞）** + 跨文化分流原理。所有 agent 在面对模糊指令、权力压力、流行风潮时，必须**先回到哲学锚点**做判断。
 
 ---
 
-## 🆕 v3.0 三层哲学体系
+## 🆕 三层哲学体系（v3.0 立 · v4.2 议会升维）
 
 | Layer | 文件 | 回答的问题 |
 | --- | --- | --- |
@@ -14,8 +21,11 @@
 | **Layer 2 · 辩证** | [24-philosophy-dialectics.md](24-philosophy-dialectics.md) | 为什么有两边？ |
 | **Layer 3 · 发展规律** | [25-philosophy-laws.md](25-philosophy-laws.md) | 矛盾如何随时间漂移？ |
 | **Layer 0.5 · 历史定位** | [26-historical-positioning.md](26-historical-positioning.md) | 我来自哪个时代？要去哪个时代？ |
+| **附录 · 思想家板凳** ✨v4.2 | [27-philosopher-bench.md](27-philosopher-bench.md) | 420 厚仙人候选池（335 哲+50 艺+35 音）· 供圣人议会跨三大类援引 |
 
-四层文档配合 Tier 0 三件套 (dialectician / historian / futurist) 构成 v3.0 哲学完整体。
+四层文档 + 板凳附录，配合 **v4.2 三大类圣人议会（🏛哲4·🎨艺4·🎵音4 · 4:4:4 均权 · 因事召唤·辩证·≥2/3 表决）** 构成哲学完整体。Tier 0 圣人锚点（dialectician 黑格尔 / silence-architect 王弼 / holism-strategist 法藏 / debunk-auditor 王充 等 12 席 + 420 板凳）见 [ref 27](27-philosopher-bench.md) 与 [`agents/bench-matcher.md`](../agents/bench-matcher.md)；本文档 §二 只收 **Tier 1-6 执行层** agent 的哲学锚点。
+
+> **v3.0→v4.2 演进注**：v3.0 曾以「Tier 0 三件套 dialectician/historian/futurist」为哲学入口。v4.2 升为三大类 4:4:4 议会后，historian(福柯)/futurist(怀特海) 于 v4.2.6 并入普通板凳、与全员同台竞选常委，不再有「三件套」特殊身份；dialectician 升为议会 12 席之一。
 
 ---
 
@@ -33,9 +43,14 @@
 
 ---
 
-## 二、14 Agent 哲学锚点（按 Tier 排序）
+## 二、执行层 Agent 哲学锚点（Tier 1-6 · 跨版本累积）
 
-### 🚦 Tier 0 · 入口调度
+> **⚠️ 覆盖范围与 Tier 编号诚实声明（v4.2.7 哲理审计 R4）**：
+> - 本节**非全集**。v3.0 首版列 14 位 → v2.4 补 10 位 → v2.5 补 9 位 Path G，累计 33 位执行层锚点。系统现 54 agent，**缺的 21 位**（Tier 0 议会 12 席 + 部分 Tier 3-5 新增）的哲学锚点在 [ref 27 板凳档案卡](27-philosopher-bench.md) 与各 agent 文件，本节不重复。补齐 54 位全集锚点是领域写作议题，非机械修复。
+> - **Tier 编号用 v4.2.7 当前脊柱**：Tier 0=圣人议会 / Tier 1=调度(moment-strategist) / Tier 1.5=协调 / Tier 2=主导 / Tier 3=容器 / Tier 4=内容 / Tier 5=横切 / Tier 6=质量（见 SKILL.md §组织架构）。下方旧子标题「Tier 0·入口调度」是 v3.0 残留脊柱——moment-strategist 实为 **Tier 1**（v4.2 议会插入 Tier 0 后整体下移一位）；本节 §二补 的「Tier 1.5 协调」已对齐新脊柱。两套编号并存是历史增量遗留，以本声明为准。
+> - 锚点内容（哲学家·命题·行为约束）本身不过时，是各 agent 的灵魂底色。
+
+### 🚦 Tier 0 · 入口调度（⚠️ v3.0 残留编号 · 实为 Tier 1 调度层 · moment-strategist）
 
 #### `moment-strategist`
 - **锚点**：**孙子 ·「上兵伐谋，其次伐交，其下攻城」**
@@ -294,6 +309,26 @@
 | **R5** | 路径 B 4 项硬条件未全满足 | **可证伪性** | 波普尔 ·《科学发现的逻辑》 | 没有约束的设计不是设计，是赌博 |
 | **R6** | 一屏内 onboarding + ui-architect 双主导 | **名不正则言不顺** | 孔子 ·《论语 · 子路》 | 双主导即无主导，治理失效 |
 
+### R 规则编号全景（权威索引 · v4.2.7 哲理审计 R3）
+
+> *R 规则散落多文件定义，无单一索引则无人发现 R7-R12 已塌陷。本表是 R 规则的唯一权威全景——审 R 命中、写 R 规则 PR、查编号连续性，都以此为准。*
+
+| 编号 | 性质 | 定义位置 | 一句话 |
+| --- | --- | --- | --- |
+| R1-R6 | 症状级 · REJECT | 本节 §三 上表 | 哲学命题映射（康德/爱比克泰德/亚里士多德/孔子…） |
+| **R7-R12** | **🟥 编号空洞 · 预留未启用** | **无** | **v2.x→v3.1 跳号遗留 · 非连续 · 全库 0 引用 0 定义 · 不得在审计/文档中当作存在规则引用** |
+| R13-R17 | 症状级 · REJECT | [ref 25 §五](25-philosophy-laws.md) | 违反发展律 L1-L5（复杂度/抽象/控制权/反馈/模态） |
+| R18 | 病因级 · REJECT | [ref 24 §五](24-philosophy-dialectics.md) | 矛盾两端都站·没选倾向（dialectician 触发） |
+| R19-R21 | 症状级 · REJECT | `agents/moment-strategist.md` R 表 | 元素无 intent / 单一视图独裁 / 装饰不传 intent（v3.1） |
+| R22 | 症状级 · REJECT | `agents/holism-strategist.md` | 孤立组件改动·未评估全局影响 |
+| R23 | 病因级 · REJECT | `agents/debunk-auditor.md` | 疾虚妄律·伪 AI/伪个性化/伪 streaming/伪思考 |
+| R24 | 流程级 · 僵局 | `agents/bench-matcher.md` §R24 | 议会僵局律·3 轮未过→用户决断 |
+| R25 | 流程级 · 引用 | `agents/quotation-verifier.md` + [ref 27](27-philosopher-bench.md) | 引用真实律·核验圣人引用非捏造 |
+
+- **"R1-R25" 读作「R 规则全集」= R1-R6 ∪ R13-R25（共 19 条），非连续 25 条**。frontmatter `hard_rules: R1-R25` 是「全部已定义 R 规则」的意图声明，R7-R12 不在其中。
+- 新增 R 规则：优先**回填 R7-R12 空洞**（带哲学命题 + 触发条件，提 PR 进本节），再考虑 R26+。空洞优先于扩编——补齐比加新更诚实。
+- **charter-audit 轮次 ≠ 哲学命题 R 规则**：本表 R1-R25 是哲学命题规则（症状级/病因级/流程级 REJECT）。CHANGELOG 的制度审计轮次（R1-R45）是**另一套命名空间**——引用 **R1-R25 范围**的 charter-audit 轮次须带版本前缀写「v4.2.7 R<n>」（如 v4.2.7 R25 = lite↔sptler 跨 skill 边界声明轮 · v4.2.7 R15 = P-MS 命名空间污染修复轮），因与哲学命题 R1-R25 同号碰撞（裸 R25 在本表指「引用真实律」哲学命题，与 charter-audit R25 跨 skill 边界同号不同义）；R26+ 无碰撞风险可裸写作简写。
+
 ### 通用 P8 视角扩展（供 v2.3+ 拓展使用）
 
 如果未来 REJECT 规则扩展，可参考以下额外哲学锚：
@@ -475,5 +510,49 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 ### Path G 总命题
 
 > *AI 产品的设计哲学：**把不可见的认知过程视觉化**（reasoning / streaming）+ **把不可信的输出归因化**（citation / tool-call）+ **把不可控的限制透明化**（rate-limit / model-switch）+ **把不可逆的操作可撤回化**（thread / artifact / prompt-input）*
+
+### §二 缺锚点索引（v4.2.7 哲理审计 R10 建 · 现 30 位指针级对齐 · 非臆造 · R41 对账）
+
+> 本节上方 33 位有完整锚点条目（§二 14 + §二补 10 + §三·补 9 Path-G）（哲学家+命题+行为约束）。系统现 54 agent，余 **21 位**缺本节条目——不臆造哲学锚点（领域写作议题），只给**指针**指向其锚点所在。补齐完整条目留 R 规则 PR 议题。
+
+**A. Tier 0 议会圣人 12 席**（锚点 = ref 27 厚仙人档案卡 + 各 agent `philosophical_anchor` 字段）：
+| agent | 圣人锚 | 锚点所在 |
+| --- | --- | --- |
+| dialectician | 黑格尔 · 正反合辩证 | [ref 27 #039](27-philosopher-bench.md) + `agents/dialectician.md` |
+| silence-architect | 王弼 · 得意忘言 | [ref 27](27-philosopher-bench.md) + `agents/silence-architect.md` |
+| holism-strategist | 法藏 · 事事无碍 | [ref 27](27-philosopher-bench.md) + `agents/holism-strategist.md` |
+| debunk-auditor | 王充 · 疾虚妄（R23） | [ref 27 #225](27-philosopher-bench.md) + `agents/debunk-auditor.md` |
+| polymath-bridger | 达芬奇 · 跨学科联结（R-Cross1） | [ref 27 #A001](27-philosopher-bench.md) + `agents/polymath-bridger.md` |
+| form-liberator | 米开朗基罗 · 形式解放 | [ref 27](27-philosopher-bench.md) + `agents/form-liberator.md` |
+| light-impressionist | 莫奈 · 光色革命（R-Cross2） | [ref 27 #A019](27-philosopher-bench.md) + `agents/light-impressionist.md` |
+| void-painter | 倪瓒 · 冷逸留白 | [ref 27](27-philosopher-bench.md) + `agents/void-painter.md` |
+| counterpoint-architect | 巴赫 · 对位结构 | [ref 27](27-philosopher-bench.md) + `agents/counterpoint-architect.md` |
+| tension-composer | 贝多芬 · 情感张力（R-Cross3） | [ref 27 #M005](27-philosopher-bench.md) + `agents/tension-composer.md` |
+| silence-composer | 凯奇 · 静默 | [ref 27](27-philosopher-bench.md) + `agents/silence-composer.md` |
+| ambient-architect | Eno · 环境陪伴（R-Cross4） | [ref 27 #M025](27-philosopher-bench.md) + `agents/ambient-architect.md` |
+
+**B. 议会引擎 + 降级四人 + 横切/Path G 新增 18 位**（锚点在各 agent `philosophical_anchor` / `philosophy` 字段）：
+| agent | 锚点摘要 | 所在 |
+| --- | --- | --- |
+| bench-matcher | 议会民主调度（六步协议） | `agents/bench-matcher.md` + [ref 48](48-council-deliberation.md) |
+| quotation-verifier | 引用真实（R25） | `agents/quotation-verifier.md` |
+| sage-council | 三人行必有我师·认知多样性 | `agents/sage-council.md` |
+| review-orchestrator | 三道门编排 | `agents/review-orchestrator.md` |
+| meta-auditor | 王充·疾虚妄（审审核者，同 debunk 同源） | `agents/meta-auditor.md` |
+| historian | 福柯·知识考古（v4.2.6 降普通板凳） | `agents/historian.md` + [ref 27 #058](27-philosopher-bench.md) |
+| futurist | 怀特海·过程哲学（v4.2.6 降普通板凳） | `agents/futurist.md` + [ref 27 #091](27-philosopher-bench.md) |
+| wuwei-master | 老子·无为（v4.2.6 降普通板凳） | `agents/wuwei-master.md` + [ref 27 #092](27-philosopher-bench.md) |
+| perspectivist | 庄子·齐物论（v4.2.6 降普通板凳） | `agents/perspectivist.md` + [ref 27 #093](27-philosopher-bench.md) |
+| stream-craftsman | 流式认知可视化 | `agents/stream-craftsman.md` + [ref 36](36-ai-streaming-and-tools.md) |
+| tool-call-presenter | 工具调用归因化 | `agents/tool-call-presenter.md` + [ref 36](36-ai-streaming-and-tools.md) |
+| agent-thread-architect | 线程可逆·对话可撤回 | `agents/agent-thread-architect.md` + [ref 37](37-ai-thread-input-artifact.md) |
+| artifact-architect | 产物画布脱出 | `agents/artifact-architect.md` + [ref 37](37-ai-thread-input-artifact.md) |
+| prompt-input-craftsman | 输入容器·IME/命令 | `agents/prompt-input-craftsman.md` + [ref 37](37-ai-thread-input-artifact.md) |
+| reasoning-visualizer | 思维链透明化 | `agents/reasoning-visualizer.md` + [ref 39](39-reasoning-visualization.md) |
+| citation-keeper | 引用归因可信度 | `agents/citation-keeper.md` + [ref 41](41-citation-and-sources.md) |
+| model-switcher-stylist | 修补匠·列维-斯特劳斯（无银弹） | `agents/model-switcher-stylist.md` + [ref 40](40-rate-limit-and-model-switch.md) |
+| rate-limit-communicator | 正义论·罗尔斯（配额即分配正义） | `agents/rate-limit-communicator.md` + [ref 40](40-rate-limit-and-model-switch.md) |
+
+> **为何不补完整条目**：每条锚点需「哲学家+原文出处+行为约束+判罚位置」四件套（见上方 §二 条目格式），是哲学写作而非机械填充——补齐 30 位 × 四件套 = 领域写作工程，超机械修复边界。本表先让"缺锚点"从隐形债变可追溯指针，后续逐位增厚为完整条目。
 
 四件事做不到，再炫的 UI 也是空壳。

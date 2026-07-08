@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="算鱼 · 声音设计 · R-Cross 三档位可听证据">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼 · 声音设计 · R-Cross 三档位可听证据</title>
+<!--
+  算鱼设计系统 · 声音设计视觉证据
+  把 ref 46 R-Cross3 命运四音 + R-Cross4 ambient 三档位用 Web Audio API 渲染成可听声音。
+  单文件 HTML · 零依赖 · 浏览器直接打开 · 点按钮播放。
+  对应 ref: 46 美学（R-Cross3 张力 + R-Cross4 陪伴 + 音乐三档位） / 32 通知（通知音）
+-->
+<style>
+:root {
+  --blue-600:#2563eb;--blue-500:#3b82f6;--blue-100:#dbeafe;--blue-50:#eff6ff;
+  --emerald-600:#059669;--emerald-500:#10b981;--emerald-100:#d1fae5;
+  --amber-600:#d97706;--amber-500:#f59e0b;--amber-400:#fbbf24;--amber-100:#fef3c7;
+  --red-600:#dc2626;--red-50:#fef2f2;
+  --slate-900:#0f172a;--slate-800:#1e293b;--slate-700:#334155;--slate-600:#475569;--slate-500:#64748b;--slate-400:#94a3b8;--slate-300:#cbd5e1;--slate-200:#e2e8f0;--slate-100:#f1f5f9;--slate-50:#f8fafc;
+  --gray-100:#f3f4f6;--gray-200:#e5e7eb;
+  --white:#fff;
+  --font:-apple-system,"SF Pro Display","Helvetica Neue","PingFang SC",sans-serif;
+  --mono:"SF Mono","Fira Code",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--slate-900);color:var(--slate-100);min-height:100vh;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:26px;font-weight:800;letter-spacing:-.02em}
+h1 .tag{font-size:12px;font-weight:600;padding:2px 10px;border-radius:9999px;background:rgba(168,85,247,.2);color:#c084fc;margin-left:8px;vertical-align:middle}
+.lead{color:var(--slate-400);font-size:14px;margin-top:8px;margin-bottom:32px}
+h2{font-size:18px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ref-tag{display:inline-block;font-size:10px;font-weight:600;padding:1px 7px;border-radius:9999px;background:rgba(255,255,255,.1);color:var(--slate-300);margin-left:6px}
+
+/* 三档位卡片 */
+.tiers{display:grid;grid-template-columns:1fr;gap:16px}
+.tier{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;transition:all .3s}
+.tier:hover{border-color:rgba(255,255,255,.2)}
+.tier.playing{border-color:var(--blue-500);box-shadow:0 0 24px rgba(59,130,246,.2)}
+.tier-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.tier-icon{font-size:32px}
+.tier-name{font-size:18px;font-weight:700;color:var(--white)}
+.tier-phil{font-size:12px;color:var(--slate-400)}
+.tier-desc{font-size:14px;color:var(--slate-300);line-height:1.6;margin:8px 0 16px}
+.tier-quote{font-size:13px;color:var(--slate-400);font-style:italic;border-left:2px solid rgba(255,255,255,.2);padding-left:12px;margin:8px 0}
+
+/* 播放按钮 */
+.play-btn{background:var(--blue-600);color:var(--white);border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.play-btn:hover{background:var(--blue-500)}
+.play-btn.playing{background:var(--red-600)}
+.play-btn:disabled{opacity:.5;cursor:not-allowed}
+.play-btn .icon{font-size:16px}
+
+/* 档位标签 */
+.tier-badge{font-size:11px;font-weight:600;padding:2px 10px;border-radius:9999px;margin-left:auto}
+.tier-badge.silence{background:rgba(148,163,184,.15);color:var(--slate-400)}
+.tier-badge.ambient{background:rgba(59,130,246,.15);color:var(--blue-400)}
+.tier-badge.tension{background:rgba(245,158,11,.15);color:var(--amber-400)}
+
+/* 波形可视化 */
+.waveform{height:60px;background:rgba(0,0,0,.3);border-radius:8px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:2px;padding:0 12px;overflow:hidden}
+.wave-bar{width:3px;background:var(--blue-500);border-radius:2px;transition:height .1s ease}
+.wave-bar.silence{background:var(--slate-600);height:2px}
+.wave-bar.ambient{background:var(--blue-400)}
+.wave-bar.tension{background:var(--amber-400)}
+
+/* 对比表 */
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.compare-table th{background:rgba(255,255,255,.05);padding:10px;text-align:left;font-weight:600;color:var(--slate-400);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.compare-table td{padding:10px;border-top:1px solid rgba(255,255,255,.05)}
+.compare-table td:first-child{font-weight:600}
+
+/* 通知音示例 */
+.notif-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+.notif-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;text-align:center}
+.notif-card .sev{font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.notif-card .sev.info{color:var(--blue-400)}
+.notif-card .sev.success{color:var(--emerald-500)}
+.notif-card .sev.warn{color:var(--amber-400)}
+.notif-card .sev.danger{color:var(--red-600)}
+.notif-card .desc{font-size:12px;color:var(--slate-400);margin:4px 0 8px}
+
+.info-box{background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);border-radius:12px;padding:16px;margin:24px 0;font-size:13px;color:var(--slate-300);line-height:1.7}
+.info-box strong{color:#c084fc}
+@media (max-width: 768px) { .wrap{padding:16px} .grid-4,.grid-3,.grid-2,.sages,.notif-grid,.dialectic{grid-template-columns:1fr !important} .three-pane{grid-template-columns:1fr !important;height:auto} .steps{flex-wrap:wrap} .step-pill{flex:1 1 30%} h1{font-size:22px} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:80ms !important; animation-iteration-count:1 !important; transition-duration:80ms !important } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🔊 算鱼声音设计 · R-Cross 三档位可听证据 <span class="tag">ref 46</span></h1>
+<p class="lead">把 ref 46 R-Cross3 命运四音 + R-Cross4 ambient 三档位用 Web Audio API 渲染成可听声音 · 点按钮播放 · 零依赖</p>
+
+<h2>音乐三档位辩证 <span class="ref-tag">ref 46 §五</span></h2>
+<p style="color:var(--slate-400);font-size:14px;margin-bottom:16px">凯奇说"沉默"；贝多芬说"张力"。中间灰度由 Eno 占据。三档位都必入场后，议会才有"音乐辩证三角"。</p>
+
+<div class="tiers">
+
+  <!-- 档位1: 沉默 -->
+  <div class="tier" id="tier-silence">
+    <div class="tier-header">
+      <div class="tier-icon">🤫</div>
+      <div>
+        <div class="tier-name">沉默 · 凯奇 4'33"</div>
+        <div class="tier-phil">Tier 0 音乐家圣人 · D1 简洁端 · [-] 减法派</div>
+      </div>
+      <div class="tier-badge silence">极简 · 默认零</div>
+    </div>
+    <div class="tier-desc">沉默即作品。默认 = 零。通知/动效/音/反馈的"是否必要"审视——不发会怎样？答不上来 = 不发。</div>
+    <div class="tier-quote">"沉默不是没声音，沉默是让环境的声音被听见。零方案也是方案。" — John Cage</div>
+    <button class="play-btn" onclick="playSilence(this)">
+      <span class="icon">▶</span> 体验沉默（4.33 秒无声 + 环境音提示）
+    </button>
+    <div class="waveform" id="wave-silence"></div>
+  </div>
+
+  <!-- 档位2: 陪伴 -->
+  <div class="tier" id="tier-ambient">
+    <div class="tier-header">
+      <div class="tier-icon">🌊</div>
+      <div>
+        <div class="tier-name">环境陪伴 · Brian Eno</div>
+        <div class="tier-phil">Tier 0 音乐家圣人 · D2 中间态 · [~] 温和加法</div>
+      </div>
+      <div class="tier-badge ambient">灰度 · ignorable as interesting</div>
+    </div>
+    <div class="tier-desc">温和加法。通知音/loading/系统音——不打扰但被想起来时是温暖的。可忽略也可注意，非全静非全响。</div>
+    <div class="tier-quote">"Ambient music must be as ignorable as it is interesting." — Brian Eno, 1978</div>
+    <button class="play-btn" onclick="playAmbient(this)">
+      <span class="icon">▶</span> 播放 Eno 式 3 音温和提示
+    </button>
+    <div class="waveform" id="wave-ambient"></div>
+  </div>
+
+  <!-- 档位3: 高潮 -->
+  <div class="tier" id="tier-tension">
+    <div class="tier-header">
+      <div class="tier-icon">⚡</div>
+      <div>
+        <div class="tier-name">情感张力 · 贝多芬</div>
+        <div class="tier-phil">Tier 0 音乐家圣人 · D2 加法端 · [+] 加法派</div>
+      </div>
+      <div class="tier-badge tension">高潮 · 命运四音</div>
+    </div>
+    <div class="tier-desc">张力即结构。关键节点（登录/完成/支付/激活）必须有情感曲线——不是煽情，是命运四音那种"必须"的动机。</div>
+    <div class="tier-quote">"Muss es sein? Es muss sein! Es muss sein!" — Beethoven Op.135 终曲扉页</div>
+    <button class="play-btn" onclick="playTension(this)">
+      <span class="icon">▶</span> 播放命运四音（G-G-G-Eb）
+    </button>
+    <div class="waveform" id="wave-tension"></div>
+  </div>
+
+</div>
+
+<h2>通知音四优先级 <span class="ref-tag">ref 32 §3 + ref 46 §四</span></h2>
+<p style="color:var(--slate-400);font-size:14px;margin-bottom:16px">R-Cross4 落地：通知音按视觉优先级配声。信息/成功可自消，危险不可静默。</p>
+<div class="notif-grid">
+  <div class="notif-card">
+    <div class="sev info">ℹ️ 信息</div>
+    <div class="desc">blue · 3-5s 自消</div>
+    <button class="play-btn" style="padding:6px 16px;font-size:12px" onclick="playNotif('info',this)">▶ 信息音</button>
+  </div>
+  <div class="notif-card">
+    <div class="sev success">✅ 成功</div>
+    <div class="desc">green · 只用于关键操作</div>
+    <button class="play-btn" style="padding:6px 16px;font-size:12px" onclick="playNotif('success',this)">▶ 成功音</button>
+  </div>
+  <div class="notif-card">
+    <div class="sev warn">⚠️ 警告</div>
+    <div class="desc">amber · 3-5s 自消</div>
+    <button class="play-btn" style="padding:6px 16px;font-size:12px" onclick="playNotif('warn',this)">▶ 警告音</button>
+  </div>
+  <div class="notif-card">
+    <div class="sev danger">🚨 危险</div>
+    <div class="desc">red · 不可静默自消</div>
+    <button class="play-btn" style="padding:6px 16px;font-size:12px;background:var(--red-600)" onclick="playNotif('danger',this)">▶ 危险音</button>
+  </div>
+</div>
+
+<h2>三档位对比 <span class="ref-tag">ref 46 §五</span></h2>
+<table class="compare-table">
+<thead><tr><th>档位</th><th>主张</th><th>适用</th><th>失败模式</th></tr></thead>
+<tbody>
+<tr><td>🤫 沉默</td><td>沉默即作品 / 默认零</td><td>工具型 UI / 后台</td><td>用户找不到方向</td></tr>
+<tr><td>🌊 陪伴</td><td>温和加法 / 生成式</td><td>通知音 / loading / 系统音</td><td>灰度失准</td></tr>
+<tr><td>⚡ 高潮</td><td>张力即结构 / 关键节点必须有</td><td>情感型 UI / 关键节点</td><td>用户被持续打扰</td></tr>
+</tbody>
+</table>
+
+<div class="info-box">
+  <strong>算鱼声音设计 · 首个可听证据</strong><br>
+  前 4 个 HTML 视觉证据全是视觉——色块/按钮/动画/布局。但 ref 46 R-Cross4 的"ignorable as interesting"本质是<strong>听觉概念</strong>（Eno ambient music）。本 HTML 用 Web Audio API 把三档位渲染成可听声音：凯奇沉默（4'33" 无声+环境音提示）/ Eno 陪伴（3 音温和提示）/ 贝多芬张力（命运四音 G-G-G-Eb）+ 通知音四优先级。从视觉到听觉——设计艺术的感官维度闭环。
+</div>
+
+</div>
+
+<script>
+let audioCtx = null;
+function getCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+// 波形可视化
+function makeWaveform(id, type, duration) {
+  const container = document.getElementById(id);
+  container.innerHTML = '';
+  const bars = 60;
+  for (let i = 0; i < bars; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'wave-bar ' + type;
+    if (type === 'silence') {
+      bar.style.height = '2px';
+    } else if (type === 'ambient') {
+      const h = 8 + Math.sin(i * 0.3) * 6 + Math.random() * 8;
+      bar.style.height = Math.max(2, h) + 'px';
+    } else if (type === 'tension') {
+      const h = 15 + Math.abs(Math.sin(i * 0.5)) * 30 + Math.random() * 10;
+      bar.style.height = Math.max(4, h) + 'px';
+    }
+    container.appendChild(bar);
+  }
+}
+
+// 播放单个音符
+function playNote(freq, duration, type = 'sine', volume = 0.15, delay = 0) {
+  const ctx = getCtx();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+  gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + delay + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(ctx.currentTime + delay);
+  osc.stop(ctx.currentTime + delay + duration);
+}
+
+// 1. 沉默 — 4.33 秒无声（凯奇 4'33" 致敬）
+function playSilence(btn) {
+  btn.classList.add('playing');
+  btn.innerHTML = '<span class="icon">🤫</span> 沉默中... (4.33 秒)';
+  makeWaveform('wave-silence', 'silence', 4.33);
+  // 无声播放——让用户注意环境音
+  setTimeout(() => {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="icon">▶</span> 体验沉默（4.33 秒无声 + 环境音提示）';
+  }, 4330);
+}
+
+// 2. 陪伴 — Eno 式 3 音温和提示
+function playAmbient(btn) {
+  btn.classList.add('playing');
+  btn.innerHTML = '<span class="icon">🌊</span> 播放中...';
+  makeWaveform('wave-ambient', 'ambient', 2);
+  // 3 个柔和正弦波音（C5-E5-G5 琶音，低音量，长衰减）
+  playNote(523.25, 1.5, 'sine', 0.08, 0);    // C5
+  playNote(659.25, 1.5, 'sine', 0.08, 0.3);  // E5
+  playNote(783.99, 2.0, 'sine', 0.08, 0.6);  // G5
+  setTimeout(() => {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="icon">▶</span> 播放 Eno 式 3 音温和提示';
+  }, 2600);
+}
+
+// 3. 张力 — 贝多芬命运四音 (G-G-G-Eb)
+function playTension(btn) {
+  btn.classList.add('playing');
+  btn.innerHTML = '<span class="icon">⚡</span> 播放中...';
+  makeWaveform('wave-tension', 'tension', 2.5);
+  // 命运四音：G3-G3-G3-Eb4（短促有力，方波模拟铜管）
+  const g3 = 196, eb4 = 311.13;
+  playNote(g3, 0.15, 'square', 0.12, 0);     // G
+  playNote(g3, 0.15, 'square', 0.12, 0.2);   // G
+  playNote(g3, 0.15, 'square', 0.12, 0.4);   // G
+  playNote(eb4, 0.6, 'square', 0.15, 0.6);   // Eb（长音）
+  setTimeout(() => {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<span class="icon">▶</span> 播放命运四音（G-G-G-Eb）';
+  }, 1500);
+}
+
+// 通知音四优先级
+function playNotif(severity, btn) {
+  const ctx = getCtx();
+  const configs = {
+    info:    { freqs: [880], dur: 0.1, type: 'sine', vol: 0.1 },
+    success: { freqs: [659, 880], dur: 0.12, type: 'sine', vol: 0.12, gap: 0.08 },
+    warn:    { freqs: [440, 440], dur: 0.1, type: 'triangle', vol: 0.12, gap: 0.12 },
+    danger:  { freqs: [220, 220, 220], dur: 0.15, type: 'sawtooth', vol: 0.15, gap: 0.1 },
+  };
+  const c = configs[severity];
+  c.freqs.forEach((f, i) => playNote(f, c.dur, c.type, c.vol, i * (c.gap || 0)));
+}
+</script>
+</body>
+</html>

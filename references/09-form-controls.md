@@ -1,14 +1,26 @@
-# 参考文档
+---
+ref: 09
+title: 表单控件规范 · 输入 / 选择 / 反馈
+owner: form-liberator (主) · a11y-guardian (a11y 审) · empty-state-storyteller (空态)
+audited_by: ui-auditor
+---
 
-> 本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。本段补充说明用于在保留代码示例、类名、类型、路径和样式值原样的同时，明确该参考文件的设计意图、适用边界、交互原则、视觉约束和工程落地要求。
+# 📝 ref 09 · 表单控件规范
 
-> 译文说明：本参考文件已翻译为专业简体中文，代码块、类名、类型、路径、颜色值和样式属性保持原样。中文内容聚焦设计意图、适用边界、交互原则和工程落地要求。
+> *表单是用户做决策的地方——控件统一，决策才不被干扰。*
+>
+> a11y-guardian 据本文件审表单 a11y（焦点 / label / 错误提示）。所有控件遵循 ref 01 令牌 + ref 14 反模式（禁 `!important` / 禁 HEX）。
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+## 0. 通用约束
 
-> 说明：本条描述设计规则、交互约束或实现注意事项。
+- 每个 input 必须有 `<label>`（不靠 placeholder 当标签，placeholder 是提示不是标签）。
+- 焦点态统一 `focus:border-blue-500 focus:ring-2 focus:ring-blue-200`，不得各写各的。
+- 禁用态 `disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed`。
+- 错误提示用 `text-xs text-red-500`，紧贴控件下方。
 
-## 参考章节
+---
+
+## 1. 文本输入
 
 ```tsx
 <label className="block">
@@ -25,9 +37,9 @@
 </label>
 ```
 
-#参考文档
+helper（辅助说明）gray-400，error red-500——两者互斥时 error 优先显示。
 
-## 参考章节
+## 2. 带图标输入（搜索框）
 
 ```tsx
 <div className="relative">
@@ -36,7 +48,9 @@
 </div>
 ```
 
-## 参考章节
+图标 `pointer-events-none`，不抢输入焦点。
+
+## 3. 下拉选择
 
 ```tsx
 <select className="w-full rounded-lg border border-gray-300 py-2.5 px-3 text-sm bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
@@ -44,10 +58,9 @@
 </select>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
-说明：本条描述设计规则、交互约束或实现注意事项。
+原生 select 保持可访问，仅令牌化外观。
 
-## 参考章节
+## 4. 复选框
 
 ```tsx
 <label className="flex items-center gap-2 cursor-pointer">
@@ -59,9 +72,11 @@
 </label>
 ```
 
-## 参考章节
+整行可点（label 包 input），不只是方框可点——增大触控区。
 
-说明：本条描述设计规则、交互约束或实现注意事项。 保持 `<input type="radio">` 不变。
+## 5. 单选卡片（radio card）
+
+用 `<input type="radio">` 配卡片样式，选中态高亮：
 
 ```tsx
 <button
@@ -76,7 +91,7 @@
 </button>
 ```
 
-## 参考章节
+## 6. Toggle 开关
 
 ```tsx
 <button
@@ -91,7 +106,9 @@
 </button>
 ```
 
-## 参考章节
+需配 `aria-pressed={on}` 供屏幕阅读器。
+
+## 7. 滑块（range）
 
 ```tsx
 <input
@@ -106,33 +123,19 @@
 </div>
 ```
 
-## 参考章节
+两端标签说明语义（如"精准↔泛化"），不只放数字。
 
-#参考文档
+---
 
-## 参考章节
-```
-bg-blue-100 text-blue-700 border-blue-200
-```
+## 8. 状态标签（badge）
 
-#参考文档
+| 状态 | 样式 |
+| --- | --- |
+| 信息（默认） | `bg-blue-100 text-blue-700 border-blue-200` |
+| 警告（高亮） | `bg-amber-50 text-amber-700 ring-2 ring-amber-200 scale-105` |
+| 提示（带点） | `bg-orange-50 text-orange-600` + `::before` content dot |
 
-## 参考章节
-```
-bg-amber-50 text-amber-700 ring-2 ring-amber-200 scale-105
-```
-
-#参考文档
-
-## 参考章节
-```
-bg-orange-50 text-orange-600 + ::before content dot
-```
-
-#参考文档
-
-## 参考章节
-说明：本条描述设计规则、交互约束或实现注意事项。
+## 9. 可删除标签（chip）
 
 ```tsx
 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-blue-100 text-blue-700 border border-blue-200">
@@ -143,7 +146,13 @@ bg-orange-50 text-orange-600 + ::before content dot
 </span>
 ```
 
-## 参考章节
+删除按钮是 `<button>`（a11y），不是 div。
+
+---
+
+## 10. AI 控件（Path G 专属）
+
+### AI 联想按钮
 
 ```tsx
 <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-600 hover:bg-purple-100 transition-colors text-xs">
@@ -152,7 +161,9 @@ bg-orange-50 text-orange-600 + ::before content dot
 </button>
 ```
 
-说明：本条描述设计规则、交互约束或实现注意事项。
+AI 控件统一 purple 色谱（ref 01 §1 AI 语义色）。
+
+### AI 思考态
 
 ```tsx
 <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border-2 border-dashed border-purple-300 text-purple-500 animate-thinking-pulse">
@@ -161,7 +172,11 @@ bg-orange-50 text-orange-600 + ::before content dot
 </span>
 ```
 
-## 参考章节
+虚线边框 + 脉冲动画表示"进行中、未完成"，区别于实态按钮。
+
+---
+
+## 11. 拖拽上传
 
 ```tsx
 <div
@@ -174,11 +189,23 @@ bg-orange-50 text-orange-600 + ::before content dot
 </div>
 ```
 
-## 参考章节
+拖拽悬停态变色 + 明确格式/大小限制（防用户上传后被拒）。
 
-| 说明 | 说明 | 说明 | 说明          |
-| -------- | ------------------ | ------------------ | -------------------- |
-| 说明 | `border-gray-300` | 说明 | `text-xs text-gray-400` |
-| 说明 | `border-blue-500` | `ring-2 ring-blue-200` | 说明       |
-| 说明 | `border-red-400` | `ring-2 ring-red-200` | `text-xs text-red-500` |
-| 说明 | `bg-gray-100` | 说明               | 说明          |
+---
+
+## 12. 边框状态对照表
+
+| 状态 | border | ring | 文字 |
+| --- | --- | --- | --- |
+| 默认 | `border-gray-300` | — | `text-xs text-gray-400` |
+| 聚焦 | `border-blue-500` | `ring-2 ring-blue-200` | — |
+| 错误 | `border-red-400` | `ring-2 ring-red-200` | `text-xs text-red-500` |
+| 禁用 | `bg-gray-100` | — | — |
+
+---
+
+## 变更日志
+
+| 版本 | 变更 |
+| --- | --- |
+| 1.0.0 | 初版表单控件规范：文本/图标/下拉/复选/单选卡/toggle/slider/标签/AI 控件/拖拽上传 + 状态对照表。对齐 a11y-guardian / empty-state-storyteller / form-liberator 依赖。 |

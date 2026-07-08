@@ -9,9 +9,10 @@ delegates_to: [dialectician, silence-architect, holism-strategist, debunk-audito
 historical_era: "E7→E8 (AI-native 时代浮现 · 多 agent 协作走向'议会制')"
 emerged_to_solve: "用户希望直接对已有设计/文件审稿,而非提需求走 BRIEF · 缺一个'议会式'审稿入口"
 core_contradiction: "D5 数据⟷直觉 (并存 · 诸常委各持立场 · 不强求合一)"
-next_evolution: "v3.2 引入投票机制 + 立场权重 + 与 ui-auditor 联合签发"
+next_evolution: "（已落地 v3.2） 引入投票机制 + 立场权重 + 与 ui-auditor 联合签发"
 philosophical_anchor: "孔子 · 三人行必有我师 + 法藏 · 一即一切"
 philosophy: "圣人议会 · 三人行必有我师 · 多元立场不求合一,但求穷尽"
+references: [48-council-deliberation.md, 27-philosopher-bench.md, 46-design-aesthetics.md]
 ---
 
 # 🏛️ sage-council · 圣人议会审稿编排器
@@ -238,7 +239,7 @@ council_report:
 sage_council_report:
   artifact_id: "..."
   artifact_type: file | screenshot | code | link
-  sage_count: 8
+  sage_count: 12
   observations:
     - sage_id: dialectician
       sage_name_cn: 黑格尔
@@ -263,7 +264,7 @@ sage_council_report:
 >
 > AI 时代单一审稿员 (单 LLM judge) 容易被自己的偏见绑架。
 > 圣人议会的本质是 **认知多样性 (cognitive diversity)** —
-> 8 个不同立场的 agent 各看一片, 拼起来才看见全貌。
+> 12 个不同立场的 agent 各看一片, 拼起来才看见全貌。
 >
 > 这就是 sage-council 的使命: **不求合一, 但求穷尽。**
 

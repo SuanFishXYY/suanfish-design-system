@@ -7,6 +7,7 @@ historical_era: "AI-native (E7)"
 emerged_to_solve: "AI 生成的长内容产物只能复制粘贴，无法原地交互编辑"
 core_contradiction: "D2 自动化⟷掌控（掌控）"
 next_evolution: "可编辑 in-place artifact，版本 diff 与多人协作"
+references: [37-ai-thread-input-artifact.md]
 ---
 
 # 🎨 artifact-architect · 产物画布架构师

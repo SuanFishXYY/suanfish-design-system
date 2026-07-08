@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="算鱼设计系统 · 内核视觉证据 · v4.2.7">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算鱼设计系统 · 内核视觉证据 · v4.2.7</title>
+<!--
+  算鱼设计系统 · 内核视觉证据
+  把 ref 01 令牌 + ref 46 美学律 + ref 44/45 组件 + ref 47 哲学映射 渲染成肉眼可看界面。
+  单文件 HTML · 零依赖 · 浏览器直接打开。
+  对应 ref: 01 令牌 / 46 美学 / 44 通用组件 / 45 基础控件 / 47 哲学映射 / 48 议会推演
+-->
+<style>
+:root {
+  /* === ref 01 §1 稳态冷色谱 7 色 === */
+  --blue-700: #1d4ed8; --blue-600: #2563eb; --blue-500: #3b82f6; --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-200: #bfdbfe;
+  --red-600: #dc2626; --red-50: #fef2f2; --red-200: #fecaca;
+  --emerald-600: #059669; --emerald-500: #10b981; --emerald-50: #ecfdf5; --emerald-100: #d1fae5; --emerald-400: #34d399;
+  --amber-600: #d97706; --amber-500: #f59e0b; --amber-400: #fbbf24; --amber-50: #fffbeb; --amber-200: #fde68a;
+  --orange-600: #ea580c; --orange-500: #f97316; --orange-50: #fff7ed;
+  --purple-600: #9333ea; --purple-50: #faf5ff;
+  --indigo-600: #4f46e5; --indigo-50: #eef2ff;
+  /* === ref 01 §2 中性 === */
+  --slate-950: #020617; --slate-900: #0f172a; --slate-800: #1e293b; --slate-700: #334155; --slate-600: #475569;
+  --slate-500: #64748b; --slate-300: #cbd5e1; --slate-100: #f1f5f9; --slate-50: #f8fafc;
+  --gray-400: #9ca3af; --gray-500: #6b7280; --gray-600: #4b5563; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+  --white: #ffffff;
+  /* === ref 01 §5 圆角 === */
+  --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-2xl: 16px; --r-3xl: 24px; --r-full: 9999px;
+  /* === ref 01 §6 阴影 === */
+  --sh-sm: 0 1px 2px rgba(0,0,0,.05); --sh-md: 0 4px 6px -1px rgba(0,0,0,.1); --sh-lg: 0 10px 15px -3px rgba(0,0,0,.1); --sh-xl: 0 20px 25px -5px rgba(0,0,0,.1);
+  --font: -apple-system, "SF Pro Display", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--slate-50); color: var(--slate-800); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+h1 { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+h2 { font-size: 20px; font-weight: 700; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--gray-200); }
+h3 { font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--slate-600); }
+.lead { color: var(--slate-500); font-size: 14px; margin-top: 8px; }
+.ref-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: var(--r-full); background: var(--blue-50); color: var(--blue-700); margin-left: 8px; vertical-align: middle; }
+
+/* === ref 44 §1 卡片 === */
+.card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-xl); padding: 20px; box-shadow: var(--sh-sm); transition: all .2s; }
+.card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+.grid { display: grid; gap: 16px; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) { .grid-4,.grid-3 { grid-template-columns: repeat(2,1fr); } }
+
+/* === ref 01 §1 色谱展示 === */
+.swatch { height: 64px; border-radius: var(--r-lg); display: flex; align-items: flex-end; padding: 8px; font-size: 11px; font-weight: 600; }
+.swatch span { background: rgba(255,255,255,.9); padding: 1px 6px; border-radius: var(--r-md); color: var(--slate-800); }
+
+/* === ref 46 §一 加减辩证: 莫奈光色(加) vs 倪瓒冷逸(减) === */
+.monet-glow { background: linear-gradient(135deg, var(--emerald-400), #14b8a6); box-shadow: 0 0 24px rgba(16,185,129,.35); }
+.nichu-cold { background: var(--slate-900); color: var(--slate-100); }
+.dialectic-box { border-radius: var(--r-2xl); padding: 24px; min-height: 120px; display: flex; flex-direction: column; justify-content: center; }
+.dialectic-box .label { font-size: 12px; opacity: .7; margin-bottom: 4px; }
+.dialectic-box .name { font-size: 18px; font-weight: 700; }
+.dialectic-box .desc { font-size: 13px; opacity: .8; margin-top: 4px; }
+
+/* === ref 45 §1 按钮 === */
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--r-lg); font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: all .15s; }
+.btn-primary { background: var(--blue-600); color: var(--white); }
+.btn-primary:hover { background: var(--blue-700); }
+.btn-secondary { background: var(--white); color: var(--gray-600); border: 1px solid var(--gray-200); }
+.btn-secondary:hover { background: var(--gray-100); }
+.btn-danger { background: var(--red-600); color: var(--white); }
+.btn-ghost { background: transparent; color: var(--gray-600); }
+.btn-ghost:hover { background: var(--gray-100); }
+
+/* === ref 45 §2 标签 chip === */
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: var(--r-full); font-size: 12px; font-weight: 500; }
+.chip-info { background: var(--blue-100); color: var(--blue-700); }
+.chip-success { background: var(--emerald-100); color: var(--emerald-600); }
+.chip-warn { background: #fef3c7; color: var(--amber-600); }
+.chip-danger { background: var(--red-50); color: var(--red-600); }
+
+/* === ref 45 §3 徽章角标 === */
+.badge-demo { position: relative; display: inline-flex; }
+.badge-demo .dot { position: absolute; top: -4px; right: -4px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: var(--r-full); background: var(--red-600); color: var(--white); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+/* === ref 46 §三 R-Cross3 情感张力: 完成脉冲 === */
+@keyframes pulse-once { 0%{box-shadow:0 0 0 0 rgba(16,185,129,.6)} 70%{box-shadow:0 0 0 12px rgba(16,185,129,0)} 100%{box-shadow:0 0 0 0 rgba(16,185,129,0)} }
+.pulse-demo { animation: pulse-once 1.5s ease-out infinite; border-radius: var(--r-lg); }
+
+/* === ref 45 §6 spinner === */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner { width: 20px; height: 20px; border: 2px solid var(--blue-200); border-top-color: var(--blue-600); border-radius: 50%; animation: spin .8s linear infinite; }
+
+/* === ref 44 §3 Tooltip === */
+.tooltip-trigger { position: relative; display: inline-block; }
+.tooltip-trigger:hover .tooltip-pop { opacity: 1; transform: translateY(0); }
+.tooltip-pop { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(4px); background: var(--slate-900); color: var(--slate-100); padding: 6px 10px; border-radius: var(--r-lg); font-size: 12px; white-space: nowrap; opacity: 0; transition: all .2s; pointer-events: none; margin-bottom: 8px; }
+
+/* === ref 47 §D3 映射决策表 === */
+.map-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.map-table th { background: var(--slate-100); padding: 10px 12px; text-align: left; font-weight: 600; color: var(--slate-600); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+.map-table td { padding: 10px 12px; border-top: 1px solid var(--gray-100); }
+.map-table tr:hover td { background: var(--blue-50); }
+
+/* === ref 46 §六 对位: 三栏 === */
+.three-pane { display: grid; grid-template-columns: 80px 256px 1fr; height: 360px; border: 1px solid var(--gray-200); border-radius: var(--r-xl); overflow: hidden; }
+.pane-icon { background: rgba(255,255,255,.6); backdrop-filter: blur(12px); border-right: 1px solid rgba(255,255,255,.2); padding: 16px 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.pane-icon .ic { width: 40px; height: 40px; border-radius: var(--r-2xl); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.pane-icon .ic.active { background: var(--blue-600); color: var(--white); }
+.pane-icon .ic.idle { color: var(--gray-400); }
+.pane-detail { background: var(--white); border-right: 1px solid var(--gray-200); padding: 16px; overflow-y: auto; }
+.pane-detail .item { padding: 10px; border-radius: var(--r-lg); margin-bottom: 4px; font-size: 13px; }
+.pane-detail .item.active { background: var(--blue-50); color: var(--blue-700); }
+.pane-detail .item.idle { color: var(--gray-500); }
+.pane-main { background: var(--slate-50); padding: 16px; overflow-y: auto; }
+.pane-main .kpi { font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: .05em; }
+.pane-main .kpi-val { font-size: 24px; font-weight: 700; color: var(--slate-800); }
+
+/* === ref 01 §13 dark === */
+.dark-card { background: var(--slate-900); color: var(--slate-100); border-radius: var(--r-2xl); padding: 20px; }
+.dark-card .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--slate-500); }
+.dark-card .val { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+.section-desc { font-size: 13px; color: var(--slate-500); margin-bottom: 16px; }
+code { background: var(--slate-100); padding: 1px 6px; border-radius: 4px; font-size: 12px; color: var(--blue-700); }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:80ms !important; animation-iteration-count:1 !important; transition-duration:80ms !important } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>算鱼设计系统 · 内核视觉证据 <span class="ref-tag">v4.2.7</span></h1>
+<p class="lead">把 ref 01 令牌 / ref 46 美学律 / ref 44-45 组件 / ref 47 哲学映射 渲染成肉眼可看界面。单文件 HTML · 零依赖 · 浏览器直接打开。</p>
+
+<!-- ════════════ ref 01 §1 稳态冷色谱 ════════════ -->
+<h2>① 稳态冷色谱 <span class="ref-tag">ref 01 §1</span></h2>
+<p class="section-desc">7 语义色 × 7 列映射（base / 软底 bg / 主文字 text / 边框 / 聚焦环）。禁 HEX，全走令牌。</p>
+<div class="grid grid-4">
+  <div class="swatch" style="background:var(--blue-600)"><span>动作 blue-600</span></div>
+  <div class="swatch" style="background:var(--red-600)"><span>危险 red-600</span></div>
+  <div class="swatch" style="background:var(--emerald-500)"><span>成功 emerald-500</span></div>
+  <div class="swatch" style="background:var(--amber-500)"><span>警告 amber-500</span></div>
+  <div class="swatch" style="background:var(--orange-500)"><span>强调 orange-500</span></div>
+  <div class="swatch" style="background:var(--purple-600)"><span>AI purple-600</span></div>
+  <div class="swatch" style="background:var(--indigo-600)"><span>信息 indigo-600</span></div>
+  <div class="swatch" style="background:var(--slate-800);color:#fff"><span>中性 slate-800</span></div>
+</div>
+
+<!-- ════════════ ref 46 §一 加减辩证 ════════════ -->
+<h2>② 加减辩证 <span class="ref-tag">ref 46 §一</span></h2>
+<p class="section-desc">莫奈光色（加法·该加的加）vs 倪瓒冷逸（减法·萧疏冷逸）。议会内置双生辩证，不允许任一方独裁。</p>
+<div class="grid grid-2">
+  <div class="dialectic-box monet-glow" style="color:#fff">
+    <div class="label">[+] 加法派</div>
+    <div class="name">莫奈 · 光色革命</div>
+    <div class="desc">"光不是恒定的，色彩不是装饰，色彩本身就是真理。" — R-Cross2 感官完整性律</div>
+  </div>
+  <div class="dialectic-box nichu-cold">
+    <div class="label">[-] 减法派</div>
+    <div class="name">倪瓒 · 萧疏冷逸</div>
+    <div class="desc">"笔笔不到，却笔笔皆到。空白不是没画，是没必要画。" — 中国文人极简</div>
+  </div>
+</div>
+<h3>议会裁定（examples/03 实证）</h3>
+<p class="section-desc">Main 数据看板用莫奈（数据需可读+有氛围），控制面板用倪瓒（控制需冷静+不干扰）。加减两端各占一区，辩证不塌方。</p>
+
+<!-- ════════════ ref 45 基础控件 ════════════ -->
+<h2>③ 基础控件 <span class="ref-tag">ref 45</span></h2>
+<p class="section-desc">按钮五级 · 标签 chip 五色阶 · 徽章角标 · spinner · 进度条 · Tooltip</p>
+
+<h3>按钮（ref 45 §1）</h3>
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+  <button class="btn btn-primary">保存</button>
+  <button class="btn btn-secondary">取消</button>
+  <button class="btn btn-danger">删除</button>
+  <button class="btn btn-ghost">幽灵</button>
+  <button class="btn" style="background:transparent;color:var(--blue-600);text-decoration:underline">链接</button>
+</div>
+
+<h3>标签 chip（ref 45 §2 · 5 色阶）</h3>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+  <span class="chip chip-info">信息</span>
+  <span class="chip chip-success">成功</span>
+  <span class="chip chip-warn">警告</span>
+  <span class="chip chip-danger">危险</span>
+  <span class="chip" style="background:var(--gray-100);color:var(--gray-600)">中性</span>
+</div>
+
+<h3>徽章角标 + spinner + 进度 + Tooltip（ref 45 §3/§5/§6 + ref 44 §3）</h3>
+<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center">
+  <div class="badge-demo">
+    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(to top right,var(--slate-100),var(--white));border:1px solid rgba(255,255,255,.5);box-shadow:var(--sh-md);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--gray-700)">A</div>
+    <span class="dot">99+</span>
+  </div>
+  <div class="spinner"></div>
+  <div style="width:120px;height:6px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden">
+    <div style="height:100%;width:68%;background:linear-gradient(to right,var(--blue-500),var(--blue-600));border-radius:var(--r-full);transition:width .5s"></div>
+  </div>
+  <div class="tooltip-trigger">
+    <button class="btn btn-secondary">悬停看 Tooltip</button>
+    <div class="tooltip-pop">ref 44 §3 · Portal z-[9999] · pointer-events-none</div>
+  </div>
+</div>
+
+<!-- ════════════ ref 46 §三 R-Cross3 情感张力 ════════════ -->
+<h2>④ R-Cross3 情感张力律 <span class="ref-tag">ref 46 §三</span></h2>
+<p class="section-desc">关键节点（数据加载完成）必须有命运四音式张力——1 次主色脉冲，不循环（循环=焦虑）。贝多芬 Op.135 "Es muss sein!"</p>
+<div class="grid grid-4">
+  <div class="card pulse-demo" style="text-align:center">
+    <div style="font-size:11px;color:var(--gray-400);text-transform:uppercase">总用户</div>
+    <div style="font-size:24px;font-weight:700;margin:4px 0">12,847</div>
+    <div style="font-size:12px;color:var(--emerald-600)">↑ 8.2% vs 上周</div>
+  </div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:11px;color:var(--gray-400);text-transform:uppercase">活跃</div>
+    <div style="font-size:24px;font-weight:700;margin:4px 0">3,201</div>
+    <div style="font-size:12px;color:var(--emerald-600)">↑ 3.1%</div>
+  </div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:11px;color:var(--gray-400);text-transform:uppercase">留存</div>
+    <div style="font-size:24px;font-weight:700;margin:4px 0">68%</div>
+    <div style="font-size:12px;color:var(--amber-600)">↓ 1.2%</div>
+  </div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:11px;color:var(--gray-400);text-transform:uppercase">收入</div>
+    <div style="font-size:24px;font-weight:700;margin:4px 0">¥48k</div>
+    <div style="font-size:12px;color:var(--emerald-600)">↑ 12%</div>
+  </div>
+</div>
+
+<!-- ════════════ ref 46 §六 对位 + ref 04 三栏 ════════════ -->
+<h2>⑤ 对位结构 + 三栏布局 <span class="ref-tag">ref 46 §六 · ref 04</span></h2>
+<p class="section-desc">巴赫对位：多旋律独立又融贯。三栏骨架固定（一致性）+ 看板可调（个性化·D3 内容层）。</p>
+<div class="three-pane">
+  <div class="pane-icon">
+    <div class="ic active">🏠</div>
+    <div class="ic idle">📊</div>
+    <div class="ic idle">👤</div>
+    <div class="ic idle">⚙️</div>
+  </div>
+  <div class="pane-detail">
+    <div style="font-size:11px;color:var(--gray-400);text-transform:uppercase;margin-bottom:8px">项目</div>
+    <div class="item active">● 工作台</div>
+    <div class="item idle">数据分析</div>
+    <div class="item idle">设置</div>
+  </div>
+  <div class="pane-main">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="font-weight:700;font-size:16px">数据工作台</div>
+      <button class="btn btn-primary" style="padding:4px 12px;font-size:12px">导出</button>
+    </div>
+    <div class="grid grid-3" style="margin-bottom:16px">
+      <div class="card" style="padding:12px"><div class="kpi">总用户</div><div class="kpi-val">12.8k</div></div>
+      <div class="card" style="padding:12px"><div class="kpi">活跃</div><div class="kpi-val">3.2k</div></div>
+      <div class="card" style="padding:12px"><div class="kpi">留存</div><div class="kpi-val">68%</div></div>
+    </div>
+    <div class="grid grid-2">
+      <div class="card" style="padding:12px">
+        <div style="font-size:12px;color:var(--gray-500);margin-bottom:8px">知识图谱（莫奈光色高亮）</div>
+        <div style="height:80px;background:radial-gradient(circle at 30% 40%,rgba(52,211,153,.4),transparent 40%),radial-gradient(circle at 70% 60%,rgba(99,102,241,.3),transparent 40%);border-radius:var(--r-lg);position:relative">
+          <div style="position:absolute;top:30%;left:30%;width:12px;height:12px;background:var(--emerald-400);border-radius:50%;box-shadow:0 0 12px rgba(52,211,153,.6)"></div>
+          <div style="position:absolute;top:55%;left:65%;width:10px;height:10px;background:var(--indigo-600);border-radius:50%;box-shadow:0 0 10px rgba(79,70,229,.5)"></div>
+        </div>
+      </div>
+      <div class="dark-card" style="padding:12px">
+        <div class="lbl">控制面板（倪瓒冷逸）</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--slate-300)">覆盖度</div>
+        <div style="height:6px;background:var(--slate-700);border-radius:var(--r-full);margin-top:4px"><div style="height:100%;width:62%;background:var(--blue-500);border-radius:var(--r-full)"></div></div>
+        <div style="margin-top:8px;font-size:11px;color:var(--amber-400)">⚠ 62% · 建议拓宽筛选</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ ref 47 §D3 哲学映射 ════════════ -->
+<h2>⑥ 哲学映射 · D3 个性化⟷一致性 <span class="ref-tag">ref 47 §D3</span></h2>
+<p class="section-desc">个性化只动内容层，结构层一致是底线。这是 ref 47 把哲学矛盾翻译成 UI 决策的直接落地。</p>
+<div class="card" style="overflow-x:auto">
+<table class="map-table">
+<thead><tr><th>层</th><th>个性化？</th><th>决策</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td>三栏骨架</td><td>❌</td><td>固定 80/256/flex-1</td><td>一致性底线 · ref 04</td></tr>
+<tr><td>令牌系统</td><td>❌</td><td>全走 ref 01，禁 HEX</td><td>一致性底线 · ref 14</td></tr>
+<tr><td>品牌声调</td><td>❌</td><td>稳态声调</td><td>ref 35/42</td></tr>
+<tr><td>KPI 卡顺序</td><td>✅</td><td>可拖拽重排</td><td>个性化内容层</td></tr>
+<tr><td>看板显隐</td><td>✅</td><td>用户可选</td><td>个性化内容层</td></tr>
+<tr><td>图表时间范围</td><td>✅</td><td>可调</td><td>个性化内容层</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ════════════ ref 01 §13 dark mode ════════════ -->
+<h2>⑦ Dark Mode <span class="ref-tag">ref 01 §13</span></h2>
+<p class="section-desc">亮色是默认，暗色是承诺。v1.0.1 新增——demo case-2026-0622-001 "dark 适配衰弱整改"所引令牌落地。</p>
+<div class="grid grid-4">
+  <div class="dark-card"><div class="lbl">卡片底</div><div class="val" style="font-size:14px;font-family:monospace">slate-900</div></div>
+  <div class="dark-card" style="background:var(--slate-950)"><div class="lbl">页面背景</div><div class="val" style="font-size:14px;font-family:monospace">slate-950</div></div>
+  <div class="dark-card"><div class="lbl">动作色</div><div class="val" style="color:var(--blue-500)">blue-400</div></div>
+  <div class="dark-card"><div class="lbl">正文</div><div class="val" style="color:var(--slate-100);font-size:14px">slate-100</div></div>
+</div>
+
+<!-- ════════════ 尾注 ════════════ -->
+<h2>尾注</h2>
+<div class="card">
+  <p style="font-size:13px;color:var(--slate-600);line-height:1.7">
+    本文件是算鱼设计系统 <strong>首个可直接渲染的视觉证据</strong>——前 48 份 ref + 5 份 demo 全是 markdown 文字，无浏览器可看界面。<br>
+    本 HTML 把 <code>ref 01</code> 令牌色谱 + <code>ref 46</code> 加减辩证/R-Cross3 张力 + <code>ref 44/45</code> 组件 + <code>ref 47</code> D3 哲学映射 + <code>ref 04</code> 三栏 + <code>ref 01 §13</code> dark mode 全部渲染成肉眼可看像素。<br><br>
+    <strong>从文字到像素——这才是"设计艺术深入内核"的终极证据。</strong>每个色块/按钮/布局都可追溯到一份 ref + 一对矛盾 + 一位圣人投票（ref 48 议会推演链）。<br><br>
+    对应 ref: 01 / 04 / 14 / 35 / 42 / 44 / 45 / 46 / 47 / 48 · 对应 demo: examples/03 Dashboard
+  </p>
+</div>
+
+</div>
+</body>
+</html>

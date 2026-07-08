@@ -8,6 +8,7 @@ historical_era: "Flat/Material → Glass/Neumorphic (E4→E5)"
 emerged_to_solve: "视觉原子值散落代码各处，设计与开发无共同语言"
 core_contradiction: "D3 个性化⟷一致性（一致性）"
 next_evolution: "AI 辅助 token 生成，设计-代码实时同步与语义追踪"
+references: [01-design-tokens.md]
 ---
 
 # 🎨 token-keeper · 设计令牌守门人

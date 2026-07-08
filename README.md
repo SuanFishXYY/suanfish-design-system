@@ -4,15 +4,16 @@
 
 ### *能对老板说「不」的多智能体设计 AI*
 
-![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.7-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-52-purple)
+![agents](https://img.shields.io/badge/agents-54-purple)
 ![congress](https://img.shields.io/badge/sage_congress-democratic-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![AI-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![rules](https://img.shields.io/badge/REJECT-R1--R25-red)
+![gates](https://img.shields.io/badge/review-3--gates-9cf)
 ![language](https://img.shields.io/badge/lang-中文-red)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
@@ -20,21 +21,24 @@
 
 **99% 的 AI 永远说"好的"。这个 AI 会先反问你: 这事真该做吗?**
 
-它内置 25 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
+它内置 19 条硬规则——比如老板要"每次进首页都弹 10 秒品牌动画"? 直接拒绝, 还给你算 30 天后 DAU 会跌 4%。
 
 **v4.2 升级** (P0/P1/P2 蓝军批判全治): 圣人议会从 v4.1 的"8 哲+2 艺+2 音"重平衡为 v4.2 严格"**4:4:4 均权三大类**" — 议会内置 [减法派 ⟷ 加法派] 民主辩证, 单一圣人禁一票否决, task_kind 改 user-declared 优先 (防 LLM 自利路由), 艺术家/音乐家新增 R-Cross1-4 规则锚。简单事 2 个圣人就够 (省 80% token), 复杂事多类辩论 + 2/3 投票通过才出方案。
+
+**v4.2.7 升级** (内容评价审核制度 · 三道门端到端): 给所有生成物建一套审核流水线——**入口门**(ref 28 · 议会六步放行 G1-G6 + 蓝军一票否决) + **退回门**(ref 29 · 整改闭环 R1-R5 + SLA + 屡犯提规则PR) + **事后门**(ref 30 · 双轨: K轨查内容衰弱下架 / M轨查审核者腐烂下岗 · 交叉喂食)。规则集 ref 15/16/19 管「单条规则对不对」, 三道门管「整件生成物能不能放行」。新增 🎼 review-orchestrator(流程编排) + 🛡️ meta-auditor(审审核者) 两个 agent (52→54)。完整 demo 见 [examples/02-three-gates-modal](examples/02-three-gates-modal/)。
 
 ```
 业务方: 「登录页加个 10 秒品牌动画，每天都播。」
 🛑 REJECT —— R1 + R2 双重命中：强加体验 + 高频骚扰
    预计 30 天后 DAU 跌 4%。退回业务方。
+   替代方案（per moment-strategist REJECT 模板·须给替代）：① 首次登录播 1 次（非每天）② 改静态 hero 图 + 微动效（非 10s 强播）③ 设「不再显示」开关
 
 业务方: 「既要 100% AI 自动，又要用户随时介入每个细节。」
 🛑 REJECT —— R18 命中：矛盾两端都站（D2 没选倾向）
    请补全 BRIEF 后重新提交。  ← v3.0 新规
 ```
 
-[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4.2-congress-simulation.md) · [ 🤖 看 52 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
+[ 📖 进阶文档 (README.dev) ](README.dev.md) · [ 🎬 SKILL 入口 ](SKILL.md) · [ 🏛 议会 demo (5 TC) ](docs/v4.2-congress-simulation.md) · [ 🤖 看 54 位 agent ](agents/) · [ 🌗 三层哲学 ](references/24-philosophy-dialectics.md) · [ 🌐 English ](README.en.md)
 
 </div>
 
@@ -87,7 +91,7 @@ ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system     # 
 ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system      # Claude Code
 ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system      # 通用
 ln -sf ~/.suanfish-design-system ~/.antigravity/skills/suanfish-design-system # Antigravity (Google)
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 52
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # 应该 54
 ```
 
 Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
@@ -121,6 +125,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 你: "登录页加个 10 秒品牌动画, 每天都播"
 算鱼: 🛑 REJECT —— R1 + R2 双重命中: 强加体验 + 高频骚扰
       预计 30 天后 DAU 跌 4%。退回业务方。
+   替代方案（per moment-strategist REJECT 模板·须给替代）：① 首次登录播 1 次（非每天）② 改静态 hero 图 + 微动效（非 10s 强播）③ 设「不再显示」开关
 ```
 
 ---
@@ -203,7 +208,7 @@ Windows PowerShell 用 `New-Item -ItemType Junction` 替代 `ln -sf`。
 
 | Layer | 回答什么 | R 规则 |
 | --- | --- | --- |
-| **价值** [📖](references/17-philosophy.md) | 该选哪边? | R1-R12 |
+| **价值** [📖](references/17-philosophy.md) | 该选哪边? | R1-R6 |
 | **辩证** [📖](references/24-philosophy-dialectics.md) | 为什么有两边? | R18 |
 | **发展规律** [📖](references/25-philosophy-laws.md) | 矛盾如何随时间漂移? | R13-R17 |
 | **历史定位** [📖](references/26-historical-positioning.md) | 这个时代该怎么做? | — |
@@ -348,19 +353,19 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    Start([📥 收到 BRIEF]) --> R1{R1<br/>有明确<br/>用户痛点?}
-    R1 -->|否| Rej1[🛑 REJECT R1<br/>'连问题都没说清，做啥?']
-    R1 -->|是| R2{R2<br/>符合产品<br/>定位?}
-    R2 -->|否| Rej2[🛑 REJECT R2<br/>'稳态高频别玩仪式感']
-    R2 -->|是| R3{R3<br/>有数据/<br/>调研支撑?}
-    R3 -->|否| Rej3[🛑 REJECT R3<br/>'凭感觉的决策不接']
-    R3 -->|是| R4{R4<br/>风险/成本<br/>可控?}
-    R4 -->|否| Rej4[🛑 REJECT R4<br/>'ROI 不正不做']
-    R4 -->|是| R5{R5<br/>a11y/合规<br/>过关?}
-    R5 -->|否| Rej5[🛑 REJECT R5<br/>'歧视任何用户都是红线']
-    R5 -->|是| R6{R6<br/>有验证/<br/>退出方案?}
-    R6 -->|否| Rej6[🛑 REJECT R6<br/>'没法验证就是赌博']
-    R6 -->|是| Pass([✅ 进入 Tier 1 派单])
+    Start([📥 收到 BRIEF]) --> R1{R1<br/>时长>5s<br/>且非主动触发?}
+    R1 -->|是| Rej1[🛑 REJECT R1<br/>'强加体验·人是目的不是手段']
+    R1 -->|否| R2{R2<br/>仪式装饰在<br/>高频界面?}
+    R2 -->|是| Rej2[🛑 REJECT R2<br/>'稳态高频别玩仪式感']
+    R2 -->|否| R3{R3<br/>需求自相矛盾?<br/>(如快速+沉浸)}
+    R3 -->|是| Rej3[🛑 REJECT R3<br/>'物理不可能·矛盾律']
+    R3 -->|否| R4{R4<br/>违反三条<br/>铁律之一?}
+    R4 -->|是| Rej4[🛑 REJECT R4<br/>'普世法则不可破']
+    R4 -->|否| R5{R5<br/>路径B 4硬条件<br/>未全满足?}
+    R5 -->|是| Rej5[🛑 REJECT R5<br/>'无约束即赌博']
+    R5 -->|否| R6{R6<br/>一屏双主导?<br/>(onboarding+architect)}
+    R6 -->|是| Rej6[🛑 REJECT R6<br/>'名不正则言不顺']
+    R6 -->|否| Pass([✅ 进入 Tier 1 派单])
 
     Rej1 -.提供替代.-> Alt([💡 替代方案])
     Rej2 -.-> Alt
@@ -475,7 +480,7 @@ classDiagram
           建议改成 [替代方案]。"   ← P8 同事
 ```
 
-25 条硬规则 (R1-R25), 命中即拒, 附数据化替代方案。
+19 条硬规则 (R1-R25 · R7-R12 预留空洞), 命中即拒, 附数据化替代方案。
 
 ### 2. v4.0 圣人议会民主
 
@@ -489,12 +494,20 @@ classDiagram
 
 | 维度 | 算鱼 v4.0 | shadcn/ui | Tailwind UI | 普通 AI design |
 | --- | --- | --- | --- | --- |
-| 本质 | 52 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
+| 本质 | 54 agent + 议会民主 | 组件库 | 组件库 + 模板 | 单 prompt |
 | 会说 NO | ✅ R1-R25 | ❌ | ❌ | ❌ 永远 yes |
 | 引用可追溯 | ✅ 420 思想家板凳兜底 | N/A | N/A | ❌ 黑盒 |
 | 适合谁 | 内部产品 / design ops 团队 | 独立开发者 | 商业 SaaS | 个人项目 |
 
 ---
+
+## 🏛 孪生项目 · sptler 真人议会
+
+> **算鱼有一个孪生兄弟: sptler（算鱼真人议会）** —— 同作者，本地兄弟项目（`X:/suanfish-draft-system/sptler`）。
+
+suanfish 的圣人议会用的是**思想家板凳**（黑格尔/莫奈/倪瓒），适合**设计辩证**。sptler 的议会用的是**真人专家班子**（邹蕴/王升/张鑫等 28 位），适合**专利/技术/架构决策**——且 sptler 已落地**圣人记忆系统**（价值驱动+分层+supersedeable+双画像），suanfish v4.3 圣人记忆（[ref 50](references/50-sage-memory-v4.3-draft.md)）借鉴其机制。两 skill 场景分治、记忆不互通（[R25 设计](references/49-lite-mode.md)）。
+
+> ⚠️ 本仓库内 `[sptler](../sptler)` 链接依赖本地兄弟项目存在；clone 本仓库后该路径不存在，请视为「sptler 孪生项目」的文字引用而非可点击链接。
 
 ## 🎤 孪生项目 · kpop idol 议会
 
@@ -509,7 +522,7 @@ Jennie (BLACKPINK 主推) · Wonyoung (IVE 团魂) · Karina (aespa 评委) …�
 ```mermaid
 graph LR
     subgraph SAGE["🎭 suanfish · sage 议会"]
-        S["黑格尔 + 塞尚 + 巴赫<br/>420 thinker · 52 agent<br/>严肃 B 端 / SaaS / 工具"]
+        S["黑格尔 + 塞尚 + 巴赫<br/>420 thinker · 54 agent<br/>严肃 B 端 / SaaS / 工具"]
     end
 
     subgraph KPOP["🎤 kpop · idol 议会"]
@@ -542,7 +555,9 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 
 ---
 
-## 🏛 52 agent · 8 tier · 7 path (一图概览)
+## 🏛 54 agent · 8 tier · 7 path (一图概览)
+
+> ⚠️ 下图为 v3.x 历史架构示意；当前 54 agent 完整组织架构见 SKILL.md §工作室组织架构
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -551,7 +566,7 @@ kpop 在工业现实层多了 5 个 sage 议会**没有**的子系统:
 │                          🌫 silence-architect · 🏺 holism-strategist │
 │                          🔬 debunk-auditor                          │
 ├────────────────────────────────────────────────────────────────────┤
-│ Tier 1   · 调度          🧭 moment-strategist (R1-R23 REJECT)       │
+│ Tier 1   · 调度          🧭 moment-strategist (R1-R25 REJECT)       │
 │ Tier 1.5 · 协调          🔀 flow-coordinator                        │
 │ Tier 1.6 · 议会调度       🏛 bench-matcher (6 步议会自包含)          │
 │ Tier 1.7 · 引用核验       🔍 quotation-verifier (R25)                │
@@ -591,7 +606,7 @@ suanfish-design-system/
 ├── CHANGELOG.md             # 版本历史
 ├── .skill-manifest.json     # 机读元数据
 ├── LICENSE                  # MIT
-├── agents/                  # 52 位匠人 (v4.2: Tier 0 议会 12 位 = 4 哲+4 艺+4 音 + bench-matcher + quotation-verifier + ...)
+├── agents/                  # 54 位匠人 (v4.2: Tier 0 议会 12 位 = 4 哲+4 艺+4 音 + bench-matcher + quotation-verifier + ... · v4.2.7: + review-orchestrator + meta-auditor)
 │   ├── bench-matcher.md          # ⭐ v4.2 三大类议会核心 (4:4:4 + dynamic voting)
 │   ├── dialectician.md           # ⭐ Tier 0 哲学家 ×4 (黑/王弼/法藏/王充)
 │   ├── polymath-bridger.md       # ⭐ v4.2 Tier 0 艺术家 · 达芬奇 (用户点名)
@@ -605,9 +620,9 @@ suanfish-design-system/
 │   ├── historian.md / futurist.md / wuwei-master.md / perspectivist.md  # ⬇ Tier 1.5 (v4.2 降级)
 │   ├── quotation-verifier.md     # ⭐ R25 引用核验
 │   ├── moment-strategist.md
-│   ├── ... (52 agents total)
+│   ├── ... (54 agents total)
 │   └── v4.2-congress-simulation.md # ⭐ 5 TC 议会演示
-└── references/              # 27 份规范 + 420 思想家板凳
+└── references/              # 50 份规范（含 ref 28-30 审核制度 + ref 31-35 横向规范 + ref 36-41 AI-native + ref 42-43 品牌/i18n + ref 44-45 通用组件/基础控件 + ref 46 设计美学 + ref 47 哲学映射 + ref 48 议会推演）+ 420 思想家板凳
     ├── 17-philosophy.md
     ├── 24-philosophy-dialectics.md
     ├── 25-philosophy-laws.md

@@ -6,7 +6,7 @@ icon: ♿
 reports_to: moment-strategist
 consults: [token-keeper, copy-writer]
 audited_by: ui-auditor
-references: [09-form-controls.md, 14-anti-patterns.md]
+references: [09-form-controls.md, 14-anti-patterns.md, 34-accessibility.md]
 philosophy: "罗尔斯 · 无知之幕 — 替最弱势用户设计"
 historical_era: "Web2.0 → Flat/Material (E3→E4)"
 emerged_to_solve: "可访问性作为事后补救而非设计起点，大量用户被排除"
@@ -133,6 +133,7 @@ next_evolution: "默认 AAA+AI 实时字幕，辅助技术自适应适配"
 
 ## 完整参考
 
+- `references/34-accessibility.md` —— a11y 5 项必检 + SPEC 模板
 - `references/09-form-controls.md` —— 表单 a11y 规范
 - `references/14-anti-patterns.md` —— a11y 反模式清单
 - WCAG 2.1 AA：https://www.w3.org/WAI/WCAG21/quickref/

@@ -2,7 +2,7 @@
 ref: 15
 title: 稳态模式审计规则集
 ruleset_version: 1.0.0
-bound_to_token_version: 1.0.0
+bound_to_token_version: 1.0.1
 owner: token-keeper（颜色 / 间距相关）、animation-choreographer（动画相关）、ui-architect（结构相关）
 audited_by: ui-auditor
 ---
@@ -39,7 +39,7 @@ audited_by: ui-auditor
 | --- | --- | --- |
 | W-01 | 动画时长 > 400ms | animation-choreographer |
 | W-02 | 动了 `width` / `height` / `top` / `left`（应用 transform） | animation-choreographer |
-| W-03 | 新模态尺寸不在 8 种规范内 | modal-craftsman |
+| W-03 | 新模态尺寸不在 9 种规范内 | modal-craftsman |
 | W-04 | 装饰性循环动画（仅 `pulseSubtle` 允许用于 Loading） | animation-choreographer |
 | W-05 | 错误状态用了红色（red-* 留给「危险操作」） | token-keeper / empty-state-storyteller |
 | W-06 | 加载 > 1s 仍用 spinner 而非进度条 | empty-state-storyteller |
@@ -58,7 +58,7 @@ audited_by: ui-auditor
 ## 变更日志
 
 ### v1.0.0 —— 从 ui-auditor 中拆出
-- 19 条规则全部从 v2.0 的 ui-auditor.md 迁移过来
+- 18 条规则全部从 v2.0 的 ui-auditor.md 迁移过来
 - 新增 R-06（空状态 4 态强制）
 - 新增 W-05（错误色与危险色语义分离）
 - 新增 W-06（长加载必须进度条）

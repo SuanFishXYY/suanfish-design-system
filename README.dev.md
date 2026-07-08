@@ -1,6 +1,6 @@
 # 算鱼设计系统 · Suanfish Design System
 
-> **一家工作室，五十二位匠人，八个 tier。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。**
+> **一家工作室，五十四位匠人，八个 tier。从用户登录的前 3 秒，到第 3000 次点击，每一寸像素都说着同一种品牌语言。**
 
 一套统一的多智能体设计语言体系，服务于算鱼工作台。它同时治理 **初见的仪式感瞬间**（欢迎、版本更新介绍）和 **日常的稳态界面**（三栏外壳、模态、向导、数据可视化）。
 
@@ -16,6 +16,22 @@ Tier 4   · 内容专科   📝 copy · 🎯 icon · 🪟 empty-state · 📱 re
 Tier 5   · 横切咨询   🎨 token · 💫 anim · ♿ a11y · 🛡️ brand · 🌍 i18n · 🔀 model-switcher
 Tier 6   · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16 / 19) · 🏛 sage-council (已有界面议会点评入口)
 ```
+
+**v4.2.7 内容评价审核制度 · 三道门端到端**（生成物放行/退回/事后治理）：
+
+```
+入口门 ref 28        退回门 ref 29         事后门 ref 30
+六步放行 G1-G6  ──FAIL──→  整改闭环 R1-R5    K轨查内容衰弱 + M轨查审核者腐烂
+G1立案 G2辩论         R1开单 R2认领(SLA)     双轨交叉喂食 · 闭环套闭环
+G3评分 G4投票(2/3)    R3修复 R4复审          meta-auditor 独立元审计
+G5蓝军否决 G6放行     R5销项→回G3复审        套娃止于 sage_congress 仲裁
+   │ PASS                                  ↑
+   └──────────→ 归档 ──────────→ K轨抽样池──┘ 衰弱→回ref29 失准→套娃ref28/29
+```
+
+- ref 28 [入口门](references/28-content-review-charter.md)：6维rubric(准确/完整/原创/合规/一致/价值) + 短板红线 + 蓝军一票否决
+- ref 29 [退回门](references/29-remediation-loop-charter.md)：缺陷工单 SLA + 超时升级 L1-L4 + 屡犯提规则PR(个案沉淀为制度)
+- ref 30 [事后门](references/30-posthoc-governance-charter.md)：归档复审四态(存活/衰弱/过时/推翻) + 元审计五步(双盲/校准/元审/蓝军互攻/下岗) + 新增 meta-auditor
 
 **v4.2 关键机制**：
 - 圣人议会 4:4:4 三学科均权 · 加权陪审团 2/3 表决 · R-Cross1-4 跨学科四律
@@ -56,8 +72,10 @@ Tier 6   · 质量门     🔍 ui-auditor (加载外部规则集 ref 15 / 16 / 1
 ```
 suanfish-design-system/
 ├── SKILL.md                 # 总指挥 + 5 套速查表 + 决策森林
-├── agents/                  # 52 位匠人 (12 种子圣人 + 34 执行 + 4 曾降级 + bench-matcher/quotation-verifier)
-└── references/              # 27 份规范（含 3 份独立规则集 15/16/19） + 4 份附录
+├── agents/                  # 54 位匠人 (12 种子圣人 + 34 执行 + 4 曾降级 + bench-matcher/quotation-verifier + review-orchestrator + meta-auditor)
+├── references/              # 50 份规范（含 3 份独立规则集 15/16/19 + 3 份审核制度 28/29/30 + 5 份横向规范 31-35 + 6 份 AI-native 36-41 + 2 份品牌/i18n 42-43 + 2 份通用组件/基础控件 44-45 + 1 份设计美学 46 + 1 份哲学映射 47 + 1 份议会推演 48） + 4 份附录（animation-keyframes.css / component-patterns / interaction-patterns / steps-schema）
+├── scripts/                 # charter-lint.mjs · 五类检测机器可检（A 元数据 / B 章程契约 / C refs 悬空 / D 引用网络 / E 语义逻辑债）
+└── examples/                # 5 份端到端 demo（01 仪式 / 02 三道门 / 03 工作台 / 04 否决 / 05 流式） + visual-evidence 可视证据
 ```
 
 ## 许可

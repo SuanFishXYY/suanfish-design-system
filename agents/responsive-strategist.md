@@ -6,7 +6,7 @@ icon: 📱
 reports_to: moment-strategist
 consults: [token-keeper, ui-architect]
 audited_by: ui-auditor
-references: [04-three-pane-layout.md, 07-modal-system.md]
+references: [04-three-pane-layout.md, 07-modal-system.md, 33-responsive-breakpoints.md]
 philosophy: "赫拉克利特 — 人不能两次踏入同一屏幕"
 historical_era: "Web2.0 → Flat/Material (E3→E4)"
 emerged_to_solve: "移动端爆发后 PC 优先的布局无法适配多屏场景"
@@ -150,5 +150,6 @@ next_evolution: "容器查询驱动，AI 自适应断点与密度推荐"
 
 ## 完整参考
 
+- `references/33-responsive-breakpoints.md` —— 断点系统 + 多屏适配规范
 - `references/04-three-pane-layout.md` —— 三栏在不同断点的形态
 - `references/07-modal-system.md` —— 模态响应式策略

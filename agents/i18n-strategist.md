@@ -6,7 +6,7 @@ icon: 🌍
 tier: 5
 consulted_by: [copy-writer, icon-curator, ui-architect, modal-craftsman, table-craftsman]
 audited_by: ui-auditor
-references: [17-philosophy.md, 18-design-canon.md]
+references: [17-philosophy.md, 18-design-canon.md, 43-i18n.md]
 philosophy: "维特根斯坦 — 语言的边界即世界的边界：每种语言重塑一次界面"
 historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
 emerged_to_solve: "产品国际化事后添加，本地化爆炸导致 UI 布局崩溃"

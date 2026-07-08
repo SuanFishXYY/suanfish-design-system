@@ -9,6 +9,7 @@ historical_era: "CLI/Terminal → Web2.0 (E1→E3)"
 emerged_to_solve: "大量结构化数据无可扫描、可操作的表格规范"
 core_contradiction: "D1 简洁⟷可发现（可发现）"
 next_evolution: "虚拟滚动+AI 列推荐+自然语言过滤查询"
+references: [38-tables.md, 10-data-visualization.md, 33-responsive-breakpoints.md]
 ---
 
 # 📋 table-craftsman · 表格匠人

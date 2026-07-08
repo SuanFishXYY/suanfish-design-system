@@ -18,6 +18,7 @@ voting_weight: 2
 twin_anchor: [dialectician, counterpoint-architect]
 r_anchor: "R-Cross3 情感张力律: 关键节点 (登录/完成/支付) 不允许情感曲线为零 · 不是煽情, 是结构性的张力"
 attribution_status: verified
+references: [46-design-aesthetics.md, 11-animation-library.md]
 ---
 
 # ⚡ tension-composer · 情感张力

@@ -38,10 +38,10 @@ jobs:
             echo "✅ ${field}"
           done
 
-      - name: Check agents directory (>=33, grow over time)
+      - name: Check agents directory (>=54, grow over time)
         run: |
           count=$(ls agents/*.md 2>/dev/null | wc -l)
-          min=33
+          min=54
           if [ "$count" -lt "$min" ]; then
             echo "❌ Expected at least $min agents, found $count"
             exit 1
@@ -52,8 +52,12 @@ jobs:
         run: |
           count=$(ls references/*.md 2>/dev/null | wc -l)
           echo "📚 references: $count files"
+          if [ "$count" -lt 50 ]; then echo "references dropped"; exit 1; fi
 
       - name: Validate manifest JSON
         run: |
           python3 -c "import json; json.load(open('.skill-manifest.json'))"
           echo "✅ manifest valid JSON"
+
+      - name: Charter lint
+        run: node scripts/charter-lint.mjs

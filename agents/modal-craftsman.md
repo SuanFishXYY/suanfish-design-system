@@ -8,6 +8,7 @@ historical_era: "Web2.0 → Glass/Neumorphic (E3→E5)"
 emerged_to_solve: "弹窗滥用与缺乏一致的模态层级管理，z-index 混乱"
 core_contradiction: "D4 引导⟷自由（引导）"
 next_evolution: "非阻塞 inline 取代强模态，AI 判断最优呈现时机"
+references: [07-modal-system.md, 33-responsive-breakpoints.md]
 ---
 
 # 🪟 modal-craftsman · 模态匠人

@@ -4,23 +4,26 @@
 
 ### *The multi-agent design AI that can say "No" to your boss*
 
-![version](https://img.shields.io/badge/version-4.2.6-blueviolet)
+![version](https://img.shields.io/badge/version-4.2.7-blueviolet)
 ![thinkers](https://img.shields.io/badge/thinkers-420-9cf)
-![agents](https://img.shields.io/badge/agents-52-purple)
+![agents](https://img.shields.io/badge/agents-54-purple)
 ![congress](https://img.shields.io/badge/sage_congress-3--category-yellow)
 ![tiers](https://img.shields.io/badge/tiers-8-orange)
 ![paths](https://img.shields.io/badge/paths-7-teal)
 ![philosophy](https://img.shields.io/badge/philosophy-3--layer-darkblue)
 ![ai-native](https://img.shields.io/badge/AI--native-Path%20G-ff69b4)
 ![rules](https://img.shields.io/badge/rules-R1--R25%20%2B%20R--Cross1--4-red)
+![gates](https://img.shields.io/badge/review-3--gates-9cf)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 
 **99% of AI assistants always say "Sure!" — this one asks "Should we even do this?" first.**
 
-25 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
+19 hard rules plus 4 cross-category anchors built in. Boss wants a 10-second brand splash every visit? Refused — predicts 4% DAU drop in 30 days.
 
 **New in v4.2**: Tier 0 is rebalanced from v4.1's philosopher-heavy 8:2:2 into a strict **4:4:4 equal-voice council** (4 philosophers + 4 artists + 4 musicians). User-declared task_kind routes first (LLM inference only as fallback), category matches add +0.5, reductive [-] and additive [+] voices debate inside the council, no single sage gets veto power, and R-Cross1-4 anchors art/music rules.
+
+**New in v4.2.7** (Content Review Charter · Three Gates end-to-end): Every generated artifact (design / spec / plan / copy / report) now flows through a three-gate review pipeline — **Entry Gate** (ref 28 · council 6-step pass G1-G6 + blue-army veto) + **Remediation Gate** (ref 29 · defect ticket loop R1-R5 with SLA + repeat-offense→rule-PR) + **Post-Hoc Gate** (ref 30 · dual track: K-track audits content decay/cull, M-track audits reviewer rot/keeper-test, cross-fed). Rulesets ref 15/16/19 decide "is this single rule OK"; the three gates decide "can this whole artifact ship." Two new agents: 🎼 review-orchestrator (flow orchestration) + 🛡️ meta-auditor (audits the auditors) — 52→54. Full demo: [examples/02-three-gates-modal](examples/02-three-gates-modal/).
 
 ```
 Stakeholder: "Add a 10s brand animation on the login page, play every visit."
@@ -32,7 +35,7 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
    Pick a lean and define escape hatches.
 ```
 
-[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.2](#why-v42) · [Congress Protocol](#five-step-congress-protocol-v42--444) · [5 TC Demo](docs/v4.2-congress-simulation.md)
+[中文 README](./README.md) · [Quick Install](#-one-line-install) · [Why v4.2](#why-v42) · [Congress Protocol](#six-step-congress-protocol-v42--444) · [5 TC Demo](docs/v4.2-congress-simulation.md)
 
 </div>
 
@@ -40,7 +43,7 @@ Stakeholder: "We need 100% AI automation AND user-controlled every step."
 
 ## ⚡ One-line Install
 
-> Auto-detects which CLIs you have (`.copilot` / `.claude` / `.agents` / `.codex` / `.gemini`), auto-symlinks, supports `update` / `uninstall`.
+> Auto-detects which CLIs you have (`.copilot` / `.claude` / `.agents` / `.codex` / `.gemini` / `.antigravity`), auto-symlinks, supports `update` / `uninstall`.
 
 ### 🚀 Method 0 · One liner (recommended · cross-platform)
 
@@ -85,7 +88,7 @@ ln -sf ~/.suanfish-design-system ~/.copilot/skills/suanfish-design-system   # Gi
 ln -sf ~/.suanfish-design-system ~/.claude/skills/suanfish-design-system    # Claude Code
 ln -sf ~/.suanfish-design-system ~/.codex/skills/suanfish-design-system     # Codex CLI
 ln -sf ~/.suanfish-design-system ~/.agents/skills/suanfish-design-system    # Generic
-ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 52
+ls ~/.copilot/skills/suanfish-design-system/agents/ | wc -l   # should print 54
 ```
 
 On Windows PowerShell use `New-Item -ItemType Junction` instead of `ln -sf`.
@@ -137,24 +140,24 @@ v4.1 then expanded beyond philosophers but stayed philosopher-heavy (**8:2:2**).
 
 ---
 
-## Five-Step Congress Protocol (v4.2 · 4:4:4)
+## Six-Step Congress Protocol (v4.2 · 4:4:4)
 
 ```
 BRIEF
   ↓
-🏛 bench-matcher · self-contained congress (5 unified steps)
-  ① Route+Score — user-declared task_kind first; LLM inference only as fallback
+🏛 bench-matcher · self-contained congress (6 unified steps)
+  ① Route     — user-declared task_kind first; LLM inference only as fallback
                   task_kind ∈ {visual, motion, structural, philosophical, mixed}
                   visual → +0.5 to artists · motion → +0.5 to musicians
                   structural/philosophical → +0.5 to philosophers (cap 2.5 voting weight)
-                  score all 12 Tier 0 sages (strict 4:4:4) on 5 dims (40/20/15/15/10)
-  ② Summon    — those scoring ≥7.5 enter (k sages, typically 1-4 of 12)
+  ② Score     — score all 12 Tier 0 sages (strict 4:4:4) on 5 dims (40/20/15/15/10)
+  ③ Summon    — those scoring ≥7.5 enter (k sages, typically 1-4 of 12)
                   fallback: top-1 if none clear threshold
-  ③ Invite    — entered sages recursively invite helpers from cross-category bench
+  ④ Invite    — entered sages recursively invite helpers from cross-category bench
                   (philosophers #NNN / artists #ANNN / musicians #MNNN)
                   per-sage quota 3 · total cap 15
-  ④ Discuss   — all state positions → consensus merge / mediate / surface blind spots
-  ⑤ Vote      — Tier 0 = 2 votes (+0.5 category match, cap 2.5) · helpers = 1 vote
+  ⑤ Discuss   — all state positions → consensus merge / mediate / surface blind spots
+  ⑥ Vote      — Tier 0 = 2 votes (+0.5 category match, cap 2.5) · helpers = 1 vote
                   ABSTAIN reduces denominator · ≥ ⌈total × 2/3⌉ to pass
                   no single sage gets veto power · revise & re-vote up to 3 rounds
                   3-round failure → R24 Congress-Deadlock → escalate to user
@@ -258,7 +261,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 
 ## Architecture
 
-**52 specialized agents** organized across **8 tiers** and **7 design paths**:
+**54 specialized agents** organized across **8 tiers** and **7 design paths**:
 
 | Tier | Role | Sample agents |
 |------|------|---------------|
@@ -271,7 +274,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 | **3 · Container Specialist (×10)** | Build the surface | `modal` · `wizard` · `data-viz` · `table` · `chat-ui` · `stream` · `tool-call-presenter` · `agent-thread-architect` · `artifact-architect` · `prompt-input-craftsman` |
 | **4 · Content Specialist (×10)** | Words · icons · states · reasoning | `copy-writer` · `icon-curator` · `empty-state` · `responsive` · `persona` · `info-architect` · `error-recovery` · `reasoning-visualizer` · `citation-keeper` · `rate-limit-communicator` |
 | **5 · Crosscutting Consult (×6)** | Tokens · motion · a11y · brand · i18n · model | `token-keeper` · `animation` · `a11y-guardian` · `brand-keeper` · `i18n-strategist` · `model-switcher-stylist` |
-| **6 · Quality Gate** | Independent audit · 52-agent coverage | `ui-auditor` · `sage-council` |
+| **6 · Quality Gate** | Independent audit · 54-agent coverage | `ui-auditor` · `sage-council` · `review-orchestrator` · `meta-auditor` |
 
 ### 7 design paths
 
@@ -291,8 +294,8 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 
 | Family | Range | Theme |
 | --- | --- | --- |
-| Heuristic | R1-R6 | Forced animation · interrupt · CTA flood · first-time intrusion · destructive-no-undo · long onboarding |
-| Value-tension | R7-R12 | 6 value-tension rules |
+| Heuristic | R1-R6 | Forced duration · ritual-on-high-freq · need-contradiction · iron-law-violation · path-B-unmet · dual-led |
+| Value | R7-R12 | (reserved gap · not defined · see ref 17 §三) |
 | Development laws | R13-R17 | Complexity · abstraction · control-handoff · feedback-loop · modal-fusion |
 | Dialectical | R18 | Contradiction-without-lean |
 | Anti-AI-bullshit | R19-R23 | Philosophy-as-Lint family |

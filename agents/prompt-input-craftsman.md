@@ -7,6 +7,7 @@ historical_era: "LLM Pre-Native → AI-native (E6→E7)"
 emerged_to_solve: "AI 产品输入框缺乏 @ 提及、/ 命令等富输入范式"
 core_contradiction: "D1 简洁⟷可发现（可发现）"
 next_evolution: "语音/手写/图像多模态输入融合，草稿持久化"
+references: [37-ai-thread-input-artifact.md]
 ---
 
 # ⌨️ prompt-input-craftsman · 提示输入工匠

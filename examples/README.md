@@ -11,11 +11,25 @@
 | # | 名称 | 主 agent | 模式 | 复杂度 | 状态 |
 | --- | --- | --- | --- | --- | --- |
 | 01 | [Onboarding Eureka 欢迎页](01-onboarding-eureka/) | onboarding-director | 🎬 仪式 | ⭐⭐⭐ | ✅ |
-| 02 | Dashboard 三栏工作台 | ui-architect | 🏛 稳态 | ⭐⭐⭐⭐ | 🚧 规划中 |
-| 03 | Wizard 多步表单（REJECT 触发演示） | wizard-designer | 🏛 稳态 | ⭐⭐⭐ | 🚧 规划中 |
-| 04 | Streaming Chat（v2.5 Path G） | conversation-director | 💬 AI-native | ⭐⭐⭐⭐ | 🚧 规划中 |
+| 02 | [Three-Gates Modal 三道门端到端](02-three-gates-modal/) | modal-craftsman + review-orchestrator | 🎼 审核制度 | ⭐⭐⭐⭐ | ✅ |
+| 03 | [Dashboard 三栏工作台](03-dashboard-workbench/) | ui-architect + light-impressionist + void-painter | 🏛 稳态+美学辩证 | ⭐⭐⭐⭐ | ✅ |
+| 04 | [Wizard 多步表单（REJECT 触发演示）](04-wizard-reject/) | wizard-designer + dialectician | 🚫 否决机制 | ⭐⭐⭐ | ✅ |
+| 05 | [Streaming Chat](05-streaming-chat/) | conversation-director + stream-craftsman | 💬 AI-native | ⭐⭐⭐⭐⭐ | ✅ |
 
-> 02 / 03 / 04 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
+## 🖼️ 视觉证据（可直接渲染）
+
+> 入口：[visual-evidence/gallery.html](visual-evidence/gallery.html) — 画廊导航页，一键跳转所有证据
+
+| 文件 | 内容 | 对应 ref |
+| --- | --- | --- |
+| [visual-evidence/index.html](visual-evidence/index.html) | 稳态内核——色谱/加减辩证/组件/三栏/D3 映射/dark mode 全渲染 | 01 / 04 / 44 / 45 / 46 / 47 |
+| [visual-evidence/eureka.html](visual-evidence/eureka.html) | 仪式模式 Eureka 欢迎闪现——8 keyframes + 5 层粒子组合真实动画（扩散环/光球/火花/灯泡/标题渐变+扫光），点按钮重放 | 02 / 11 / 46 |
+| [visual-evidence/streaming-chat.html](visual-evidence/streaming-chat.html) | AI-native 流式聊天——cursor 三态闪烁 + 工具调用四态卡 + 思维链折叠 + 引用角标 hover 预览 + 模型切换 + IME 安全输入 + 完成脉冲 | 36 / 37 / 39 / 40 / 41 / 46 / 47 |
+| [visual-evidence/council-debate.html](visual-evidence/council-debate.html) | 议会辩证可视化——六步推演（路由→评分→常委→邀请→三段式讨论→投票）+ 加减辩证交锋 + D2/D7 矛盾映射 + 端到端追溯链，点按钮推进 | 24 / 27 / 46 / 47 / 48 |
+| [visual-evidence/sound-design.html](visual-evidence/sound-design.html) | 声音设计可听证据——R-Cross 三档位（凯奇沉默/Eno 陪伴/贝多芬命运四音）+ 通知音四优先级，Web Audio API 真实播放，点按钮听 | 32 / 46 |
+| [visual-evidence/anti-patterns.html](visual-evidence/anti-patterns.html) | 反模式对比可视化——18 条 ❌ 坏 vs ✅ 好并排可看（alert/HEX/!important/任意z/div onClick/阴影/text-yellow/文案空话） | 01 / 07 / 14 / 34 / 35 |
+
+> 03 / 04 / 05 案例正在筹备中，欢迎 PR 贡献：[CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
 

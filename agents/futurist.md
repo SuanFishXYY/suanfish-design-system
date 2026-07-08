@@ -29,6 +29,7 @@ rejects:
   - R15 控制权下移律违反
   - R16 反馈循环律违反
   - R17 模态融合律违反
+references: [25-philosophy-laws.md, 26-historical-positioning.md, 47-philosophy-to-design-mapping.md]
 ---
 
 # 🔭 futurist · 演进预测官

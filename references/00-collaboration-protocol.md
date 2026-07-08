@@ -1,6 +1,13 @@
+---
+ref: 00
+title: 协作协议 · agent 交接规范
+owner: flow-coordinator（流程协调）· 全 agent（交接）
+audited_by: ui-auditor
+---
+
 # 00 · 协作协议（Collaboration Protocol）
 
-> *9 位 agent 在工作室内部如何彼此交接，不掉信息。*
+> *54 位 agent 在工作室内部如何彼此交接，不掉信息。*
 
 ## 四种结构化产出
 
@@ -71,7 +78,7 @@
 用户请求
    │
    ▼
-moment-strategist            → BRIEF
+moment-strategist            → BRIEF  + 触发 review-orchestrator G1 立案（v4.2.7）
    │
    ▼
 主 agent                     → PLAN
@@ -84,16 +91,28 @@ moment-strategist            → BRIEF
 ui-auditor                   → REPORT
    │
    ▼
-回交用户（若 REPORT 为 ❌ 则回路重做）
+📜 内容评价审核 · 三道门（v4.2.7 · ref 28-30 · review-orchestrator 编排）
+   │
+   ├─ 入口门 ref 28：G1立案→G2辩论→G3评分→G4投票(2/3)→G5蓝军否决→G6
+   │     │ FAIL ──→ 退回门 ref 29：R1开单→R2认领(SLA)→R3修复→R4复审→R5销项 → 回 G3
+   │     │ PASS ──→ 事后门 ref 30：K轨(查内容衰弱/下架) + M轨(查审核者腐烂/下岗)
+   │
+   ▼
+回交用户（G6 PASS 放行；若 FAIL 则走退回门整改闭环，不再靠旧"回路重做"）
 ```
 
-## 何时回路
+> **v4.2.7 起，旧的「REPORT ❌ 则回路重做」升级为三道门**：REPORT 是 ui-auditor 单条规则审计，三道门是整件生成物放行门。退回不再靠主 agent 自觉修订 PLAN，而是走 ref 29 工单 SLA 闭环（见下方"何时回路"）。
 
-若 `ui-auditor` 返回 `❌ 不通过`：
-1. 主 agent 阅读 REPORT
-2. 修订 PLAN
-3. 仅向「输出有变化」的协作 agent 重新索取 SPEC
-4. 重新跑 `ui-auditor`
+## 何时回路（v4.2.7 升级为退回门 ref 29）
+
+若 `ui-auditor` 返回 `❌ 不通过`，或 ref 28 G6 判定 `FAIL`：
+1. **review-orchestrator R1 开单**——把 G6 缺陷清单拆成工单（带可证伪 acceptance + SLA）
+2. **owner agent R2 认领**——限时认领，SLA 计时开始
+3. **R3 修复**——按 acceptance 逐项修复，贴证据（禁空口销项）
+4. **R4 复审**——只验缺陷项不重审整件（P0 强制换人防自打脸）
+5. **R5 销项**——全销回 ref 28 G3 复审；超时走 L1-L4 升级链
+
+详见 [`references/29-remediation-loop-charter.md`](29-remediation-loop-charter.md)。旧流程的"主 agent 修订 PLAN 重跑 ui-auditor"仍适用于 B 级草稿 Fast-track（ref 28 §7）。
 
 **绝不带 🟥 严重发现交付任何界面。**
 

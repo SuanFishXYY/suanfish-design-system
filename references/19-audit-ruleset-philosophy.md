@@ -1,3 +1,12 @@
+---
+ref: 19
+title: 哲学层审计规则集
+ruleset_version: 1.0.0
+bound_to_skill_version: 2.3.0
+owner: ui-auditor（执行）· 各 agent（遵守）
+audited_by: ui-auditor
+---
+
 # 📜 19 · 哲学层审计规则集
 
 > **v2.3 新增** — 让哲学不只是字符，而是可校验的规则。
@@ -464,7 +473,7 @@ ui-auditor 加载本规则集后，REPORT 结构升级：
 
 ## 三·补 · v2.5 新增 9 agent · Path G AI-native 专项检查
 
-> *9 位新 agent，对应 27 条新 P-XX 规则。审计时按 agent 触发。*
+> *9 位新 agent，对应 28 条新 P-XX 规则。审计时按 agent 触发。*
 
 ### `stream-craftsman` (赫拉克利特 · 万物流变)
 
@@ -584,15 +593,15 @@ ui-auditor 加载本规则集后，REPORT 结构升级：
 
 ### `model-switcher-stylist` (列维-斯特劳斯 · 修补匠)
 
-#### P-MS1 · 切换需告知
+#### P-MSS1 · 切换需告知
 **规则**：用户主动或被动切换到不同厂商/能力差异大的模型时，必须有 banner 或 toast 告知。
 **判罚**：🟥 严重
 
-#### P-MS2 · 跨模型视觉一致
+#### P-MSS2 · 跨模型视觉一致
 **规则**：不同模型的回答气泡不可用不同主色；仅左上角 12px 厂商 logo 区分。
 **判罚**：🟧 警告
 
-#### P-MS3 · 模型卡必备字段
+#### P-MSS3 · 模型卡必备字段
 **规则**：模型选择器中每张卡必须包含：名称 + 厂商 + 速度 + 价格 + 智力 + 上下文 + 能力 + 一句话适合。
 **判罚**：🟧 警告
 

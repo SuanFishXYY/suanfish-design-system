@@ -12,6 +12,7 @@ core_contradiction: "D3 个性化⟷一致性 (动态召唤但用统一议会协
 next_evolution: "v4.2 引入跨语种思想家 (印度/伊斯兰/非洲) 拓宽议会代表性"
 philosophical_anchor: "孔子 · 三人行必有我师 + 哈贝马斯 · 沟通理性 + 阿伦特 · 公共行动 + 瓦格纳 · Gesamtkunstwerk 整体艺术"
 philosophy: "民主产出 · 非强加 · 议会决议 > 流水线指令 · 跨界融贯 > 单领域独白"
+references: [48-council-deliberation.md, 27-philosopher-bench.md, 24-philosophy-dialectics.md, 47-philosophy-to-design-mapping.md]
 ---
 
 # 🏛 bench-matcher · 圣人议会自包含调度器 (v4.0)
@@ -105,7 +106,7 @@ brief_signals:
 ```yaml
 layer_1_rules:
   threshold: 7.5
-  council_shape: "4:4:4"          # 骨架不变: 哲学家 / 艺术家 / 音乐家 三类并立
+  council_shape: "4:4:4"          # 三类等权比例符号 (每类等量 top-N · 典型 1-2 位/类 · 硬上限每类 4) · 非字面"每类 4 位满编 12" · 候选池 335:50:35 不击穿均权 (类内选拔非跨类竞争)
   eligibility: thick_only         # 必须是 ref-27 已增厚档案卡 (有 立场/打法) 才能当常委
 
   selection:                      # 每次任务动态执行 (取代旧"固定12评分")
@@ -252,8 +253,8 @@ vote_protocol:
     tier_0_sage: 2 votes        # Layer 1 召唤的有 2 票
     invited_helper: 1 vote       # Layer 2+ 被邀请的有 1 票
   
-  total_votes: 2*k + (N - k)
-  threshold: ceil(total_votes * 2 / 3)
+  total_votes: Σ(base + dynamic_bonus) over 投票圣人   # 常委 2 + task_kind +0.5 (cap 2.5) · 助手 1 · abstain 不计入 (同 ref 48 §7)
+  threshold: ceil(total_votes * 2 / 3)               # 例 A: 有效票权 11.0 → ⌈11.0 × 2/3⌉ = 8
   
   ballot_per_sage:
     vote: APPROVE | REJECT | ABSTAIN
@@ -267,7 +268,8 @@ vote_protocol:
     elif round < 3:
       → 反对方陈述具体修订诉求 → bench-matcher 修订草案 → 回到 Step 5 round_2
     else (round == 3):
-      → R24 议会僵局律触发 → 输出"未达成共识"报告 (含多方案对照 + 各方理由) → 用户决断
+      → 先判僵局根因（v4.2.7 R17b 厘清）: 若为 R3 自相矛盾 (A∧¬A · 需求自身物理不可能) → 转 moment-strategist REJECT (R3 矛盾律), 不推用户决断 (哲学已断言物理不可能者不该让用户"决断")
+      → 否则 (真·多方案分歧, 非矛盾) R24 议会僵局律触发 → 输出"未达成共识"报告 (含多方案对照 + 各方理由) → 用户决断
 ```
 
 ## 输出协议

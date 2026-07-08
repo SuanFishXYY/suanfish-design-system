@@ -22,10 +22,10 @@ references: [50-sage-memory-v4.3-draft.md]
 
 ## 职责（详见 [ref 50](../references/50-sage-memory-v4.3-draft.md)）
 
-1. **写入**（议会 Step6 后）：记录本次议会该圣人的矛盾倾向/改造动作/ref 引用/投票立场 → recent 层。
-2. **注入**（bench-matcher Step3 召唤时）：读该圣人 long-term 底色 + recent 近况 → 注入三段式"📚 理论依据"段（"上次我们议过 D3..."）。
-3. **价值驱动 compact**：定期按价值判断三角（通过×引用=value_score）清理零价值记忆（同 sptler `compact_memories.py` 逻辑）。
-4. **supersedeable 标记**：圣人改主意 → 旧条目标 `superseded=true` 不删（转折点永久保留），新条目正常计价值。
+1. **写入**（议会 Step6 后）· **v4.3.1**：记录本次议会该圣人的矛盾倾向/改造动作/ref 引用/投票立场 → recent 层。
+2. **注入**（bench-matcher Step3 召唤时）· **v4.3.0**：读该圣人 long-term 底色 + recent 近况 → 注入三段式"📚 理论依据"段（"上次我们议过 D3..."）。**只读**：适配 sptler `summon_sage --dry-run`——命中相关记忆只记 `pending_citations` 不回写，citation bump 留 v4.3.1。
+3. **价值驱动 compact** · **v4.3.1**：定期按价值判断三角（通过×引用=value_score）清理零价值记忆（同 sptler `compact_memories.py` 逻辑）。`seeded:true` 的 fixture 条目永久豁免。
+4. **supersedeable 标记** · **v4.3.1**：圣人改主意 → 旧条目标 `superseded=true` 不删（转折点 `is_turning_point=true` 永久保留），新条目正常计价值。读路径只用 `superseded` bool 过滤，**不读 sptler 的 `supersedes` 列表**（sptler 读路径 `summon_sage`/`compact_memories` 亦不读，R38 核源码确认）。
 
 ## 边界（v4.3.0 stub 阶段）
 
@@ -35,13 +35,14 @@ references: [50-sage-memory-v4.3-draft.md]
 
 ## v4.3.0 实施状态
 
-- 本文件是 **stub 骨架**（v4.2.7 R34 建）——frontmatter + 职责段 + 边界已定，**读写/compact 逻辑待 v4.3.0 实施**。
-- agent_count 54→55（本文件加入后 manifest 同步）。
-- memories/ 目录待 v4.3.0 首次议会写入时创建。
-- 与 bench-matcher Step3/Step6 的接口待 v4.3.0 实施（读注入+写记录）。
+- 本文件是 **stub 骨架**（v4.2.7 R34 建）——frontmatter + 职责段 + 边界已定，**v4.3.0 只实施读注入逻辑**（职责 2）；写/compact/supersedeable（职责 1/3/4）留 v4.3.1（ref50 §7 三步路线）。
+- agent_count 54→55（本文件移入 agents/ 后 manifest 同步 · v4.3.0）。
+- memories/ 目录 v4.3.0 建（fixture 种子 1-2 条 + .gitkeep；首次真实写 v4.3.1）。
+- 与 bench-matcher **Step3** 的接口待 v4.3.0 实施（**只读注入** · dry-run 不回写 citation）。**Step6 写接口留 v4.3.1**——R38 修原"Step3/Step6 读注入+写记录"与 ref50 §7 只读 scope 的矛盾。
 
 ## 诚实声明
 
-- v4.3.0 stub：职责定义清晰但运行时逻辑未实现，待 v4.3.0 迭代。
-- 借鉴 sptler `memory_philosophy.md` 四原则+三角+转折点（R32 核验源文件准确），但 suanfish 设计场景的记忆内容/触发需 v4.3.0 验证。
+- v4.3.0 stub：职责定义清晰但**只有读注入（职责 2）在 v4.3.0 实施**，写/compact/supersedeable（职责 1/3/4）留 v4.3.1。
+- 借鉴 sptler `memory_philosophy.md` 四原则+三角+转折点（R32 核验宪法 · R38 再核 `summon_sage.py`/`compact_memories.py` 读路径确认字段），但 suanfish 设计场景的记忆内容/触发需 v4.3.0 验证。
+- **读路径不是纯读**：sptler `summon` 命中时 `bump_citations` 会回写 citation_count。v4.3.0 走 `--dry-run`（`pending_citations` 不写盘），citation bump 推 v4.3.1——这是只读 scope 的必要约束（R38 补）。
 - 令牌成本 +~1k/议会（Formal 轨·5 圣人×200），`--no-memory` 可关跳过注入。

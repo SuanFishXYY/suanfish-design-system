@@ -510,9 +510,9 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 
 > *AI 产品的设计哲学：**把不可见的认知过程视觉化**（reasoning / streaming）+ **把不可信的输出归因化**（citation / tool-call）+ **把不可控的限制透明化**（rate-limit / model-switch）+ **把不可逆的操作可撤回化**（thread / artifact / prompt-input）*
 
-### §二 缺锚点索引（v4.2.7 哲理审计 R10 · 32 位指针级对齐 · 非臆造）
+### §二 缺锚点索引（v4.2.7 哲理审计 R10 建 · 现 30 位指针级对齐 · 非臆造 · R41 对账）
 
-> 本节上方 24 位有完整锚点条目（哲学家+命题+行为约束）。系统现 54 agent，余 **32 位**缺本节条目——不臆造哲学锚点（领域写作议题），只给**指针**指向其锚点所在。补齐完整条目留 R 规则 PR 议题。
+> 本节上方 24 位有完整锚点条目（哲学家+命题+行为约束）。系统现 54 agent，余 **30 位**缺本节条目——不臆造哲学锚点（领域写作议题），只给**指针**指向其锚点所在。补齐完整条目留 R 规则 PR 议题。
 
 **A. Tier 0 议会圣人 12 席**（锚点 = ref 27 厚仙人档案卡 + 各 agent `philosophical_anchor` 字段）：
 | agent | 圣人锚 | 锚点所在 |
@@ -530,7 +530,7 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 | silence-composer | 凯奇 · 静默 | [ref 27](27-philosopher-bench.md) + `agents/silence-composer.md` |
 | ambient-architect | Eno · 环境陪伴（R-Cross4） | [ref 27 #M025](27-philosopher-bench.md) + `agents/ambient-architect.md` |
 
-**B. 议会引擎 + 降级四人 + 横切/Path G 新增 20 位**（锚点在各 agent `philosophical_anchor` / `philosophy` 字段）：
+**B. 议会引擎 + 降级四人 + 横切/Path G 新增 18 位**（锚点在各 agent `philosophical_anchor` / `philosophy` 字段）：
 | agent | 锚点摘要 | 所在 |
 | --- | --- | --- |
 | bench-matcher | 议会民主调度（六步协议） | `agents/bench-matcher.md` + [ref 48](48-council-deliberation.md) |
@@ -542,9 +542,6 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 | futurist | 怀特海·过程哲学（v4.2.6 降普通板凳） | `agents/futurist.md` + [ref 27 #091](27-philosopher-bench.md) |
 | wuwei-master | 老子·无为（v4.2.6 降普通板凳） | `agents/wuwei-master.md` + [ref 27 #092](27-philosopher-bench.md) |
 | perspectivist | 庄子·齐物论（v4.2.6 降普通板凳） | `agents/perspectivist.md` + [ref 27 #093](27-philosopher-bench.md) |
-| a11y-guardian | 无知之幕·罗尔斯 | `agents/a11y-guardian.md` |
-| brand-keeper | 品牌一致·声调统一 | `agents/brand-keeper.md` + [ref 42](42-brand-system.md) |
-| i18n-strategist | 巴别塔·语言多样性 | `agents/i18n-strategist.md` + [ref 43](43-i18n.md) |
 | stream-craftsman | 流式认知可视化 | `agents/stream-craftsman.md` + [ref 36](36-ai-streaming-and-tools.md) |
 | tool-call-presenter | 工具调用归因化 | `agents/tool-call-presenter.md` + [ref 36](36-ai-streaming-and-tools.md) |
 | agent-thread-architect | 线程可逆·对话可撤回 | `agents/agent-thread-architect.md` + [ref 37](37-ai-thread-input-artifact.md) |
@@ -552,7 +549,9 @@ agent 在 REJECT 或 SPEC 输出中引用哲学时：
 | prompt-input-craftsman | 输入容器·IME/命令 | `agents/prompt-input-craftsman.md` + [ref 37](37-ai-thread-input-artifact.md) |
 | reasoning-visualizer | 思维链透明化 | `agents/reasoning-visualizer.md` + [ref 39](39-reasoning-visualization.md) |
 | citation-keeper | 引用归因可信度 | `agents/citation-keeper.md` + [ref 41](41-citation-and-sources.md) |
+| model-switcher-stylist | 修补匠·列维-斯特劳斯（无银弹） | `agents/model-switcher-stylist.md` + [ref 40](40-rate-limit-and-model-switch.md) |
+| rate-limit-communicator | 正义论·罗尔斯（配额即分配正义） | `agents/rate-limit-communicator.md` + [ref 40](40-rate-limit-and-model-switch.md) |
 
-> **为何不补完整条目**：每条锚点需「哲学家+原文出处+行为约束+判罚位置」四件套（见上方 §二 条目格式），是哲学写作而非机械填充——补齐 32 位 × 四件套 = 领域写作工程，超机械修复边界。本表先让"缺锚点"从隐形债变可追溯指针，后续逐位增厚为完整条目。
+> **为何不补完整条目**：每条锚点需「哲学家+原文出处+行为约束+判罚位置」四件套（见上方 §二 条目格式），是哲学写作而非机械填充——补齐 30 位 × 四件套 = 领域写作工程，超机械修复边界。本表先让"缺锚点"从隐形债变可追溯指针，后续逐位增厚为完整条目。
 
 四件事做不到，再炫的 UI 也是空壳。

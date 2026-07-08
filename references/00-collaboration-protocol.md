@@ -7,7 +7,7 @@ audited_by: ui-auditor
 
 # 00 · 协作协议（Collaboration Protocol）
 
-> *9 位 agent 在工作室内部如何彼此交接，不掉信息。*
+> *54 位 agent 在工作室内部如何彼此交接，不掉信息。*
 
 ## 四种结构化产出
 

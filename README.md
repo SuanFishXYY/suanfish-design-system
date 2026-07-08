@@ -351,19 +351,19 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
-    Start([📥 收到 BRIEF]) --> R1{R1<br/>有明确<br/>用户痛点?}
-    R1 -->|否| Rej1[🛑 REJECT R1<br/>'连问题都没说清，做啥?']
-    R1 -->|是| R2{R2<br/>符合产品<br/>定位?}
-    R2 -->|否| Rej2[🛑 REJECT R2<br/>'稳态高频别玩仪式感']
-    R2 -->|是| R3{R3<br/>有数据/<br/>调研支撑?}
-    R3 -->|否| Rej3[🛑 REJECT R3<br/>'凭感觉的决策不接']
-    R3 -->|是| R4{R4<br/>风险/成本<br/>可控?}
-    R4 -->|否| Rej4[🛑 REJECT R4<br/>'ROI 不正不做']
-    R4 -->|是| R5{R5<br/>a11y/合规<br/>过关?}
-    R5 -->|否| Rej5[🛑 REJECT R5<br/>'歧视任何用户都是红线']
-    R5 -->|是| R6{R6<br/>有验证/<br/>退出方案?}
-    R6 -->|否| Rej6[🛑 REJECT R6<br/>'没法验证就是赌博']
-    R6 -->|是| Pass([✅ 进入 Tier 1 派单])
+    Start([📥 收到 BRIEF]) --> R1{R1<br/>时长>5s<br/>且非主动触发?}
+    R1 -->|是| Rej1[🛑 REJECT R1<br/>'强加体验·人是目的不是手段']
+    R1 -->|否| R2{R2<br/>仪式装饰在<br/>高频界面?}
+    R2 -->|是| Rej2[🛑 REJECT R2<br/>'稳态高频别玩仪式感']
+    R2 -->|否| R3{R3<br/>需求自相矛盾?<br/>(如快速+沉浸)}
+    R3 -->|是| Rej3[🛑 REJECT R3<br/>'物理不可能·矛盾律']
+    R3 -->|否| R4{R4<br/>违反三条<br/>铁律之一?}
+    R4 -->|是| Rej4[🛑 REJECT R4<br/>'普世法则不可破']
+    R4 -->|否| R5{R5<br/>路径B 4硬条件<br/>未全满足?}
+    R5 -->|是| Rej5[🛑 REJECT R5<br/>'无约束即赌博']
+    R5 -->|否| R6{R6<br/>一屏双主导?<br/>(onboarding+architect)}
+    R6 -->|是| Rej6[🛑 REJECT R6<br/>'名不正则言不顺']
+    R6 -->|否| Pass([✅ 进入 Tier 1 派单])
 
     Rej1 -.提供替代.-> Alt([💡 替代方案])
     Rej2 -.-> Alt

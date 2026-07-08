@@ -294,7 +294,7 @@ As of **v4.2** sage selection is democratized across 3 equal categories — 4 ph
 
 | Family | Range | Theme |
 | --- | --- | --- |
-| Heuristic | R1-R6 | Forced animation · interrupt · CTA flood · first-time intrusion · destructive-no-undo · long onboarding |
+| Heuristic | R1-R6 | Forced duration · ritual-on-high-freq · need-contradiction · iron-law-violation · path-B-unmet · dual-led |
 | Value-tension | R7-R12 | 6 value-tension rules |
 | Development laws | R13-R17 | Complexity · abstraction · control-handoff · feedback-loop · modal-fusion |
 | Dialectical | R18 | Contradiction-without-lean |

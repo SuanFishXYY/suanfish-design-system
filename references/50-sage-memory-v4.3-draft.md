@@ -9,13 +9,13 @@ inspired_by: sptler（算鱼真人议会 · 价值驱动记忆 + 分层 + supers
 
 # 🧠 ref 50 · v4.3 圣人记忆系统 · 设计草案
 
-> *R25/R27 把"设计场景圣人记忆"标为 v4.3 议题——本 ref 把它从"未来议题"推进到"可启动方案"。借鉴 sptler（孪生项目·见 README §孪生项目） 已落地的价值驱动记忆机制，适配 suanfish 设计场景。*
+> *v4.2.7 R25/R27 把"设计场景圣人记忆"标为 v4.3 议题——本 ref 把它从"未来议题"推进到"可启动方案"。借鉴 sptler（孪生项目·见 README §孪生项目） 已落地的价值驱动记忆机制，适配 suanfish 设计场景。*
 
-## 0. 为什么需要（R25/R27 留的缺口）
+## 0. 为什么需要（v4.2.7 R25/R27 留的缺口）
 
 - **至尊版议会**：每次 BRIEF 黑格尔/莫奈/倪瓒从零辩证——同类设计矛盾（如 D3 个性化⟷一致性）第二次议，不引用上次结论，重复论证。
 - **Lite 四轨**：Follow-up 轨虽复用上单骨架，但那是 case 级复用，**非圣人人格级积累**——换 BRIEF 就丢。
-- **跨 skill 断裂**（R25）：sptler 有 22 圣人记忆但场景不同（专利/技术），suanfish 设计场景无记忆，转 sptler 不带设计辩证人格连续性。
+- **跨 skill 断裂**（v4.2.7 R25）：sptler 有 22 圣人记忆但场景不同（专利/技术），suanfish 设计场景无记忆，转 sptler 不带设计辩证人格连续性。
 
 **v4.3 目标**：让 suanfish 的圣人（思想家板凳 420 + 议会 12 种子）积累设计决策记忆——同类设计问题第二次议，圣人引用上次结论接续。
 
@@ -128,9 +128,9 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 - Verdict 轨：1 位设计师裁决后写记忆（轻量，仅矛盾+倾向）
 - Fast 轨：主设计师 + 协作各写
 - Formal 轨：迷你 3 圣人都写
-- Follow-up 轨：读上单记忆 + 更新（这是 Follow-up 该引用上次的实现机制——R22 Lite Follow-up 现在只复用 case 骨架，v4.3 加圣人记忆后能复用人格立场）
+- Follow-up 轨：读上单记忆 + 更新（这是 Follow-up 该引用上次的实现机制——v4.2.7 R22 Lite Follow-up 现在只复用 case 骨架，v4.3 加圣人记忆后能复用人格立场）
 
-## 5. 与 sptler 记忆的区别（R25 边界的具体化）
+## 5. 与 sptler 记忆的区别（v4.2.7 R25 边界的具体化）
 
 | 维度 | sptler | suanfish v4.3 |
 | --- | --- | --- |
@@ -138,16 +138,16 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 | 场景 | 专利/技术/架构决策 | 设计辩证（UI/交互/令牌） |
 | 记忆内容 | 权利要求/FTO/价值评估 | 矛盾倾向/改造动作/ref 引用 |
 | 触发 | /sptler 议会 | /suanfish 议会（至尊版 Formal）/ Lite Formal 轨 |
-| **不互通** | 两套记忆独立，suanfish 圣人在 sptler 无记忆，反之亦然（R25 已声明） |
+| **不互通** | 两套记忆独立，suanfish 圣人在 sptler 无记忆，反之亦然（v4.2.7 R25 已声明） |
 
-> **跨 skill 记忆不互通是设计**（R25）：sptler 真人专家 ≠ suanfish 思想家，人格不同，记忆不该混。
+> **跨 skill 记忆不互通是设计**（v4.2.7 R25）：sptler 真人专家 ≠ suanfish 思想家，人格不同，记忆不该混。
 
 ## 6. 令牌成本（v4.3 新增预算）
 
 - 记忆注入（读 long-term+recent）：每圣人 +~200 令牌（仅底色+近况摘要，非全量）
 - 议会 5 常委 Formal 轨：+~1k 令牌（5×200）
 - Lite Formal 迷你 3 圣人：+~600 令牌
-- **可关闭**：`/suanfish lite --no-memory` 跳过记忆注入回纯 R22 Lite 令牌预算
+- **可关闭**：`/suanfish lite --no-memory` 跳过记忆注入回纯 v4.2.7 R22 Lite 令牌预算
 
 ## 7. 实施路线（v4.3 三步）
 
@@ -159,9 +159,9 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 
 - 本 ref 是**设计草案**，未实现——v4.3 议题，R31 推进到"可启动方案"非"已落地"。
 - 借鉴 sptler 记忆机制（已落地验证），但 suanfish 设计场景的记忆内容/触发需 v4.3.0 实施时验证。
-- **不与 sptler 记忆互通**（R25 设计）——两套独立，转 skill 不带记忆。
+- **不与 sptler 记忆互通**（v4.2.7 R25 设计）——两套独立，转 skill 不带记忆。
 - 令牌成本 +~1k/议会（Formal 轨），可 `--no-memory` 关—— Lite 用户可选省令牌不积累。
-- **memory-keeper agent · 已定新增独立（v4.2.7 R33 决策）**：不复用 quotation-verifier。核验职责（quotation-verifier：读 ref 27 板凳核引用真实·一次性·R25）与维护职责（memory-keeper：读写 memories/ 档案·价值驱动 compact·supersedeable 管理·持续维护）本质不同维度，复用会职责混淆（同 R15 P-MS 命名空间污染逻辑）。memory-keeper 定 **Tier 5 横切被咨询层**（同 token-keeper/a11y-guardian 守护型），v4.3.0 新增。**stub 骨架已建**（v4.2.7 R34）：[`references/v4.3-stubs/memory-keeper.md`](v4.3-stubs/memory-keeper.md)（frontmatter+职责+边界已定，运行时逻辑待 v4.3.0）。v4.3.0 实施时移入 `agents/memory-keeper.md` + manifest agent_count 54→55 + tier_5。职责：① 议会 Step6 后写记忆（v4.3.1）② bench-matcher Step3 读记忆时注入 long-term+recent（v4.3.0）③ 价值驱动 compact 清理零价值（v4.3.1）④ supersedeable 标记转折点（v4.3.1）。
+- **memory-keeper agent · 已定新增独立（v4.2.7 R33 决策）**：不复用 quotation-verifier。核验职责（quotation-verifier：读 ref 27 板凳核引用真实·一次性·R25）与维护职责（memory-keeper：读写 memories/ 档案·价值驱动 compact·supersedeable 管理·持续维护）本质不同维度，复用会职责混淆（同 v4.2.7 R15 P-MS 命名空间污染逻辑）。memory-keeper 定 **Tier 5 横切被咨询层**（同 token-keeper/a11y-guardian 守护型），v4.3.0 新增。**stub 骨架已建**（v4.2.7 R34）：[`references/v4.3-stubs/memory-keeper.md`](v4.3-stubs/memory-keeper.md)（frontmatter+职责+边界已定，运行时逻辑待 v4.3.0）。v4.3.0 实施时移入 `agents/memory-keeper.md` + manifest agent_count 54→55 + tier_5。职责：① 议会 Step6 后写记忆（v4.3.1）② bench-matcher Step3 读记忆时注入 long-term+recent（v4.3.0）③ 价值驱动 compact 清理零价值（v4.3.1）④ supersedeable 标记转折点（v4.3.1）。
 
 - **R38 语义审计修正（v4.2.7 R38 · ref50 + memory-keeper stub）**：① 修 §3.1 vs §2 矛盾——§2 补回 `citation_count`/`is_turning_point`（价值三角与转折点逻辑必需，原漏）。② 补文件级 schema（§2.1 · sptler 文件是 `{profile,profile_recent,experiences,archive_summary}` 非裸列表，ref50 原漏）。③ 弃 `supersedes` 列表（核 sptler `summon_sage`/`compact_memories` 读路径均不读，只写不读）。④ §4 补 matched retrieval（D1-D7 当 topic 适配 `relevant_experiences`）+ dry-run 只读约束（sptler summon 命中回写 citation，v4.3.0 走 `--dry-run` 推 v4.3.1）。⑤ memory-keeper stub 修 scope 矛盾（原"Step3/Step6 读+写"→ v4.3.0 只读 Step3，对齐 ref50 §7）。⑥ `timestamp`→`recorded_at`（适配 sptler 时效衰减）。⑦ 加 `seeded` fixture 标记 + `task_kind`(=domain)。
 
@@ -170,7 +170,7 @@ R31 草案只列四原则，漏了 sptler `memory_philosophy.md` 的**价值判�
 ## 变更日志
 
 ### v0.1.0 —— 设计草案（v4.2.7 R31）
-- 从 R25/R27 的"v4.3 议题"推进到"可启动方案"
+- 从 v4.2.7 R25/R27 的"v4.3 议题"推进到"可启动方案"
 - 借鉴 sptler 价值驱动记忆四原则（分层/价值/supersedeable/双画像）
 - 适配设计场景：记忆载体按圣人 / 内容是矛盾倾向+改造动作 / 与 sptler 不互通
 - 三步实施路线 + 令牌成本 + --no-memory 开关

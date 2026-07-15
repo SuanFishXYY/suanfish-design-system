@@ -17,6 +17,7 @@
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![SKILL.md](https://img.shields.io/badge/SKILL.md-standard-black)
 ![stars](https://img.shields.io/github/stars/SuanFishXYY/suanfish-design-system?style=social)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSuanFishXYY%2Fsuanfish-design-system.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSuanFishXYY%2Fsuanfish-design-system?ref=badge_shield)
 
 **99% 的 AI 永远说"好的"。这个 AI 会先反问你: 这事真该做吗?**
 
@@ -643,3 +644,7 @@ suanfish-design-system/
 **如果你也被「永远说 yes 的 AI」毒打过，给个 ⭐ Star。**
 
 </div>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSuanFishXYY%2Fsuanfish-design-system.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSuanFishXYY%2Fsuanfish-design-system?ref=badge_large)
